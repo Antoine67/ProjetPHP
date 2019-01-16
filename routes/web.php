@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('activite', function () {
+    return view('activite');
+});
+
 //Route::get('/activites', 'AuthController@signin');
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
