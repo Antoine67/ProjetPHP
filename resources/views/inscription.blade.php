@@ -64,10 +64,10 @@ if(isset($_GET['err'])) {
             ?>
 
 
-            <form action="" method="POST">                  
+            <form action="create-user.php" method="POST">                  
 
                 <div class="imgcontainer">
-                    <img src="img_avatar.png" alt="Avatar" class="avatar">
+                    <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
                     <label for="nom"><b>Nom</b></label>
@@ -77,7 +77,7 @@ if(isset($_GET['err'])) {
                     <input type="text" placeholder="Votre prénom " name="prenom" required>
 
                     <label for="email"><b>E-mail</b></label>
-                    <input type="text" placeholder="Votre adresse e-mail " name="email" required>
+                    <input type="text" placeholder="Votre adresse e-mail " name="email" onblur="verifMail(this)" required >
 
                     <label for="localisation"><b>Localisation</b></label>
                     <input type="text" placeholder="Votre centre CESI " name="localisation" required>
@@ -89,17 +89,12 @@ if(isset($_GET['err'])) {
                     <input type="password" placeholder="Confirmer votre mot de passe" name="mdpconf" required>
 
                     <button type="submit" style="background-color:#09a02c;border:solid black 2px; ">S'inscrire</button>
-                    <button type="button" style="background-color:#ff0000;" id="back">Annuler</button>
+                    <button type="button" style="background-color:#ff0000;" href="/">Annuler</button>
 
                 </div>
             </form> 
         </div>
-
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{{ asset('/js/verifForm.js') }}"></script>
     </body>
 
-    <script>
-        var btn = document.getElementById('back');
-    	btn.addEventListener('click', function() {
-            history.go(-1);
-    });
-    </script>

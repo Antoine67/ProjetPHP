@@ -8,7 +8,7 @@
         <div class="center">
             <form action="session.php" method="POST">
                 <div class="imgcontainer">
-                    <img src="assets/img/img_avatar.png" alt="Avatar" class="avatar">
+                    <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
                     <label for="login"><b>Nom d'utilisateur</b></label>
@@ -18,17 +18,15 @@
                     <input type="password" placeholder="Entrer votre mot de passe" name="pwd" required>
 
                     <button type="submit" style="background-color:#09a02c;border:solid black 2px; ">Se connecter</button>
-                   
-                    <label>
-                    	<input type="checkbox" checked="checked" name="remember"> Se rappeler de moi
-                    </label>
+                    
                 </div>
 
                 <div class="down-container" style="background-color:#f1f1f1; border-radius:15px;">
-                
+                    <span class="psw"><a href="#">Mot de passe oublié?</a></span>                  
+
+                    <button type="button" href="/inscription">Pas encore membre ? S'inscrire</button>
+
                     <button type="button" class="cancelbtn" id="back">Retour</button>
-                    <span class="psw"><a href="#">Mot de passe oublié?</a></span>
-                    <button type="button" id="signin" >Pas encore membre ? S'inscrire</button>
                 </div>
             </form> 
         </div>
