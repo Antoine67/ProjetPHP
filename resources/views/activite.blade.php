@@ -14,9 +14,9 @@
               <h2><br>Ford RANGER</h2>
                      <p>Vos collègues, votre famille, vos amis... Le nouveau Ranger vous offre l'espace qu'il vous faut parmi trois styles de cabines et quatre modèles. 
 Toujours aussi spacieux et mieux équipé que jamais, vous et vos passagers profiterez d'un véritable espace de confort et d'élégance. </p>  
-                    <img id="badminton" src="{{ asset('/img/images.jpeg') }}" alt="Badminton" >
-                    <img id="footbal" src="{{ asset('/img/Football-les-32-qualifies-pour-la-Coupe-du-monde-et-les-chapeaux-definitifs.jpg') }}" alt="Foot">
-                    <img id="accrobranche" src="{{ asset('/img/badminton.jpg') }}" alt="Accrobranche">
+                    <img id="accrobranche" src="{{ asset('/img/images.jpeg') }}" alt="Accrobranche" >
+                    <img id="footbal" src="{{ asset('/img/foot.png') }}" alt="Foot">
+                    <img id="badminton" src="{{ asset('/img/badminton.png') }}" alt="Badminton">
         </div>
 
           <div class="col-lg-4 col-md-5 col-sm-6">
