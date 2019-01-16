@@ -15,5 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/signin', 'AuthController@signin');
-//Route::get('/authorize', 'AuthController@gettoken');
+//Route::get('/activites', 'AuthController@signin');
+//Route::get('/boutique', 'AuthController@gettoken');
+//Route::get('/accueil', function () { return view('welcome');});
+//Route::get('/idees', 'AuthController@gettoken');
