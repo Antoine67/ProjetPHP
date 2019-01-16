@@ -24,3 +24,9 @@ border:0;
 {
     height:250px;
 }
+
+@media (max-width:767px) {
+    .divv{
+        height:175px;
+    }
+  }
