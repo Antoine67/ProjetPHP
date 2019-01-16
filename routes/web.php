@@ -19,6 +19,10 @@ Route::get('activites', function () {
     return view('activite');
 });
 
+Route::get('boutique', function () {
+    return view('boutique');
+});
+
 //Route::get('/activites', 'AuthController@signin');
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
