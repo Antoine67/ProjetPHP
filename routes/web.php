@@ -23,7 +23,7 @@ Route::get('boutique', function () {
     return view('boutique');
 });
 
-Route::get('boite_a_idee', function () {
+Route::get('idees', function () {
     return view('boite_a_idee');
 });
 
