@@ -23,9 +23,14 @@ Route::get('boutique', function () {
     return view('boutique');
 });
 
+Route::get('idees', function () {
+    return view('boite_a_idee');
+});
+
 //Route::get('/activites', 'AuthController@signin');
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
 //Route::get('/idees', 'AuthController@gettoken');
 
-Route::get('/connexion', function () { return view('login');});
+Route::get('/connexion', function () { return view('connexion');});
+Route::get('/inscription', function () { return view('inscription');});

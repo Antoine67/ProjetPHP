@@ -6,7 +6,7 @@
 
 </head>
 <div class="container-fluid text-center"> 
-      <h1> Nos activités </h1>
+      <h1> La boîte à idées </h1>
       <hr class="hr2">
       <div class="row">
         <div class="col-lg-4 col-md-5 col-sm-6">

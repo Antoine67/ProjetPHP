@@ -1,9 +1,9 @@
-img
+img .img-responsive
 {
   margin: 0px;
-  width:200px;
+  width:50vw;
   height:auto;
-  /*opacity: 1.0;
+  opacity: 1.0;
   filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
@@ -12,3 +12,21 @@ img:hover
   opacity: 0.5;
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
+
+hr
+{
+padding:1px;
+background:rgb(115, 115, 160);
+border:0;
+}
+
+.divv
+{
+    height:250px;
+}
+
+@media (max-width:767px) {
+    .divv{
+        height:175px;
+    }
+  }
