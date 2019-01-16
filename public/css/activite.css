@@ -1,6 +1,18 @@
-.img
+img.img-responsive
 {
-  background-color: rgb(93, 96, 119);
-  width:100px;
   margin: 0px;
+  width:10000px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+img.img-responsive:hover
+{
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+background-color
+{
+
 }
