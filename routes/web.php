@@ -19,3 +19,5 @@ Route::get('/', function () {
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
 //Route::get('/idees', 'AuthController@gettoken');
+
+Route::get('/connexion', function () { return view('login');});

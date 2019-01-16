@@ -45,7 +45,7 @@
                                 </ul>
                             </div>
                         <?php } else { ?>  
-                          <a class="navbar-link login" href="#">Connexion</a> <a class="btn btn-default action-button" role="button" href="#">Inscription</a>
+                          <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="#">Inscription</a>
                         <?php } ?>
                         </p>
                     </div>
