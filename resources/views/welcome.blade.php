@@ -9,8 +9,8 @@
     <br>
     <img class="ligne1" src="{{ asset('/img/3.jpg') }}"> 
     <img class="ligne1" src="{{ asset('/img/4.png') }}"> 
-
-
-
+</div>
+<div>
+    
 </div>
 @endsection
