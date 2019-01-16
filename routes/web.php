@@ -32,4 +32,5 @@ Route::get('idees', function () {
 //Route::get('/accueil', function () { return view('welcome');});
 //Route::get('/idees', 'AuthController@gettoken');
 
-Route::get('/connexion', function () { return view('login');});
+Route::get('/connexion', function () { return view('connexion');});
+Route::get('/inscription', function () { return view('inscription');});
