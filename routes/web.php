@@ -23,6 +23,10 @@ Route::get('boutique', function () {
     return view('boutique');
 });
 
+Route::get('boite_a_idee', function () {
+    return view('boite_a_idee');
+});
+
 //Route::get('/activites', 'AuthController@signin');
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
