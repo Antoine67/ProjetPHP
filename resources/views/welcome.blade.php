@@ -1,5 +1,7 @@
 @extends('layout')
 
 @section('content')
-<p>test</p>
+<p>
+    <img src="{{ asset('/img/1.jpeg') }}"> 
+</p>
 @endsection
