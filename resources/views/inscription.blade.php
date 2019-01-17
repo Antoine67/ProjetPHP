@@ -42,29 +42,13 @@ if(isset($_GET['err'])) {
 
         <?php 
 
-            use App\Utilisateur;
-
             //echo Utilisateur::all();
             //Utilisateur::create(['nom' => 'Durand','prenom' => 'Jean', 'email' => 'duraanaedadaaaa@chezlui.fr', 'motdepasse' => 'pass', 'localisation' => 'pass', 'role' => 'yolo']); 
-            if($_POST) {
-                $err = 0;
-                $arr = array("nom", "prenom", "email", "localisation","mdp","mdpconf");
-                foreach ($arr as $value) {
-                    if(!isset($_POST[$value])) {
-                        $value = ucfirst($value);
-                        echo '<div class="err"><strong>Erreur</strong> avec le champ : « <b>' . $value .' </b>»</div>';
-                        break;
-                    }
-                }
-            }
-
-           
-
             
             ?>
 
 
-            <form action="create-user.php" method="POST">                  
+            <form action="inscription" method="POST">                  
 
                 <div class="imgcontainer">
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
@@ -81,6 +65,9 @@ if(isset($_GET['err'])) {
 
                     <label for="localisation"><b>Localisation</b></label>
                     <input type="text" placeholder="Votre centre CESI " name="localisation" required>
+
+                    <label for="identifiant"><b>Nom d'utilisateur</b></label>
+                    <input type="text" placeholder="Votre identifiant de connexion" name="identifiant" required>
 
                     <label for="mdp"><b>Mot de passe</b></label>
                     <input type="password" placeholder="Votre mot de passe" name="mdp" required>
