@@ -1,3 +1,7 @@
 body {
-    padding-bottom: 30px;
+  background: #8d9bab;
+  background: -moz-linear-gradient(left, #8d9bab 0%, #cbd1d6 50%, #8d9bab 100%);
+  background: -webkit-linear-gradient(left, #8d9bab 0%,#cbd1d6 50%,#8d9bab 100%);
+  background: linear-gradient(to right, #8d9bab 0%,#cbd1d6 50%,#8d9bab 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9bab', endColorstr='#8d9bab',GradientType=1 );
   }

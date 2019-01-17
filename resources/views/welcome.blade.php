@@ -24,8 +24,23 @@
     </div>
     <div  class="imagetexte" >
         <img class="img" src="{{ asset('/img/4.png') }}"> 
+        <div class="text">
+          WWWWWWW
+        </div>
     </div>
-        
+    <br>
+    <div  class="imagetexte">
+    <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+        <div class="text">
+          WWWWWWW
+        </div>
+    </div>
+    <div  class="imagetexte">
+    <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+        <div class="text">
+          WWWWWWW
+        </div>
+    </div>
 
     
 </div>
