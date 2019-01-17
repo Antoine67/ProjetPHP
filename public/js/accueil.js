@@ -13,7 +13,7 @@ $(function() {
       });
   opacity: 0.5;
        //En dehors
-      $( ".imagetexte" ).mouseout(function() {
+      $( ".imagetexte" ).mouseleave(function() {
         $(this).stop(true,true).animate({
             opacity: '1',
           });
