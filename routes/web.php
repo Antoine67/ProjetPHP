@@ -38,3 +38,4 @@ Route::get('activiste', function () {
 
 Route::get('/connexion', function () { return view('connexion');});
 Route::get('/inscription', function () { return view('inscription');});
+Route::post('/inscription', 'InscriptionController@post');

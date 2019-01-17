@@ -12,7 +12,7 @@
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
-                    <label for="login"><b>Nom d'utilisateur</b></label>
+                    <label for="login"><b>Nom d'utilisateur ou adresse e-mail</b></label>
                     <input type="text" placeholder="Entrer votre nom d'utilisateur " name="login" required>
 
                     <label for="pwd"><b>Mot de passe</b></label>

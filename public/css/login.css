@@ -1,8 +1,19 @@
+ 
+ body {
+  margin-top:0px;
+  margin-bottom:0px;
+  padding-bottom:0px;
+ }
+ 
  .center {
   width: 500px;
+  height:100%;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
+  margin-top:0px;
+  margin-bottom:0px;
+
+
   overflow: hidden;
   padding: 10px 10px 10px 10px;
   display:block;
