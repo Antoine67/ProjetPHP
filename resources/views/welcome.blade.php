@@ -4,22 +4,25 @@
 <link rel="stylesheet" href="{{ asset('/css/acceuil.css') }}">
 <div class="imgcontainer">
     <div class="imagetexte">
-        <span class="text">
+    <img class="img" src="{{ asset('/img/1.jpeg') }}" > 
+      <div class="text">
         AAA
-        </span>
-        <img class="img" src="{{ asset('/img/1.jpeg') }}" > 
+      </div>
     </div>
     <div class="imagetexte">
-        <span class="text">
-        AAA
-        </span>
-        <img class="img" src="{{ asset('/img/2.png') }}"> 
+    <img class="img" src="{{ asset('/img/2.png') }}"> 
+      <div class="text">
+        WWWWWWW
+      </div>
     </div>
     <br>
     <div  class="imagetexte">
-        <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+    <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+        <div class="text">
+          WWWWWWW
+        </div>
     </div>
-    <div  class="imagetexte">
+    <div  class="imagetexte" >
         <img class="img" src="{{ asset('/img/4.png') }}"> 
     </div>
         
@@ -50,7 +53,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
+        <img  class="imghover" src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3>Los Angeles</h3>
           <p>LA is always so much fun!</p>
@@ -58,7 +61,7 @@
       </div>
 
       <div class="item">
-        <img src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
+        <img  class="imghover" src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
           <h3>Chicago</h3>
           <p>Thank you, Chicago!</p>
@@ -66,7 +69,7 @@
       </div>
     
       <div class="item">
-        <img src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
+        <img  class="imghover" src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
         <div class="carousel-caption">
           <h3>New York</h3>
           <p>We love the Big Apple!</p>
