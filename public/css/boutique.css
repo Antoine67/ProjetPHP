@@ -28,6 +28,12 @@ img:hover
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
+.produit {
+
+  cursor: pointer;
+  color: #000000;
+}
+
 /* Fond du gadget de la barre de recherche */
 .recherche_p {
   background-color: #ffffff;   /* Couleur de fond */
@@ -35,6 +41,16 @@ img:hover
   border-width: 0px;   /* Epaisseur de la bordure  */
   border-color: #dddddd;   /* Couleur de la bordure  */
   padding: 10px 10px 10px 800px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+}
+
+.row1 {
+  padding: 0px 0px 500px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+}
+
+#best {
+
+padding: 40px 770px 40px 0px;
+
 }
 
 /* Champ de saisie */
