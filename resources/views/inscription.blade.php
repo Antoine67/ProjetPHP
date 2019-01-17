@@ -48,7 +48,8 @@ if(isset($_GET['err'])) {
             ?>
 
 
-            <form action="inscription" method="POST">                  
+            <form action="inscription" method="POST">     
+                @csrf             
 
                 <div class="imgcontainer">
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">

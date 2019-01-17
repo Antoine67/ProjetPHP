@@ -37,5 +37,7 @@ Route::get('activiste', function () {
 //Route::get('/idees', 'AuthController@gettoken');
 
 Route::get('/connexion', function () { return view('connexion');});
-Route::get('/inscription', function () { return view('inscription');});
+
+
+Route::get('/inscription','InscriptionController@get');
 Route::post('/inscription', 'InscriptionController@post');
