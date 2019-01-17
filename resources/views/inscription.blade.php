@@ -16,7 +16,7 @@ if(isset($_GET['err'])) {
         <title>S'inscrire</title>
 
         <meta charset="utf-8" />
-
+        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
     </head>
 
