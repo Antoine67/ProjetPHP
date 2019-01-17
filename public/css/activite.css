@@ -1,10 +1,27 @@
-img .img-responsive
+hr
 {
-  margin: 0px;
-  width:50vw;
-  height:auto;
+padding:2px;
+background:rgb(115, 115, 160);
+border:0;
+border-radius: 2px;
+}
+
+.vitrine
+{
+  width: 90%;
+  height: auto;
   opacity: 1.0;
   filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.divv
+{
+    height:220px;
+}
+
+.row
+{
+  margin-top:25px;
 }
 
 img:hover
@@ -14,20 +31,32 @@ img:hover
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
-hr
-{
-padding:1px;
-background:rgb(115, 115, 160);
-border:0;
-}
-
-.divv
-{
-    height:250px;
-}
-
 @media (max-width:767px) {
     .divv{
         height:175px;
+    }
+  }
+
+@media (max-width:740px) {
+    .divv{
+        height:180px;
+    }
+  }
+
+@media (max-width:590px) {
+    .divv{
+        height:200px;
+    }
+  }
+
+@media (max-width:500px) {
+    .divv{
+        height:200px;
+    }
+  }
+
+@media (max-width:440px) {
+    .divv{
+        height:220px;
     }
   }
