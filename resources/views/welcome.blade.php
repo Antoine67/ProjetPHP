@@ -4,37 +4,39 @@
 <link rel="stylesheet" href="{{ asset('/css/acceuil.css') }}">
 <div class="imgcontainer">
     <div class="imagetexte">
-    <img class="img" src="{{ asset('/img/1.jpeg') }}" > 
+    <img class="img" src="{{ asset('/img/badminton.png') }}" > 
       <div class="text">
         AAA
       </div>
     </div>
     <div class="imagetexte">
-    <img class="img" src="{{ asset('/img/2.png') }}"> 
+    <img class="img" src="{{ asset('/img/foot.png') }}"> 
       <div class="text">
         WWWWWWW
       </div>
     </div>
-    <br>
+    
     <div  class="imagetexte">
-    <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+    <img class="img" src="{{ asset('/img/saut.jpg') }}"> 
         <div class="text">
           WWWWWWW
         </div>
     </div>
+    <br>
     <div  class="imagetexte" >
-        <img class="img" src="{{ asset('/img/4.png') }}"> 
+        <img class="img" src="{{ asset('/img/images.jpeg') }}"> 
         <div class="text">
           WWWWWWW
         </div>
     </div>
-    <br>
+    
     <div  class="imagetexte">
     <img class="img" src="{{ asset('/img/3.jpg') }}"> 
         <div class="text">
           WWWWWWW
         </div>
     </div>
+    
     <div  class="imagetexte">
     <img class="img" src="{{ asset('/img/3.jpg') }}"> 
         <div class="text">

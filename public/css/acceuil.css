@@ -37,20 +37,13 @@
    top: 50%;
   }
 
+  
+
 .carousselhover:hover{
    height: 100%;
    width: 100%;
    opacity: 0.5;
    transition: .5s ease;
    cursor:pointer;
-}
-
-body{
-   margin:0px;
-   padding:0px;
-}
-html{
-   margin:0px;
-   padding:0px;
 }
 
