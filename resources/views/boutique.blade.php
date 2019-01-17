@@ -19,13 +19,13 @@
 
         </div>
     <hr color="darkgrey">
-        <div class="col-lg-12 col-md-5 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <h2 id="best">Nos meilleures ventes: </h2>
         </div>
     <div class="row1">
         
         <a href="/idees">
-            <div class="col-lg-4 col-md-5 col-sm-6 produit">
+            <div class="col-lg-4 col-md-6 col-sm-6 produit">
                 <h2>Top objet 1</h2>
                 <img id="topobjet1" src="{{ asset('/img/boutique/test.png') }}" alt="TopObjet1">
                 <h2>Prix: 5€</h2>
@@ -33,7 +33,7 @@
         </a>
 
         <a href="/idees">
-            <div class="col-lg-4 col-md-5 col-sm-6 produit">
+            <div class="col-lg-4 col-md-6 col-sm-6 produit">
                 <h2>Top objet 2</h2>
                 <img id="topobjet2" src="{{ asset('/img/boutique/test.png') }}" alt="TopObjet2">
                 <h2>Prix: 5€</h2>
@@ -50,7 +50,7 @@
 
     </div>
 </div>
-    <div class="col-lg-12 col-md-5 col-sm-12">
+    <div class="col-lg-12 col-md-12 col-sm-12">
         <h2 id="best">Tous nos produits: </h2>
     </div>
 <div class="container-fluid text-center"> 
