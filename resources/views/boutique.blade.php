@@ -6,9 +6,24 @@
     <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
 
 </head>
-<div class="container-fluid text-center">
+<div id="globalNav" class="container-fluid text-center">
+    <h2>
+        Panier
+    </h2>
+
+    <p>Pour commencer à effectuer des achats,
+        <br>
+        veuillez vous
+        <br>
+        <a href="/connexion">connecter</a>
+        ou
+        <a href="/inscription">créer un compte</a>
+    </p>
+
+</div>
+<div class="container-fluid text-center container">
     <hr color="darkgrey">
-    <h1> Notre boutique</h1>
+    <h1>Notre boutique</h1>
 
         <div class="recherche_p">
 
@@ -50,10 +65,12 @@
 
     </div>
 </div>
+<div class="container-fluid text-center container"> 
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h2 id="best">Tous nos produits: </h2>
     </div>
-<div class="container-fluid text-center"> 
+</div>
+<div class="container-fluid text-center container"> 
     <div class="row1">
 
         <a href="/idees">
@@ -104,5 +121,10 @@
             </div>
         </a>
     </div>
+
+
 </div>
+
+
+
 @endsection

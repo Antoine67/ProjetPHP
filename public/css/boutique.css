@@ -37,7 +37,7 @@ img:hover
 /* Fond du gadget de la barre de recherche */
 .recherche_p {
   margin: auto 0 auto auto;
-  background-color: #ffffff;   /* Couleur de fond */
+  background-color: rgba(0, 0, 0, 0);   /* Couleur de fond */
   border-style: solid;   /* Style de la bordure  */
   border-width: 0px;   /* Epaisseur de la bordure  */
   border-color: #dddddd;   /* Couleur de la bordure  */
@@ -50,15 +50,26 @@ img:hover
 
 #best {
 
-padding: 40px 770px 40px 0px;
+  padding: 40px 770px 40px 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
 }
 
+#globalNav {
+
+float:right;
+background-color: rgba(255, 255, 255, 0.9);
+border: solid;
+padding: 0px 10px 6px 10px;
+margin: 0px 20px 0 0;
+border-radius: 50px;
+}
+
 /* Champ de saisie */
 #searchthis #search {
+  border-radius: 50px;
   background-color: #ffffff;   /* Couleur de fond */
   border-style: solid;   /* Style de la bordure  */
   border-width: 1px;   /* Epaisseur de la bordure  */
@@ -74,6 +85,7 @@ padding: 40px 770px 40px 0px;
 
 /* Bouton valider */
 #searchthis #search-btn {
+  border-radius: 50px;
   background-color: #7373A0;   /* Couleur de fond */
   border-style: solid;   /* Style de la bordure  */
   border-width: 1px;   /* Epaisseur de la bordure  */
