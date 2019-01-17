@@ -58,49 +58,49 @@
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 1</h2>
+                <p>Objet 1</p>
                 <img id="objet1" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet1">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 2</h2>
+                <p>Objet 2</p>
                 <img id="objet2" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet2">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 3</h2>
+                <p>Objet 3</p>
                 <img id="objet3" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet3">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 4</h2>
+                <p>Objet 4</p>
                 <img id="objet4" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet4">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 5</h2>
+                <p>Objet 5</p>
                 <img id="objet5" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet5">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
 
         <a href="/idees">
             <div class="col-lg-2 col-md-5 col-sm-4 produit">
-                <h2>Objet 6</h2>
+                <p>Objet 6</p>
                 <img id="objet6" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet6">
-                <h2>Prix: 5€</h2>
+                <p>Prix: 5€</p>
             </div>
         </a>
     </div>
