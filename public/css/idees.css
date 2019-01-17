@@ -21,9 +21,28 @@ background:rgb(115, 115, 160);
 border:0;
 }
 
+.idd {
+padding: 0px 800px 20px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
 .divv
 {
-    height:250px;
+    
+    border: 2px solid;
+    box-shadow: 6px 6px 0px black;
+
+}
+
+.divv2
+{
+    padding: 40px 770px 40px 0px;
+    border: 2px solid;
+    box-shadow: 6px 6px 0px black;
+
 }
 
 @media (max-width:767px) {
