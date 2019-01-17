@@ -9,6 +9,7 @@ img .img-responsive
 
 img:hover
 {
+  cursor: pointer;
   opacity: 0.5;
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }

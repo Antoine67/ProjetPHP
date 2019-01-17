@@ -18,7 +18,7 @@
             </div>
             
             <div>
-                <img src="{{ asset('/img/foot.png') }}" alt="Image">
+                <img src="{{ asset('/img/images.jpeg') }}" alt="Image">
             </div> 
         </div>
 
@@ -29,7 +29,7 @@
                     </p>          
             </div>
             <div>
-                <img src="{{ asset('/img/images.jpeg') }}" alt="Image" >     
+                <img src="{{ asset('/img/foot.png') }}" alt="Image" >     
             </div>  
         </div>
 
