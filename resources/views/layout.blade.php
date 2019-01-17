@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     
   </head>
-
+<header>
   <div>
         <div class="header-blue">
             <nav class="navbar navbar-default navigation-clean-search">
@@ -53,17 +53,15 @@
             </nav>
         </div>
     </div>
+</header>
 
-    <div class="container" role="main">
+
+<body>
       @yield('content')
-    </div>
-    
 
     
 
-
-
-    
+ 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
