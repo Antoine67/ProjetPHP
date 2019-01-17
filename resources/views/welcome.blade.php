@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/acceuil.css') }}">
 <div class="imgcontainer">
+  <div class="bandefond">
     <div class="imagetexte">
     <img class="img" src="{{ asset('/img/badminton.png') }}" > 
       <div class="text">
@@ -22,7 +23,9 @@
           WWWWWWW
         </div>
     </div>
+  </div>
     <br>
+  <div class="bandefond">
     <div  class="imagetexte" >
         <img class="img" src="{{ asset('/img/images.jpeg') }}"> 
         <div class="text">
@@ -43,6 +46,7 @@
           WWWWWWW
         </div>
     </div>
+  </div>
 
     
 </div>

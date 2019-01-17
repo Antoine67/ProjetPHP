@@ -6,7 +6,7 @@
 .imagetexte{
    display: inline-block;
    position : relative;
-   margin : 20px 30px;
+   margin : 10px -5px;
 }
 
 .imagetexte:hover{
@@ -47,3 +47,10 @@
    cursor:pointer;
 }
 
+.bandefond{
+background: #8d9bab;
+background: -moz-linear-gradient(left, #8d9bab 10%, #707274 50%, #8d9bab 85%);
+background: -webkit-linear-gradient(left, #8d9bab 10%,#707274 50%,#8d9bab 85%);
+background: linear-gradient(to right, #8d9bab 10%,#707274 50%,#8d9bab 85%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9bab', endColorstr='#8d9bab',GradientType=1 );
+}
