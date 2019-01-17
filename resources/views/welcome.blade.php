@@ -5,7 +5,7 @@
 <div class="imgcontainer">
   <div class="bandefond">
     <div class="imagetexte">
-    <img class="img" src="{{ asset('/img/badminton.png') }}" > 
+    <img class="img" alt="Article 1" src="{{ asset('/img/badminton.png') }}" > 
       <div class="text">
         AAA
       </div>
@@ -61,7 +61,7 @@
 
 
 <div class="container">
-  <h2>Carousel Example</h2>
+  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -76,24 +76,24 @@
       <div class="item active">
         <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Los Angeles</h3>
-          <p>LA is always so much fun!</p>
+          <h3 class="textecaroussel">Donnez vos idées</h3>
+          
         </div>
       </div>
 
       <div class="item">
         <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Chicago</h3>
-          <p>Thank you, Chicago!</p>
+          <h3 class="textecaroussel">Visitez notre boutique</h3>
+          
         </div>
       </div>
     
       <div class="item">
         <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
         <div class="carousel-caption">
-          <h3>New York</h3>
-          <p>We love the Big Apple!</p>
+          <h3 class="textecaroussel">Venez vous amuser en vous inscrivant à nos activités</h3>
+          
         </div>
       </div>
   

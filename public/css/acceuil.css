@@ -6,12 +6,11 @@
 .imagetexte{
    display: inline-block;
    position : relative;
-   margin : 10px -5px;
+   margin : 10px -2px;
 }
 
 .imagetexte:hover{
    opacity: 0.5;
-   
    cursor:pointer;
 }
 
@@ -47,10 +46,20 @@
    cursor:pointer;
 }
 
+.carousel-inner{
+   margin-top:30px;
+}
+
+.textecaroussel{
+   font-size: 50px;
+   margin-bottom:300px;
+}
+
 .bandefond{
 background: #8d9bab;
 background: -moz-linear-gradient(left, #8d9bab 10%, #707274 50%, #8d9bab 85%);
 background: -webkit-linear-gradient(left, #8d9bab 10%,#707274 50%,#8d9bab 85%);
 background: linear-gradient(to right, #8d9bab 10%,#707274 50%,#8d9bab 85%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9bab', endColorstr='#8d9bab',GradientType=1 );
+margin: 10px;
 }

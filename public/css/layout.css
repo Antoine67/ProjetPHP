@@ -232,3 +232,52 @@
   }
   
   
+
+
+
+
+
+
+
+
+
+.nav-footer {
+    margin:0;
+    padding:0
+}
+nav
+.nav-footer ul {
+    margin:0;
+    padding:0;
+    text-align:center
+}
+
+.nav-footer li {
+    list-style:none;
+    margin:.5em;
+    display:inline-block
+}
+
+.nav-footer a {
+    color:#999;
+    transition:color .25s ease-in-out;
+    -moz-transition:color .25s ease-in-out;
+    -o-transition:color .25s ease-in-out;
+    -webkit-transition:color .25s ease-in-out
+}
+
+.nav-footer a:hover {
+    color:#1eadef
+}
+footer p {
+  margin:0
+}
+footer .navbar-brand {
+    float:none;
+    text-align:center;
+    width:100%
+}
+
+footer {
+    background:#fff
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+      <title>Accueil - BDE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
@@ -56,13 +57,48 @@
 </header>
 
 
-<body>
-      @yield('content')
+@yield('content')
 
     
 
  
+    
+<footer>
+        <div class="container">
+            <nav class="nav-footer">
+                <ul>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Resume</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+
+                                  <ul>
+                                      <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                      <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
+                                      <li><a href="#"> <i class="fa fa-github"></i> </a> </li>  
+                                      <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                      <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
+                                  </ul>
+
+                <p class="credits text-center">&copy; ça c'est notre site hehe</p>
+            </nav>
+        </div>
+
+    </footer>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
+
 </html>
