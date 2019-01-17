@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActivitesTable extends Migration
+class CreatePaniersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateActivitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activites', function (Blueprint $table) {
-
+        Schema::create('paniers', function (Blueprint $table) {
             $table->increments('ID');
-            $table->string('Titre', 100);
-            $table->float('Prix');
-            $table->binary('Image');
-            $table->string('Description', 256);
-            $table->date('Date_realisation');
+
+
+            $table->unsignedInteger('ID_Article');
+            $table->unsignedInteger('Quantité');
             $table->date('Date_creation');
 
             $table->unsignedInteger('ID_Utilisateurs');
-
 
             //Clés étrangères
             $table->foreign('ID_Utilisateurs')
@@ -43,6 +40,6 @@ class CreateActivitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activites');
+        Schema::dropIfExists('paniers');
     }
 }

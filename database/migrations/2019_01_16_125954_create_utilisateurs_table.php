@@ -14,14 +14,32 @@ class CreateUtilisateursTable extends Migration
     public function up()
     {
         Schema::create('utilisateurs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nom', 100);
-            $table->string('prenom', 100);
-            $table->string('motdepasse', 100);
-            $table->string('email', 100);
-            $table->string('localisation', 100);
-            $table->string('role', 100);
-            $table->unique(['email']);
+            $table->increments('ID');
+            $table->string('Nom', 100);
+            $table->string('Prenom', 100);
+            $table->string('Motdepasse', 100);
+            $table->string('Email', 100);
+            $table->string('Localisation', 100);
+            $table->string('Role', 100);
+            $table->unique(['Email']);
+
+            $table->unsignedInteger('ID_Paniers');
+            $table->unsignedInteger('ID_Role');
+
+            //Clés étrangères
+            $table->foreign('ID_Paniers')
+                ->references('ID')
+                ->on('Paniers')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('ID_Role')
+                ->references('ID')
+                ->on('Roles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+
         });
     }
 

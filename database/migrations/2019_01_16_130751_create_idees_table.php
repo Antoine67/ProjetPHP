@@ -14,8 +14,19 @@ class CreateIdeesTable extends Migration
     public function up()
     {
         Schema::create('idees', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('ID');
+            $table->string('Titre', 100);
+            $table->string('Contenu', 256);
+            $table->date('Date_creation');
+
+            $table->unsignedInteger('ID_Utilisateurs');
+
+            //Clés étrangères
+            $table->foreign('ID_Utilisateurs')
+                ->references('ID')
+                ->on('Utilisateurs')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

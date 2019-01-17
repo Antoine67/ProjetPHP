@@ -14,8 +14,25 @@ class CreateAvisTable extends Migration
     public function up()
     {
         Schema::create('avis', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('ID');
+            $table->string('Contenu', 256);
+        
+
+            $table->unsignedInteger('ID_Utilisateurs');
+            $table->unsignedInteger('ID_Activites');
+
+            //Clés étrangères
+            $table->foreign('ID_Utilisateurs')
+                ->references('ID')
+                ->on('Utilisateurs')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('ID_Activites')
+                ->references('ID')
+                ->on('Activites')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
