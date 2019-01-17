@@ -3,23 +3,23 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/acceuil.css') }}">
 <div class="imgcontainer">
-    <div>
+    <div class="imagetexte">
         <span class="text">
         AAA
         </span>
-        <img class="img" id="img1" src="{{ asset('/img/1.jpeg') }}" > 
+        <img class="img" src="{{ asset('/img/1.jpeg') }}" > 
     </div>
-    <div>
+    <div class="imagetexte">
         <span class="text">
         AAA
         </span>
         <img class="img" src="{{ asset('/img/2.png') }}"> 
     </div>
     <br>
-    <div>
+    <div  class="imagetexte">
         <img class="img" src="{{ asset('/img/3.jpg') }}"> 
     </div>
-    <div>
+    <div  class="imagetexte">
         <img class="img" src="{{ asset('/img/4.png') }}"> 
     </div>
         
