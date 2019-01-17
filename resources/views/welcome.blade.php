@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('/css/acceuil.css') }}">
+<title>Accueil - BDE</title>
 <div class="imgcontainer">
   <div class="bandefond">
     <div class="imagetexte">
