@@ -24,7 +24,7 @@ Route::get('boutique', function () {
 });
 
 Route::get('idees', function () {
-    return view('boite_a_idee');
+    return view('idees');
 });
 
 //Route::get('/activites', 'AuthController@signin');

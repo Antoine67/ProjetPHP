@@ -2,7 +2,7 @@
 
 @section('content')
 <head>
-<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/idees.css') }}">
 
 </head>
 <div class="container-fluid text-center"> 

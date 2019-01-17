@@ -36,11 +36,12 @@ img:hover
 
 /* Fond du gadget de la barre de recherche */
 .recherche_p {
+  margin: auto 0 auto auto;
   background-color: #ffffff;   /* Couleur de fond */
   border-style: solid;   /* Style de la bordure  */
   border-width: 0px;   /* Epaisseur de la bordure  */
   border-color: #dddddd;   /* Couleur de la bordure  */
-  padding: 10px 10px 10px 800px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+  padding: 10px 40px 10px 10px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
 
 .row1 {
@@ -50,6 +51,9 @@ img:hover
 #best {
 
 padding: 40px 770px 40px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
