@@ -1,8 +1,14 @@
+
+<?php 
+
+$username = Session::get('identifiant');
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
@@ -10,12 +16,10 @@
   </head>
 <header>
   <div>
-        <div class="header-blue">
+        <div class="header">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">BDE</a>
-                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    </div>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="/">BDE</a></div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                     <!-- Barre de naviguation avec nos différentes catégories -->
                         <ul class="nav navbar-nav">
@@ -39,9 +43,9 @@
                           <div class="navbar-right dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="#">Paramètres</a></li>
-                                    <li role="presentation"><a href="#">:c</a></li>
+                                    <li role="presentation"><a href="#">?</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li role="presentation"><a href="#">Deconnexion</a></li>
+                                    <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
                             </div>
                         <?php } else { ?>  
@@ -97,7 +101,8 @@
 
     </footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
 </html>

@@ -56,6 +56,17 @@ return [
             'engine' => null,
         ],
 
+        'mysql2' => array(
+            'driver'    => 'mysql',
+            'host'      => '127.0.0.1',
+            'database'  => 'projetphp_utilisateurs',
+            'username'  => 'root',
+            'password'  => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

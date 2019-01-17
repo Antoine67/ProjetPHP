@@ -31,13 +31,13 @@ Route::get('activiste', function () {
     return view('activite_template');
 });
 
-//Route::get('/activites', 'AuthController@signin');
-//Route::get('/boutique', 'AuthController@gettoken');
-//Route::get('/accueil', function () { return view('welcome');});
-//Route::get('/idees', 'AuthController@gettoken');
+Route::get('connexion','ConnexionController@get' );
+Route::post('connexion', 'ConnexionController@post');
 
-Route::get('/connexion', function () { return view('connexion');});
+Route::get('inscription','InscriptionController@get');
+Route::post('inscription', 'InscriptionController@post');
 
-
-Route::get('/inscription','InscriptionController@get');
-Route::post('/inscription', 'InscriptionController@post');
+Route::get('deconnexion', function () {
+    Session::flush();
+    return redirect('/');
+} );
