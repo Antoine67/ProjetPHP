@@ -12,6 +12,9 @@ $username = Session::get('identifiant');
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+
+    <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
     
   </head>
 <header>
@@ -102,7 +105,6 @@ $username = Session::get('identifiant');
     </footer>
 
     
-    <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+    
 
 </html>
