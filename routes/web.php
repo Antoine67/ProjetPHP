@@ -27,6 +27,10 @@ Route::get('idees', function () {
     return view('idees');
 });
 
+Route::get('activiste', function () {
+    return view('activite_template');
+});
+
 //Route::get('/activites', 'AuthController@signin');
 //Route::get('/boutique', 'AuthController@gettoken');
 //Route::get('/accueil', function () { return view('welcome');});
