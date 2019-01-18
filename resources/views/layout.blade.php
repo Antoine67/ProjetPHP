@@ -87,7 +87,7 @@ $page = ucfirst($page);
                                             <!-- Contenu du panier -->
                                             <div class="modal-body basket-content">
                                                 <div class="article">
-                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 1
+                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> <b>5€</b> - Article 1
                                                     <div class="article-chg">
                                                         <button type="button" class="btn btn-danger">-</button>
                                                         <span class="nb-article">5</span>
@@ -95,7 +95,8 @@ $page = ucfirst($page);
                                                     </div>
                                                 </div>
                                                 <div class="article">
-                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 2
+                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> <b>5€</b> - Article 2
+                                                    
                                                     <div class="article-chg">
                                                         <button type="button" class="btn btn-danger">-</button>
                                                         <span class="nb-article">5</span>
@@ -129,8 +130,10 @@ $page = ucfirst($page);
 
                         <?php } else { ?>  
                              <!-- Boutons permettant la connexion / inscription -->
-                          <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
-                        <?php } ?>
+                        <ul class="nav navbar-nav navbar-right">
+                          <a class="btn login " href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
+                        </ul>
+                          <?php } ?>
                     </div>
                 </div>
             </nav>
