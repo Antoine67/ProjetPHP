@@ -1,11 +1,11 @@
 @extends('layout')
 
 @section('content')
-<head>
 
-    <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
 
-</head>
+<link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
+
+
 <div id="globalNav" class="container-fluid text-center">
     <h2>
         Panier
@@ -22,7 +22,7 @@
 
 </div>
 <div class="container-fluid text-center container">
-    <hr color="darkgrey">
+    <hr>
     <h1>Notre boutique</h1>
 
         <div class="recherche_p">
@@ -33,7 +33,7 @@
             </form>
 
         </div>
-    <hr color="darkgrey">
+    <hr>
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h2 id="best">Nos meilleures ventes: </h2>
         </div>
@@ -67,10 +67,34 @@
 </div>
 <div class="container-fluid text-center container"> 
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2 id="best">Tous nos produits: </h2>
+        <h2 id="best2">Tous nos produits: </h2>
     </div>
 </div>
-<div class="container-fluid text-center container"> 
+
+
+<div class="container-fluid text-center container">
+
+    <div id="menu">
+
+        <ul id="onglets">
+            <div class = "gauche">
+                <div class="navbar-right dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-filter img3"></i> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li role="presentation"><a href="#">Paramètres</a></li>
+                        <li role="presentation"><a href="#">?</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
+                    </ul>
+                </div>
+            </div>
+            <li class="active"><a href=""> Matériels informatiques </a></li>
+            <li class="active"><a href=""> Vêtements </a></li>
+            <li class="active"><a href=""> Accessoirs </a></li>
+            <li class="active"><a href=""> Autres </a></li>
+        </ul>
+    </div>
+
+
     <div class="row1">
 
         <a href="/idees">
