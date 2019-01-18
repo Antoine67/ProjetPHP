@@ -64,6 +64,7 @@ $page = ucfirst($page);
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
+                                <i class="fas fa-shopping-basket"></i>
                             </div>
                         <?php } else { ?>  
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
