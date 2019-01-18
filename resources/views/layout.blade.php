@@ -53,19 +53,25 @@ $page = ucfirst($page);
                                 <input class="form-control search-field" type="search" name="search" id="search-field">
                             </div>
                         </form>
-                        <p class="navbar-text navbar-right">
+
                         <!-- Boutons permettant la connexion / deconnexion -->
                         <?php if(isset($username)) { ?>
-                         
-                          <div class="navbar-right dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
+                        <div class="navbar-right">
+                          <div class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="#">Paramètres</a></li>
                                     <li role="presentation"><a href="#">?</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
-                                <i class="fas fa-shopping-basket"></i>
+                               
+                               
                             </div>
+                            <i class="fas fa-shopping-basket fa-2x"></i>Panier 
+                        </div>
+
+                            
+
                         <?php } else { ?>  
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
                         <?php } ?>
