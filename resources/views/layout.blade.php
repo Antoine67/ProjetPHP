@@ -66,34 +66,60 @@ $page = ucfirst($page);
                                 </ul>
                             </li>
                             <!-- Panier de l'utilisateur -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                <i class="fas fa-shopping-basket fa-2x"></i>
-                            </button>
+                            <li>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <i class="fas fa-shopping-basket fa-2x"></i>
+                                </button>
+                            </li>
 
                             <!-- Mini-fenêtre (modal) -->
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                        
-                                        <h3 class="modal-title" id="titre-modal">Votre panier</h3>
+                            <li>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
 
-                                    </div>
-                                    <!-- Contenu du panier -->
-                                    <div class="modal-body basket-content">
-                                        <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 1
-                                    </div>
-                                    <!-- Boutons de fermeture du panier -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vider mon panier</button>
-                                        <button type="button" class="btn btn-primary">Sauvegarder</button>
-                                    </div>
+                                                <h3 class="modal-title" id="titre-modal">Votre panier</h3>
+
+                                            </div>
+                                            <!-- Contenu du panier -->
+                                            <div class="modal-body basket-content">
+                                                <div class="article">
+                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 1
+                                                    <div class="article-chg">
+                                                        <button type="button" class="btn btn-danger">-</button>
+                                                        <span class="nb-article">5</span>
+                                                        <button type="button" class="btn btn-success">+</button>  
+                                                    </div>
+                                                </div>
+                                                <div class="article">
+                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 2
+                                                    <div class="article-chg">
+                                                        <button type="button" class="btn btn-danger">-</button>
+                                                        <span class="nb-article">5</span>
+                                                        <button type="button" class="btn btn-success">+</button>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Boutons de fermeture du panier + Prix -->
+                                            <div class="modal-footer">
+                                                <div class="total">
+                                                    <h5 id="total-articles">Nombre d'articles : 5</h5>
+                                                    <h5 id="total-prix">Prix total : <strong>5€</strong></h5>
+                                                </div>
+                                                <br/><br/>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i>Annuler</button>
+                                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Vider mon panier</button>
+                                                <button type="button" class="btn btn-primary"><i class="fas fa-save"></i>Sauvegarder</button>
+                                                <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Payer</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </li>
+                        </ul>
                        
                         
 
@@ -105,7 +131,6 @@ $page = ucfirst($page);
                              <!-- Boutons permettant la connexion / inscription -->
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
                         <?php } ?>
-                        </p>
                     </div>
                 </div>
             </nav>

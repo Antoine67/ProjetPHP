@@ -189,12 +189,37 @@
 }
 
 .basket-content {
-
+  color:#37434d;
 }
 
-#titre-modal {
+.modal {
+  color:#37434d;
+}
+
+.article-chg {
+  float:right;
+}
+
+#titre-modal { /* Titre du panier */
     color:#37434d;
     text-align: center;
+}
+
+.nb-article {
+  margin: 0 5px;
+}
+
+#total-articles {
+  float:left;
+}
+
+#total-prix {
+  float:right;
+  font-size:17px;
+}
+
+button .fas {
+  margin-right:5px;
 }
 
 
