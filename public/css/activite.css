@@ -28,13 +28,26 @@ color: #333333;
 
 .butt
 {
-  margin-top:10px;
-  border-radius: 50px;
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:20px;
+  color:#ebeff1;
+  box-shadow:none;
+  text-shadow:none;
+  padding:6px 15px;
+  background: #6C7A86;
+  transition:background-color 0.25s;
+  outline:none;
+}
+
+.butt:hover
+{
+  background-color:#ebeff1;
+  color: #6C7A86;
 }
 
 .row
 {
-  margin-top:25px;
+  margin-bottom:50px;
 }
 
 img:hover
