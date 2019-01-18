@@ -28,17 +28,16 @@
             </div>
             <div>
                 <img class="vitrine" src="{{ asset('/img/foot.png') }}" alt="Image" >  
- 
             </div>  
 
             <div>
                 <div class="like">
-                    <p id="like" class="texte">5 <i class="fas fa-thumbs-up upvote" role="button"></i></p>
-                    <Input placeholder="Ecrivez votre commentaire" class="commentaire" type="text" name="commentaire">
+                    <p id="like" class="texte">5 <i class="fas fa-thumbs-up upvote" role="button"></i></p> 
+                    <Input placeholder="Ecrivez votre commentaire" class="commentaire" type="text" name="commentaire" size=30>
                 </div>
                 <label for="comment">Les commentaires :</label>
 
-                <textarea readonly id="comment" name="comment">Cette activité fut génial..
+                <textarea readonly id="comment" name="comment">Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..
                 </textarea>
             </div>
         </div>
