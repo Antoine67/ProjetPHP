@@ -53,19 +53,25 @@ $page = ucfirst($page);
                                 <input class="form-control search-field" type="search" name="search" id="search-field">
                             </div>
                         </form>
-                        <p class="navbar-text navbar-right">
+
                         <!-- Boutons permettant la connexion / deconnexion -->
                         <?php if(isset($username)) { ?>
-                         
-                          <div class="navbar-right dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
+                        <div class="navbar-right">
+                          <div class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="#">Paramètres</a></li>
                                     <li role="presentation"><a href="#">?</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
-                                <i class="fas fa-shopping-basket"></i>
+                               
+                               
                             </div>
+                            <i class="fas fa-shopping-basket fa-2x"></i>Panier 
+                        </div>
+
+                            
+
                         <?php } else { ?>  
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
                         <?php } ?>
@@ -92,11 +98,9 @@ $page = ucfirst($page);
     <p class="footer-links">
         <a href="#">Accueil</a>
         ·
-        <a href="#">A propos</a>
-        ·
-        <a href="#">Faq</a>
-        ·
         <a href="#">Nous Contacter</a>
+        ·
+        <a href="#">Mentions Legales</a>
     </p>
 
     <p class="footer-company-name">BDE &copy; 2019</p>
