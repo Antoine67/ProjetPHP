@@ -3,6 +3,15 @@
 
 $username = Session::get('identifiant');
 
+$page = $_SERVER['REQUEST_URI'];
+$page = substr($page,1);
+
+if(empty($page)) {
+    $page='accueil';
+}
+
+$page = ucfirst($page);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,6 +21,8 @@ $username = Session::get('identifiant');
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+
+    <title>BDE - <?= $page ?></title>
 
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>

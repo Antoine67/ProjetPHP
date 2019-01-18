@@ -11,7 +11,7 @@ $(function() {
         });
 
       });
-  opacity: 0.5;
+
        //En dehors
       $( ".imagetexte" ).mouseleave(function() {
         $(this).stop(true,true).animate({
