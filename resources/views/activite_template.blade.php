@@ -31,10 +31,12 @@
  
             </div>  
 
-            <div class="like">
-            <p id="like" class="texte">5 <i id="ok" class="fas fa-thumbs-up icon1" role="button"></i></p>
+            <div>
+                <div class="like">
+                    <p id="like" class="texte">5 <i class="fas fa-thumbs-up upvote" role="button"></i></p>
+                    <INPUT class="commentaire" type="text" name="commentaire">
+                </div>
                 
- 
             </div>
         </div>
     </div>
