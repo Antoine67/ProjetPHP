@@ -92,11 +92,9 @@ $page = ucfirst($page);
     <p class="footer-links">
         <a href="#">Accueil</a>
         ·
-        <a href="#">A propos</a>
-        ·
-        <a href="#">Faq</a>
-        ·
         <a href="#">Nous Contacter</a>
+        ·
+        <a href="#">Mentions Legales</a>
     </p>
 
     <p class="footer-company-name">BDE &copy; 2019</p>
