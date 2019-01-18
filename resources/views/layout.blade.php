@@ -34,7 +34,9 @@ $page = ucfirst($page);
         <div class="header">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="/">BDE</a></div>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="/">BDE</a>
+                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Naviguer</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                     <!-- Barre de naviguation avec nos différentes catégories -->
                         <ul class="nav navbar-nav">
@@ -62,6 +64,7 @@ $page = ucfirst($page);
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
+                                <i class="fas fa-shopping-basket"></i>
                             </div>
                         <?php } else { ?>  
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>

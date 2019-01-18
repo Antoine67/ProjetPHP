@@ -3,6 +3,7 @@
   margin-top:0px;
   margin-bottom:0px;
   padding-bottom:0px;
+  font-family:'Source Sans Pro', sans-serif;
  }
  
  .center {
@@ -41,18 +42,29 @@ input[type=text], input[type=password], select {
 
 
 button {
-  background-color: #4CAF50;
+  background-color: #6075ff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
-  border-radius:10px;
+  border-radius:70px;
+  font-size:15px;
 }
 
 button:hover {
   opacity: 0.8;
+}
+
+/* Bouton de confirmation de l'inscription */
+.conf {
+  background-color: #70b1e0;  
+}
+
+.cancelbtn {
+  color: white;
+  background-color: #d6533b;
 }
 
 .imgcontainer {
@@ -71,11 +83,26 @@ img.avatar {
 
 .down-container {
   padding: 5px 15px;
+  margin-top:20px;
 }
 
 span.psw {
   float: right;
-  padding-top: 16px;
+  color:#311bad;
+}
+
+.errorMsg {
+  color:#a00808;
+}
+
+.err {
+  color: red;
+  background-color: #FFD2D2;
+  border: 3px solid red;
+  border-radius:5px;
+  padding:5px;
+  text-align:center;
+  font-size:22px;
 }
 
 @media screen and (max-width: 300px) {

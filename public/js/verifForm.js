@@ -1,31 +1,47 @@
 function verifMail(champ) {
    var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
-   if(!regex.test(champ.value))
-   {
-      creerErreur(champ, true);
-      return false;
+   if(!regex.test(champ.value)) {
+      return creerErreur(champ, true,'Veuillez entrez une adresse e-mail correcte');
    }
-   else
-   {
-      creerErreur(champ, false);
-      return true;
+   else {
+      return creerErreur(champ, false);
    }
 }
 
 
-function creerErreur(champ, erreur) {
-   var sb = $(":submit"); //Notre bouton de submit du formulaire
-   if(erreur) {
-      champ.style.backgroundColor = "#fc6a6a";
-
-      sb.prop('disabled', true);
-      sb.text("Champs erronés ou incomplets 😞");
-
+function verifMdp(champ) {
+   if(champ.value.length <=8) {
+      return creerErreur(champ, true, 'Le mot de passe doit faire plus de 8 caractères');
+   } else if (!(/[A-Z]/.test(champ.value))){
+      return creerErreur(champ, true, 'Le mot de passe doit contenir au moins 1 majuscule');
+   } else if (!(/[1-9]/.test(champ.value))){
+      return creerErreur(champ, true, 'Le mot de passe doit contenir au moins 1 chiffre');
    }
    else {
+      return creerErreur(champ, false);
+   }
+}
+
+
+
+function creerErreur(champ, erreur, message) {
+   var sb = $(":submit"); //Notre bouton de submit du formulaire
+
+   
+
+   if(erreur) {
+      champ.style.backgroundColor = "#f23232";
+      $(champ).prev().html(message);
+      sb.prop('disabled', true);
+      sb.text("Champs erronés ou incomplets 😞");
+      return false;
+   }
+   else {
+      $(champ).prev().html('');
       champ.style.backgroundColor = "";
       sb.prop('disabled', false);
       sb.text("S'inscrire");
+      return true;
    }
       
 }
