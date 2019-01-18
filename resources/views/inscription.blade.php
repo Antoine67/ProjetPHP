@@ -1,14 +1,29 @@
 <?php
-session_start(); // On démarre la session AVANT toute chose
-$cookieLogin = "";
-
-if(isset($_COOKIE['pseudo']) && $_COOKIE['pseudo']!='required' ) {
-    $cookieLogin = $_COOKIE['pseudo'];
-}
-
-if(isset($_GET['err'])) {
-    $errCode = intval($_GET['err']);
-}
+$LISTE_CESI = array(
+    "Aix-en-Provence",
+    "Angoulême",
+    "Arras",
+    "Bordeaux",
+    "Brest",
+    "Caen",
+    "Dijon",
+    "Grenoble",
+    "La Rochelle",
+    "Le Mans",
+    "Lille",
+    "Lyon",
+    "Montpellier",
+    "Nancy",
+    "Nantes",
+    "Nice",
+    "Orléans",
+    "Paris Nanterre",
+    "Pau",
+    "Reims",
+    "Rouen",
+    "Saint-Nazaire",
+    "Strasbourg",
+    "Toulouse",);
 ?>
 
     <head>
@@ -21,19 +36,6 @@ if(isset($_GET['err'])) {
     </head>
 
    
-<style>
-.err {
-    color: red;
-    background-color: #FFD2D2;
-    border: 3px solid red;
-    border-radius:5px;
-    padding:5px;
-    text-align:center;
-    font-size:22px;
-}
-</style>
-
-
 
 
 
@@ -50,26 +52,27 @@ if(isset($_GET['err'])) {
 
             <form action="inscription" method="POST">     
                 @csrf             
-
                 <div class="imgcontainer">
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
                     <label for="nom"><b>Nom</b></label>
+                    <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre nom" name="nom" required>
 
                     <label for="prenom"><b>Prénom</b></label>
+                    <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre prénom " name="prenom" required>
 
                     <label for="email"><b>E-mail</b></label>
+                    <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre adresse e-mail " name="email" onblur="verifMail(this)" required >
 
                     <label for="localisation"><b>Localisation</b></label>
                     <select name="localisation" required>
-                    <option value="0" selected disabled > Votre centre cesi </option>
+                    <option value="0" selected disabled>Votre centre cesi </option>
                         <?php 
-                        $arr = array("Lingolsheim","Alger","Reims","Nanterre","Orléans");
-                        foreach ($arr as $value) {
+                        foreach ($LISTE_CESI as $value) {
                             $min = strtolower($value);
                            echo '<option value="'. $min .'">'. $value . '</option>';
                         }
@@ -79,21 +82,24 @@ if(isset($_GET['err'])) {
 
 
                     <label for="identifiant"><b>Nom d'utilisateur</b></label>
+                    <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre identifiant de connexion" name="identifiant" required>
 
                     <label for="mdp"><b>Mot de passe</b></label>
-                    <input type="password" placeholder="Votre mot de passe" name="mdp" required>
+                    <div class="errorMsg"></div>
+                    <input type="password" placeholder="Votre mot de passe" name="mdp" onblur="verifMdp(this)" required>
 
                     <label for="mdpconf"><b>Confirmer votre mot de passe</b></label>
+                    <div class="errorMsg"></div>
                     <input type="password" placeholder="Confirmer votre mot de passe" name="mdpconf" required>
 
-                    <button type="submit" style="background-color:#09a02c;border:solid black 2px; ">S'inscrire</button>
-                    <button type="button" style="background-color:#ff0000;" href="/">Annuler</button>
+                    <button type="submit" class="conf">S'inscrire</button>
+                    <button type="button" class="cancelbtn" onclick="location.href='/';">Annuler</button>
 
                 </div>
             </form> 
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('/js/verifForm.js') }}"></script>
     </body>
 

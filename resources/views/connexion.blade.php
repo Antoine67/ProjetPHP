@@ -20,7 +20,7 @@
                     <label for="mdp"><b>Mot de passe</b></label>
                     <input type="password" placeholder="Entrer votre mot de passe" name="mdp" required>
 
-                    <button type="submit" style="background-color:#09a02c;border:solid black 2px; ">Se connecter</button>
+                    <button type="submit" class="conf">Se connecter</button>
                     
                 </div>
 

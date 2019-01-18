@@ -34,7 +34,9 @@ $page = ucfirst($page);
         <div class="header">
             <nav class="navbar navbar-default navigation-clean-search">
                 <div class="container">
-                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="/">BDE</a></div>
+                    <div class="navbar-header"><a class="navbar-brand navbar-link" href="/">BDE</a>
+                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Naviguer</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    </div>
                     <div class="collapse navbar-collapse" id="navcol-1">
                     <!-- Barre de naviguation avec nos différentes catégories -->
                         <ul class="nav navbar-nav">

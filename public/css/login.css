@@ -41,7 +41,7 @@ input[type=text], input[type=password], select {
 
 
 button {
-  background-color: #4CAF50;
+  background-color: #6075ff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -53,6 +53,15 @@ button {
 
 button:hover {
   opacity: 0.8;
+}
+
+/* Bouton de confirmation de l'inscription */
+.conf {
+  
+}
+
+.cancelbtn {
+  color: white;
 }
 
 .imgcontainer {
@@ -76,6 +85,20 @@ img.avatar {
 span.psw {
   float: right;
   padding-top: 16px;
+}
+
+.errorMsg {
+  color:#a00808;
+}
+
+.err {
+  color: red;
+  background-color: #FFD2D2;
+  border: 3px solid red;
+  border-radius:5px;
+  padding:5px;
+  text-align:center;
+  font-size:22px;
 }
 
 @media screen and (max-width: 300px) {
