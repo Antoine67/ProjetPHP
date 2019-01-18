@@ -65,7 +65,18 @@ if(isset($_GET['err'])) {
                     <input type="text" placeholder="Votre adresse e-mail " name="email" onblur="verifMail(this)" required >
 
                     <label for="localisation"><b>Localisation</b></label>
-                    <input type="text" placeholder="Votre centre CESI " name="localisation" required>
+                    <select name="localisation" required>
+                    <option value="0" selected disabled > Votre centre cesi </option>
+                        <?php 
+                        $arr = array("Lingolsheim","Alger","Reims","Nanterre","Orléans");
+                        foreach ($arr as $value) {
+                            $min = strtolower($value);
+                           echo '<option value="'. $min .'">'. $value . '</option>';
+                        }
+                        
+                        ?>
+                    </select>
+
 
                     <label for="identifiant"><b>Nom d'utilisateur</b></label>
                     <input type="text" placeholder="Votre identifiant de connexion" name="identifiant" required>

@@ -19,7 +19,6 @@ class InscriptionController extends Controller
             //Connexion à la BDD
             try {
                 $bdd = DB::connection('mysql2')->getPdo();
-               
             }
             catch(Exception $e) {
                     die('Erreur : '.$e->getMessage());
@@ -38,7 +37,7 @@ class InscriptionController extends Controller
                 }
             }
 
-            //On verifie que l'email n'existe pas déjà
+            //On verifie que l'email et l'identifiant n'existent pas déjà
             try {
                 $reponse = $bdd->query('SELECT 1 FROM utilisateurs WHERE email="'.$email.'"');
                 if($reponse->fetch()) {
@@ -52,35 +51,52 @@ class InscriptionController extends Controller
                     return view('inscription');
                 } 
             } catch (Exception $e) {
-                echo 'error';
+                echo 'Erreur : '. $e;
+            }
+
+
+            //On verifie que les champs sont correctements remplis
+            if($mdp != $mdpconf) {
+                echo '<div class="err"><strong>Erreur</strong> les mots de passe ne correspondent pas</div>';
+                return view('inscription');
+            }
+
+            if($mdp != $mdpconf) {
+                echo '<div class="err"><strong>Erreur</strong> les mots de passe ne correspondent pas</div>';
+                return view('inscription');
+            }
+            $MDP_LEN = 8;
+            if( !(preg_match('/[A-Z]/', $mdp) && preg_match('/[1-9]/', $mdp)) || strlen($mdp)<$MDP_LEN ){
+                echo '<div class="err"><strong>Erreur</strong> le mot de passe entré n\'est pas correct. Vérifiez qu\'il contient au moins une majuscule, un chiffre et qu\'il fait au moins '.$MDP_LEN.' caractères </div>';
+                return view('inscription');
             }
 
 
 
             
-        $sqlRequest = $bdd->prepare("INSERT INTO utilisateurs(nom, prenom , mot_de_passe, email, localisation,identifiant) VALUES(:nom,:prenom,:mdp,:email,:localisation,:identifiant)");
+            $sqlRequest = $bdd->prepare("INSERT INTO utilisateurs(nom, prenom , mot_de_passe, email, localisation,identifiant) VALUES(:nom,:prenom,:mdp,:email,:localisation,:identifiant)");
 
 
-        //Empêcher injection sql
-        $sqlRequest->bindValue(':nom', $nom, $bdd::PARAM_STR);
-        $sqlRequest->bindValue(':prenom', $prenom, $bdd::PARAM_STR);
-        $sqlRequest->bindValue(':mdp', $mdp, $bdd::PARAM_STR);
-        $sqlRequest->bindValue(':email', $email, $bdd::PARAM_STR);
-        $sqlRequest->bindValue(':localisation', $localisation, $bdd::PARAM_STR);
-        $sqlRequest->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
-        
-        $sqlRequest->execute();
+            //Empêcher injection sql
+            $sqlRequest->bindValue(':nom', $nom, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':prenom', $prenom, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':mdp', $mdp, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':email', $email, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':localisation', $localisation, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
+            
+            $sqlRequest->execute();
 
 
-        session_start();
-        Session::put('nom', $nom);
-        Session::put('prenom', $prenom);
-        Session::put('email', $email);
-        Session::put('localisation', $localisation);
-        Session::put('identifiant', $identifiant);
-        
-        echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur crée avec succés ! Bienvenue <strong>' . strtoupper($nom) .' '. ucfirst ($prenom) . ' </strong></div>';
-        return redirect('/');
+            session_start();
+            Session::put('nom', $nom);
+            Session::put('prenom', $prenom);
+            Session::put('email', $email);
+            Session::put('localisation', $localisation);
+            Session::put('identifiant', $identifiant);
+            
+            echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur crée avec succés ! Bienvenue <strong>' . strtoupper($nom) .' '. ucfirst ($prenom) . ' </strong></div>';
+            return redirect('/');
 
         }
     }
