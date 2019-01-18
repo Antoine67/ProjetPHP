@@ -21,12 +21,12 @@
                     <input type="password" placeholder="Entrer votre mot de passe" name="mdp" required>
 
                     <button type="submit" class="conf">Se connecter</button>
+                    <span class="psw"><a href="/">Mot de passe oublié?</a></span>   
                     
                 </div>
-
-                <div class="down-container" style="background-color:#f1f1f1; border-radius:15px;">
-                    <span class="psw"><a href="#">Mot de passe oublié?</a></span>                  
-
+                <br/><br/><hr>
+                <div class="down-container" >
+                                  
                     <button type="button" onclick="location.href='/inscription';">Pas encore membre ? S'inscrire</button>
 
                     <button type="button" onclick="location.href='/';" class="cancelbtn" >Retour</button>
