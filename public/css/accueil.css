@@ -11,6 +11,7 @@
 }
 
 
+
 .img{
    width: 500px;
    height: 333px;
@@ -28,26 +29,7 @@
    top: 50%;
   }
 
-  
-
-.carousselhover:hover{
-   height: 100%;
-   width: 100%;
-   opacity: 0.5;
-   transition: .5s ease;
-   cursor:pointer;
-}
-
-.carousel-inner{
-   margin-top:30px;
-}
-
-.textecaroussel{
-   font-size: 50px;
-   margin-bottom: 50%;
-}
-
-.bandefond{
+  .bandefond{
    background: #8d9bab;
    background: -moz-linear-gradient(left, #8d9bab 10%, #707274 50%, #8d9bab 85%);
    background: -webkit-linear-gradient(left, #8d9bab 10%,#707274 50%,#8d9bab 85%);
@@ -55,3 +37,43 @@
    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9bab', endColorstr='#8d9bab',GradientType=1 );
    margin: 10px;
 }
+
+@media (max-width:1550px) {
+   .imagetexte{
+      margin : 0px -2px;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+.carousel-inner{
+   margin-top:30px;
+}
+
+.textecaroussel{
+   font-size: 3vw;
+   margin-bottom: 45%;
+} 
+
+@media (max-width:1200px) {
+   .textecaroussel{
+      margin-bottom: 43%;
+   }
+ }
+
+@media (max-width:990px) {
+   .textecaroussel{
+      margin-bottom: 38%;
+   }
+ }
+
+
+
+
