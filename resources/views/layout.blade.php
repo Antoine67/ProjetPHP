@@ -83,42 +83,65 @@ $page = ucfirst($page);
     
 
  
+<footer class="footer-distributed">
+
+<div class="footer-left">
+
+    <h3>BDE</h3>
+
+    <p class="footer-links">
+        <a href="#">Accueil</a>
+        ·
+        <a href="#">A propos</a>
+        ·
+        <a href="#">Faq</a>
+        ·
+        <a href="#">Nous Contacter</a>
+    </p>
+
+    <p class="footer-company-name">BDE &copy; 2019</p>
+</div>
+
+<div class="footer-center">
+
+    <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>2 Allée des Foulons, 67380</span> Strasbourg Lingolsheim, France</p>
+    </div>
+
+    <div>
+        <i class="fa fa-phone"></i>
+        <p>+33 6 28 01 48 23</p>
+    </div>
+
+    <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:support@company.com">antoine.mohr@viacesi.fr</a></p>
+    </div>
+
+</div>
+
+<div class="footer-right">
+
+    <p class="footer-company-about">
+        <span>A propos du BDE</span>
+        On vole les A1
+    </p>
+
+    <div class="footer-icons">
+
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github-alt"></i></a>
+
+    </div>
+
+</div>
+
+</footer>
+
     
-<footer>
-        <div class="container">
-            <nav class="nav-footer">
-                <ul>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Blog</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Resume</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-
-                                  <ul>
-                                      <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                      <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                      <li><a href="#"> <i class="fa fa-github"></i> </a> </li>  
-                                      <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                      <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
-                                  </ul>
-
-                <p class="credits text-center">&copy; ça c'est notre site hehe</p>
-            </nav>
-        </div>
-
-    </footer>
-
     
     
 
