@@ -39,15 +39,15 @@ color: #333333;
   outline:none;
 }
 
+.row
+{
+  margin-bottom:50px;
+}
+
 .butt:hover
 {
   background-color:#ebeff1;
   color: #6C7A86;
-}
-
-.row
-{
-  margin-bottom:50px;
 }
 
 img:hover

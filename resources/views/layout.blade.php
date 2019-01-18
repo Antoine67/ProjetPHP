@@ -20,6 +20,7 @@ $page = ucfirst($page);
     <link rel="stylesheet" href="{{ asset('/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
 
     <title>BDE - <?= $page ?></title>
