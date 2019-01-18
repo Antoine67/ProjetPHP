@@ -37,7 +37,7 @@ border-radius: 2px;
 {
   float:left;
 
-  margin: 0px 200px 0 0;
+  margin: 0px 20px 0 0;
   padding: 2px 0px 0px 00px;
 }
 
@@ -56,9 +56,17 @@ img:hover
 .produit {
 
   cursor: pointer;
-  color: #333333;
+  color: #333333; 
+}
+a {
+  color: #333333; 
+  text-decoration: none;
 }
 
+a:hover {
+  color: #333333; 
+  text-decoration: none;
+}
 /* Fond du gadget de la barre de recherche */
 .recherche_p {
   margin: auto 0 auto auto;
@@ -147,10 +155,11 @@ border-radius: 50px;
 {
     font : bold 22px Batang, arial, serif;
     list-style-type : none;
-    padding-bottom : 45px; /* à modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
+    padding-bottom : 32px; /* à modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
     border-bottom : 1px solid #9EA0A1;
     border-radius : 50px;
     margin-left : 0;
+
 }
 
 #onglets li
@@ -160,28 +169,26 @@ border-radius: 50px;
     margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
     margin : 1px 2px 0 2px;  /* Pour IE  */
     border : 1px solid #9EA0A1;
-    background: #6C7A86;
     transition:background-color 0.25s;
 
 }
 
 #onglets li.active
 {
-    border-bottom: 1px solid #fff;
-    background-color: #fff;
+    border-bottom: 1px;
 }
 
 #onglets a
 {
-    display : block;
+  display : block;
     color : #666;
     text-decoration : none;
-    padding : 4px;
+    padding : 2px;
 }
 
 #onglets a:hover
 {
-      background-color:#ebeff1;
   color: #6C7A86;
-}
+   background :rgba(255, 255, 255, .4);
+ }
 
