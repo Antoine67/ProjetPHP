@@ -34,9 +34,12 @@
             <div>
                 <div class="like">
                     <p id="like" class="texte">5 <i class="fas fa-thumbs-up upvote" role="button"></i></p>
-                    <INPUT class="commentaire" type="text" name="commentaire">
+                    <Input placeholder="Ecrivez votre commentaire" class="commentaire" type="text" name="commentaire">
                 </div>
-                
+                <label for="comment">Les commentaires :</label>
+
+                <textarea readonly id="comment" name="comment">Cette activité fut génial..
+                </textarea>
             </div>
         </div>
     </div>

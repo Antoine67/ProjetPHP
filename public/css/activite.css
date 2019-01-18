@@ -1,3 +1,27 @@
+label,
+textarea {
+  font-size: 1.5vw;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    width: 25vw;
+    height: 25vw;
+    resize: none;
+}
+
+label {
+  font-size: 1.5vw;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+
 hr
 {
 padding:2px;
@@ -24,6 +48,7 @@ border-radius: 100%;
 {
   border-radius: 5px;
   margin-left: 5vw;
+  size: 10vw;
 }
 
 .vitrine
