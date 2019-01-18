@@ -54,25 +54,55 @@ $page = ucfirst($page);
                             </div>
                         </form>
 
-                        <!-- Boutons permettant la connexion / deconnexion -->
+                        <!-- Utilisateur connecté - accès à ses fonctionnalités -->
                         <?php if(isset($username)) { ?>
-                        <div class="navbar-right">
-                          <div class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="#">Paramètres</a></li>
                                     <li role="presentation"><a href="#">?</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
-                               
-                               
+                            </li>
+                            <!-- Panier de l'utilisateur -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                <i class="fas fa-shopping-basket fa-2x"></i>
+                            </button>
+
+                            <!-- Mini-fenêtre (modal) -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                        
+                                        <h3 class="modal-title" id="titre-modal">Votre panier</h3>
+
+                                    </div>
+                                    <!-- Contenu du panier -->
+                                    <div class="modal-body basket-content">
+                                        <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> Article 1
+                                    </div>
+                                    <!-- Boutons de fermeture du panier -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Vider mon panier</button>
+                                        <button type="button" class="btn btn-primary">Sauvegarder</button>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
-                            <i class="fas fa-shopping-basket fa-2x"></i>Panier 
-                        </div>
+                       
+                        
+
+                        
 
                             
 
                         <?php } else { ?>  
+                             <!-- Boutons permettant la connexion / inscription -->
                           <a class="navbar-link login" href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
                         <?php } ?>
                         </p>

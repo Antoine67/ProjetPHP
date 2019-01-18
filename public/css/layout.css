@@ -1,3 +1,5 @@
+/* ============ HEADER ============*/
+
 .header{
     background:linear-gradient(135deg, #2f3741, #879bb5);
     background-color:#879bb5;
@@ -172,9 +174,34 @@
     font-size: 20px;
   }
 
+  /* Panier */
+.basket {
+  margin-left: 15px;
+
+}
+
+.img-panier {
+  width:50px;
+  height:50px;
+  object-fit: cover;
+  border-radius:70px;
+  margin-right:20px;
+}
+
+.basket-content {
+
+}
+
+#titre-modal {
+    color:#37434d;
+    text-align: center;
+}
 
 
-/*footer*/
+
+
+
+/* ============ FOOTER ============*/
 
   .footer-distributed{
     background:linear-gradient(135deg, #2f3741, #879bb5);
@@ -280,8 +307,6 @@
   }
   
   
-  /* Footer Right */
-  
   .footer-distributed .footer-right{
     width: 20%;
   }
@@ -322,9 +347,7 @@
     margin-right: 3px;
     margin-bottom: 5px;
   }
-  
-  /* If you don't want the footer to be responsive, remove these media queries */
-  
+ 
   @media (max-width: 880px) {
   
     .footer-distributed{
