@@ -172,106 +172,73 @@
     font-size: 20px;
   }
 
-.nav-footer {
-    margin:0;
-    padding:0
+
+
+
+
+
+
+  /* Footer */
+footer {
+  clear:both;
+  padding:3em 0;
+  background:linear-gradient(135deg, #2f3741, #879bb5);
+  background-color:#879bb5;
+
+
+  font-family:'Source Sans Pro', sans-serif;
+  margin-top:15px
 }
 
+.nav-footer {
+  margin:0;
+  padding:0;
+}
 nav
 .nav-footer ul {
-    margin:0;
-    padding:0;
-    text-align:center
+  text-align:center
 }
 
 .nav-footer li {
-    list-style:none;
-    margin:.5em;
-    display:inline-block
+  margin:0.5em;
+  display:inline-block;
+  text-align: center;
 }
 
 .nav-footer a {
-    color:#999;
-    transition:color .25s ease-in-out;
-    -moz-transition:color .25s ease-in-out;
-    -o-transition:color .25s ease-in-out;
-    -webkit-transition:color .25s ease-in-out
+  color:#999;
+  transition:color .25s ease-in-out;
+  -moz-transition:color .25s ease-in-out;
+  -o-transition:color .25s ease-in-out;
+  -webkit-transition:color .25s ease-in-out
 }
 
 .nav-footer a:hover {
-    color:#1eadef
+  color:#1eadef;
+  cursor:pointer;
 }
 
-footer p {
-  margin:0
+.credits {
+  color:#e7e7e7;
+  font-weight:100;
+  margin:7px 0;
 }
 
-footer .navbar-brand {
-    float:none;
-    text-align:center;
-    width:100%
+
+
+
+
+
+@media only screen and (min-width: 320px) {
+
 }
 
-footer {
-    background:#fff
+@media only screen and (min-width: 480px) {
+
 }
 
-@media (max-width:767px) {
-    .header .navbar .navbar-nav .open .dropdown-menu{
-      box-shadow:none;
-      background:none;
-      color:#fff;
-    }
-  }
-  
-@media (max-width:767px) {
-    .header .navbar .navbar-nav .open .dropdown-menu > li > a{
-      color:#fdfeff;
-      padding-top:12px;
-      padding-bottom:12px;
-      line-height:1;
-    }
-  }
-
-@media (max-width:767px) {
-    .header .hero{
-      margin-top:20px;
-      text-align:center;
-    }
-  }
-  
-@media (max-width:991px) {
-    .header .hero h1{
-      margin-top:0;
-      margin-bottom:15px;
-      line-height:1.4;
-    }
-  }
-
-@media (max-width:767px) {
-    .header .navbar .navbar-form .search-field{
-      display:inline-block;
-      width:80%;
-    }
-  }
-  
-@media (max-width:767px) {
-    .header .navbar{
-      padding-top:0;
-      padding-bottom:0;
-    }
-  }
-  
-@media (max-width:767px) {
-    .header .navbar .navbar-header{
-      padding-top:10px;
-      padding-bottom:10px;
-    }
-  }
-  
-@media (max-width:767px) {
-    .header .navbar .navbar-right{
-      margin-bottom:20px;
-    }
-  }
-  
+@media only screen and (min-width: 768px) {
+.overlay{
+min-height: 90px;
+}
+}
