@@ -28,10 +28,17 @@
             </div>
             <div>
                 <img class="vitrine" src="{{ asset('/img/foot.png') }}" alt="Image" >  
-                <i class="fas fa-thumbs-up"></i>   
+ 
             </div>  
+
+            <div class="like">
+            <p id="like" class="texte">5 <i id="ok" class="fas fa-thumbs-up icon1" role="button"></i></p>
+                
+ 
+            </div>
         </div>
     </div>
     
 </div>
+<script src="{{ asset('/js/activite.js') }}"></script>
 @endsection

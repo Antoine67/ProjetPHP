@@ -6,15 +6,23 @@ border:0;
 border-radius: 100%;
 }
 
-a:link 
+.like
+{
+  margin:15px 10px 0px 70px;
+  float:left;
+  opacity: 1;
+  color:#131212;
+}
+
+.texte
 { 
-text-decoration:none; 
-color: #333333;
-} 
+  font-size: 1.5vw;
+  color: #333333;
+}
 
 .vitrine
 {
-  width: 90%;
+  width: 70%;
   height: auto;
   opacity: 1.0;
   filter: alpha(opacity=100); /* For IE8 and earlier */
@@ -43,6 +51,21 @@ color: #333333;
 {
   margin-bottom:50px;
 }
+
+.icon1:hover
+{
+  opacity: 0.8;
+}
+.icon1:hover p
+{
+  opacity: 1;
+}
+
+a:link 
+{ 
+text-decoration:none; 
+color: #333333;
+} 
 
 .butt:hover
 {
