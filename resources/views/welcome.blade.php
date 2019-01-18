@@ -2,8 +2,9 @@
 
 @section('content')
 <!-- Metadata CSS/JS-->
+<title>Accueil - BDE</title>
 <link rel="stylesheet" href="{{ asset('/css/accueil.css') }}">
-
+<script src="{{ asset('/js/accueil.js') }}"></script>
 
 
 
@@ -17,14 +18,14 @@
       </div>
     </div>
     <div class="imagetexte">
-      <img class="img" src="{{ asset('/img/foot.png') }}"> 
+      <img class="img" alt="Article 2" src="{{ asset('/img/foot.png') }}"> 
       <div class="text">
         WWWWWWW
       </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" src="{{ asset('/img/saut.jpg') }}"> 
+      <img class="img" alt="Article 3" src="{{ asset('/img/saut.jpg') }}"> 
       <div class="text">
         WWWWWWW
       </div>
@@ -33,21 +34,21 @@
     <br>
   <div class="bandefond">
     <div  class="imagetexte" >
-      <img class="img" src="{{ asset('/img/images.jpeg') }}"> 
+      <img class="img" alt="Article4" src="{{ asset('/img/images.jpeg') }}"> 
       <div class="text">
         WWWWWWW
       </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+      <img class="img" alt="Article 5" src="{{ asset('/img/3.jpg') }}"> 
         <div class="text">
           WWWWWWW
         </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" src="{{ asset('/img/3.jpg') }}"> 
+      <img class="img" alt="Article 6" src="{{ asset('/img/3.jpg') }}"> 
       <div class="text">
          WWWWWWW
       </div>
@@ -75,7 +76,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 1"src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Donnez vos idées</h3>
           
@@ -83,7 +84,7 @@
       </div>
 
       <div class="item">
-        <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 2"src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Visitez notre boutique</h3>
           
@@ -91,7 +92,7 @@
       </div>
     
       <div class="item">
-        <img  class="carousselhover" src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 3"src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Venez vous amuser en vous inscrivant à nos activités</h3>
           
@@ -113,7 +114,11 @@
 </div>
 
 
+
+
 <script src="{{ asset('/js/accueil.js') }}"></script>
+
+
 
 
 @endsection
