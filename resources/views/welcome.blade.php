@@ -76,7 +76,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img  class="carousselhover" alt="CarousselElement 1"src="{{ asset('/img/saut.jpg') }}" alt="Los Angeles" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 1" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Donnez vos idées</h3>
           
@@ -84,7 +84,7 @@
       </div>
 
       <div class="item">
-        <img  class="carousselhover" alt="CarousselElement 2"src="{{ asset('/img/saut.jpg') }}" alt="Chicago" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 2" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Visitez notre boutique</h3>
           
@@ -92,7 +92,7 @@
       </div>
     
       <div class="item">
-        <img  class="carousselhover" alt="CarousselElement 3"src="{{ asset('/img/saut.jpg') }}" alt="New York" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 3" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Venez vous amuser en vous inscrivant à nos activités</h3>
           

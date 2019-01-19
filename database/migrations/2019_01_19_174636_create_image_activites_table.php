@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
+class CreateImageActivitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,17 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-
+        Schema::create('image_activites', function (Blueprint $table) {
+            
             $table->increments('ID');
-            $table->string('Nom', 100);
-            $table->string('Description', 256);
-            $table->float('Prix');
-            $table->unsignedInteger('Stock');
             $table->binary('Image');
-            $table->unsignedInteger('Vendu');
-            $table->string('Categorie', 100);
 
-            $table->unsignedInteger('ID_Paniers');
+            $table->unsignedInteger('ID_Activites');
 
             //Clés étrangères
-            $table->foreign('ID_Paniers')
+            $table->foreign('ID_Activites')
                 ->references('ID')
-                ->on('Paniers')
+                ->on('Activites')
                 ->onUpdate('cascade');
         });
     }
@@ -41,6 +35,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('image_activites');
     }
 }

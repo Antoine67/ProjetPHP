@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaniersTable extends Migration
+class CreateInscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,19 @@ class CreatePaniersTable extends Migration
      */
     public function up()
     {
-        Schema::create('paniers', function (Blueprint $table) {
+        Schema::create('inscriptions', function (Blueprint $table) {
+
             $table->increments('ID');
-
-
-            $table->unsignedInteger('ID_Article');
-            $table->unsignedInteger('Quantité');
-            $table->date('Date_creation');
+            $table->date('Date_inscription');
 
             $table->unsignedInteger('ID_Utilisateurs');
+            $table->unsignedInteger('ID_Activites');
 
             //Clés étrangères
-            $table->foreign('ID_Utilisateurs')
+            $table->foreign('ID_Activites')
                 ->references('ID')
-                ->on('Utilisateurs')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
+                ->on('Activites')
+                ->onUpdate('cascade');
         });
     }
 
@@ -40,6 +36,6 @@ class CreatePaniersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paniers');
+        Schema::dropIfExists('inscriptions');
     }
 }

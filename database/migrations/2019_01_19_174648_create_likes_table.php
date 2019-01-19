@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAvisTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateAvisTable extends Migration
      */
     public function up()
     {
-        Schema::create('avis', function (Blueprint $table) {
-
+        Schema::create('likes', function (Blueprint $table) {
+           
             $table->increments('ID');
-            $table->binary('Contenu');
-        
+            $table->boolean('Positif');
+            
+            $table->unsignedInteger('ID_Image_activites');
             $table->unsignedInteger('ID_Utilisateurs');
-            $table->unsignedInteger('ID_Activites');
 
             //Clés étrangères
-            $table->foreign('ID_Activites')
+            $table->foreign('ID_Image_activites')
                 ->references('ID')
-                ->on('Activites')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->on('image_activites')
+                ->onUpdate('cascade');
         });
     }
 
@@ -37,6 +36,6 @@ class CreateAvisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avis');
+        Schema::dropIfExists('likes');
     }
 }

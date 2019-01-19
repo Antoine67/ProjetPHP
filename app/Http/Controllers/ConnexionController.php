@@ -24,9 +24,9 @@ class ConnexionController extends Controller
             try {
                 $bdd = DB::connection('mysql2')->getPdo();
                
-            }
-            catch(Exception $e) {
-                    die('Erreur : '.$e->getMessage());
+            }catch(\PDOException $e) { //Imposible de se connecter à la base
+                echo '<div class="err">Impossible de se connecter au serveur d\'autentification : Réessayez ultérieurement</div>';
+                return view('connexion');
             }
 
 

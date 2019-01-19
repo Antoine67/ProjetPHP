@@ -25,14 +25,6 @@ class CreateActivitesTable extends Migration
 
             $table->unsignedInteger('ID_Utilisateurs');
 
-
-            //Clés étrangères
-            $table->foreign('ID_Utilisateurs')
-                ->references('ID')
-                ->on('Utilisateurs')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
         });
     }
 

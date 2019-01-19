@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentairesTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,27 +13,18 @@ class CreateCommentairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('commentaires', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Contenu', 256);
+        Schema::create('votes', function (Blueprint $table) {
 
+            $table->increments('ID');
 
-            $table->unsignedInteger('ID_Idees');
             $table->unsignedInteger('ID_Utilisateurs');
+            $table->unsignedInteger('ID_Idees');
 
             //Clés étrangères
             $table->foreign('ID_Idees')
                 ->references('ID')
                 ->on('Idees')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
-            $table->foreign('ID_Utilisateurs')
-                ->references('ID')
-                ->on('Utilisateurs')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
+                ->onUpdate('cascade');
         });
     }
 
@@ -44,6 +35,6 @@ class CreateCommentairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commentaires');
+        Schema::dropIfExists('votes');
     }
 }

@@ -14,19 +14,14 @@ class CreateIdeesTable extends Migration
     public function up()
     {
         Schema::create('idees', function (Blueprint $table) {
+
             $table->increments('ID');
             $table->string('Titre', 100);
-            $table->string('Contenu', 256);
+            $table->binary('Contenu');
             $table->date('Date_creation');
+            $table->unsignedInteger('Etat');
 
             $table->unsignedInteger('ID_Utilisateurs');
-
-            //Clés étrangères
-            $table->foreign('ID_Utilisateurs')
-                ->references('ID')
-                ->on('Utilisateurs')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 
