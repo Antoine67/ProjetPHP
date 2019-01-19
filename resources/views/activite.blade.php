@@ -23,7 +23,7 @@
 
 
     <div class="row">
-        <h1> Future activités </h1>
+        <h1> Activités à venir </h1>
         <hr class="hr2">
         <a href="/activiste">
             <div class="col-lg-4 col-md-5 col-sm-6">

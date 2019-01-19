@@ -1,10 +1,9 @@
 @extends('layout')
 
 @section('content')
-<head>
-<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
 
-</head>
+<link rel="stylesheet" href="{{ asset('/css/activite_specifique.css') }}">
+
 
 <div class="container text-center"> 
 
@@ -33,12 +32,41 @@
             <div>
                 <div class="like">
                     <p id="like" class="texte">5 <i class="fas fa-thumbs-up upvote" role="button"></i></p> 
-                    <Input placeholder="Ecrivez votre commentaire" class="commentaire" type="text" name="commentaire" size=30>
+                    
                 </div>
-                <label for="comment">Les commentaires :</label>
 
-                <textarea readonly id="comment" name="comment">Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..Cette activité fut génial..
-                </textarea>
+                <div class="commentaire">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Bada</strong> <span class="text-muted">il y a 5 jours</span>
+                        </div>
+
+                        <div class="panel-body">
+                            C'est vraiment trop bien le foot wtf
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+
+                <div class="commentaire">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Pique</strong> <span class="text-muted">il y a 2 jours</span>
+                        </div>
+
+                        <div class="panel-body">
+                            Wow
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+                <hr/>
+                <form>
+                    <div class="form-group">
+                        <label for="votre-commentaire">Vous avez participé à cette activité ? <br/>Partager votre avis sur cette activité :</label>
+                        <textarea class="form-control" style="resize: none;" rows="5" placeholder="Ecrire un commentaire..." id="votre-commentaire"></textarea>
+                    </div>
+                    <div class="right"><button type="submit" class="btn btn-success submit-commentaire">Envoyer</button></div>
+                </form>
+                
             </div>
         </div>
     </div>

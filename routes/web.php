@@ -28,7 +28,7 @@ Route::get('idees', function () {
 });
 
 Route::get('activiste', function () {
-    return view('activite_template');
+    return view('activite_specifique');
 });
 
 Route::get('connexion','ConnexionController@get' );

@@ -19,7 +19,7 @@ class CreateActivitesTable extends Migration
             $table->string('Titre', 100);
             $table->float('Prix');
             $table->binary('Image');
-            $table->string('Description', 256);
+            $table->string('Description', 1024);
             $table->date('Date_realisation');
             $table->date('Date_creation');
 

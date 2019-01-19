@@ -17,20 +17,12 @@ class CreateArticlesTable extends Migration
 
             $table->increments('ID');
             $table->string('Nom', 100);
-            $table->string('Description', 256);
+            $table->string('Description', 512);
             $table->float('Prix');
             $table->unsignedInteger('Stock');
             $table->binary('Image');
             $table->unsignedInteger('Vendu');
             $table->string('Categorie', 100);
-
-            $table->unsignedInteger('ID_Paniers');
-
-            //Clés étrangères
-            $table->foreign('ID_Paniers')
-                ->references('ID')
-                ->on('Paniers')
-                ->onUpdate('cascade');
         });
     }
 

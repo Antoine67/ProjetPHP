@@ -17,6 +17,7 @@ class CreateAvisTable extends Migration
 
             $table->increments('ID');
             $table->binary('Contenu');
+            $table->date('Date_creation');
         
             $table->unsignedInteger('ID_Utilisateurs');
             $table->unsignedInteger('ID_Activites');

@@ -1,0 +1,45 @@
+
+hr
+{
+padding:2px;
+background:rgb(115, 115, 160);
+border:0;
+border-radius: 100%;
+}
+
+.like
+{
+  opacity: 1;
+  color:#131212;
+}
+
+.texte
+{ 
+  font-size: 1.5vw;
+  color: #333333;
+}
+
+.butt
+{
+  border:1px solid rgba(255,255,255,0.7);
+  border-radius:20px;
+  color:#ebeff1;
+  box-shadow:none;
+  text-shadow:none;
+  padding:6px 15px;
+  background: #6C7A86;
+  transition:background-color 0.25s;
+  outline:none;
+}
+
+.commentaire {
+    text-align:left;
+}
+
+.right {
+    text-align:right;
+}
+
+.panel-body {
+    overflow-wrap: break-word;
+}

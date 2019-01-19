@@ -131,7 +131,8 @@ $page = ucfirst($page);
                         <?php } else { ?>  
                              <!-- Boutons permettant la connexion / inscription -->
                         <ul class="nav navbar-nav navbar-right">
-                          <a class="btn login " href="/connexion">Connexion</a> <a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a>
+                          <li><a class="btn login " href="/connexion">Connexion</a><li>
+                            <li><a class="btn btn-default action-button" role="button" href="/inscription">Inscription</a></li>
                         </ul>
                           <?php } ?>
                     </div>
