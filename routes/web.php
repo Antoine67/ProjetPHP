@@ -18,10 +18,8 @@ Route::get('idees', function () {
 
 
     //PAGES SPECIFIQUES
-Route::get('activites/{id_activite}', function ($id_activite) { //On envoie à la page quel ID d'activité est demandé
-    return view('activite_specifique')->with('id_activite', $id_activite); ;
-});
-
+Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );
+Route::post('activites/{id_activite}','ActiviteSpecifiqueController@post' );
 
 
 

@@ -23,7 +23,7 @@ class ArticlesTableSeeder extends Seeder
                 'Description' => $faker->paragraph,
                 'Prix' => $faker->randomFloat(2, 1, 100) ,
                 'Stock' => $faker->numberBetween(0, 150),
-                'Image' => $faker->image,
+                'Image' => "/path/vers/qqchose",
                 'Vendu' => $faker->numberBetween(0, 15),
                 'Categorie' => $categories[$faker->numberBetween(0, sizeof($categories)-1)],
             ]);

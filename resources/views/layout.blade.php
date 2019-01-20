@@ -16,6 +16,7 @@ if(empty($page)) {
     $page='accueil';
 }
 
+
 $page = ucfirst($page);
 
 ?>

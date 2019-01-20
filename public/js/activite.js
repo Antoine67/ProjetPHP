@@ -1,9 +1,7 @@
 $(function() {
 
     $( ".upvote" ).click(function() {
-            var currentToken = $('meta[name="csrf-token"]').attr('content');
-
-
+            var currentToken = $('#csrf-token').text();
 
             var number = parseInt($(this).prev().text()); //Nombre de like
             var id = $(this).prev().data('id'); //ID de la photo like

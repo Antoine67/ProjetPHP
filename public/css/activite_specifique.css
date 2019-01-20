@@ -32,18 +32,25 @@ border-radius: 100%;
   outline:none;
 }
 
-.commentaire {
-    text-align:left;
-}
 
 .right {
     text-align:right;
 }
 
+/* ============== COMMENTAIRES ============== */
+.commentaire {
+    text-align:left;
+    margin-top:10px;
+}
+
+.commentaires {
+    margin-top:10px;
+}
 .panel-body {
     overflow-wrap: break-word;
 }
 
+/* ============== MODAL (AJOUT DE PHOTO) ============== */
 #ajouter-photo {
     text-align:left;
 }
@@ -85,6 +92,12 @@ border-radius: 100%;
     width:500px;
     height:300px;
     object-fit: cover;
+}
+
+.no-image {
+    border-radius:50px;
+    background:#a9acb2;
+    border : 2px solid gray;
 }
 
 
