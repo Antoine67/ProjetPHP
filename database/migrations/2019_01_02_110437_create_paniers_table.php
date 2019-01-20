@@ -17,11 +17,17 @@ class CreatePaniersTable extends Migration
 
             $table->increments('ID');
 
-            $table->unsignedInteger('ID_Article');
             $table->unsignedInteger('Quantité');
             $table->date('Date_creation');
 
             $table->unsignedInteger('ID_Utilisateurs');
+            $table->unsignedInteger('ID_Articles');
+
+            //Clés étrangères
+            $table->foreign('ID_Articles')
+                ->references('ID')
+                ->on('Articles')
+                ->onUpdate('cascade');
 
         });
     }

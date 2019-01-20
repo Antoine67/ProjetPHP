@@ -87,11 +87,11 @@ $LISTE_CESI = array(
 
                     <label for="mdp"><b>Mot de passe</b></label>
                     <div class="errorMsg"></div>
-                    <input type="password" placeholder="Votre mot de passe" name="mdp" onblur="verifMdp(this)" required>
+                    <input type="password" id="mdp" placeholder="Votre mot de passe" name="mdp" onblur="verifMdp(this)" required>
 
                     <label for="mdpconf"><b>Confirmer votre mot de passe</b></label>
                     <div class="errorMsg"></div>
-                    <input type="password" placeholder="Confirmer votre mot de passe" name="mdpconf" required>
+                    <input type="password" id="mdpconf" placeholder="Confirmer votre mot de passe" name="mdpconf" onblur="verifConfMdp(this)" required>
 
                     <button type="submit" class="conf">S'inscrire</button>
                     <button type="button" class="cancelbtn" onclick="location.href='/';">Annuler</button>

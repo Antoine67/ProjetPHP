@@ -16,7 +16,8 @@ class CreateImageActivitesTable extends Migration
         Schema::create('image_activites', function (Blueprint $table) {
             
             $table->increments('ID');
-            $table->binary('Image');
+            $table->string('Image',1024);
+            $table->string('Auteur',128);
 
             $table->unsignedInteger('ID_Activites');
 

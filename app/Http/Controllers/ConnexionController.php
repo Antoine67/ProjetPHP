@@ -99,7 +99,6 @@ class ConnexionController extends Controller
                     Session::put('email', $donnee['Email']);
                     Session::put('localisation', $donnee['Localisation']);
                     Session::put('role', $donnee['Role']);
-                    
                 }
                    
               

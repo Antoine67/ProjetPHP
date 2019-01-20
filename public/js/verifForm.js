@@ -22,6 +22,14 @@ function verifMdp(champ) {
    }
 }
 
+function verifConfMdp(champ) {
+   if(champ.value == $("#mdp").val()) {
+      return creerErreur(champ, false);
+   } else {
+      return creerErreur(champ, true, 'Les mots de passe ne correspondent pas');
+   }
+}
+
 
 
 function creerErreur(champ, erreur, message) {
@@ -34,6 +42,8 @@ function creerErreur(champ, erreur, message) {
       $(champ).prev().html(message);
       sb.prop('disabled', true);
       sb.text("Champs erronés ou incomplets 😞");
+
+      verifConfMdp(document.getElementById("mdpconf"));
       return false;
    }
    else {
