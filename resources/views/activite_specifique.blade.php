@@ -60,20 +60,22 @@ if(!isset($activite_data)) {
 
                     <!-- Panel pour ajouter des photos -->
                     <div class="modal-body basket-content">
-                    <form action="/activites/<?=$id_activite?>" method="post" enctype="multipart/form-data">
-                    @csrf
-                        Select image to upload:
-                        <input type="file" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="submit">
-                    </form>
-                    <!--
+                    
                         <form action="/activites/<?=$id_activite?>" method="post" enctype="multipart/form-data">
                             @csrf
                             Selectionnez l'image que vous souhaitez ajouter à cette activité :
                             <input type="file" class="btn btn-primary" name="fichier" >
                             <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
-                        </form>     
-                    -->      
+                        </form>       
+                        
+                        <!--
+                        <form action="/activites/<?=$id_activite?>" method="post" enctype="multipart/form-data">
+                            <label>Select image to upload:</label>
+                            <input type="file" name="file" id="file">
+                            <input type="submit" value="Upload" name="submit">
+                            <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                        </form>
+                        -->
                     </div>
 
                 </div>
