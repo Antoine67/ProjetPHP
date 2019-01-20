@@ -85,18 +85,9 @@ class InscriptionController extends Controller
             $sqlRequest->bindValue(':localisation', $localisation, $bdd::PARAM_STR);
             $sqlRequest->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
             
-            $sqlRequest->execute();
-
-
-            session_start();
-            Session::put('nom', $nom);
-            Session::put('prenom', $prenom);
-            Session::put('email', $email);
-            Session::put('localisation', $localisation);
-            Session::put('identifiant', $identifiant);
+            $sqlRequest->execute();         
             
-            echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur crée avec succés ! Bienvenue <strong>' . strtoupper($nom) .' '. ucfirst ($prenom) . ' </strong></div>';
-            return redirect('/');
+            return redirect('/?inscription=1');
 
         }
     }

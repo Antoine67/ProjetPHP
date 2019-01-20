@@ -19,6 +19,11 @@ class ConnexionController extends Controller
     }
 
     function post() {
+        $sess = Session::get('identifiant');
+        if (isset($sess)) {
+            return redirect('/');
+        }
+
         if($_POST) { // Si ce n'est pas vide
             //Connexion à la BDD
             try {
@@ -46,12 +51,19 @@ class ConnexionController extends Controller
             //On verifie que l'email n'existe pas déjà
             try {
                 while(!$done) {
-                    $reponse = $bdd->query('SELECT mot_de_passe FROM utilisateurs WHERE email="'.$identifiant.'"');
+                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE email=:identifiant');
+                    $reponse->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
+                    $reponse->execute(); 
+         
                     if($reponse->fetch()) {
                         $email = $identifiant;
                         break;
                     }
-                    $reponse = $bdd->query('SELECT mot_de_passe FROM utilisateurs WHERE identifiant="'.$identifiant.'"');
+
+                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE identifiant=:identifiant');
+                    $reponse->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
+                    $reponse->execute();
+
                     if($reponse->fetch()) {
                         $pseudo = $identifiant;
                         break;
@@ -66,10 +78,35 @@ class ConnexionController extends Controller
                 echo 'Erreur :'. $e;
             }
 
+            //Ici tout est vérifié nous pouvons récupérer les données de l'utilisateur
 
-            Session::put('identifiant', $identifiant);
-        
-        
+            try {
+                if(isset($email)) {
+                    $reponse = $bdd->prepare('SELECT * FROM utilisateurs WHERE email=:email');
+                    $reponse->bindValue(':email', $email, $bdd::PARAM_STR);
+                    $reponse->execute();
+                }else if (isset($pseudo)) {
+                    $reponse = $bdd->prepare('SELECT * FROM utilisateurs WHERE identifiant=:email');
+                    $reponse->bindValue(':email', $pseudo, $bdd::PARAM_STR);
+                    $reponse->execute();
+                }
+
+                if($donnee=$reponse->fetch()) {
+                    Session::put('id', $donnee['ID']);
+                    Session::put('nom', $donnee['Nom']);
+                    Session::put('prenom', $donnee['Prenom']);
+                    Session::put('identifiant', $donnee['Identifiant']);
+                    Session::put('email', $donnee['Email']);
+                    Session::put('localisation', $donnee['Localisation']);
+                    Session::put('role', $donnee['Role']);
+                    
+                }
+                   
+              
+            } catch (Exception $e) {
+                echo 'Erreur :'. $e;
+            }
+
         return redirect('/');
         }
     }

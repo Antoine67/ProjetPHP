@@ -6,6 +6,12 @@ $username = Session::get('identifiant');
 $page = $_SERVER['REQUEST_URI'];
 $page = substr($page,1);
 
+//Ne pas prendre en compte GET dans l'url
+if(\strpos($page, '?')) {
+    $page= substr($page, 0, strpos($page, "?"));
+}
+
+//Si on est à la racine du site, on est sur la page d'accueil
 if(empty($page)) {
     $page='accueil';
 }

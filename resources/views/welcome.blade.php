@@ -6,7 +6,9 @@
 <link rel="stylesheet" href="{{ asset('/css/accueil.css') }}">
 <script src="{{ asset('/js/accueil.js') }}"></script>
 
-
+<?php if(isset($_GET['inscription'])){
+  echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur créé avec succés! Vous pouvez à présent vous connecter 😃</div>' ;
+} ?>
 
 <!-- Photos accueil du site -->
 <div class="imgcontainer">
