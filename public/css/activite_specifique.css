@@ -9,8 +9,8 @@ border-radius: 100%;
 
 .like
 {
-  opacity: 1;
   color:#131212;
+  margin:3px;
 }
 
 .texte
@@ -51,4 +51,44 @@ border-radius: 100%;
 #ajouter-photo input[type="submit"] {
     text-align:right;
 }
+
+/* ============== IMAGES + LIKES ============== */
+
+.images { /* conteneur global  */
+    display:inline-block;
+}
+
+.image-container { /* contient l'image + les like */
+   display:inline-block;
+}
+
+.like-texte
+{ 
+  font-size: 1.5vw;
+  color: #333333;
+  display:inline-block;
+}
+
+.upvote {
+    display:inline-block;
+    font-size: 1.5vw;
+}
+
+.upvote:hover,.active 
+{ 
+
+  color: #184896;
+}
+
+
+.image-activite{
+    width:500px;
+    height:300px;
+    object-fit: cover;
+}
+
+
+
+
+
 

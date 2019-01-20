@@ -199,9 +199,9 @@ $page = ucfirst($page);
 
     <div class="footer-icons">
 
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/bdeexiastrg?lang=fr"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-linkedin-in"></i></a>
 
     </div>
 
