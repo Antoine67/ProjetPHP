@@ -11,6 +11,7 @@ use App\Activite;
 use App\Like;
 use App\ImageActivite;
 use App\Avis;
+use App\Inscription;
 
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +44,7 @@ if(!isset($activite_data)) {
         <hr class="hr2">
         <div>
         <a class="btn btn-default action-button butt" role="button" href="/inscription">S'inscire à l'activité</a>
-        <a class="btn btn-default action-button butt" role="button" href="/inscription">Liste des inscrits</a>
+        <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
         <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
 
         <!-- Mini-fenêtre (modal) -->
@@ -67,15 +68,52 @@ if(!isset($activite_data)) {
                             <input type="file" class="btn btn-primary" name="fichier" >
                             <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                         </form>       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+         <!-- Mini-fenêtre (modal) -->
+         <div class="modal fade" id="liste-inscrits" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title" id="titre-modal-inscrits">Listes des inscrits</h3>
+
+                    </div>
+
+                    <!-- Liste des inscrits -->
+                    <div class="modal-body basket-content">
+                    <?php 
+                    
+                    $inscrits = Inscription::where('ID_Activites',$id_activite)->get();
+
+                    try {
+                        $bdd = DB::connection('mysql2')->getPdo();
+                    } catch(Exception $e) {
+
+                    }
+                    if(sizeof($inscrits) > 0) {
+                        echo '<ul>';
+                        foreach ($inscrits as $inscrit) {
+                            $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
+                            $reponse->bindValue(':id', $inscrit['ID_Utilisateurs'], $bdd::PARAM_STR);
+                            $reponse->execute();
+                            if($donnee=$reponse->fetch()){
+                            echo '<li>'.$donnee['Nom'] . ' ' .$donnee['Prenom'] .'</li>';
+                            }
+                        }
+                        echo '</ul>';
+                    }else {
+                        echo 'Aucun inscrit';
+                    }
+                    
+                    ?>
                         
-                        <!--
-                        <form action="/activites/<?=$id_activite?>" method="post" enctype="multipart/form-data">
-                            <label>Select image to upload:</label>
-                            <input type="file" name="file" id="file">
-                            <input type="submit" value="Upload" name="submit">
-                            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                        </form>
-                        -->
                     </div>
 
                 </div>
@@ -161,7 +199,6 @@ if(!isset($activite_data)) {
                         
                         $nomUtilisateur = "Bada";
                         try {
-                            $bdd = DB::connection('mysql2')->getPdo();
                             $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
                             $reponse->bindValue(':id', $avis['ID_Utilisateurs'], $bdd::PARAM_STR);
                             $reponse->execute();
