@@ -8,15 +8,52 @@
 <div class="container text-center"> 
 
     <div class="row">
-    <h1> Le nom de l'activité </h1>
+    <h1> Football </h1>
     <hr class="hr2">
         <div>
-        <a class="btn btn-default action-button butt" role="button" href="/inscription">Inscription à l'activité</a>
-        <a class="btn btn-default action-button butt" role="button" href="/inscription">Ajouter des photos</a>
+        <a class="btn btn-default action-button butt" role="button" href="/inscription">S'inscire à l'activité</a>
         <a class="btn btn-default action-button butt" role="button" href="/inscription">Liste des inscrits</a>
+        <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
+
+        <!-- Mini-fenêtre (modal) -->
+        <div class="modal fade" id="ajouter-photo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+
+                        <h3 class="modal-title" id="titre-modal">Ajouter des photos</h3>
+
+                    </div>
+
+                    <!-- Panel pour ajouter des photos -->
+                    <div class="modal-body basket-content">
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                            Selectionnez l'image que vous souhaitez ajouter à cette activité :
+                            <input type="file" class="btn btn-primary" name="file">
+                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                        </form>           
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
             <div>
-                <h2><br>Football</h2>   
+                <h2><br>Description de l'activité :</h2>   
                 <p>L'innovation. Voilà ce qui caractérise la Ford GT. Sa forme aérodynamique, ses renforts multifonction et son moteur V6 3,5 L EcoBoost® délivrant une puissance hors normes : tout dans la Ford GT est conçu pour la performance.
                 L'innovation. Voilà ce qui caractérise la Ford GT. Sa forme aérodynamique, ses renforts multifonction et son moteur V6 3,5 L EcoBoost® délivrant une puissance hors normes : tout dans la Ford GT est conçu pour la performance.
                 L'innovation. Voilà ce qui caractérise la Ford GT. Sa forme aérodynamique, ses renforts multifonction et son moteur V6 3,5 L EcoBoost® délivrant une puissance hors normes : tout dans la Ford GT est conçu pour la performance.

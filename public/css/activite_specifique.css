@@ -43,3 +43,12 @@ border-radius: 100%;
 .panel-body {
     overflow-wrap: break-word;
 }
+
+#ajouter-photo {
+    text-align:left;
+}
+
+#ajouter-photo input[type="submit"] {
+    text-align:right;
+}
+

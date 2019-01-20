@@ -179,7 +179,7 @@ $page = ucfirst($page);
 
     <div>
         <i class="fa fa-envelope"></i>
-        <p><a href="mailto:support@company.com">antoine.mohr@viacesi.fr</a></p>
+        <p><a href="mailto:bde@cesi.fr">bde@cesi.fr</a></p>
     </div>
 
 </div>
@@ -196,7 +196,6 @@ $page = ucfirst($page);
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-github-alt"></i></a>
 
     </div>
 
