@@ -60,14 +60,23 @@ if(!isset($article_data)) {
             foreach ($article_data as $article) { 
                 if ($nb_articles == 2)
                 {
-                    echo '<div class="col-lg-4 col-md-12 col-sm-6 produit">';
+                    echo '<div class="col-lg-4 col-md-12 col-sm-12 produit">';
                 }
                 else{
                     echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
                 }
                     echo '<h2>'.$article['Nom'].'</h2>';
-                    echo '<div class = "image-container">';
+                    echo '<div class = "containerz">';
+                        echo '<div class = "image-container">';
+
+                    
+
                         echo '<img class="image2" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                            echo '<div class="overlay">';
+                                echo '<div class="text">'.$article['Description'].'</div>';
+                            echo '</div>';
+                        echo '</div>';
+
                     echo '</div>';
                     echo '<h2>'.$article['Prix'].'€</h2>';
                 echo '</div>';
