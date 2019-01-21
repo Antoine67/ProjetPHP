@@ -32,6 +32,21 @@ border-radius: 2px;
 
   margin: 0px 0px 0 0;
 }
+.image{
+
+  width:200px;
+  height:200px;
+}
+
+.image2{
+
+  width:300px;
+  height:300px;
+}
+
+.edit{
+  margin: 0px 15px 0 0;
+}
 
 .gauche
 {
@@ -78,7 +93,10 @@ a:hover {
 }
 
 .row1 {
-  padding: 0px 0px 500px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+  padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
+}
+.taille {
+  padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
 
 
@@ -158,9 +176,9 @@ border-radius: 50px;
 #onglets li
 {
     float : left;
-    height : 30px; /* à modifier suivant la taille de la police pour centrer le texte dans l'onglet */
-    margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
-    margin : 1px 2px 0 2px;  /* Pour IE  */
+    height : 30px; 
+    margin : 2px 2px 0 2px !important; 
+    margin : 1px 2px 0 2px;
     border : 1px solid #9EA0A1;
     transition:background-color 0.25s;
 

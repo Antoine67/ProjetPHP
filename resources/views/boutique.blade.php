@@ -45,38 +45,47 @@ if(!isset($article_data)) {
                 <h2  class="hiddenz" id="best">Nos meilleures ventes: </h2>
             </div>
         </div>
-
+</div>
 
 <div class="row1">
+    <div class="container-fluid text-center container">
+    <?php 
+        $article_data = Article::orderBy('Vendu','DESC')->get();
 
-<?php 
-    $article_data = Article::orderBy('Vendu','DESC')->get();
+        echo '<a href="/idees">';
 
-    echo '<a href="/idees">';
+        if(sizeof($article_data)!=0) {
+            $nb_articles= 0;
+            $nb_max_articles = 3;
+            foreach ($article_data as $article) { 
+                if ($nb_articles == 2)
+                {
+                    echo '<div class="col-lg-4 col-md-12 col-sm-6 produit">';
+                }
+                else{
+                    echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
+                }
+                    echo '<h2>'.$article['Nom'].'</h2>';
+                    echo '<div class = "image-container">';
+                        echo '<img class="image2" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                    echo '</div>';
+                    echo '<h2>'.$article['Prix'].'€</h2>';
+                echo '</div>';
 
-    if(sizeof($article_data)!=0) {
-        $nb_articles= 0;
-        $nb_max_articles = 3;
-        foreach ($article_data as $article) { 
-            echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
-            echo '<h2>'.$article['Nom'].'</h2>';
-            echo '<img id="topobjet1" src="'. $url . $article["Image"] .'" alt="TopObjet1">';
-            echo '<h2>'.$article['Prix'].'€</h2>';
-            echo '</div>';
-            $nb_articles++;
-            if($nb_articles>=$nb_max_articles)
-            {
-                break;
+                $nb_articles++;
+                if($nb_articles>=$nb_max_articles)
+                {
+                    break;
+                }
             }
+        }else {
+            echo 'Aucun commentaire';
         }
-    }else {
-        echo 'Aucun commentaire';
-    }
-    echo '</a>' // Fin div "commentaires
-    
-    ?>  
+        echo '</a>' // Fin div "commentaires
+        
+        ?>  
 
-
+    </div>
 </div>
 <div class="container-fluid text-center container"> 
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -116,103 +125,40 @@ if(!isset($article_data)) {
         </div>
     </div>
 
+
+
     <div class="row1">
+    <?php 
+    $article_data = Article::orderBy('Categorie','ASC')->get();
 
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 1</p>
-                    <img id="objet1" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet1">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 2</p>
-                    <img id="objet2" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet2">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 3</p>
-                    <img id="objet3" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet3">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 4</p>
-                    <img id="objet4" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet4">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 5</p>
-                    <img id="objet5" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet5">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-
-        <div class="col-lg-2 col-md-5 col-sm-4 ">
-            <a href="/idees">
-                <div class="produit">
-                    <p>Objet 6</p>
-                    <img id="objet6" class=" img2" src="{{ asset('/img/boutique/test.png') }}" alt="Objet6">
-                    <p>Prix: 5€</p>
-                </div>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-edit"></i>
-            </a>
-            <a href="/idees">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
+    if(sizeof($article_data)!=0) {
+        foreach ($article_data as $article) {
+            echo '<div class="col-lg-3 col-md-5 col-sm-4 ">';
+                echo '<div class = "taille"';
+                    echo '<a href="/idees">';
+                        echo '<div class="produit">';
+                            echo '<p1>'.$article['Nom'].'</p1>';
+                            echo '<div class = "image-container">';
+                                echo '<img class="image" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                            echo '</div>';
+                            echo '<p1>'.$article['Prix'].'€</p1>';
+                        echo '</div>';
+                    echo '</a>';
+                    echo '<a href="/idees">';
+                        echo '<i class="fas fa-edit edit"></i>';
+                    echo '</a>';
+                    echo '<a href="/idees">';
+                        echo '<i class="fas fa-trash-alt"></i>';
+                    echo '</a>';
+                echo '</div>';
+            echo '</div>';
+        }
+    }else {
+        echo 'Aucun commentaire';
+    }
+    echo '</a>' // Fin div "commentaires
+    
+    ?>  
     </div>
 </div>
 
