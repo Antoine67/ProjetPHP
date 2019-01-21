@@ -3,7 +3,8 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('/css/activite_specifique.css') }}">
-<span hidden id="csrf-token"><?php echo csrf_token() ?></span>
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
+<span hidden id="id-activite"><?=$id_activite?></span>
 
 <?php
 
@@ -38,12 +39,26 @@ if(!isset($activite_data)) {
 
 ?>
 <div class="container text-center"> 
-
     <div class="row">
         <h1> <?=$activite_data['Titre']?> </h1>
         <hr class="hr2">
         <div>
-        <a class="btn btn-default action-button butt" role="button" href="/inscription">S'inscire à l'activité</a>
+        <?php 
+        
+        $inscritThisOne = Inscription::where('ID_Utilisateurs', Session::get('id'))->where('ID_Activites', $id_activite)->get(); 
+        if(sizeof($inscritThisOne) != 0) { // On determine si l'utilisateur est déjà inscrit ou non
+            $class=' active';
+            $inscrit = '<i class="fas fa-check"></i>  Inscrit ';
+        }else {
+            $class='';
+            $inscrit = 'S\'inscrire';
+        }
+        $inscriptionClass = 'btn btn-default action-button butt' . $class;
+
+
+        ?>
+
+        <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
         <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
         <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
 
