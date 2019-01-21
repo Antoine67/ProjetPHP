@@ -53,14 +53,14 @@ if(!isset($activite_data)) {
             $class='';
             $inscrit = 'S\'inscrire';
         }
-        $inscriptionClass = 'btn btn-default action-button butt' . $class;
+        $inscriptionClass = 'btn btn-default butt' . $class;
 
 
         ?>
 
         <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
-        <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
-        <a class="btn btn-default action-button butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
+        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
+        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
 
         <!-- Mini-fenêtre (modal) -->
         <div class="modal fade" id="ajouter-photo" tabindex="-1" role="dialog" aria-hidden="true">
