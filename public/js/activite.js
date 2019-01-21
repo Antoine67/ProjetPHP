@@ -28,7 +28,7 @@ $(function() {
                     'action':'like',
 					'like': liked,
                     'id': id,
-                    '_token' : currentToken //Utiliser pour la verification csrf
+                    '_token' : currentToken //Utilisé pour la verification csrf
                 }/*,
 				success: function(response){
 					$post.parent().find('span.likes_count').text(response + " likes");
@@ -38,6 +38,36 @@ $(function() {
 			});
 
 
+    });
+
+    $("#inscription-activite" ).click(function() {
+        var currentToken = $('#csrf-token').text();
+        var idActivite = $('#id-activite').text();
+        console.log("id: "+idActivite);
+        var inscrit;
+
+        if($(this).attr('class').includes("active")) {  
+            inscrit = false;
+        } else {
+            inscrit = true;
+        }
+
+        $.ajax({
+            url: '/gerer-donnees',
+            type: 'post',
+            data: {
+                'action':'inscription-activite',
+                'inscription':inscrit,
+                'id-activite': idActivite,
+                '_token' : currentToken //Utilisé pour la verification csrf
+            },
+            success: function(response){
+                location.reload(); 
+            }
+        });
+        
+        
+    
     });
 
 });
