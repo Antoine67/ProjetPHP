@@ -5,21 +5,28 @@
 
 <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
 
-<div id="globalNav" class="container-fluid text-center">
-    <h2>
-        Panier
-    </h2>
+<?php
 
-    <p>Pour commencer à effectuer des achats,
-        <br>
-        veuillez vous
-        <br>
-        <a href="/connexion">connecter</a>
-        ou
-        <a href="/inscription">créer un compte</a>
-    </p>
+use App\Article;
+use App\Panier;
 
-</div>
+use Illuminate\Support\Facades\DB;
+
+
+$article_data = Article::orderBy('Categorie')->get();
+if(!isset($article_data)) {
+    echo "<h1>Il n'y a aucun article/h1>";
+}else { 
+        $protocol =(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://");
+    $url = $protocol . $_SERVER['SERVER_NAME'];
+
+    //Si il y a port specifique (ex:localhost:8000)
+    if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
+
+    $url=$url . '/';
+
+?>
+
 <div class="container-fluid text-center container">
     <hr>
     <h1>Notre boutique</h1>
@@ -34,35 +41,42 @@
         </div>
     <hr>
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <h2 id="best">Nos meilleures ventes: </h2>
+            <div>
+                <h2  class="hiddenz" id="best">Nos meilleures ventes: </h2>
+            </div>
         </div>
-    <div class="row1">
-        
-        <a href="/idees">
-            <div class="col-lg-4 col-md-6 col-sm-6 produit">
-                <h2>Top objet 1</h2>
-                <img id="topobjet1" src="{{ asset('/img/boutique/test.png') }}" alt="TopObjet1">
-                <h2>Prix: 5€</h2>
-            </div>
-        </a>
 
-        <a href="/idees">
-            <div class="col-lg-4 col-md-6 col-sm-6 produit">
-                <h2>Top objet 2</h2>
-                <img id="topobjet2" src="{{ asset('/img/boutique/test.png') }}" alt="TopObjet2">
-                <h2>Prix: 5€</h2>
-            </div>
-        </a>
 
-        <a href="/idees">
-            <div class="col-lg-4 col-md-12 col-sm-12 produit">
-                <h2>Top objet 3</h2>
-                <img id="topobjet3" src="{{ asset('/img/boutique/test.png') }}" alt="TopObjet3">
-                <h2>Prix: 5€</h2>
-            </div>
-        </a>
+<div class="row1">
 
-    </div>
+<?php 
+    $article_data = Article::orderBy('Vendu','DESC')->get();
+
+    echo '<a href="/idees">';
+
+    if(sizeof($article_data)!=0) {
+        $nb_articles= 0;
+        $nb_max_articles = 3;
+        foreach ($article_data as $article) { 
+            echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
+            echo '<h2>'.$article['Nom'].'</h2>';
+            echo '<img id="topobjet1" src="'. $url . $article["Image"] .'" alt="TopObjet1">';
+            echo '<h2>'.$article['Prix'].'€</h2>';
+            echo '</div>';
+            $nb_articles++;
+            if($nb_articles>=$nb_max_articles)
+            {
+                break;
+            }
+        }
+    }else {
+        echo 'Aucun commentaire';
+    }
+    echo '</a>' // Fin div "commentaires
+    
+    ?>  
+
+
 </div>
 <div class="container-fluid text-center container"> 
     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -77,7 +91,7 @@
 
         <ul id="onglets">
             <div class = "gauche">
-                <div class="dropdown"><a class="dropdown-toggle username" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><i class="fas fa-filter img3"></i> <span class="caret"></span></a>
+                <div class="dropdown"><a class="dropdown-toggle username" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation"><a href="#">Nom</a></li>
                         <li role="separator" class="divider"></li>
@@ -202,6 +216,6 @@
     </div>
 </div>
 
-
+<?php }//Fin du else activité existante ?>
 
 @endsection
