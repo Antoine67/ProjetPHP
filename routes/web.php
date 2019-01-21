@@ -4,9 +4,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('activites', function () {
-    return view('activite');
-});
+Route::get('activites','ActiviteController@get' );
+Route::post('activites','ActiviteController@post' );
 
 Route::get('boutique', function () {
     return view('boutique');

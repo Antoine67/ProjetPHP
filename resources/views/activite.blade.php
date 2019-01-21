@@ -27,10 +27,29 @@ use App\ImageActivite;
                 <!-- Panel pour ajouter des photos  Ajout activités -->
                 <div class="modal-body basket-content">
                     
-                    <form action="/activites>" method="post" enctype="multipart/form-data">
+                    <form action="/activites" method="post" enctype="multipart/form-data">
                         @csrf
-                        Selectionnez l'image que vous souhaitez ajouter à cette activité :
-                        <input type="file" class="btn btn-primary" name="fichier" >
+
+                        <label for="nom"><b>Nom de l'activité :</b></label>
+                        <input type="text" name="nom" required>
+                    
+
+                        <label for="description"><b>Description</b></label>
+                        <textarea name="description" required></textarea>
+
+
+                        <label for="prix"><b>Prix</b></label>
+                        <input type="text" name="prix" required>
+              
+                        <label><b>Date</b> </label>
+                        <input type="text" id="datepicker" name="date" required>
+ 
+
+                        <label for="fichier"><b>Image par défaut de cette activité :</b></label>
+                        <input type="file" class="btn btn-primary" name="fichier" required>
+
+
+
                         <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                     </form>       
                 </div>
@@ -206,4 +225,18 @@ if(sizeof($activites) == 0) {
 </div>
 
 <?php } ?>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
+    $( "#anim" ).on( "change", function() {
+      $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+    });
+  } );
+  </script>
+
 @endsection

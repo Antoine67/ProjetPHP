@@ -86,12 +86,6 @@ text-decoration:none;
 color: #333333;
 } 
 
-.butt:hover
-{
-  background-color:#ebeff1;
-  color: #6C7A86;
-}
-
 
 
 img:hover
@@ -100,6 +94,32 @@ img:hover
   opacity: 0.5;
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
+
+
+/* =========== AJOUT / SUPPRESION ACTIVITES =========== */
+form label {
+  display:block;
+}
+
+form input {
+  width:100%;
+}
+
+form textarea {
+  width:100%;
+  height:250px;
+  resize: none;
+}
+
+form button[type='submit'] {
+  margin :5px 0;
+}
+.right{
+  text-align: right;
+}
+
+
+
 /*
 
 @media (max-width:440px) {
