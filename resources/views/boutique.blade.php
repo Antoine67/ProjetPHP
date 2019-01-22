@@ -72,7 +72,7 @@ if(!isset($article_data)) {
                         echo '<div class="imagetexte">';
 
                             echo '<img class="image2" src="'. $url . $article["Image"] .'" alt="Objet1" >';
-                            echo '<div class="text">'.$article['Description'].'</div>';
+                            echo '<div class="text"></div>';
 
                         echo '</div>';
 
@@ -125,10 +125,10 @@ if(!isset($article_data)) {
         <div id="onglets">
 
             <ul id="onglets1">
-                <li class="active"><a href=""> Matériels informatiques </a></li>
-                <li class="active"><a href=""> Vêtements </a></li>
-                <li class="active"><a href=""> Accessoirs </a></li>
-                <li class="active"><a href=""> Autres </a></li>
+                <li class="active"><a href=""> Matériel informatique </a></li>
+                <li class="active"><a href=""> Vêtement </a></li>
+                <li class="active"><a href=""> Accessoire </a></li>
+                <li class="active"><a href=""> Autre </a></li>
             </ul >
         </div>
 
@@ -162,7 +162,7 @@ if(!isset($article_data)) {
     'aAAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
             $cate = strtolower($cate);
 
-            echo '<div class="col-lg-3 col-md-5 col-sm-4 article'. $cate.'">';
+            echo '<div class="col-lg-3 col-md-5 col-sm-4 article '. $cate.'">';
                 echo '<div class = "taille">';
                     echo ' <a href="/idees">';
                         echo '<div class="produit">';

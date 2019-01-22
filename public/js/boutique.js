@@ -29,6 +29,20 @@ $(function() {
 
       });
 
+
+
+
+      $('#triMateriel').click (function() {
+        if(//articles sont déjà cachés) {
+        //montre tout
+        }else {
+          $('.article') // cache tous les articles
+          //affiche uniquement ceux avec classe "materielinformatique"
+        }
+        
+
+      });
+
        
    
 });
