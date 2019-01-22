@@ -51,6 +51,7 @@ function getURL() {
     <title>BDE - <?= $page ?></title>
 
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('/js/header.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
     
   </head>
@@ -85,7 +86,7 @@ function getURL() {
                             <li class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="#">Mon profil</a></li>
-                                    <li role="back-office"><a href="#">Back-office</a></li>
+                                    <li role="presentation"><a href="#">Back-office</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
@@ -97,7 +98,7 @@ function getURL() {
 
                             <!-- Panier de l'utilisateur -->
                             <li>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#panier-utilisateur">
                                     <i class="fas fa-shopping-basket fa-2x"></i>
                                 </button>
                             </li>
@@ -106,19 +107,15 @@ function getURL() {
 
                             <?php 
                             
-                           
-                           
-
                             $articles_panier = Article::select('Articles.*','Paniers.Quantité')
                                                                 ->join('Paniers', 'Paniers.ID_Articles', '=', 'Articles.ID')
                                                                 ->where('ID_Utilisateurs',Session::get('id'))
                                                                 ->get();
-
                             
                             ?>
 
                             <li>
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal fade" id="panier-utilisateur" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -129,14 +126,14 @@ function getURL() {
 
                                             </div>
                                             <!-- Contenu du panier -->
-                                            <div class="modal-body basket-content">
+                                            <div id="panier-contenu" class="modal-body">
                                             
                                             <?php 
                                             $prix_total = 0;
                                             $nb_articles = 0;
                                             
                                             if(sizeof($articles_panier) == 0) {
-                                                echo 'Votre panier est vide !';
+                                                echo '<div class="center">Votre panier est vide !<br/> Allez jeter un oeil sur la <a href="/boutique">boutique<a/></div>';
                                                 
                                             }
                                             foreach($articles_panier as $article_p) {
@@ -144,12 +141,12 @@ function getURL() {
                                                 $nb_articles+=intval($article_p['Quantité']);
                                             ?>
                                                 
-                                                <div class="article">
-                                                    <img class="img-panier" src="<?=getURL() .$article_p['Image'] ?>" alt="article"> <b><?=$article_p['Prix']?>€</b> - <?=$article_p['Nom']?>
+                                                <div class="article-panier">
+                                                    <img class="img-panier" src="<?=getURL() .$article_p['Image'] ?>" alt="article"> <b class="prix-article"><?=$article_p['Prix']?>€</b> - <?=$article_p['Nom']?>
                                                     <div class="article-chg">
-                                                        <button type="button" class="btn btn-danger">-</button>
+                                                        <button type="button" class="btn btn-danger moins-nb">-</button>
                                                         <span class="nb-article"><?=$article_p['Quantité']?></span>
-                                                        <button type="button" class="btn btn-success">+</button>  
+                                                        <button type="button" class="btn btn-success plus-nb">+</button>  
                                                     </div>
                                                 </div>
 
@@ -159,14 +156,14 @@ function getURL() {
                                             <!-- Boutons de fermeture du panier + Prix -->
                                             <div class="modal-footer">
                                                 <div class="total">
-                                                    <h5 id="total-articles">Nombre d'article(s) : <?=$nb_articles?></h5>
-                                                    <h5 id="total-prix">Prix total : <strong><?=$prix_total?>€</strong></h5>
+                                                    <h5 id="total-articles">Nombre d'article(s) : <span id="qte-totale"><?=$nb_articles?></span></h5>
+                                                    <h5 id="total-prix">Prix total : <strong id="prix-total"><?=$prix_total?>€</strong></h5>
                                                 </div>
                                                 <br/><br/>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i>Annuler</button>
-                                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Vider mon panier</button>
-                                                <button type="button" class="btn btn-primary"><i class="fas fa-save"></i>Sauvegarder</button>
-                                                <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Payer</button>
+                                                <button type="button" id="panier-vider" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Vider mon panier</button>
+                                                <button type="button" id="panier-sauvegarder" class="btn btn-primary"><i class="fas fa-save"></i>Sauvegarder</button>
+                                                <button type="button" id="panier-payer" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Payer</button>
                                             </div>
                                         </div>
                                     </div>

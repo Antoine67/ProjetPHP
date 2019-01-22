@@ -110,7 +110,7 @@ if(!isset($article_data)) {
         <ul class="nav navbar-nav ">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
-                <ul id="onglets1" class="dropdown-menu" role="menu">
+                <ul id="onglets" class="dropdown-menu" role="menu">
                     <li><a href="#">Nom</a></li>
                     <li><a href="#">Prix</a></li>
                 </ul>
