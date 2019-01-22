@@ -125,10 +125,10 @@ if(!isset($article_data)) {
         <div id="onglets">
 
             <ul id="onglets1">
-                <li class="active"><a href=""> Matériel informatique </a></li>
-                <li class="active"><a href=""> Vêtement </a></li>
-                <li class="active"><a href=""> Accessoire </a></li>
-                <li class="active"><a href=""> Autre </a></li>
+                <li class="active"><button id="triMateriel"> Matériel informatique </button></li>
+                <li class="active"><button> Vêtement </button></li>
+                <li class="active"><button> Accessoire </button></li>
+                <li class="active"><button> Autre </button></li>
             </ul >
         </div>
 
@@ -173,12 +173,11 @@ if(!isset($article_data)) {
                             echo '<p>'.$article['Prix'].'€</p>';
                         echo '</div>';
                     echo '</a>';
-                    echo '<a href="/idees">';
-                        echo '<i class="fas fa-edit edit"></i>';
-                    echo '</a>';
-                    echo '<a href="/idees">';
-                        echo '<i class="fas fa-trash-alt"></i>';
-                    echo '</a>';
+                  
+                        echo '<a class="fas fa-edit edit" href =""></a>';
+                  
+                        echo '<a class="fas fa-trash-alt" href =""></a>';
+                  
                 echo '</div>';
             echo '</div>';
         }

@@ -33,10 +33,10 @@ $(function() {
 
 
       $('#triMateriel').click (function() {
-        if(//articles sont déjà cachés) {
-        //montre tout
+        if($('.article').css('display' , 'none'))  {
+        $('.article').css('display' , 'initial')
         }else {
-          $('.article') // cache tous les articles
+          $('.article').css('display' , 'none'); // cache tous les articles
           //affiche uniquement ceux avec classe "materielinformatique"
         }
         
