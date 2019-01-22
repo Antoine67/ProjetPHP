@@ -31,18 +31,32 @@ $(function() {
 
 
 
+      $('.tri').click (function() {
+        var element_clique = $(this);
 
-      $('#triMateriel').click (function() {
-        if($('.article').css('display' , 'none'))  {
-        $('.article').css('display' , 'initial')
-        }else {
-          $('.article').css('display' , 'none'); // cache tous les articles
-          //affiche uniquement ceux avec classe "materielinformatique"
+        //Si clic sur l'element alors qu'il est déjà actif => on réaffiche tous les articles
+        if(element_clique.hasClass('active')) {
+          element_clique.removeClass('active');
+          $('.article').show();
+          return;
         }
-        
+
+        //Si clic sur un bouton mais qu'un autre tri est déjà actif on l'annule
+        if($('.tri').hasClass('active')) {
+          $('.tri').removeClass('active');
+          $('.article').show();
+        }
+
+        //Si clic sur un bouton mais qu'un autre tri est déjà actif on l'annule     
+        if(element_clique.hasClass('active')) {
+          element_clique.removeClass('active');
+          $('.article').show();
+        }else {
+          var categorie = element_clique.attr("data");
+          element_clique.addClass('active');
+          $('.article').not('.' + categorie).hide();
+        }
 
       });
 
-       
-   
 });

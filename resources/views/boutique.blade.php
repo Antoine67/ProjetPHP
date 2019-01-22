@@ -49,6 +49,8 @@ if(!isset($article_data)) {
         </div>
 </div>
 
+<!-- Meilleures ventes -->
+
 <div class="row1">
     <div class="container-fluid text-center container">
     <?php 
@@ -81,36 +83,30 @@ if(!isset($article_data)) {
                 echo '</div>';
 
                 $nb_articles++;
-                if($nb_articles>=$nb_max_articles)
-                {
-                    break;
-                }
+                if($nb_articles>=$nb_max_articles) break; //On affiche uniquement le nombre souhaité d'articles dans les meilleures ventes
+
             }
         }else {
-            echo 'march po';
+            echo 'Aucun article trouvé !';
         }
-        echo '</a>' // Fin div "commentaires
+        echo '</a>' 
         
         ?>  
 
     </div>
 </div>
+
+
+
 <div class="container-fluid text-center container"> 
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h2 id="best2">Tous nos produits: </h2>
     </div>
 </div>
 
+<!-- Filtres / Boutons -->
 
 <div class="container-fluid text-center container">
-
-    <?php
-
-        $products = Article::orderBy('Prix','DESC')->get();
-        
-    
-    ?>
-
         <ul class="nav navbar-nav ">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
@@ -125,10 +121,10 @@ if(!isset($article_data)) {
         <div id="onglets">
 
             <ul id="onglets1">
-                <li class="active"><button id="triMateriel"> Matériel informatique </button></li>
-                <li class="active"><button> Vêtement </button></li>
-                <li class="active"><button> Accessoire </button></li>
-                <li class="active"><button> Autre </button></li>
+                <li><button class="btn btn-light tri" data="materielinformatique"> Matériel informatique </button></li>
+                <li><button class="btn btn-light tri" data="vetement"> Vêtement </button></li>
+                <li ><button class="btn btn-light tri" data="accessoire"> Accessoire </button></li>
+                <li><button class="btn btn-light tri" data="autre"> Autre </button></li>
             </ul >
         </div>
 
@@ -143,23 +139,27 @@ if(!isset($article_data)) {
     </div>
 
 
+<!-- Tous les articles -->
 
     <div class="row1">
+
     <?php 
+
     $article_data = Article::orderBy('Categorie','ASC')->get();
 
     if(sizeof($article_data)!=0) {
 
 
-
-
         foreach ($article_data as $article) {       
 
-            $cate = "";
             $cate = $article['Categorie'];
 
-            $cate = strtr($cate, '@ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-    'aAAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+            $caract_interdit = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                            'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', ' '=>'' );
+            $cate = strtr( $cate, $caract_interdit );
             $cate = strtolower($cate);
 
             echo '<div class="col-lg-3 col-md-5 col-sm-4 article '. $cate.'">';
@@ -189,6 +189,6 @@ if(!isset($article_data)) {
     </div>
 </div>
 
-<?php }//Fin du else activité existante ?>
+<?php }//Fin du else  ?>
 
 @endsection

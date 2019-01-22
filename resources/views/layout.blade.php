@@ -22,6 +22,21 @@ if(empty($page)) {
 
 $page = ucfirst($page);
 
+
+
+function getURL() {
+    //URL sur laquelle il faut cherche les images
+    //Protocle (HTTP/HTTPS)
+    $protocol =(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://");
+    $url = $protocol . $_SERVER['SERVER_NAME'];
+
+    //Si il y a port specifique (ex:localhost:8000)
+    if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
+
+    $url=$url . '/';
+    return $url;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -91,10 +106,14 @@ $page = ucfirst($page);
 
                             <?php 
                             
-                            $id_utilisateur = Session::get('id');
-                            if(isset($id_utilisateur))
-                            
-                            
+                           
+                           
+
+                            $articles_panier = Article::select('Articles.*','Paniers.Quantité')
+                                                                ->join('Paniers', 'Paniers.ID_Articles', '=', 'Articles.ID')
+                                                                ->where('ID_Utilisateurs',Session::get('id'))
+                                                                ->get();
+
                             
                             ?>
 
@@ -111,29 +130,37 @@ $page = ucfirst($page);
                                             </div>
                                             <!-- Contenu du panier -->
                                             <div class="modal-body basket-content">
+                                            
+                                            <?php 
+                                            $prix_total = 0;
+                                            $nb_articles = 0;
+                                            
+                                            if(sizeof($articles_panier) == 0) {
+                                                echo 'Votre panier est vide !';
+                                                
+                                            }
+                                            foreach($articles_panier as $article_p) {
+                                                $prix_total+= floatval($article_p['Prix']) * intval($article_p['Quantité']);
+                                                $nb_articles+=intval($article_p['Quantité']);
+                                            ?>
+                                                
                                                 <div class="article">
-                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> <b>5€</b> - Article 1
+                                                    <img class="img-panier" src="<?=getURL() .$article_p['Image'] ?>" alt="article"> <b><?=$article_p['Prix']?>€</b> - <?=$article_p['Nom']?>
                                                     <div class="article-chg">
                                                         <button type="button" class="btn btn-danger">-</button>
-                                                        <span class="nb-article">5</span>
+                                                        <span class="nb-article"><?=$article_p['Quantité']?></span>
                                                         <button type="button" class="btn btn-success">+</button>  
                                                     </div>
                                                 </div>
-                                                <div class="article">
-                                                    <img class="img-panier" src="{{ asset('/img/badminton.png') }}" alt="article"> <b>5€</b> - Article 2
-                                                    
-                                                    <div class="article-chg">
-                                                        <button type="button" class="btn btn-danger">-</button>
-                                                        <span class="nb-article">5</span>
-                                                        <button type="button" class="btn btn-success">+</button>  
-                                                    </div>
-                                                </div>
+
+                                            <?php } ?>
+
                                             </div>
                                             <!-- Boutons de fermeture du panier + Prix -->
                                             <div class="modal-footer">
                                                 <div class="total">
-                                                    <h5 id="total-articles">Nombre d'articles : 5</h5>
-                                                    <h5 id="total-prix">Prix total : <strong>5€</strong></h5>
+                                                    <h5 id="total-articles">Nombre d'article(s) : <?=$nb_articles?></h5>
+                                                    <h5 id="total-prix">Prix total : <strong><?=$prix_total?>€</strong></h5>
                                                 </div>
                                                 <br/><br/>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i>Annuler</button>

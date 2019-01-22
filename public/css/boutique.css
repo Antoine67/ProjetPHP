@@ -258,3 +258,14 @@ a:hover {
     text-overflow: ellipsis;
 
 }
+
+
+/* ======= BOUTONS DE FILTRES/TRI ======= */
+.tri {
+  /* Style sur les boutons de tri */
+}
+
+
+.active {
+  background-color:#879bb5;
+}
