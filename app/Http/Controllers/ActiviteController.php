@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Activite;
+
+use App\ImageActivite;
+
+use Illuminate\Support\Facades\Input;
+
 use Session;
+
 class ActiviteController extends Controller
 {
     function get() {
@@ -13,23 +20,57 @@ class ActiviteController extends Controller
 
     function post() {
         if(isset($_POST)) {
-            ['Titre','Prix','Description','Date_realisation','Date_creation','ID_Utilisateurs'];
+            $role_util=Session::get('role');
+            if(isset($role_util)) {
+                if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['date'])) {
+                    
+                    
+                    //CREATION DE L'ACTIVIE EN BDD
+                    $date_initiale = str_replace('/', '-', $_POST['date']);
+                    $date = date("Y-m-d", strtotime($date_initiale) );
+                   
+                    $activite = Activite::create([
+                        'Titre' => $_POST['nom'],
+                        'Prix' => $_POST['prix'],
+                        'Date_creation' => date("Y-m-d H:i:s"),
+                        'Date_realisation' => $date,
+                        'Description' => $_POST['description'],
+                        'ID_Utilisateurs' =>Session::get('id'),
+                    ]);
 
-            if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['date'])) {
+                    //CREATION DE L'IMAGE EN BDD
 
-                $date =$_POST['date'];
-                $date=new \DateTime($date,timezone_open('Europe/Rome'));
-                echo $date;exit;
+                    $file = Input::file('fichier');
+               
 
-                Activite::create([
-                    'Titre' => $_POST['nom'],
-                    'Prix' => $_POST['prix'],
-                    'Date_creation' => date("Y-m-d H:i:s"),
-                    'Date_realisation' => date_format($date,"Y-m-d H:i:s"),
-                    'Description' => $_POST['description'],
-                    'ID_Utilisateurs' =>Session::get('id'),
-                ]);
-           }
+                    $path = $_FILES['fichier']['name'];
+                    $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+                    $cheminTrouvé = false;  $incr = 0;
+                    $chemin = 'image_site/activites/'. $activite['id'] . '/';
+                    while(!$cheminTrouvé || $incr>100){
+                        $incr++;
+                        if (!file_exists($chemin . 'image_'. $incr. '.'. $ext)) {
+                            $file->move($chemin, 'image_'. $incr .'.'. $ext);
+                            $cheminTrouvé = true;
+    
+                            ['Image','Auteur', 'ID_Activites'];
+    
+                            ImageActivite::create([
+                                'Image' => $chemin . 'image_'. $incr. '.'. $ext,
+                                'Auteur' => Session::get('nom') . ' ' . Session::get('prenom'),
+                                'ID_Activites' => $activite['id'],
+                            ]);
+                        }
+                    }
+                    return redirect('/activites');
+                }else {
+                    //Autres actions post
+                }
+            }else {
+                echo 'Vous devez être connecté pour effectuer ce genre d\'action !';
+            }
+ 
 
         }
     }

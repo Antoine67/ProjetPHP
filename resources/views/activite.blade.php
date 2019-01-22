@@ -6,6 +6,7 @@
 use App\Activite; 
 use App\ImageActivite;
 
+
 ?>
 
     <div class="center">
@@ -151,41 +152,51 @@ if(sizeof($activites) == 0) {
     } else if (sizeof($activitees_futures) != 0) {
         $activiteSuivante = $activitees_futures[0]; 
     }
-   
-    $img = ImageActivite::where('ID_Activites', $activiteSuivante['ID'])->take(1)->get();
-    if(sizeof($img)!=0) {
-        $imgProchaineActivite = '<img class="vitrine" src="'. $url . $img[0]['Image'].'" alt="Image" >';
+
+    echo '<div class="container text-center">';
+
+    if(isset($activiteSuivante)) {
+        $img = ImageActivite::where('ID_Activites', $activiteSuivante['ID'])->take(1)->get();
+        if(sizeof($img)!=0) {
+            $imgProchaineActivite = '<img class="vitrine" src="'. $url . $img[0]['Image'].'" alt="Image" >';
+        }else {
+            $imgProchaineActivite = 'Aucune image n\'est encore associée à cette activité';
+        }
+
+        echo'
+            <div class="row">
+                <h1> Prochaine activité </h1>
+                <hr class="hr2">
+                <a href="/activites/'.$activiteSuivante['ID'].'">
+                    <div>
+                        <div class="prochaine-activite">
+                            <h2><br>'.$activiteSuivante['Titre'].'</h2>          
+                        </div>
+                        <div>
+                        '. $imgProchaineActivite .'     
+                        </div>  
+                    </div>
+                </a>
+            </div>
+        ';
     }else {
-        $imgProchaineActivite = 'Aucune image n\'est encore associée à cette activité';
+
     }
+    
+    
    
 ?>
 
 <link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
 
 
-<div class="container text-center"> 
-    <div class="row">
-        <h1> Prochaine activité </h1>
-        <hr class="hr2">
-        <a href="/activites/<?=$activiteSuivante['ID']?>">
-            <div>
-                <div class="prochaine-activite">
-                    <h2><br><?=$activiteSuivante['Titre']?></h2>          
-                </div>
-                <div>
-                   <?= $imgProchaineActivite ?>     
-                </div>  
-            </div>
-        </a>
-    </div>
 
 
 
     <?php 
 
     $activitees_categories = array(
-        "ajd"  => array('Titre' => 'Activités aujourd\'hui','Tableau' => $activitees_aujourd),
+        "ajd"  => array('Titre' => 'Activités du jour','Tableau' => $activitees_aujourd),
         "venir" => array('Titre' => 'Activités à venir','Tableau' => $activitees_futures),
         "pasees"   => array('Titre' => 'Activités passées','Tableau' => $activitees_passees),
     );
