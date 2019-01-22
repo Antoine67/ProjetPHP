@@ -13,7 +13,7 @@ use App\ImageActivite;
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-activite">Ajouter une activité</a>
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#supprimer-activite">Supprimer une activité</a>
     </div>
-    <!-- Mini-fenêtre (modal) -->
+    <!--Ajout activités) -->
     <div class="modal fade" id="ajouter-activite" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -25,7 +25,7 @@ use App\ImageActivite;
 
                 </div>
 
-                <!-- Panel pour ajouter des photos  Ajout activités -->
+                <!-- Panel Ajout activités -->
                 <div class="modal-body basket-content">
                     
                     <form action="/activites" method="post" enctype="multipart/form-data">
@@ -59,7 +59,7 @@ use App\ImageActivite;
          </div>
     </div>
 
-    <!-- Mini-fenêtre (modal)  Suppression activités -->
+    <!--  Suppression activités -->
     <div class="modal fade" id="supprimer-activite" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -68,23 +68,28 @@ use App\ImageActivite;
                     <span aria-hidden="true">&times;</span></button>
 
                     <h3 class="modal-title" id="titre-modal-photo">Supprimer une activité</h3>
-                    <?php 
+                   <h4>Attention toute suppression est irrémediable</h4>
+
+                </div>
+
+                <!-- Panel Suppresion activités -->
+                <div class="modal-body basket-content">
+                
+                <?php 
                     
-                    $activites_all = Activite::all();
+                    $activites_all = Activite::orderBy('Titre','ASC')->get();
                     echo '<div>';
                     foreach ($activites_all as $activite) {
-                        echo '<div>' . $activite['Titre'] . '</div>';
+                        echo '<div class="suppression">';
+                        echo '<form method="post" action="/activites"><button type="submit" class="btn btn-danger">Supprimer</button>';
+                        ?>@csrf<?php // Token
+                        echo '<p class="titre-suppression">'. $activite['Titre'] . '</p></form>' ;
+                        
+                        echo '</div>';
                     }
                     echo '</div>';
                     
                     ?>
-
-                </div>
-
-                <!-- Panel pour ajouter des photos -->
-                <div class="modal-body basket-content">
-                    
-                         
                 </div>
 
              </div>
@@ -93,11 +98,6 @@ use App\ImageActivite;
 
 
 <?php 
-
-
-
-
-
 
 
 
@@ -237,6 +237,8 @@ if(sizeof($activites) == 0) {
 
 <?php } ?>
 
+
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -247,7 +249,27 @@ if(sizeof($activites) == 0) {
     $( "#anim" ).on( "change", function() {
       $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
     });
+
+    $( ".suppression button" ).click(
+        function () {
+            if (confirm('Êtes vous sûr de vouloir supprimer cette activité ?')) {
+                // Si oui
+                return true;
+            } else {
+                // Si non
+                return false;
+            }
+               
+            });
+
+
+
   } );
+
+
+
+
+  
   </script>
 
 @endsection
