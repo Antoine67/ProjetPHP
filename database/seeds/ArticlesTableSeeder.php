@@ -12,7 +12,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = array("Vêtements", "Autres", "Goodies", "Nourriture", "Utilitaire");
+        $categories = array("Vêtement", "Matériel informatique", "Accessoire", "Autre");
 
         $faker = \Faker\Factory::create('fr_FR');
 
@@ -23,7 +23,7 @@ class ArticlesTableSeeder extends Seeder
                 'Description' => $faker->paragraph,
                 'Prix' => $faker->randomFloat(2, 1, 100) ,
                 'Stock' => $faker->numberBetween(0, 150),
-                'Image' => "/path/vers/qqchose",
+                'Image' => "image_site\boutique\image_1.gif",
                 'Vendu' => $faker->numberBetween(0, 15),
                 'Categorie' => $categories[$faker->numberBetween(0, sizeof($categories)-1)],
             ]);

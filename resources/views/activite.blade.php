@@ -8,12 +8,13 @@ use App\ImageActivite;
 
 
 ?>
+<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
 
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-activite">Ajouter une activité</a>
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#supprimer-activite">Supprimer une activité</a>
     </div>
-    <!-- Mini-fenêtre (modal) -->
+    <!--Ajout activités) -->
     <div class="modal fade" id="ajouter-activite" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -21,32 +22,32 @@ use App\ImageActivite;
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
 
-                    <h3 class="modal-title" id="titre-modal-photo">Ajouter une activité</h3>
+                    <h3 class="modal-title" >Ajouter une activité</h3>
 
                 </div>
 
-                <!-- Panel pour ajouter des photos  Ajout activités -->
+                <!-- Panel Ajout activités -->
                 <div class="modal-body basket-content">
                     
-                    <form action="/activites" method="post" enctype="multipart/form-data">
+                    <form class="form-act" action="/activites" method="post" enctype="multipart/form-data">
                         @csrf
 
-                        <label for="nom"><b>Nom de l'activité :</b></label>
+                        <label><b>Nom de l'activité :</b></label>
                         <input type="text" name="nom" required>
                     
 
-                        <label for="description"><b>Description</b></label>
+                        <label><b>Description</b></label>
                         <textarea name="description" required></textarea>
 
 
-                        <label for="prix"><b>Prix</b></label>
+                        <label><b>Prix</b></label>
                         <input type="text" name="prix" required>
               
                         <label><b>Date</b> </label>
                         <input type="text" id="datepicker" name="date" required>
  
 
-                        <label for="fichier"><b>Image par défaut de cette activité :</b></label>
+                        <label><b>Image par défaut de cette activité :</b></label>
                         <input type="file" class="btn btn-primary" name="fichier" required>
 
 
@@ -59,7 +60,7 @@ use App\ImageActivite;
          </div>
     </div>
 
-    <!-- Mini-fenêtre (modal)  Suppression activités -->
+    <!--  Suppression activités -->
     <div class="modal fade" id="supprimer-activite" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -67,24 +68,29 @@ use App\ImageActivite;
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
 
-                    <h3 class="modal-title" id="titre-modal-photo">Supprimer une activité</h3>
-                    <?php 
-                    
-                    $activites_all = Activite::all();
+                    <h3 class="modal-title">Supprimer une activité</h3>
+                   <h4>Attention toute suppression est irrémediable</h4>
+
+                </div>
+
+                <!-- Panel Suppresion activités -->
+                <div class="modal-body basket-content">
+                
+                <?php 
+                    $activites_all = Activite::orderBy('Titre','ASC')->get();
                     echo '<div>';
                     foreach ($activites_all as $activite) {
-                        echo '<div>' . $activite['Titre'] . '</div>';
+                        echo '<div class="suppression">';
+                        echo '<form method="post" action="/activites"><button type="submit" class="btn btn-danger">Supprimer</button>';
+                        ?>@csrf<?php //Token csrf
+                        echo '<p class="titre-suppression" name="titre-activite" readonly>'. $activite['Titre'] .'</p>' ;
+                        echo '<input type="hidden" name="id-activite" readonly value="'.$activite['ID']. '"></input>';
+                        
+                        echo '</form></div>';
                     }
                     echo '</div>';
                     
                     ?>
-
-                </div>
-
-                <!-- Panel pour ajouter des photos -->
-                <div class="modal-body basket-content">
-                    
-                         
                 </div>
 
              </div>
@@ -100,14 +106,9 @@ use App\ImageActivite;
 
 
 
-
-
-
-
-
 $activites = Activite::orderBy('Date_realisation','ASC')->get();
 if(sizeof($activites) == 0) {
-    echo 'Aucune activité trouvée';
+    echo '<div class="center">Aucune activité trouvée</div>';
 }else {
     //URL sur laquelle il faut cherche les images
     //Protocle (HTTP/HTTPS)
@@ -187,7 +188,7 @@ if(sizeof($activites) == 0) {
    
 ?>
 
-<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
+
 
 
 
@@ -209,7 +210,7 @@ if(sizeof($activites) == 0) {
             <hr class="hr2">'; 
 
         if(sizeof($acts) == 0) {
-            echo 'Aucune activitée';
+            echo 'Aucune activité';
         }else {
             foreach ($acts as $activite) {
                 echo '
@@ -237,6 +238,8 @@ if(sizeof($activites) == 0) {
 
 <?php } ?>
 
+
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -247,7 +250,27 @@ if(sizeof($activites) == 0) {
     $( "#anim" ).on( "change", function() {
       $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
     });
+
+    $( ".suppression button" ).click(
+        function () {
+            if (confirm('Êtes vous sûr de vouloir supprimer cette activité ?')) {
+                // Si oui
+                return true;
+            } else {
+                // Si non
+                return false;
+            }
+               
+            });
+
+
+
   } );
+
+
+
+
+  
   </script>
 
 @endsection

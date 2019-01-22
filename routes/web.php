@@ -36,3 +36,7 @@ Route::get('deconnexion', function () {
 
     //PAGE GESTION DONNEE AJAX
 Route::post('gerer-donnees','GererDonnees@post');
+
+Route::get('ajax', function(){ return view('ajax'); });
+
+Route::post('/postajax','AjaxController@post');

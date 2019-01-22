@@ -1,6 +1,9 @@
 
 <?php 
 
+use App\Panier;
+use App\Article;
+
 $username = Session::get('identifiant');
 
 $page = $_SERVER['REQUEST_URI'];
@@ -66,12 +69,17 @@ $page = ucfirst($page);
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a href="#">Paramètres</a></li>
-                                    <li role="presentation"><a href="#">?</a></li>
+                                    <li role="presentation"><a href="#">Mon profil</a></li>
+                                    <li role="back-office"><a href="#">Back-office</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
                             </li>
+
+
+
+
+
                             <!-- Panier de l'utilisateur -->
                             <li>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -79,7 +87,17 @@ $page = ucfirst($page);
                                 </button>
                             </li>
 
-                            <!-- Mini-fenêtre (modal) -->
+                            <!-- Mini-fenêtre (modal) -> Panier -->
+
+                            <?php 
+                            
+                            $id_utilisateur = Session::get('id');
+                            if(isset($id_utilisateur))
+                            
+                            
+                            
+                            ?>
+
                             <li>
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
