@@ -29,7 +29,7 @@ use App\ImageActivite;
                 <!-- Panel Ajout activités -->
                 <div class="modal-body basket-content">
                     
-                    <form action="/activites" method="post" enctype="multipart/form-data">
+                    <form class="form-act" action="/activites" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <label><b>Nom de l'activité :</b></label>
