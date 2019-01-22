@@ -8,6 +8,7 @@ use App\ImageActivite;
 
 
 ?>
+<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
 
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-activite">Ajouter une activité</a>
@@ -21,7 +22,7 @@ use App\ImageActivite;
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
 
-                    <h3 class="modal-title" id="titre-modal-photo">Ajouter une activité</h3>
+                    <h3 class="modal-title" >Ajouter une activité</h3>
 
                 </div>
 
@@ -31,22 +32,22 @@ use App\ImageActivite;
                     <form action="/activites" method="post" enctype="multipart/form-data">
                         @csrf
 
-                        <label for="nom"><b>Nom de l'activité :</b></label>
+                        <label><b>Nom de l'activité :</b></label>
                         <input type="text" name="nom" required>
                     
 
-                        <label for="description"><b>Description</b></label>
+                        <label><b>Description</b></label>
                         <textarea name="description" required></textarea>
 
 
-                        <label for="prix"><b>Prix</b></label>
+                        <label><b>Prix</b></label>
                         <input type="text" name="prix" required>
               
                         <label><b>Date</b> </label>
                         <input type="text" id="datepicker" name="date" required>
  
 
-                        <label for="fichier"><b>Image par défaut de cette activité :</b></label>
+                        <label><b>Image par défaut de cette activité :</b></label>
                         <input type="file" class="btn btn-primary" name="fichier" required>
 
 
@@ -67,7 +68,7 @@ use App\ImageActivite;
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
 
-                    <h3 class="modal-title" id="titre-modal-photo">Supprimer une activité</h3>
+                    <h3 class="modal-title">Supprimer une activité</h3>
                    <h4>Attention toute suppression est irrémediable</h4>
 
                 </div>
@@ -76,16 +77,16 @@ use App\ImageActivite;
                 <div class="modal-body basket-content">
                 
                 <?php 
-                    
                     $activites_all = Activite::orderBy('Titre','ASC')->get();
                     echo '<div>';
                     foreach ($activites_all as $activite) {
                         echo '<div class="suppression">';
                         echo '<form method="post" action="/activites"><button type="submit" class="btn btn-danger">Supprimer</button>';
-                        ?>@csrf<?php // Token
-                        echo '<p class="titre-suppression">'. $activite['Titre'] . '</p></form>' ;
+                        ?>@csrf<?php //Token csrf
+                        echo '<p class="titre-suppression" name="titre-activite" readonly>'. $activite['Titre'] .'</p>' ;
+                        echo '<input type="hidden" name="id-activite" readonly value="'.$activite['ID']. '"></input>';
                         
-                        echo '</div>';
+                        echo '</form></div>';
                     }
                     echo '</div>';
                     
@@ -107,7 +108,7 @@ use App\ImageActivite;
 
 $activites = Activite::orderBy('Date_realisation','ASC')->get();
 if(sizeof($activites) == 0) {
-    echo 'Aucune activité trouvée';
+    echo '<div class="center">Aucune activité trouvée</div>';
 }else {
     //URL sur laquelle il faut cherche les images
     //Protocle (HTTP/HTTPS)
@@ -187,7 +188,7 @@ if(sizeof($activites) == 0) {
    
 ?>
 
-<link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
+
 
 
 
@@ -209,7 +210,7 @@ if(sizeof($activites) == 0) {
             <hr class="hr2">'; 
 
         if(sizeof($acts) == 0) {
-            echo 'Aucune activitée';
+            echo 'Aucune activité';
         }else {
             foreach ($acts as $activite) {
                 echo '

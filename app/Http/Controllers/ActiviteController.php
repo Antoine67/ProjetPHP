@@ -22,6 +22,7 @@ class ActiviteController extends Controller
         if(isset($_POST)) {
             $role_util=Session::get('role');
             if(isset($role_util)) {
+                //Ajout d'une activité
                 if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['date'])) {
                     
                     
@@ -65,7 +66,29 @@ class ActiviteController extends Controller
                     }
                     return redirect('/activites');
                 }else {
-                    //Autres actions post
+                    //Suppression d'une activité
+                    if(isset($_POST['id-activite'])) {
+
+                        $image_activites = ImageActivite::where("ID_Activites",$_POST['id-activite']);
+                        $activites = $image_activites->get();
+                        foreach ($activites as $activite) {
+                            if(file_exists($activite['Image'])) {
+                                unlink($activite['Image'] );
+                                echo 'Supprimé : ' . $activite['Image'] ;
+                            }else {
+                                echo 'Non trouvé : ' . $activite['Image'] ;
+                            }
+
+                            
+        
+                        }
+                        $image_activites->delete();
+                        echo 'Suppression OK';
+
+                        Activite::where('ID',$_POST['id-activite'])->delete();
+                        
+                        return redirect('/activites');
+                    }
                 }
             }else {
                 echo 'Vous devez être connecté pour effectuer ce genre d\'action !';
