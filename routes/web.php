@@ -15,6 +15,7 @@ Route::get('idees', function () {
     return view('idees');
 });
 
+Route::get('achat','AchatController@get' );
 
     //PAGES SPECIFIQUES
 Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );

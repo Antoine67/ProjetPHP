@@ -37,36 +37,43 @@ $(function() {
 
 
     $('#panier-vider').click(function() { //Vider le panier
-       
 
+        majPrixQuantite();
     });
 
     $('#panier-sauvegarder').click(function() { //Sauvegarder le panier
-       
-
+           sauvegarder();
     });
 
     $('#panier-payer').click(function() { //Passer au paiement
        
-
+        sauvegarder();
+        window.location.assign('/achat')
     });
+
+    
 
 });
 
 function majPrixQuantite() {
-    nbArticlesTotal = 0;    prixArticlesTotal=0;
-    $('.article-panier .nb-article').each(function() {
-        nbArticlesTotal+=parseInt($(this).text());
+    qteArticlesTotal = 0;    prixArticlesTotal=0;
+
+
+    $('.article-panier').each(function() {
+        var nbArticles = parseInt($(this).find('.nb-article').text());
+        var prix =  parseFloat($(this).find('.prix-article').text());
+        qteArticlesTotal+=nbArticles;
+        prixArticlesTotal+=prix*nbArticles;
     });
 
-    $('.article-panier .prix-article').each(function() {
-        prixArticlesTotal+=parseFloat($(this).text());
-    });
-
-
-    $('#qte-totale').text(nbArticlesTotal);
-    $('#prix-total').text(prixArticlesTotal);
+    $('#qte-totale').text(qteArticlesTotal);
+    $('#prix-total').text(prixArticlesTotal.toFixed(2));
 };
+
+
+function sauvegarder () {
+
+}
 
 
 
