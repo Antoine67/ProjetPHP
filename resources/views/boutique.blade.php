@@ -5,6 +5,8 @@
 
 <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
 
+<script src="{{ asset('/js/boutique.js') }}"></script>
+
 <?php
 
 use App\Article;
@@ -67,14 +69,11 @@ if(!isset($article_data)) {
                 }
                     echo '<h2>'.$article['Nom'].'</h2>';
                     echo '<div class = "containerz">';
-                        echo '<div class = "image-container">';
+                        echo '<div class="imagetexte">';
 
-                    
+                            echo '<img class="image2" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                            echo '<div class="text">'.$article['Description'].'</div>';
 
-                        echo '<img class="image2" src="'. $url . $article["Image"] .'" alt="Objet1" >';
-                            echo '<div class="overlay">';
-                                echo '<div class="text">'.$article['Description'].'</div>';
-                            echo '</div>';
                         echo '</div>';
 
                     echo '</div>';
@@ -88,7 +87,7 @@ if(!isset($article_data)) {
                 }
             }
         }else {
-            echo 'Aucun commentaire';
+            echo 'march po';
         }
         echo '</a>' // Fin div "commentaires
         
@@ -105,29 +104,38 @@ if(!isset($article_data)) {
 
 <div class="container-fluid text-center container">
 
-    <div id="menu">
+    <?php
 
-        <ul id="onglets">
-            <div class = "gauche">
-                <div class="dropdown"><a class="dropdown-toggle username" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i> <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li role="presentation"><a href="#">Nom</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li role="presentation"><a href="/deconnexion">Prix</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li role="presentation"><a href="/deconnexion">Catégorie</a></li>
-                    </ul>
-                </div>
-            </div>
-            <li class="active"><a href=""> Matériels informatiques </a></li>
-            <li class="active"><a href=""> Vêtements </a></li>
-            <li class="active"><a href=""> Accessoirs </a></li>
-            <li class="active"><a href=""> Autres </a></li>
+        $products = Article::orderBy('Prix','DESC')->get();
+        
+    
+    ?>
+
+        <ul class="nav navbar-nav ">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
+                <ul id="onglets1" class="dropdown-menu" role="menu">
+                    <li><a href="#">Nom</a></li>
+                    <li><a href="#">Prix</a></li>
+                </ul>
+            </li>
+
         </ul>
-    </div>
+
+        <div id="onglets">
+
+            <ul id="onglets1">
+                <li class="active"><a href=""> Matériels informatiques </a></li>
+                <li class="active"><a href=""> Vêtements </a></li>
+                <li class="active"><a href=""> Accessoirs </a></li>
+                <li class="active"><a href=""> Autres </a></li>
+            </ul >
+        </div>
+
+
 
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class = "gauche">
+        <div class="gauche">
             <a href="/idees">
                 <i class="fas fa-plus-square"></i>
             </a>
@@ -141,16 +149,28 @@ if(!isset($article_data)) {
     $article_data = Article::orderBy('Categorie','ASC')->get();
 
     if(sizeof($article_data)!=0) {
-        foreach ($article_data as $article) {
-            echo '<div class="col-lg-3 col-md-5 col-sm-4 ">';
-                echo '<div class = "taille"';
-                    echo '<a href="/idees">';
+
+
+
+
+        foreach ($article_data as $article) {       
+
+            $cate = "";
+            $cate = $article['Categorie'];
+
+            $cate = strtr($cate, '@ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+    'aAAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+            $cate = strtolower($cate);
+
+            echo '<div class="col-lg-3 col-md-5 col-sm-4 article'. $cate.'">';
+                echo '<div class = "taille">';
+                    echo ' <a href="/idees">';
                         echo '<div class="produit">';
-                            echo '<p1>'.$article['Nom'].'</p1>';
+                            echo '<p>'.$article['Nom'].'</p>';
                             echo '<div class = "image-container">';
                                 echo '<img class="image" src="'. $url . $article["Image"] .'" alt="Objet1" >';
                             echo '</div>';
-                            echo '<p1>'.$article['Prix'].'€</p1>';
+                            echo '<p>'.$article['Prix'].'€</p>';
                         echo '</div>';
                     echo '</a>';
                     echo '<a href="/idees">';
@@ -165,7 +185,6 @@ if(!isset($article_data)) {
     }else {
         echo 'Aucun commentaire';
     }
-    echo '</a>' // Fin div "commentaires
     
     ?>  
     </div>
