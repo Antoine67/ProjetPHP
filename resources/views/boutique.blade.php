@@ -29,6 +29,10 @@ if(!isset($article_data)) {
 ?>
 
 <div class="container-fluid text-center container">
+    <div class="center">
+        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-activite">Ajouter un produit</a>
+    </div>
+
     <hr>
     <h1>Notre boutique</h1>
 
@@ -133,9 +137,6 @@ if(!isset($article_data)) {
 
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div id="gauche">
-            <a href="/idees">
-                <i class="fas fa-plus-square"></i>
-            </a>
         </div>
     </div>
 
