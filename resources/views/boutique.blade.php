@@ -109,7 +109,7 @@ if(!isset($article_data)) {
 
 <!-- Filtres / Boutons -->
 
-<div class="container-fluid text-center container articles">
+<div class="container-fluid text-center container">
     <div id="filtr">
         <ul class="nav navbar-nav ">
             <li class="dropdown">
@@ -130,7 +130,7 @@ if(!isset($article_data)) {
             <li><button class="btn btn-light tri" value="vetement"> Vêtement </button></li>
             <li><button class="btn btn-light tri" value="accessoire"> Accessoire </button></li>
             <li><button class="btn btn-light tri" value="autre"> Autre </button></li>
-        </ul >
+        </ul>
     </div>
 
 
@@ -143,7 +143,7 @@ if(!isset($article_data)) {
 
 <!-- Tous les articles -->
 
-    <div class="row1">
+    <div class="row1 articles">
 
     <?php
 
@@ -168,7 +168,7 @@ if(!isset($article_data)) {
                 echo '<div class="taille">';
                     echo ' <a href="/idees">';
                         echo '<div class="produit imagetexte">';
-                            echo '<p>'.$article['Nom'].'</p>';
+                            echo '<p class="nom-article">'.$article['Nom'].'</p>';
                             echo '<div class = "image-container">';
                                 echo '<img class="image" src="'. $url . $article["Image"] .'" alt="Objet1" >';
                             echo '</div>';
