@@ -8,9 +8,6 @@ $(function() {
 
         if(nbArticles <=0 ) {
             $(this).parents(".article-panier").remove();
-
-            
-            //AJAX Supression du panier à faire
         }
 
     
@@ -37,12 +34,12 @@ $(function() {
 
 
     $('#panier-vider').click(function() { //Vider le panier
-
+        viderPanier();
         majPrixQuantite();
     });
 
     $('#panier-sauvegarder').click(function() { //Sauvegarder le panier
-           sauvegarder();
+        sauvegarder();
     });
 
     $('#panier-payer').click(function() { //Passer au paiement
@@ -72,6 +69,53 @@ function majPrixQuantite() {
 
 
 function sauvegarder () {
+    var currentToken = $('#csrftoken').text();
+
+    var articles = Array();
+    $('.article-panier').each(function() {
+        let id =$(this).attr('id');
+        var idArticle = parseInt(id.substring(8));
+        var nbArticle = parseInt($(this).find('.nb-article').text());
+
+        let article = {id:idArticle, nb:nbArticle};
+        articles.push(article);
+    });
+
+   
+    $.ajax({
+        url: '/gerer-donnees',
+        type: 'post',
+        data: {
+            'action':'sauvegarder-panier',
+            'articles':articles,
+            '_token' : currentToken //Utilisé pour la verification csrf
+        },
+        success: function(response){
+            console.log('sauvegardé :'+articles);
+    
+        }
+    });
+}
+
+
+function viderPanier() {
+    $('#panier-contenu').empty();
+    $("#panier-contenu").html("<div class='center'>Votre panier est vide !<br/> Allez jeter un oeil sur la <a href='/boutique'>boutique<a/></div>");
+    
+    var currentToken = $('#csrftoken').text();
+
+    $.ajax({
+        url: '/gerer-donnees',
+        type: 'post',
+        data: {
+            'action':'vider-panier',
+            '_token' : currentToken //Utilisé pour la verification csrf
+        },
+        success: function(response){
+            console.log('sauvegardé :'+articles);
+    
+        }
+    });
 
 }
 

@@ -55,7 +55,10 @@ function getURL() {
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
     
   </head>
+
+  
 <header>
+<span hidden id="csrftoken"><?=csrf_token() ?></span>
   <div>
         <div class="header">
             <nav class="navbar navbar-default navigation-clean-search">
@@ -141,7 +144,7 @@ function getURL() {
                                                 $nb_articles+=intval($article_p['Quantité']);
                                             ?>
                                                 
-                                                <div class="article-panier">
+                                                <div id="article-<?=$article_p['ID']?>" class="article-panier">
                                                     <img class="img-panier" src="<?=getURL() .$article_p['Image'] ?>" alt="article"> <b class="prix-article"><?=$article_p['Prix']?>€</b> - <?=$article_p['Nom']?>
                                                     <div class="article-chg">
                                                         <button type="button" class="btn btn-danger moins-nb">-</button>
@@ -190,33 +193,7 @@ function getURL() {
         </div>
     </div>
 </header>
-<script>paypal.Button.render({
-  env: 'sandbox',
-  client: {
-    sandbox: 'demo_sandbox_client_id'
-  },
-  style: {
-    color: 'gold',   // 'gold, 'blue', 'silver', 'black'
-    size:  'medium', // 'medium', 'small', 'large', 'responsive'
-    shape: 'rect'    // 'rect', 'pill'
-  },
-  payment: function (data, actions) {
-    return actions.payment.create({
-      transactions: [{
-        amount: {
-          total: '0.01',
-          currency: 'USD'
-        }
-      }]
-    });
-  },
-  onAuthorize: function (data, actions) {
-    return actions.payment.execute()
-      .then(function () {
-        window.alert('Thank you for your purchase!');
-      });
-  }
-}, '#paypal-button');</script>
+
 
 @yield('content')
 

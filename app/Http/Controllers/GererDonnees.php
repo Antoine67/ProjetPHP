@@ -8,6 +8,8 @@ use App\Like;
 
 use App\Inscription;
 
+use App\Panier;
+
 use Session;
 
 class GererDonnees extends Controller
@@ -62,6 +64,30 @@ class GererDonnees extends Controller
                             
                         }
 
+                        break;
+                    }
+                    case ('sauvegarder-panier'): {
+                        if(isset($_POST['articles'])) {
+                            foreach($_POST['articles'] as $article) {
+                                Panier::where('ID_Articles',$article['id'])
+                                        ->where('ID_Utilisateurs', Session::get('id'))->delete();
+                                
+                                Panier::create([
+                                    'Date_creation' => date("Y-m-d H:i:s"),
+                                    'ID_Utilisateurs' => Session::get('id'),
+                                    'ID_Articles' => $article['id'],
+                                    'Quantité' => $article['nb'],
+                                ]);
+
+                            }
+                            
+                        }
+                        break;
+                    }
+
+                    case('vider-panier') : {
+                        Panier::where('ID_Utilisateurs', Session::get('id'))->delete();
+                        
                         break;
                     }
                 }
