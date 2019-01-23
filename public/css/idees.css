@@ -28,14 +28,18 @@ img:hover
 
 }
 
+
 @keyframes Ban-color {
-    from, to { color: hsl(324, 70%, 45%); }
-    10%      { color: hsl(360, 65%, 45%); }
-    20%      { color: hsl( 36, 80%, 45%); }
-    30%      { color: hsl( 72, 75%, 35%); }
-    40%      { color: hsl(108, 65%, 35%); }
-    50%      { color: hsl(144, 75%, 35%); }
-    60%      { color: hsl(180, 75%, 35%); }
+    from, to { color: rgb(255, 0, 55); }
+    10%      { color: rgb(255, 0, 25); }
+    20%      { color: rgb(255, 5, 0); }
+    30%      { color: rgb(255, 35, 0); }
+    40%      { color: rgb(255, 65, 0); }
+    50%      { color: rgb(255, 95, 0); }
+    60%      { color: rgb(255, 65, 0); }
+    70%      { color: rgb(255, 35, 0); }
+    80%      { color: rgb(255, 5, 0); }
+    90%      { color: rgb(255, 0, 25); }
 
 }
 
@@ -46,6 +50,10 @@ img:hover
 .right {
     text-align:right;
 }
+
+.center{
+    text-align: center;
+  }
 
 /* ============== PROPOSITION ============== */
 .commentaire 
@@ -159,7 +167,7 @@ hr
 
 .ban-button:hover
 {
-    color: red;
+    color: hsl(324, 70%, 45%);
     -webkit-animation: Ban-color 2s infinite;
     animation: Ban-color 2s infinite;
     background: #8a9aac;
@@ -182,7 +190,7 @@ hr
 
 .envoyer:hover
 {
-    background: #8a9aac;
+    background: #778596;
 }
 
 .div-img
@@ -206,3 +214,23 @@ hr
     width: 12%;
     text-align: center;
 }
+
+/* =========== AJOUT / SUPPRESION ACTIVITES =========== */
+.form-act label {
+    display:block;
+  }
+  
+  .form-act input {
+    width:100%;
+  }
+  
+  .form-act textarea {
+    width:100%;
+    height:250px;
+    resize: none;
+  }
+  
+  .form-act button[type='submit'] {
+    margin :5px 0;
+  }
+
