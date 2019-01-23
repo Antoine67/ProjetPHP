@@ -17,6 +17,7 @@ use App\Inscription;
 use Illuminate\Support\Facades\DB;
 
 
+
 $activite_data = Activite::find($id_activite);
 if(!isset($activite_data)) {
     echo "<h1>Impossible de trouver l'activité demandée</h1>";
@@ -38,7 +39,50 @@ if(!isset($activite_data)) {
 //{"ID":1,"Titre":"Activit\u00e9 Test!","Prix":5,"Image":"image_site\/activites","Description":"Description test","Date_realisation":"2019-01-20","Date_creation":"2019-01-20","ID_Utilisateurs":1}
 
 ?>
-<div class="container text-center"> 
+<div class="container-fluid container">
+    <div class="col-lg-12 col-md-12 col-sm-12 categories">
+
+        <h2 class = "titre">Description de l'activité :</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
+            <div class="col-lg-10 col-md-10 col-sm-10 div-img">
+                <img class="img" src="{{ asset('/img/1.jpeg') }}" >
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 idee">
+                <p class="left">C'est le sport d'antoine</p>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 like-upvote">
+                <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> 1000</i> </a>
+                <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
+                <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 categories">
+
+        <h2 class = "titre">Informations suplémentaires :</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
+            <div class="col-lg-10 col-md-10 col-sm-10 div-img">
+                <img class="img" src="{{ asset('/img/1.jpeg') }}" >
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 idee">
+                <p class="left">Prix : 20€
+                Date : 30/01/2019 
+                </p>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 like-upvote">
+                <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> 1000</i> </a>
+                <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
+                <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container"> 
     <div class="row">
         <h1> <?=$activite_data['Titre']?> </h1>
         <hr class="hr2">
@@ -57,11 +101,11 @@ if(!isset($activite_data)) {
 
 
         ?>
-
-        <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
-        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
-        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
-
+        <div class="text-center">
+            <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
+            <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
+            <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
+        </div>
         <!-- Mini-fenêtre (modal) -->
         <div class="modal fade" id="ajouter-photo" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -137,28 +181,43 @@ if(!isset($activite_data)) {
 
 
 
-
-
-            <div>
+    
+        <div class="infos">
+            <div class="description">
                 <h2><br/>Description de l'activité :</h2>   
                 <p><?=$activite_data['Description']?></p>       
             </div>
 
-                <?php 
+            <?php 
 
+            $prix = $activite_data['Prix'] ;
+            if($prix<=0)  $prix = 'Gratuit'; else $prix = $prix . '€';
+
+            $date = date("d-m-Y", strtotime($activite_data['Date_realisation']));
+            $date = str_replace('-',' / ',$date);
+
+
+            ?>
+                <h3>Prix : <strong><?=$prix?></strong></h3>
+                <h3>Date : <strong><?=$date?></strong></h3>
+            </div>
+        </div>
+
+                <?php 
+        
                 //----------------------------------//
                 // ------- IMAGES ACTIVITES ------- //
                 //----------------------------------//
 
-                $images_activites = ImageActivite::where('ID_Activites', '=', $id_activite)->get();
+                $images_activites = ImageActivite::where('ID_Activites', $id_activite)->get();
 
                 if(sizeof($images_activites)!=0) {
                     
                     //On affiche toutes les images associées à cette activité ainsi que les likes
-                    echo '<div class="images">';
+                    echo '<div class="images text-center">';
                     foreach ($images_activites as $activite) {
 
-                        echo '<div class="image-container">';
+                        echo '<div class="image-container ">';
                         echo '<img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > ';
 
                         $nb_likes=sizeof(Like::where('ID_Image_activites', $activite['ID'])->get());
@@ -190,7 +249,7 @@ if(!isset($activite_data)) {
 
                 $avis_activites = Avis::where('ID_Activites', $id_activite)->get();
 
-                echo '<div class="commentaires">';
+                echo '<div class="commentaires text-center">';
 
                 date_default_timezone_set('Europe/Paris');
                 if(sizeof($avis_activites)!=0) {
@@ -242,7 +301,7 @@ if(!isset($activite_data)) {
                 <form method="post" action="/activites/<?=$id_activite?>">
                 @csrf
                     <div class="form-group">
-                        <label for="votre-commentaire">Vous avez participé à cette activité ? <br/>Partagez votre avis sur cette activité :</label>
+                        <label for="votre-commentaire">Partagez votre avis sur cette activité :</label>
                         <textarea name="commentaire" class="form-control" style="resize: none;" rows="5" placeholder="Ecrire un commentaire..." id="votre-commentaire"></textarea>
                     </div>
                     <div class="right"><button type="submit" class="btn btn-success submit-commentaire">Envoyer</button></div>
