@@ -41,17 +41,21 @@ $(function() {
     });
 
     $("#inscription-activite" ).click(function() {
+        let inscrit;
+        if($(this).hasClass('active')) {
+            inscrit=false; 
+        }else {
+            inscrit=true;
+        }
+
         var currentToken = $('#csrf-token').text();
         var idActivite = $('#id-activite').text();
         console.log("id: "+idActivite);
-        var inscrit;
 
-        if($(this).attr('class').includes("active")) {  
-            inscrit = false;
-        } else {
-            inscrit = true;
-        }
 
+        $('#ajouter-article-panier').modal('show');
+
+        
         $.ajax({
             url: '/gerer-donnees',
             type: 'post',

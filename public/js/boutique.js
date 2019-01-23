@@ -1,36 +1,15 @@
 $(function() {
   var initialArticlesDiv = $('.articles').clone();
 
-    //Au dessus d'une div contenant une image + un texte
-    $( ".imagetexte" ).hover(function() {
-          $(this).animate({
-            opacity: '0.5',
-          });
-        
-        $(this).children('.text').each(function () {
-            $( this ).stop(true,true).css( 'opacity' , '1' );
-        });
+    actualiserArticleHover();
+
+      $('#close-message').click(function() {
+        var element_clique = $(this);
+        $(this).parent().fadeOut();
+
+      
 
       });
-
-       //En dehors
-      $( ".imagetexte" ).mouseleave(function() {
-        $(this).stop(true,true).animate({
-            opacity: '1',
-          });
-        $(this).children('.text').each(function () {
-            $( this ).stop(true,true).css( 'opacity' , '0' );
-        });
-      });
-
-      $('#triprix').click(function() {
-        var data = $('.article');
-
-        console.log(data);
-
-      });
-
-
 
       $('.tri').click (function() {
         var element_clique = $(this);
@@ -98,14 +77,38 @@ $(function() {
           }else if (filtre == "Prix"){
             var $divs = $(".article");
             var alphabeticallyOrderedDivs = $divs.sort(function (a, b) {
-              return $(a).find(".prix-article").text().sansAccent() > $(b).find(".prix-article").text().sansAccent();
+              return parseFloat($(a).find(".prix-article").text().sansAccent()) > parseFloat($(b).find(".prix-article").text().sansAccent());
             });
             $(".articles").html(alphabeticallyOrderedDivs);
           }
 
         }
-
+        actualiserArticleHover();
       });
+
+
+      $( ".imagetexte" ).click(function() {
+        let id_article = $(this).attr("value");
+        var currentToken = $('#csrf-token').text();
+    
+        element_clique = $(this);
+        
+    
+        $('#ajouter-article-panier').modal('show');
+    
+        $('#article-nom-modal').text(element_clique.find('.nom-article').text());
+        $('#article-prix-modal').text(element_clique.find('.prix-article').text());
+        let imgSrc = element_clique.find('.img-article').attr('src');
+        $('#article-img-modal').attr('src',imgSrc);
+    
+        $('#id-article-modal').val(element_clique.find('.id-article').text());
+    
+       
+    
+    
+    
+      });
+    
 
 
 
@@ -131,4 +134,46 @@ String.prototype.sansAccent = function(){
   }
    
   return str;
+}
+
+function actualiserArticleHover() {
+    //Au dessus d'une div contenant une image + un texte
+    $( ".imagetexte" ).hover(function() {
+      $(this).animate({
+        opacity: '0.5',
+      });
+    
+    $(this).children('.text').each(function () {
+        $( this ).stop(true,true).css( 'opacity' , '1' );
+    });
+
+  });
+
+  //En dehors
+  $( ".imagetexte" ).mouseleave(function() {
+    $(this).stop(true,true).animate({
+        opacity: '1',
+      });
+    $(this).children('.text').each(function () {
+        $( this ).stop(true,true).css( 'opacity' , '0' );
+    });
+  });
+
+
+
+
+ /*
+    $.ajax({
+      url: '/gerer-donnees',
+      type: 'post',
+      data: {
+          'action':'ajouter-article-panier',
+          'id-article':id_article,
+          '_token' : currentToken //Utilisé pour la verification csrf
+      },
+      success: function(response){
+          
+      }
+  });*/
+
 }

@@ -22,7 +22,15 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('Stock');
             $table->string('Image',1024);
             $table->unsignedInteger('Vendu');
-            $table->string('Categorie', 100);
+            $table->string('Tag', 100);
+            $table->unsignedInteger('ID_Categories');
+
+            //Clés étrangères
+            $table->foreign('ID_Categories')
+                ->references('ID')
+                ->on('Categories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

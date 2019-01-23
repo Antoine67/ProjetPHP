@@ -215,7 +215,7 @@ border-radius: 2px;
   cursor: pointer;   /* Apparence du curseur comme pour un lien */
 }
 
-#onglets
+#categories
 {
     font : bold 22px Batang, arial, serif;
     list-style-type : none;
@@ -224,55 +224,24 @@ border-radius: 2px;
     border-radius : 50px;
     margin-left : 0;
 
-}
-
-#onglets1
-{
-    list-style-type : none;
-
 
 }
 
-#onglets li
+#categories a
 {
-    float : left;
-    height : 30px; 
+
+    font-size:35px;
     margin : 2px 2px 0 2px !important; 
     margin : 1px 2px 0 2px;
     border : 1px solid #9EA0A1;
     transition:background-color 0.25s;
+    width:80%;
 
 }
 
-#onglets li.active
-{
-    border-bottom: 1px;
-}
 
-#onglets a
-{
-  display : block;
-    color : #666;
-    text-decoration : none;
-    padding : 2px;
-}
 
-#onglets a:hover
-{
-  color: #6C7A86;
-  background :rgba(255, 255, 255, .4);
- }
 
-.hiddenz {
-  background-color: #F6F6F6;
-  border-style: inset;
-}
-#best {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-}
 
 .button-activite
 {
@@ -287,7 +256,37 @@ border-radius: 2px;
   outline:none;
 }
 
+.right {
+  text-align:right;
+}
 
+.delimiteur { 
+  background-color: #fff;
+	border-top: 2px dotted #8c8b8b;
+}
+
+.message-succes {
+  color: #270;
+  background-color: #DFF2BF;
+  position:fixed;
+  top:1%;
+  right:1%;
+  z-index:5;
+}
+
+#close-message {
+  top:0;
+  right:0;
+  display:inline-block;
+  padding:2px 5px;
+  margin-left:10px;
+  
+}
+
+#close-message:hover {
+  color:white;
+  cursor:pointer;
+}
 
 /* ======= BOUTONS DE FILTRES/TRI ======= */
 .tri {

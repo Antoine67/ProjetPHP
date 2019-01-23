@@ -7,9 +7,8 @@ Route::get('/', function () {
 Route::get('activites','ActiviteController@get' );
 Route::post('activites','ActiviteController@post' );
 
-Route::get('boutique', function () {
-    return view('boutique');
-});
+Route::get('boutique','BoutiqueController@get' );
+Route::post('boutique','BoutiqueController@post' );
 
 Route::get('idees', function () {
     return view('idees');
@@ -24,6 +23,10 @@ Route::get('achat','AchatController@get' );
     //PAGES SPECIFIQUES
 Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );
 Route::post('activites/{id_activite}','ActiviteSpecifiqueController@post' );
+
+Route::get('boutique/{categorie}','BoutiqueController@categorieSpecifique');
+
+Route::get('boutique/article/{id_article}','BoutiqueController@articleSpecifique');
 
 
 
@@ -42,6 +45,3 @@ Route::get('deconnexion', function () {
     //PAGE GESTION DONNEE AJAX
 Route::post('gerer-donnees','GererDonnees@post');
 
-Route::get('ajax', function(){ return view('ajax'); });
-
-Route::post('/postajax','AjaxController@post');

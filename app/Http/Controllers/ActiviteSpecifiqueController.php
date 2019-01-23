@@ -52,6 +52,8 @@ class ActiviteSpecifiqueController extends Controller
                             'Image' => $chemin . 'image_'. $incr. '.'. $ext,
                             'Auteur' => Session::get('nom') . ' ' . Session::get('prenom'),
                             'ID_Activites' => $id_activite,
+                            'Valide' => true,
+                            'ID_Utilisateurs' => Session::get('id'),
                         ]);
                     }
                 }

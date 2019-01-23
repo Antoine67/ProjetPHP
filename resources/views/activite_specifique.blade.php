@@ -194,8 +194,14 @@ if(!isset($activite_data)) {
                     echo '<div class="images text-center">';
                     foreach ($images_activites as $activite) {
 
-                        echo '<div class="image-container ">';
-                        echo '<img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > ';
+                        echo '<div class="image-container ">
+                            <div class="img-chat">
+                                <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
+                                <div class="text-block">
+                                    <h4>Nature</h4>
+                                    <p>What a beautiful sunrise</p>
+                                </div>
+                            </div>';
 
                         $nb_likes=sizeof(Like::where('ID_Image_activites', $activite['ID'])->get());
                         

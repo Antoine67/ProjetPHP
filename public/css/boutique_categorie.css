@@ -1,0 +1,29 @@
+.article {
+    display:inline-block;
+    margin:5px;
+    transition: all .2s ease-in-out;
+    background: #c7ced3;
+    border-radius:40px;
+    overflow: hidden;
+}
+
+.article:hover {
+transform: scale(1.1);
+}
+
+.nom-article {
+    font-size:20px;
+}
+
+hr {
+    padding: 2px;
+    background:rgb(115, 115, 160);
+    border:0;
+    border-top-right-radius: 100%;
+    width: 100%;
+    margin-top:-3px;
+}
+
+.active-classer{
+    background-color:#6C7A86;
+}

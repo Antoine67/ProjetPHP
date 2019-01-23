@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ImageActivite extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['Image','Auteur', 'ID_Activites'];
+    protected $fillable = ['Image','Auteur','Valide', 'ID_Activites','ID_Utilisateurs'];
 }

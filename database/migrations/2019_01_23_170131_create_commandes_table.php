@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImageActivitesTable extends Migration
+class CreateCommandesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateImageActivitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('image_activites', function (Blueprint $table) {
-            
+        Schema::create('commandes', function (Blueprint $table) {
             $table->increments('ID');
-            $table->string('Image',1024);
-            $table->string('Auteur',128);
-            $table->boolean('Valide');
-            $table->unsignedInteger('ID_Utilisateurs');
+            $table->date('Date_commande');
+            $table->unsignedInteger('Etat');
 
-            $table->unsignedInteger('ID_Activites');
+
+            $table->unsignedInteger('ID_Articles');
+
 
             //Clés étrangères
-            $table->foreign('ID_Activites')
+            $table->foreign('ID_Articles')
                 ->references('ID')
-                ->on('Activites')
+                ->on('Articles')
                 ->onUpdate('cascade');
         });
     }
@@ -38,6 +37,6 @@ class CreateImageActivitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_activites');
+        Schema::dropIfExists('commandes');
     }
 }
