@@ -15,6 +15,10 @@ Route::get('idees', function () {
     return view('idees');
 });
 
+Route::get('profil', function () {
+    return view('profil');
+});
+
 Route::get('achat','AchatController@get' );
 
     //PAGES SPECIFIQUES
