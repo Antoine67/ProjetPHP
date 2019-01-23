@@ -47,7 +47,7 @@ $(function() {
           $('.article').show();
         }
 
-        //Si clic sur un bouton mais qu'un autre tri est déjà actif on l'annule     
+        //Si clic sur un bouton 
         if(element_clique.hasClass('active-tri')) {
           element_clique.removeClass('active-tri');
           $('.article').show();
@@ -58,5 +58,50 @@ $(function() {
         }
 
       });
+
+
+
+      $('.classer').click (function() {
+        var element_clique = $(this);
+
+        //Si clic sur l'element alors qu'il est déjà actif => on réaffiche tous les articles
+        if(element_clique.hasClass('active-classer')) {
+          element_clique.removeClass('active-classer');
+          $('.article').show();
+          return;
+        }
+
+        //Si clic sur un bouton mais qu'un autre tri est déjà actif on l'annule
+        if($('.classer').hasClass('active-classer')) {
+          $('.classer').removeClass('active-classer');
+          $('.article').show();
+        }
+
+
+        //Si clic sur un bouton 
+        if(element_clique.hasClass('active-classer')) {
+          element_clique.removeClass('active-classer');
+          $('.article').show();
+        }else {
+
+          var filtre = element_clique.attr("value");
+
+          element_clique.addClass('active-classer');
+
+
+          if(filtre=="Nom")
+          {
+            $(".articles").find(".article").each(function() {
+
+            console.log($(this));
+          });
+
+          }else if (filtre == "Prix"){
+
+          }
+        }
+
+      });
+
 
 });

@@ -14,7 +14,6 @@ use App\Panier;
 
 use Illuminate\Support\Facades\DB;
 
-
 $article_data = Article::orderBy('Categorie')->get();
 if(!isset($article_data)) {
     echo "<h1>Il n'y a aucun article/h1>";
@@ -106,14 +105,14 @@ if(!isset($article_data)) {
 
 <!-- Filtres / Boutons -->
 
-<div class="container-fluid text-center container">
+<div class="container-fluid text-center container articles">
     <div id="filtr">
         <ul class="nav navbar-nav ">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Nom</a></li>
-                    <li><a href="#">Prix</a></li>
+                    <li><button class="btn btn-light classer" value="Nom">Nom</button></li>
+                    <li><button class="btn btn-light classer" value="Prix">Prix</button></li>
                 </ul>
             </li>
 
@@ -145,9 +144,9 @@ if(!isset($article_data)) {
 
     <div class="row1">
 
-    <?php 
+    <?php
 
-    $article_data = Article::orderBy('Categorie','ASC')->get();
+        $article_data = Article::orderBy('Prix','ASC')->get();
 
     if(sizeof($article_data)!=0) {
 
@@ -172,7 +171,7 @@ if(!isset($article_data)) {
                             echo '<div class = "image-container">';
                                 echo '<img class="image" src="'. $url . $article["Image"] .'" alt="Objet1" >';
                             echo '</div>';
-                            echo '<p>'.$article['Prix'].'€</p>';
+                            echo '<p class="prix-article">'.$article['Prix'].'€</p>';
                         echo '</div>';
                     echo '</a>';
                   
