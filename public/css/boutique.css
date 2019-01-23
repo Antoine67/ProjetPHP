@@ -115,12 +115,12 @@ border-radius: 2px;
   cursor: pointer;
   color: #333333; 
 }
-#taille a {
+.taille a {
   color: #333333; 
   text-decoration: none;
 }
 
-#taille a:hover {
+.taille a:hover {
   color: #333333; 
   text-decoration: none;
 }
@@ -157,7 +157,7 @@ border-radius: 2px;
 .row1 {
   padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
-#taille {
+.taille {
   padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
 

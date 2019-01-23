@@ -52,7 +52,7 @@ $(function() {
           element_clique.removeClass('active-tri');
           $('.article').show();
         }else {
-          var categorie = element_clique.attr("data");
+          var categorie = element_clique.attr("value");
           element_clique.addClass('active-tri');
           $('.article').not('.' + categorie).hide();
         }

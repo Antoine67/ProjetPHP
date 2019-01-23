@@ -111,7 +111,7 @@ if(!isset($article_data)) {
         <ul class="nav navbar-nav ">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
-                <ul id="onglets" class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Nom</a></li>
                     <li><a href="#">Prix</a></li>
                 </ul>
@@ -123,10 +123,10 @@ if(!isset($article_data)) {
     <div id="onglets">
 
         <ul id="onglets1">
-            <li><button class="btn btn-light tri" data="materielinformatique"> Matériel informatique </button></li>
-            <li><button class="btn btn-light tri" data="vetement"> Vêtement </button></li>
-            <li ><button class="btn btn-light tri" data="accessoire"> Accessoire </button></li>
-            <li><button class="btn btn-light tri" data="autre"> Autre </button></li>
+            <li><button class="btn btn-light tri" value="materielinformatique"> Matériel informatique </button></li>
+            <li><button class="btn btn-light tri" value="vetement"> Vêtement </button></li>
+            <li><button class="btn btn-light tri" value="accessoire"> Accessoire </button></li>
+            <li><button class="btn btn-light tri" value="autre"> Autre </button></li>
         </ul >
     </div>
 
@@ -165,7 +165,7 @@ if(!isset($article_data)) {
             $cate = strtolower($cate);
 
             echo '<div class="col-lg-3 col-md-5 col-sm-4 article '. $cate.'">';
-                echo '<div id="taille">';
+                echo '<div class="taille">';
                     echo ' <a href="/idees">';
                         echo '<div class="produit imagetexte">';
                             echo '<p>'.$article['Nom'].'</p>';
