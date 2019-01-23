@@ -107,6 +107,7 @@ if(!isset($article_data)) {
 <!-- Filtres / Boutons -->
 
 <div class="container-fluid text-center container">
+    <div id="filtr">
         <ul class="nav navbar-nav ">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <i class="fas fa-filter img3"></i><span class="caret"></span></a>
@@ -117,21 +118,22 @@ if(!isset($article_data)) {
             </li>
 
         </ul>
+    </div>
 
-        <div id="onglets">
+    <div id="onglets">
 
-            <ul id="onglets1">
-                <li><button class="btn btn-light tri" data="materielinformatique"> Matériel informatique </button></li>
-                <li><button class="btn btn-light tri" data="vetement"> Vêtement </button></li>
-                <li ><button class="btn btn-light tri" data="accessoire"> Accessoire </button></li>
-                <li><button class="btn btn-light tri" data="autre"> Autre </button></li>
-            </ul >
-        </div>
+        <ul id="onglets1">
+            <li><button class="btn btn-light tri" data="materielinformatique"> Matériel informatique </button></li>
+            <li><button class="btn btn-light tri" data="vetement"> Vêtement </button></li>
+            <li ><button class="btn btn-light tri" data="accessoire"> Accessoire </button></li>
+            <li><button class="btn btn-light tri" data="autre"> Autre </button></li>
+        </ul >
+    </div>
 
 
 
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="gauche">
+        <div id="gauche">
             <a href="/idees">
                 <i class="fas fa-plus-square"></i>
             </a>
@@ -163,9 +165,9 @@ if(!isset($article_data)) {
             $cate = strtolower($cate);
 
             echo '<div class="col-lg-3 col-md-5 col-sm-4 article '. $cate.'">';
-                echo '<div class = "taille">';
+                echo '<div id="taille">';
                     echo ' <a href="/idees">';
-                        echo '<div class="produit">';
+                        echo '<div class="produit imagetexte">';
                             echo '<p>'.$article['Nom'].'</p>';
                             echo '<div class = "image-container">';
                                 echo '<img class="image" src="'. $url . $article["Image"] .'" alt="Objet1" >';

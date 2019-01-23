@@ -95,7 +95,7 @@ border-radius: 2px;
   margin: 0px 15px 0 0;
 }
 
-.gauche
+#gauche
 {
   float:left;
 
@@ -103,11 +103,6 @@ border-radius: 2px;
   padding: 2px 0px 0px 00px;
 }
 
-img:hover
-{
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
-}
 
 .img2:hover
 {
@@ -120,12 +115,32 @@ img:hover
   cursor: pointer;
   color: #333333; 
 }
-a {
+#taille a {
   color: #333333; 
   text-decoration: none;
 }
 
-a:hover {
+#taille a:hover {
+  color: #333333; 
+  text-decoration: none;
+}
+
+#gauche a {
+  color: #333333; 
+  text-decoration: none;
+}
+
+#gauche a:hover {
+  color: #333333; 
+  text-decoration: none;
+}
+
+#filtr a {
+  color: #333333; 
+  text-decoration: none;
+}
+
+#filtr a:hover {
   color: #333333; 
   text-decoration: none;
 }
@@ -142,7 +157,7 @@ a:hover {
 .row1 {
   padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
-.taille {
+#taille {
   padding: 0px 0px 20px 0px;   /* Espace entre les bords et le contenu : haut droite bas gauche  */
 }
 
