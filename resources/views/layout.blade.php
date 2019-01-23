@@ -136,7 +136,7 @@ function getURL() {
                                             $nb_articles = 0;
                                             
                                             if(sizeof($articles_panier) == 0) {
-                                                echo '<div class="center">Votre panier est vide !<br/> Allez jeter un oeil sur la <a href="/boutique">boutique<a/></div>';
+                                                echo '<div class="center">Votre panier est vide !<br/> Allez jeter un oeil sur la <a href="/boutique">boutique</a></div>';
                                                 
                                             }
                                             foreach($articles_panier as $article_p) {

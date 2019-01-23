@@ -100,7 +100,7 @@ function sauvegarder () {
 
 function viderPanier() {
     $('#panier-contenu').empty();
-    $("#panier-contenu").html("<div class='center'>Votre panier est vide !<br/> Allez jeter un oeil sur la <a href='/boutique'>boutique<a/></div>");
+    $("#panier-contenu").html("<div class='center'>Votre panier est vide !<br/> Allez jeter un oeil sur la <a href='/boutique'>boutique</a></div>");
     
     var currentToken = $('#csrftoken').text();
 
