@@ -38,7 +38,7 @@ if(!isset($activite_data)) {
 //{"ID":1,"Titre":"Activit\u00e9 Test!","Prix":5,"Image":"image_site\/activites","Description":"Description test","Date_realisation":"2019-01-20","Date_creation":"2019-01-20","ID_Utilisateurs":1}
 
 ?>
-<div class="container text-center"> 
+<div class="container"> 
     <div class="row">
         <h1> <?=$activite_data['Titre']?> </h1>
         <hr class="hr2">
@@ -57,11 +57,11 @@ if(!isset($activite_data)) {
 
 
         ?>
-
-        <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
-        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
-        <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
-
+        <div class="text-center">
+            <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
+            <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
+            <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
+        </div>
         <!-- Mini-fenêtre (modal) -->
         <div class="modal fade" id="ajouter-photo" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -137,28 +137,43 @@ if(!isset($activite_data)) {
 
 
 
-
-
-            <div>
+    
+        <div class="infos">
+            <div class="description">
                 <h2><br/>Description de l'activité :</h2>   
                 <p><?=$activite_data['Description']?></p>       
             </div>
 
-                <?php 
+            <?php 
 
+            $prix = $activite_data['Prix'] ;
+            if($prix<=0)  $prix = 'Gratuit'; else $prix = $prix . '€';
+
+            $date = date("d-m-Y", strtotime($activite_data['Date_realisation']));
+            $date = str_replace('-',' / ',$date);
+
+
+            ?>
+                <h3>Prix : <strong><?=$prix?></strong></h3>
+                <h3>Date : <strong><?=$date?></strong></h3>
+            </div>
+        </div>
+
+                <?php 
+        
                 //----------------------------------//
                 // ------- IMAGES ACTIVITES ------- //
                 //----------------------------------//
 
-                $images_activites = ImageActivite::where('ID_Activites', '=', $id_activite)->get();
+                $images_activites = ImageActivite::where('ID_Activites', $id_activite)->get();
 
                 if(sizeof($images_activites)!=0) {
                     
                     //On affiche toutes les images associées à cette activité ainsi que les likes
-                    echo '<div class="images">';
+                    echo '<div class="images text-center">';
                     foreach ($images_activites as $activite) {
 
-                        echo '<div class="image-container">';
+                        echo '<div class="image-container ">';
                         echo '<img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > ';
 
                         $nb_likes=sizeof(Like::where('ID_Image_activites', $activite['ID'])->get());
@@ -190,7 +205,7 @@ if(!isset($activite_data)) {
 
                 $avis_activites = Avis::where('ID_Activites', $id_activite)->get();
 
-                echo '<div class="commentaires">';
+                echo '<div class="commentaires text-center">';
 
                 date_default_timezone_set('Europe/Paris');
                 if(sizeof($avis_activites)!=0) {
@@ -242,7 +257,7 @@ if(!isset($activite_data)) {
                 <form method="post" action="/activites/<?=$id_activite?>">
                 @csrf
                     <div class="form-group">
-                        <label for="votre-commentaire">Vous avez participé à cette activité ? <br/>Partagez votre avis sur cette activité :</label>
+                        <label for="votre-commentaire">Partagez votre avis sur cette activité :</label>
                         <textarea name="commentaire" class="form-control" style="resize: none;" rows="5" placeholder="Ecrire un commentaire..." id="votre-commentaire"></textarea>
                     </div>
                     <div class="right"><button type="submit" class="btn btn-success submit-commentaire">Envoyer</button></div>
