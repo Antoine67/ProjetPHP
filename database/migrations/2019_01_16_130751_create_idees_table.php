@@ -17,7 +17,8 @@ class CreateIdeesTable extends Migration
 
             $table->increments('ID');
             $table->string('Titre', 100);
-            $table->binary('Contenu');
+            $table->string('Contenu',1024);
+            $table->string('Image',512);
             $table->date('Date_creation');
             $table->unsignedInteger('Etat');
 
