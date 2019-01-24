@@ -3,17 +3,11 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('/css/panel.css') }}">
-<span hidden id="csrf-token"><?=csrf_token() ?></span>
-<script src="{{ asset('/js/panel.js') }}"></script>
-
-
-
 <link rel="stylesheet" href="{{ asset('/DataTables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-
-
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
+<script src="{{ asset('/js/panel.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
-
 
 <?php
 
@@ -104,6 +98,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                 <th>Droit idées</th>
                 <th>Droit activités</th>
                 <th>Droit header</th>
+                <th>Gestion</th>
             </tr>
         </thead>
         <tbody>
@@ -154,17 +149,19 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
 
                 
                     <tr>
-                        <td>'. $utilisateur["Nom"] .'</td>
-                        <td>'. $utilisateur['Prenom'] .'</td>
-                        <td>'. $utilisateur['Identifiant'] .'</td>
-                        <td>'. $utilisateur['Mot_de_passe'] .'</td>
-                        <td>'. $utilisateur['Email'] .'</td>
-                        <td>'. $utilisateur['Localisation'] .'</td>
-                        <td>'. $utilisateur['Role'] .'</td>
-                        <td>'. $utilisateur['DroitBoutique'] .'</td>
-                        <td>'. $utilisateur['DroitIdees'] .'</td>
-                        <td>'. $utilisateur['DroitActivites'] .'</td>
-                        <td>'. $utilisateur['DroitHeader'] .'</td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur["Nom"] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Prenom'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Identifiant'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Mot_de_passe'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Email'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Localisation'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Role'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitBoutique'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitIdees'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitActivites'] .'</span></td>
+                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitHeader'] .'</span></td>
+                        <td class="bouton-modifier" id="'. $utilisateur["ID"] .'" role="button">Modifier</td>
+
                     </tr>
                 ';
         }
@@ -183,6 +180,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                         <th>Droit idées</th>
                         <th>Droit activités</th>
                         <th>Droit header</th>
+                        <th>Gestion</th>
                     </tr>
                 </tfoot>
             </table>
@@ -261,7 +259,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
             } 
 ?>
     <!--Ajout activités -->
-    <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modifier-utilisateur" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">    
@@ -277,10 +275,10 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                         <form class="form-act" action="/idees" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            <label><b>Nom de l\'activité :</b></label>
+                            <label><b>Nom de l'activité :</b></label>
                             <input type="text" name="nom" required>
 
-                            <label><b>Description</b></label>
+                            <label><b>Description :</b></label>
                             <textarea name="description" required></textarea> 
 
                             <label><b>Image par défaut de cette activité :</b></label>
