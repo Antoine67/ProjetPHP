@@ -4,6 +4,7 @@
 
 
 <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/recherche.css') }}">
 
 <script src="{{ asset('/js/boutique.js') }}"></script>
 
