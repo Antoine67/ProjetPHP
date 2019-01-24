@@ -1,5 +1,8 @@
 $(function() {
 
+    $('.commentaires-image').hide();    
+    //$('.ecrire-commentaire-image').hide();
+
     $( ".upvote" ).click(function() {
             var currentToken = $('#csrf-token').text();
 
@@ -69,9 +72,53 @@ $(function() {
                 location.reload(); 
             }
         });
-        
-        
-    
+
     });
+
+
+
+    $('.image-container').hover(function() {
+        $(this).find('.commentaires-image').stop().fadeToggle();
+             
+           if ( $(this).find('.ecrire-commentaire-image').css('visibility') == 'hidden' ) {
+                $(this).find('.ecrire-commentaire-image').css({opacity: 0}).css('visibility','visible').animate({opacity: 1});
+                
+                
+           } else {
+                $(this).find('.ecrire-commentaire-image').css('visibility','hidden');
+           }
+
+    });
+
+    $('.envoyer-commentaire-image').click(function() { 
+        $el_cliq = $(this);
+        let comment = $(this).parent().find('textarea').val();
+
+        console.log($el_cliq.parent().parent().find('.commentaires-image').
+        append('<p class="commentaire-image">'+ comment +'</p>'));
+        id_image = $el_cliq.parent().find('.id-activite').attr('value');
+
+        $(this).parent().find('textarea').val('');
+        currentToken = $('#csrf-token').text();
+        $.ajax({
+            url: '/gerer-donnees',
+            type: 'post',
+            data: {
+                'action':'ajouter-commentaire-image',
+                'id-image':id_image,
+                'contenu':comment,
+                '_token' : currentToken //Utilisé pour la verification csrf
+            },
+            success: function(response){
+                
+            }
+        });
+
+    });
+
+
+
+
+
 
 });

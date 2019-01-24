@@ -13,6 +13,7 @@ use App\Like;
 use App\ImageActivite;
 use App\Avis;
 use App\Inscription;
+use App\CommentaireImage;
 
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +46,8 @@ if(!isset($activite_data)) {
         <div>
         <?php 
         
+
+
         $inscritThisOne = Inscription::where('ID_Utilisateurs', Session::get('id'))->where('ID_Activites', $id_activite)->get(); 
         if(sizeof($inscritThisOne) != 0) { // On determine si l'utilisateur est déjà inscrit ou non
             $class=' active';
@@ -56,9 +59,17 @@ if(!isset($activite_data)) {
         $inscriptionClass = 'btn btn-default butt' . $class;
 
 
+        $dateActuelle = new DateTime();
+        $date = new DateTime($activite_data['Date']);
+
         ?>
         <div class="text-center">
+            <?php 
+            if($date < $dateActuelle) {
+                ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
+            <?php } ?>
+
             <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
             <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
         </div>
@@ -84,7 +95,6 @@ if(!isset($activite_data)) {
                             <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                         </form>       
                     </div>
-
                 </div>
             </div>
         </div>
@@ -191,27 +201,52 @@ if(!isset($activite_data)) {
                     echo '<div class="images text-center">';
                     foreach ($images_activites as $activite) {
 
-                        echo '<div class="image-container ">
-                            <div class="img-chat">
-                                <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
-                                <div class="text-block">
-                                    <h4>Nature</h4>
-                                    <p>What a beautiful sunrise</p>
-                                </div>
-                            </div>';
-
+                        //Determiner si liké ou non
                         $nb_likes=sizeof(Like::where('ID_Image_activites', $activite['ID'])->get());
-                        
-
-                        echo '<div class="like">';
-
                         $likeThisOne = Like::where('ID_Utilisateurs', Session::get('id'))->where('ID_Image_activites', $activite['ID'])->get();
                         $class = sizeof($likeThisOne) != 0 ? "active" : "";  // On determine si l'utilisateur a liké ou non ce contenu
-                        echo '<p class="like-texte" data-id='.$activite['ID'].'>'. $nb_likes .'</p> <i class="fas fa-thumbs-up upvote '. $class .'" role="button"></i>';
+
+                        //Récuperer les commentaires de chaque image 
+                        $comms = CommentaireImage::where('ID_Image_activites', $activite['ID'])->get();
+                       
+
+                        echo '<div class="image-container ">
+                                <div class="img-chat">
+                                    <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
+                                    <div class="commentaires-image">';
+                                    foreach ($comms as $comm) {
+                                        $nomUtilisateur = "Inconnu";
+                                        try {
+                                            $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
+                                            $reponse->bindValue(':id', $comm['ID_Utilisateurs'], $bdd::PARAM_STR);
+                                            $reponse->execute();
+                                            
+                                            if($donnee = $reponse->fetch()) {
+                                                $nomUtilisateur = strtoupper($donnee['Nom']) . ' ' . ucfirst($donnee['Prenom']);
+                                            }
+                                        } catch(Exception $e) {
+                                            
+                                        }
+
+                                        echo '<p class="commentaire-image">['.$nomUtilisateur.']:<br/>'.$comm['Contenu'].'</p>';
+                                    }
+
+                        echo'       </div>
+                                </div>
+                                <div class="like">
+                                            <p class="like-texte" data-id='.$activite['ID'].'>'. $nb_likes .'</p> <i class="fas fa-thumbs-up upvote '. $class .'" role="button"></i>
+                                        </div> 
+                                <div class="ecrire-commentaire-image" style="visibility:hidden">
+                                    <p style="float:right;padding-top:5px;font-size:20px;">
+                                        Un commentaire ? Un avis ?
+                                    </p>
+                                    <textarea placeholder="Votre commentaire"></textarea>
+                                    <span hidden class="id-activite" value="'.$activite['ID'].'"></span>
+                                    <button class="btn btn-success envoyer-commentaire-image">Envoyer</button>  
+                                </div>
+                                
+                            </div>'; 
                         
-
-
-                        echo '</div></div>'; // Fin div "image-container" et "like"
                         
                     }
                     echo '</div>'; // Fin div "images"
@@ -251,7 +286,7 @@ if(!isset($activite_data)) {
                             $diff = $intervalle->format('%R%a jours');
                         }
                         
-                        $nomUtilisateur = "Bada";
+                        $nomUtilisateur = "";
                         try {
                             $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
                             $reponse->bindValue(':id', $avis['ID_Utilisateurs'], $bdd::PARAM_STR);
@@ -270,7 +305,7 @@ if(!isset($activite_data)) {
                         echo '<div class="panel-body">'.$avis['Contenu'].'</div></div></div>';
                     }
                 }else {
-                    echo 'Aucun commentaire';
+                    echo 'Aucun commentaire pour cette activité';
                 }
                 echo '</div>' // Fin div "commentaires
                 
@@ -290,7 +325,7 @@ if(!isset($activite_data)) {
     </div>
     
 </div>
-<script src="{{ asset('/js/activite.js') }}"></script>
+<script src="{{ asset('/js/activite_specifique.js') }}"></script>
 
 <?php }//Fin du else activité existante ?>
 @endsection

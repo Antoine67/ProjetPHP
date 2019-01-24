@@ -32,7 +32,7 @@
 
 .like-upvote
 {
-    width: 12%;
+    width: 100px;
     text-align: center;
 }
 
@@ -49,7 +49,9 @@ hr
 .like
 {
   color:#131212;
-  margin:3px;
+  margin-top:3px;
+  visibility:visible;
+  float:left;
 }
 
 .texte
@@ -125,7 +127,7 @@ hr
 
 .image-container { /* contient l'image + les like */
    display:inline-block;
-
+   margin:5px;
 }
 
 .like-texte
@@ -133,11 +135,12 @@ hr
   font-size: 1.5vw;
   color: #333333;
   display:inline-block;
+ 
 }
 
 .upvote {
     display:inline-block;
-    font-size: 1.5vw;
+    font-size: 30px;
 }
 
 .upvote:hover,.active 
@@ -164,16 +167,45 @@ hr
     position:relative;
 }
 
-/* Bottom right text */
-.text-block {
+/*  Zone contenant tous les commentaires  */
+.commentaires-image {
     position: absolute;
     bottom: 20px;
     right: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    overflow-y:scroll;
+    bottom:0;
+    right:0;
+    height:100%;
+    background: linear-gradient(to right,black, transparent);
+    width:100%;
+
+  }
+  
+
+/* Un commentaire sous une image */
+  .commentaire-image{
+
+    width:40%;
+    color:white;
+    margin:25px;
+    background : #3a3a3a;
+    border-radius: 15px;
+    left:0;
+    transition: all .2s ease-in-out;
   }
 
+.commentaire-image:hover {
+    transform: scale(1.05);
+}
 
 
-
+.ecrire-commentaire-image textarea {
+    margin-top:5px;
+    width:100%;
+    border-radius:5px;
+    line-height:2;
+    resize: none;
+}
 

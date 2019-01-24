@@ -17,6 +17,10 @@ class CreateCommandesTable extends Migration
             $table->increments('ID');
             $table->date('Date_commande');
             $table->unsignedInteger('Etat');
+            $table->unsignedInteger('Quantité');
+            $table->unsignedInteger('ID_Commandes');
+            $table->unsignedInteger('ID_Utilisateurs');
+            $table->float('Prix_total');
 
 
             $table->unsignedInteger('ID_Articles');

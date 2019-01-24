@@ -89,7 +89,7 @@ function getURL() {
                             <li class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="/profil">Mon profil</a></li>
-                                    <li role="presentation"><a href="#">Back-office</a></li>
+                                    <li role="presentation"><a href="/panel">Back-office</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>

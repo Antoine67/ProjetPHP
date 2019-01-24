@@ -16,6 +16,7 @@ class CreateCommentaireImagesTable extends Migration
         Schema::create('commentaire_images', function (Blueprint $table) {
             $table->increments('ID');
             $table->string('Contenu',512);
+            $table->unsignedInteger('ID_Utilisateurs');
            
             $table->unsignedInteger('ID_Image_Activites');
 

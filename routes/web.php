@@ -19,6 +19,7 @@ Route::get('profil','ProfilController@get');
 Route::post('profil', 'ProfilController@post');
 
 Route::get('achat','AchatController@get' );
+Route::post('achat','AchatController@post');
 
 Route::get('panel','PanelController@get' );
 Route::post('panel','PanelController@post' );
