@@ -51,8 +51,9 @@ class ConnexionController extends Controller
             //On verifie que l'email n'existe pas déjà
             try {
                 while(!$done) {
-                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE email=:identifiant');
+                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE email=:identifiant AND Mot_de_passe=:mdp');
                     $reponse->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
+                    $reponse->bindValue(':mdp', $mdp, $bdd::PARAM_STR);
                     $reponse->execute(); 
          
                     if($reponse->fetch()) {
@@ -60,8 +61,9 @@ class ConnexionController extends Controller
                         break;
                     }
 
-                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE identifiant=:identifiant');
+                    $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE identifiant=:identifiant AND Mot_de_passe=:mdp');
                     $reponse->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
+                    $reponse->bindValue(':mdp', $mdp, $bdd::PARAM_STR);
                     $reponse->execute();
 
                     if($reponse->fetch()) {
@@ -79,7 +81,6 @@ class ConnexionController extends Controller
             }
 
             //Ici tout est vérifié nous pouvons récupérer les données de l'utilisateur
-
             try {
                 if(isset($email)) {
                     $reponse = $bdd->prepare('SELECT * FROM utilisateurs WHERE email=:email');
