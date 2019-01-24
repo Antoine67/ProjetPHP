@@ -23,7 +23,7 @@ if(!isset($activite_data)) {
     echo "<h1>Impossible de trouver l'activité demandée</h1>";
 }else { 
 
-//URL sur laquelle il faut cherche les images
+    //URL sur laquelle il faut cherche les images
     //Protocle (HTTP/HTTPS)
     $protocol =(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://");
     $url = $protocol . $_SERVER['SERVER_NAME'];
@@ -35,9 +35,6 @@ if(!isset($activite_data)) {
     
     
    
-
-//{"ID":1,"Titre":"Activit\u00e9 Test!","Prix":5,"Image":"image_site\/activites","Description":"Description test","Date_realisation":"2019-01-20","Date_creation":"2019-01-20","ID_Utilisateurs":1}
-
 ?>
 
 

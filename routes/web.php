@@ -10,6 +10,8 @@ Route::post('activites','ActiviteController@post' );
 Route::get('boutique','BoutiqueController@get' );
 Route::post('boutique','BoutiqueController@post' );
 
+Route::post('boutique/article','BoutiqueController@ajoutArticlePanier');
+
 Route::get('idees','IdeeController@get');
 Route::post('idees', 'IdeeController@post');
 

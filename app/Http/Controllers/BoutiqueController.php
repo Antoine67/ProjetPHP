@@ -24,6 +24,30 @@ class BoutiqueController extends Controller
         return view('boutique_article')->with('id_article',$id_article);
     }
 
+    function ajoutArticlePanier() {
+        $sess = Session::get('identifiant');
+        if(isset($_POST) && isset($sess)) {
+            if(isset($_POST['id-article']) && isset($_POST['quantite'])) {
+                if(!is_numeric($_POST['id-article']) || !is_numeric($_POST['quantite']) ) {
+                    echo 'Erreur champ numérique mal renseigné';
+                    exit;
+                }
+
+                Panier::where('ID_Utilisateurs',Session::get('id'))->where('ID_Articles',$_POST['id-article'])->delete();
+
+
+                Panier::create([
+                    'Quantité' => $_POST['quantite'],
+                    'Date_creation' => date("Y-m-d H:i:s"),
+                    'ID_Articles' => $_POST['id-article'],
+                    'ID_Utilisateurs' =>Session::get('id'),
+                ]);
+                return redirect('/boutique');
+
+            }
+        }
+    }
+
     function rechercheArticle() {
         return view('recherche_article');
     }

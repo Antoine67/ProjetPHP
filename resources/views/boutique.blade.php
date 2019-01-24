@@ -36,35 +36,7 @@ if(!isset($article_data)) {
 ?>
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
 
-<!-- Mini-fenêtre (modal) -->
-<div class="modal fade" id="ajouter-article-panier" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title" id="titre-modal-photo">Ajouter un article au panier</h3>
-            </div>
 
-            <!-- Article à ajouter au panier -->
-            <div class="modal-body basket-content text-center">
-                    
-                <form action="/boutique" method="post" >
-                    @csrf
-                    <input type="hidden" id="id-article-modal" name="id-article">
-                    <img id="article-img-modal" alt="Image article" src="/none">
-                    <h2 id="article-nom-modal"></h2>
-                    <h3>Prix unitaire : <span id="article-prix-modal"></span>€</h3>
-                    <label  for="qte-cmd">Quantité :</label>
-                    <input id="qte-cmd" name="quantite" placeholder="Quantité" value="1">
-                    <hr class="delimiteur" >
-                    <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i>Ajouter au panier</button></div>
-                  </form>       
-              </div>
-
-         </div>
-     </div>
- </div>
 <?php
 if(isset($message)) {
     echo '<div class="alert alert-success message-succes">'.$message.'<span id="close-message"><i class="fas fa-times-circle"></i></span></div>';
@@ -118,82 +90,20 @@ if(isset($message)) {
     <hr>
     <h1>Notre boutique</h1>
 
-        <div class="recherche_p">
+    <div class="recherche_p">
 
-            <form action="/recherche" id="searchthis" method="get">
-                <input id="search" name="article" type="text" placeholder="Rechercher" required/>
-                <input id="search-btn" type="submit" value="Rechercher" />
-            </form>
+        <form action="/recherche" id="searchthis" method="get">
+            <input id="search" name="article" type="text" placeholder="Rechercher" required/>
+            <input id="search-btn" type="submit" value="Rechercher" />
+        </form>
 
-        </div>
-    <hr>
+    </div>
+
+    <div class="container-fluid text-center container"> 
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <div>
-                <h2  class="hiddenz" id="best">Nos meilleures ventes: </h2>
-            </div>
+            <h2>Naviguer parmis nos différentes catégories : </h2>
         </div>
-</div>
-
-<!-- Meilleures ventes -->
-
-<div class="row1">
-    <div class="container-fluid text-center container">
-    <?php 
-
-        $article_data = Article::select('Articles.*','Categories.Nom as Categorie')->orderBy('Vendu','DESC')
-        ->join('Categories', 'Articles.ID_Categories', '=', 'Categories.ID')
-        ->get();
-
-        echo '<a>';
-
-        if(sizeof($article_data)!=0) {
-            $nb_articles= 0;
-            $nb_max_articles = 3;
-            foreach ($article_data as $article) { 
-                if ($nb_articles == 2)
-                {
-                    echo '<div class="col-lg-4 col-md-12 col-sm-12 produit">';
-                }
-                else{
-                    echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
-                }
-                   
-                    echo '<div class = "containerz">';
-                        echo '<div class="imagetexte" value="'.$article['ID'].'">';
-                            echo '<h2 class="nom-article">'.$article['Nom'].'</h2>';
-                            echo'<span hidden class="id-article">'.$article['ID'].'</span>';
-                                echo '<img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >';
-                                echo '<h2><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
-                        echo '</div>';
-                    echo '</div>';
-                   
-                     echo '</div>';
-
-                $nb_articles++;
-                if($nb_articles>=$nb_max_articles) break; //On affiche uniquement le nombre souhaité d'articles dans les meilleures ventes
-
-            }
-        }else {
-            echo 'Aucun article trouvé !';
-        }
-        echo '</a>' 
-        
-        ?>  
-
     </div>
-</div>
-
-
-<br/><br/><br/><br/><br/><br/>
-<div class="container-fluid text-center container"> 
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <h2>Naviguer parmis nos différentes catégories : </h2>
-    </div>
-</div>
-
-<!-- Filtres / Boutons -->
-
-
 
     <div class="text-center">
 
@@ -220,6 +130,73 @@ if(isset($message)) {
             ?>
         </ul>
     </div>
+
+
+
+
+
+
+
+    <hr>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div>
+                <h2 class="hiddenz" id="best">Nos meilleures ventes: </h2>
+            </div>
+        </div>
+</div>
+
+<!-- Meilleures ventes -->
+
+<div class="row1">
+    <div class="container-fluid text-center container">
+    <?php 
+
+        $article_data = Article::select('Articles.*','Categories.Nom as Categorie')->orderBy('Vendu','DESC')
+        ->join('Categories', 'Articles.ID_Categories', '=', 'Categories.ID')
+        ->get();
+
+        
+
+        if(sizeof($article_data)!=0) {
+            $nb_articles= 0;
+            $nb_max_articles = 3;
+            foreach ($article_data as $article) { 
+                if ($nb_articles == 2)
+                {
+                    echo '<div class="col-lg-4 col-md-12 col-sm-12 produit">';
+                }
+                else{
+                    echo '<div class="col-lg-4 col-md-6 col-sm-6 produit">';
+                }
+                   
+                    echo '<a class = "containerz" href="/boutique/article/'.$article['ID'].'">';
+                        echo '<div class="imagetexte" value="'.$article['ID'].'">';
+                            echo '<h2 class="nom-article">'.$article['Nom'].'</h2>';
+                            echo'<span hidden class="id-article">'.$article['ID'].'</span>';
+                                echo '<img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                                echo '<h2><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
+                            echo '</div>';
+                        echo '</div>';
+                   
+                     echo '</a>';
+
+                $nb_articles++;
+                if($nb_articles>=$nb_max_articles) break; //On affiche uniquement le nombre souhaité d'articles dans les meilleures ventes
+
+            }
+        }else {
+            echo 'Aucun article trouvé !';
+        }
+
+        
+        ?>  
+
+    </div>
+</div>
+
+
+<br/><br/><br/><br/><br/><br/>
+   
 
     </div>
 </div>
