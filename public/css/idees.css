@@ -85,12 +85,13 @@ hr
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
 }
 
-.titre-fenetre-texte
+.titre-activite
 {
-    
+    width: 100%;
+    font-size: 150%;
+    font-weight: bold;
 }
 
 .categories
@@ -195,7 +196,7 @@ hr
 
 .div-img
 {
-    width: 10%;
+    width: 30%;
 }
 
 .img
@@ -206,7 +207,7 @@ hr
 
 .idee
 {
-    width: 78%;
+    width: 58%;
 }
 
 .upvote

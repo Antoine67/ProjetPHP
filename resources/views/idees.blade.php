@@ -48,9 +48,9 @@ use Illuminate\Support\Facades\DB;
                 </div>
             </div>
             <div>
-            <label class="left">Vous pensez avoir une bonne idée ?</label>
-            <br/>
-            <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
+                <label class="left">Vous pensez avoir une bonne idée ?</label>
+                <br/>
+                <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
             </div>
         </div>
         
@@ -65,7 +65,7 @@ use Illuminate\Support\Facades\DB;
             echo '
 
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                <div class="left"> 
+                <div class="titre-activite"> 
                     '. $idee_proposee['Titre'] .' 
                 </div>
 
@@ -82,7 +82,11 @@ use Illuminate\Support\Facades\DB;
                     <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
                     <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
                 </div>
-
+                <div>
+                    <label class="left">Vous pensez avoir une bonne idée ?</label>
+                    <br/>
+                    <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
+                </div>
             </div>
         
             ';
@@ -118,7 +122,7 @@ use Illuminate\Support\Facades\DB;
                     </div>
 
                     <div class="col-lg-10 col-md-10 col-sm-10 idee">
-                        '.$idee_acceptee['Description'].'
+                        '.$idee_acceptee['Contenu'].'
                     </div>
                 </div>
             </div>
@@ -143,8 +147,8 @@ use Illuminate\Support\Facades\DB;
             foreach($idees_refusees as $idee_refusee) {
                 echo '
                 <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                    <div class="left"> 
-                        '. $idee_refusee['Nom'] .' 
+                    <div class="left titre-activite"> 
+                        '. $idee_refusee['Titre'] .' 
                     </div>
 
                     <div class="col-lg-10 col-md-10 col-sm-10 div-img">
@@ -152,7 +156,7 @@ use Illuminate\Support\Facades\DB;
                     </div>
 
                     <div class="col-lg-10 col-md-10 col-sm-10 idee">
-                        '.$idee_refusee['Description'].'
+                        '.$idee_refusee['Contenu'].'
                     </div>
                 </div>
             </div>
