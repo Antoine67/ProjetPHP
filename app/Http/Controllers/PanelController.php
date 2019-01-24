@@ -8,7 +8,7 @@ class PanelController extends Controller
 {
     function get() {
         $sess = Session('role');
-        if(isset($sess) && $sess == 3) {
+        if(isset($sess) && $sess == 2) {
             return view('panel');
         }
         return redirect('/');

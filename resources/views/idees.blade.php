@@ -81,17 +81,17 @@ use Illuminate\Support\Facades\DB;
                     <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> 1000</i></a>
                     <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
                     <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
-                </div>
-                <div>
-                    <label class="left">Vous pensez avoir une bonne idée ?</label>
-                    <br/>
-                    <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
-                </div>
+                </div>    
             </div>
         
             ';
         } 
-        echo '</div>';
+        echo '  <div>
+                    <label class="left">Vous pensez avoir une bonne idée ?</label>
+                    <br/>
+                    <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
+                </div>
+            </div>';
     }
   
         
