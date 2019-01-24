@@ -18,6 +18,9 @@ Route::post('profil', 'ProfilController@post');
 
 Route::get('achat','AchatController@get' );
 
+Route::get('panel','PanelController@get' );
+Route::post('panel','PanelController@post' );
+
     //PAGES SPECIFIQUES
 Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );
 Route::post('activites/{id_activite}','ActiviteSpecifiqueController@post' );
@@ -26,7 +29,9 @@ Route::get('boutique/{categorie}','BoutiqueController@categorieSpecifique');
 
 Route::get('boutique/article/{id_article}','BoutiqueController@articleSpecifique');
 
-Route::get('/recherche?article={article}','BoutiqueController@rechercheArticle');
+Route::get('/recherche','BoutiqueController@rechercheArticle');
+
+
 
 
     //CONNEXION / DECONNEXION / INSCRIPTION

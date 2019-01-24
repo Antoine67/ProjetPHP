@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Idee;
 
+use Session;
+
+use Illuminate\Support\Facades\Input;
+
 class IdeeController extends Controller
 {
     function get() {
@@ -14,10 +18,13 @@ class IdeeController extends Controller
 
     function post() {
         $sess = Session::get('identifiant');
+        print_r($_POST);
         if(isset($_POST) &&  isset($sess)) {
+            
             $file = Input::file('fichier');
-            if(isset($_POST['nom']) && isset($_POST['description']) && isset($file)) {
 
+            if(isset($_POST['nom']) && isset($_POST['description']) && isset($file)) {
+               
                 $idee = Idee::create([
                     'Titre' => $_POST['nom'],
                     'Contenu' => $_POST['description'],
@@ -38,11 +45,9 @@ class IdeeController extends Controller
                         $file->move($chemin, 'image_'. $incr .'.'. $ext);
                         $cheminTrouvé = true;
 
-                        $idee->attributes['Image'] = 'image_'. $incr .'.'. $ext;
+                        $idee->update('Image','image_'. $incr .'.'. $ext) ;
                     }
-
-
-               
+                }
             }
         }
     }
