@@ -55,7 +55,6 @@ class ActiviteController extends Controller
                             $file->move($chemin, 'image_'. $incr .'.'. $ext);
                             $cheminTrouvé = true;
     
-                            ['Image','Auteur', 'ID_Activites'];
     
                             ImageActivite::create([
                                 'Image' => $chemin . 'image_'. $incr. '.'. $ext,

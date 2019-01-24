@@ -10,13 +10,11 @@ Route::post('activites','ActiviteController@post' );
 Route::get('boutique','BoutiqueController@get' );
 Route::post('boutique','BoutiqueController@post' );
 
-Route::get('idees', function () {
-    return view('idees');
-});
+Route::get('idees','IdeeController@get');
+Route::post('idees', 'IdeeController@post');
 
-Route::get('profil', function () {
-    return view('profil');
-});
+Route::get('profil','ProfilController@get');
+Route::post('profil', 'ProfilController@post');
 
 Route::get('achat','AchatController@get' );
 
@@ -28,6 +26,7 @@ Route::get('boutique/{categorie}','BoutiqueController@categorieSpecifique');
 
 Route::get('boutique/article/{id_article}','BoutiqueController@articleSpecifique');
 
+Route::get('/recherche?article={article}','BoutiqueController@rechercheArticle');
 
 
     //CONNEXION / DECONNEXION / INSCRIPTION

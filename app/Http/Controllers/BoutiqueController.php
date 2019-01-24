@@ -24,6 +24,10 @@ class BoutiqueController extends Controller
         return view('boutique_article')->with('id_article',$id_article);
     }
 
+    function rechercheArticle($article) {
+        return view('recherche_article')->with('article',$article);
+    }
+
     function post() {
         $sess = Session::get('identifiant');
         if(isset($_POST) && isset($sess)) {

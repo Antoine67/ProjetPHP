@@ -119,8 +119,8 @@ if(isset($message)) {
 
         <div class="recherche_p">
 
-            <form action="/search" id="searchthis" method="get">
-                <input id="search" name="q" type="text" placeholder="Rechercher" />
+            <form action="/recherche" id="searchthis" method="get">
+                <input id="search" name="article" type="text" placeholder="Rechercher" required/>
                 <input id="search-btn" type="submit" value="Rechercher" />
             </form>
 
