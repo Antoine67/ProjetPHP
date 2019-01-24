@@ -87,6 +87,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
         <thead>
             
             <tr>
+                <th>ID</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Identifiant</th>
@@ -149,6 +150,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
 
                 
                     <tr>
+                        <td>'. $utilisateur["ID"] .'</td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur["Nom"] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Prenom'] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Identifiant'] .'</span></td>
@@ -169,6 +171,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                 <tfoot>
                     
                     <tr>
+                        <th>ID</th>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Identifiant</th>

@@ -1,10 +1,15 @@
 $(document).ready(function() {
     console.log('doc rdy');
-    $('#example').DataTable( {
+    $('#example').DataTable( 
+        {"language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        },
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
+        
+        
     } );
 
     bindModifier();
@@ -37,10 +42,10 @@ function bindConfirmer() {
         id_btn = $(this).attr('id');
         console.log($('.inp-'+id_btn));
         $('.inp-'+id_btn).each(function() {
-            $( this ).replaceWith('<td class="bouton-modifier" role="button">'+$(this).text()+'</td>');
+            $( this ).replaceWith('<span class="el-'+id_btn+'">'+$(this).text()+'</span>');
           });
 
-          el_clq.replaceWith('<td id="conf-'+id_btn+'" class="bouton-confirmer">Confirmer</td>');
+          el_clq.replaceWith('<td id="conf-'+id_btn+'" class="bouton-modifier" role="button">Confirmer</td>');
           bindModifier();
       });
 }
