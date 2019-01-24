@@ -45,7 +45,7 @@ class IdeeController extends Controller
                         $file->move($chemin, 'image_'. $incr .'.'. $ext);
                         $cheminTrouvé = true;
 
-                        $idee->update('Image','image_'. $incr .'.'. $ext) ;
+                        Idee::where('ID',$idee['id'])->update(['Image'=> $chemin .'image_'. $incr .'.'. $ext]);
                     }
                 }
             }
