@@ -59,11 +59,10 @@ $LISTE_CESI = array(
 	}
 	
 	//Session::put('prenom','oui');
-	echo Session::get('token');
 
     echo'   <div class="col-lg-12 col-md-12 col-sm-12">
 
-
+    		<span hidden id="tokentexte">'.Session::get('token').'<?=$nom_table?></span>
     		<span hidden id="idtexte">'.Session::get('id').'<?=$nom_table?></span>
 
             <div>

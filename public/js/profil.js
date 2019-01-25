@@ -2,13 +2,18 @@ $(function() {
 
     var urlloc = 'http://localhost:8000/api/utilisateurs/';
     var id = $("#idtexte").text();
+    var token = $("#tokentexte").text();
     console.log(id);
+    console.log(token);
+    document.cookie = "token_cookie_bde="+token;
 
     $.ajax({
 
-
         url: urlloc+id,
         type: 'get',
+
+
+
         xhrFields: {
          withCredentials: true
         },
@@ -21,6 +26,31 @@ $(function() {
             'Localisation':localisation,
 
         },
+        beforeSend : function(xhr) {
+            xhr.setRequestHeader('Cookie', cookie_name=token);
+          },
+/*
+        const axiosConfig = {
+            headers: {
+                'content-Type': 'application/json',
+                "Accept": "/",
+                "Cache-Control": "no-cache",
+                "Cookie": document.cookie
+                },
+
+            credentials: "same-origin"
+            };
+        axios.defaults.withCredentials = true;
+        axios.get('/url',
+        axiosConfig)
+        .then((res) => {
+        // Some result here
+        })
+        .catch((err) => {
+        console.log(':(');
+        }); */
+
+
         processData: false,
         success: function(response){
 
@@ -50,6 +80,9 @@ $(function() {
             $.ajax({
                 url: urlloc+id,
                 type: 'put',
+                xhrFields: {
+                     withCredentials: false
+                    },
                 data: {
                     'Prenom':prenom,
                     'Nom':nom,
