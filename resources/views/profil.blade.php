@@ -60,9 +60,9 @@ $LISTE_CESI = array(
 	
 	//Session::put('prenom','oui');
 
-
     echo'   <div class="col-lg-12 col-md-12 col-sm-12">
 
+    		<span hidden id="tokentexte">'.Session::get('token').'<?=$nom_table?></span>
     		<span hidden id="idtexte">'.Session::get('id').'<?=$nom_table?></span>
 
             <div>
@@ -164,7 +164,7 @@ $LISTE_CESI = array(
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
 										
-				    		</div>;
+				    		</div>.
 			    		</div>';
 			    		break; 		
 			    	}
@@ -180,7 +180,7 @@ $LISTE_CESI = array(
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
 										
-				    		</div>;
+				    		</div>
 			    		</div>';	
 			    	
 				}
@@ -201,16 +201,19 @@ $LISTE_CESI = array(
 							->get();
 						foreach ($actis as $acti)
 						{
-							if($inscription['Date_incription']<$acti['Date_realisation'])
+							if($inscription['ID_Utilisateurs']==Session::get('id'))
 							{
+								if($inscription['Date_incription']<$acti['Date_realisation'])
+								{
 
-							echo '
-							<div class="info2">
-								<div class="etage3">
-			    				<p class="etageB">'.$acti['Titre'].' le '.$acti['Date_realisation'].'</p>
-			    				</div>;
-		    				</div>';
+								echo '
+								<div class="info2">
+									<div class="etage3">
+				    				<p class="etageB">'.$acti['Titre'].' le '.$acti['Date_realisation'].'</p>
+				    				</div>.
+			    				</div>';
 
+								}
 							}
 
 						}

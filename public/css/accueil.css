@@ -30,11 +30,11 @@
   }
 
   .bandefond{
-   background: #8d9bab;
-   background: -moz-linear-gradient(left, #8d9bab 10%, #707274 50%, #8d9bab 85%);
-   background: -webkit-linear-gradient(left, #8d9bab 10%,#707274 50%,#8d9bab 85%);
-   background: linear-gradient(to right, #8d9bab 10%,#707274 50%,#8d9bab 85%);
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9bab', endColorstr='#8d9bab',GradientType=1 );
+   background: #ffe0f9; /* Old browsers */
+   background: -moz-linear-gradient(left, #ffe0f9 0%, #7373a0 50%, #ffe0f9 100%); /* FF3.6-15 */
+   background: -webkit-linear-gradient(left, #ffe0f9 0%,#7373a0 50%,#ffe0f9 100%); /* Chrome10-25,Safari5.1-6 */
+   background: linear-gradient(to right, #ffe0f9 0%,#7373a0 50%,#ffe0f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe0f9', endColorstr='#ffe0f9',GradientType=1 );
    margin: 10px;
 }
 

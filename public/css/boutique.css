@@ -65,7 +65,6 @@ border-radius: 2px;
 }
 
 .containerz:hover {
-  text-decoration:none;
   color:#000000;
 
 }
@@ -301,4 +300,19 @@ border-radius: 2px;
 
 .taille-prix{
   font-size: 16px;
+}
+
+.form-act input {
+  width:100%;
+}
+
+.form-act textarea {
+    margin-top:5px;
+    width:100%;
+    line-height:2;
+    resize: none;
+}
+
+.form-act select {
+  width:100%;
 }
