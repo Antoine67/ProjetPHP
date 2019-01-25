@@ -57,9 +57,10 @@ if(sizeof($categorie_existe) <=0) {
                         <div class="image-container">
                             <img class="image img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >
                         </div>
+                        <div class=taille_couleur_article>
                     <p class="nom-article">'.$article['Nom'].'</p>
                     <span class="prix-article">'.$article['Prix'].'</span>€
-                    </a></div>';
+                    </div></a></div>';
         }
         echo '</div>';
     }else {
