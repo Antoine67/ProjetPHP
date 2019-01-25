@@ -284,4 +284,15 @@ function lireCookie (request) {
 
 
 
-app.listen(3000, () => console.log('listening on port 3000'));
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
+  next();
+});
+
+
+
+
+
+app.listen(8000, () => console.log('listening on port 8000'));

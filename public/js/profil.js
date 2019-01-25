@@ -1,14 +1,17 @@
 $(function() {
 
-    var urlloc = '/localhost:3000/api/';
+    var urlloc = 'http://localhost:8000/api/utilisateurs/';
     var id = $("#idtexte").text();
     console.log(id);
 
     $.ajax({
 
 
-        url: '/localhost:3000/api/',
+        url: urlloc+id,
         type: 'get',
+        xhrFields: {
+         withCredentials: true
+        },
         data: {
             'Prenom':prenom,
             'Nom':nom,
@@ -20,7 +23,7 @@ $(function() {
         },
         processData: false,
         success: function(response){
-            
+
         }
     });
 
@@ -45,7 +48,7 @@ $(function() {
         var champ_update = $(this).attr('id');
             
             $.ajax({
-                url: '/localhost:3000/api/4',
+                url: urlloc+id,
                 type: 'put',
                 data: {
                     'Prenom':prenom,
@@ -56,6 +59,7 @@ $(function() {
                     'Localisation':localisation,
                 },
                 success: function(response){
+                    console.log("Prénom modifié mdr");
                     
                 }
             });
