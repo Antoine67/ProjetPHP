@@ -19,7 +19,7 @@ use App\Categorie;
 
 use Illuminate\Support\Facades\DB;
 
-//$article_data = Article::orderBy('Categorie')->get();
+
 
 $article_data = Article::select('Articles.*','Categories.Nom as Categorie')
 ->join('Categories', 'Articles.ID_Categories', '=', 'Categories.ID')
@@ -51,6 +51,72 @@ if(isset($message)) {
     </div>
 
 
+
+    <?php
+   $liste_categories = array();
+   $cats_all = Categorie::all();
+   foreach ($cats_all as $cat) {
+       array_push($liste_categories,$cat['Nom']);
+   }
+    ?>
+
+    <!--Ajout un produit -->
+    <div class="modal fade" id="ajouter-article" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+
+                    <h3 class="modal-title" >Ajouter un article</h3>
+
+                </div>
+
+                <!-- Panel Ajout activités -->
+                <div class="modal-body basket-content">
+                    
+                    <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
+                        @csrf
+
+                        <label><b>Nom du produit :</b></label>
+                        <input type="text" name="nom" required>
+                    
+
+                        <label><b>Description</b></label>
+                        <textarea name="description" required></textarea>
+
+
+                        <label><b>Prix</b></label>
+                        <input type="text" name="prix" required>
+              
+                        <label><b>Quantité disponible</b> </label>
+                        <input type="text" name="quantité" required>
+
+                        <label><b>Catégorie</b> </label>
+                        <select name="categorie" required>
+                        <option value="0" selected disabled>Catégorie </option>
+                            <?php 
+                            foreach ($cats_all as $cat) {
+                                $min = strtolower($cat['Nom']);
+                            echo '<option value="'. $cat['ID'] .'">'. $cat['Nom'] .'</option>';
+                            }
+                            
+                            ?>
+                        </select>
+ 
+
+                        <label><b>Image de ce produit :</b></label>
+                        <input type="file" class="btn btn-primary" name="fichier" required>
+
+
+
+                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                    </form>       
+                </div>
+
+             </div>
+         </div>
+    </div>
 
 
 
