@@ -21,8 +21,7 @@ function bindModifier() {
     $('.bouton-modifier').click(function() {
         el_clq = $(this);
         id_btn = $(this).attr('id');
-        console.log('.el-'+id_btn);
-        console.log($('.el-'+id_btn));
+
         $('.el-'+id_btn).each(function() {
             $( this ).replaceWith('<input class="inp-'+id_btn+'"value="'+$(this).text()+'">');
           });
@@ -41,11 +40,14 @@ function bindConfirmer() {
         el_clq = $(this);
         id_btn = $(this).attr('id');
         console.log($('.inp-'+id_btn));
+        
         $('.inp-'+id_btn).each(function() {
-            $( this ).replaceWith('<span class="el-'+id_btn+'">'+$(this).text()+'</span>');
+            let el_text = $(this).val();
+            $( this ).replaceWith('<span class="el-'+id_btn+'">'+el_text+'</span>');
+           
           });
 
-          el_clq.replaceWith('<td id="conf-'+id_btn+'" class="bouton-modifier" role="button">Confirmer</td>');
+          el_clq.replaceWith('<td id="'+id_btn+'" class="bouton-modifier" role="button">Modifier</td>');
           bindModifier();
       });
 }
