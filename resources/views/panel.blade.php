@@ -114,7 +114,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                 
                     <tr>
                         <td>'. $utilisateur["ID"] .'</td>
-                        <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur["Nom"] .'</span></td>
+                        <td class="nom"><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur["Nom"] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Prenom'] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Identifiant'] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['Mot_de_passe'] .'</span></td>

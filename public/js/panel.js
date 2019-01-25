@@ -43,10 +43,29 @@ function bindConfirmer() {
         $('.inp-'+id_btn).each(function() {
             let el_text = $(this).val();
             $( this ).replaceWith('<span class="el-'+id_btn+'">'+el_text+'</span>');
+            console.log($(this).parent());
            
           });
 
           el_clq.replaceWith('<td id="'+id_btn+'" class="bouton-modifier" role="button">Modifier</td>');
           bindModifier();
+
+          $.ajax({
+            url: '/localhost:3000/api',
+            type: 'put',
+            data: {
+                'Nom':nom,
+                'Prenom':prenom,
+                'Identifiant':identifiant,
+                'Mot_de_passe':mdp,
+                'Email':email,
+                'Localisation':localisation,
+                'Role':role
+            },
+            success: function(response){
+                
+            }
+        });
       });
+      
 }
