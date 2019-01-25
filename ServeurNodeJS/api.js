@@ -110,7 +110,7 @@ app.post('/api/login', (req,res) =>{
    var identif = req.body.identifiant;
    var mdp = req.body.mdp;
 
-   var queryString = "SELECT * FROM utilisateurs WHERE Identifiant = ? AND Mot_de_passe = ? AND Role = 3"
+   var queryString = "SELECT * FROM utilisateurs WHERE Identifiant = ? AND Mot_de_passe = ?"
    connection.query(queryString, [identif,mdp], (err, rows, fields) => {
          console.log(rows);
 

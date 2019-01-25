@@ -177,7 +177,7 @@ border-radius: 2px;
 
 
 }
-
+/*
 #categories a
 {
 
@@ -187,10 +187,10 @@ border-radius: 2px;
     border : 1px solid #9EA0A1;
     transition:background-color 0.25s;
     width:80%;
-
+    
 }
 
-
+*/
 
 
 
@@ -252,3 +252,30 @@ border-radius: 2px;
 .active-classer {
   background-color:#879bb5;
 }
+
+
+.button_categories{
+  color : #7373A0;
+  text-decoration:none;
+  font-size:25px;
+  font-family:'Roboto',sans-serif;
+  transition: all 0.15s;
+  border:0.15em solid #545471;
+  width:80%;
+  margin : 3px 3px 0 3px !important; 
+  margin : 1px 2px 0 2px;
+  border-radius:0;
+  
+  }
+  
+  .button_categories:hover{
+   color:#313141;
+   border-color:#313141;
+   background-color: #313141;
+  
+  }
+  
+  .button_categories:active{
+   color:#fff;
+   border-color:#fff;
+  }

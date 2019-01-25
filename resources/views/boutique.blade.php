@@ -142,7 +142,7 @@ if(isset($message)) {
             foreach($categories_all as $categ) {
                 $categ_nom = strtr( $categ['Nom'], $caract_interdit );
                 $categ_nom = strtolower($categ_nom);
-                echo'<li><a href="/boutique/'.$categ_nom.'" class="btn" > '.$categ['Nom'].' </a></li>';
+                echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories bk_grnd_button" > '.$categ['Nom'].' </a></li>';
             }
             
             
