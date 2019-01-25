@@ -62,18 +62,13 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
 
 
 
-    if(sizeof($idees_proposees)<=0) {
+    if(sizeof($roles)<=0) {
         echo '
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
             <h2 class = "titre">Gestion des utilisateurs</h2>
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                <div class="center">Aucune idée proposée
+                <div class="center">Aucun utilisateur a été trouvé
                 </div>
-            </div>
-            <div>
-                <label class="left">Vous pensez avoir une bonne idée ?</label>
-                <br/>
-                <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
             </div>
         </div>
         
