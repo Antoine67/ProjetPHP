@@ -10,22 +10,26 @@ $articles_panier = Article::select('Articles.*','Paniers.Quantité')
 
                                                                 
 if(sizeof($articles_panier) == 0) {
-    echo '<div class="center">Votre panier est vide !<br/> Allez jeter un oeil sur la <a href="/boutique">boutique<a/></div>';                                              
+    echo '<div class="center achat">Votre panier est vide !<br/> Allez jeter un oeil sur la <a href="/boutique">boutique<a/></div>';                                              
 }else {
-    echo '<h3>Votre commande :</h3>
-    <form action="" method="POST">
-    '; ?> @csrf <?php 
-    echo '<ul>';
-    foreach($articles_panier as $article_p) {
-        echo '<li>'.$article_p['Nom'].'</li>
-        
-        
-        ';
-    }echo '</ul>
+    echo '
     
-      <div id="paypal-button-container"></div>
-      <button type="submit">Valider</button>  
-    </form>
+    <div class="achat">
+      <h3>Votre commande :</h3>
+      <form action="" method="POST">
+      '; ?> @csrf <?php 
+      echo '<ul>';
+      foreach($articles_panier as $article_p) {
+          echo '<li>'.$article_p['Nom'].'</li>
+          
+          
+          ';
+      }echo '</ul>
+      
+        <div id="paypal-button-container"></div>
+        <button type="submit">Valider</button>  
+      </form>
+    </div>
     
     ';
 
@@ -37,7 +41,21 @@ if(sizeof($articles_panier) == 0) {
 
  
  
+<style>
 
+      
+  .achat{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+  }
+
+
+
+
+
+</style>
 
 
 

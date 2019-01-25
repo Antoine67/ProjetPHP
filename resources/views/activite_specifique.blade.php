@@ -210,7 +210,7 @@ if(!isset($activite_data)) {
                         $comms = CommentaireImage::where('ID_Image_activites', $activite['ID'])->get();
                        
 
-                        echo '<div class="image-container ">
+                        echo '<div style="display:none" class="image-container ">
                                 <div class="img-chat">
                                     <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
                                     <div class="commentaires-image">';

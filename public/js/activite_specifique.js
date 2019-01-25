@@ -1,7 +1,8 @@
 $(function() {
 
-    $('.commentaires-image').hide();    
-    //$('.ecrire-commentaire-image').hide();
+    $('.image-container').css("display","inline-block");
+   
+    $('.commentaires-image').hide();
 
     $( ".upvote" ).click(function() {
             var currentToken = $('#csrf-token').text();
