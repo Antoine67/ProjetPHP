@@ -68,7 +68,7 @@ class ConnexionController extends Controller
             $server_output = curl_exec($ch);
             $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             
-            curl_close ($ch);
+            
             
 
             if ($httpcode != 200) {
@@ -76,7 +76,20 @@ class ConnexionController extends Controller
                 return view('connexion');
             } 
 
-            $token = $server_output;
+
+
+            $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+            $header = substr($server_output, 0, $header_size);
+            $body = substr($server_output, $header_size);
+            $token = $body;
+               
+            
+            curl_close ($ch);
+
+
+
+
+
 
             $identifiant = $_POST['identifiant'];
             $mdp = $_POST['mdp'];
