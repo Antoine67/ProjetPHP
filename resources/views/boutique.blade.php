@@ -6,7 +6,10 @@
 <link rel="stylesheet" href="{{ asset('/css/boutique.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/recherche.css') }}">
 
-<script src="{{ asset('/js/boutique.js') }}"></script>
+
+
+
+<script src="{{ asset('/js/recherche.js') }}"></script>
 
 <?php
 
@@ -92,9 +95,26 @@ if(isset($message)) {
 
     <div class="recherche_p">
 
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
+    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <?php echo'
+    <script>
+        var liste = [';
+        foreach($article_data as $ar) {
+            echo'"'.$ar['Nom'].'",';
+        }
+        echo'
+            ];
+    </script>';
+    ?>
+ 
+
         <form action="/recherche" id="searchthis" method="get">
-            <input id="search" name="article" type="text" placeholder="Rechercher" required/>
-            <input id="search-btn" type="submit" value="Rechercher" />
+            <div class="recherche-div">
+                <input id="search" name="article" type="text" placeholder="Rechercher" required/>
+                <input id="search-btn" type="submit" value="Rechercher" />
+            </div>
         </form>
 
     </div>
