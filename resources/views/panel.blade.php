@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\DB;
     $idees_proposees = Idee::orderby('Date_creation','ASC')->where('Etat',1)->get();
     $idees_acceptees = Idee::orderby('Date_creation','ASC')->where('Etat',2)->get();
     $idees_refusees = Idee::orderby('Date_creation','ASC')->where('Etat',0)->get();
+
+
     $roles_deso = Role::orderby('ID','ASC')->get();
     $roles = array();
     foreach($roles_deso as $r) {
@@ -99,40 +101,6 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
         </thead>
         <tbody>
         ';
-        /*foreach($idees_proposees as $idee_proposee) {
-            echo '
-
-            <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                <div class="titre-activite"> 
-                    '. $idee_proposee['Titre'] .' 
-                </div>
-
-                <div class="col-lg-10 col-md-10 col-sm-10 div-img">
-                    <img class="img" src=' . $url . $idee_proposee['Image'] .' alt ="Image idée">
-                </div>
-
-                <div class="col-lg-10 col-md-10 col-sm-10 idee">
-                    '.$idee_proposee['Contenu'].'
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-2 upvote">
-                    <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> 1000</i></a>
-                    <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
-                    <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
-                </div>
-                
-            </div>
-            <div>
-                <label class="left">Vous pensez avoir une bonne idée ?</label>
-                <br/>
-                <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
-            </div>
-            
-            ';
-        }
-        
-                                
-                        */
 
         foreach($utilisateurs as $utilisateur) {
             $utilisateur['DroitBoutique'] = $roles[$utilisateur['Role']]['Perm_boutique'];
@@ -158,7 +126,6 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitActivites'] .'</span></td>
                         <td><span class="el-'. $utilisateur["ID"] .'">'. $utilisateur['DroitHeader'] .'</span></td>
                         <td class="bouton-modifier" id="'. $utilisateur["ID"] .'" role="button">Modifier</td>
-
                     </tr>
                 ';
         }

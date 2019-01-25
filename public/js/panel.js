@@ -6,10 +6,9 @@ $(document).ready(function() {
         },
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'csv', 'excel', 'pdf', { extend: 'print', text: 'Imprimmer' },
+            
         ]
-        
-        
     } );
 
     bindModifier();
