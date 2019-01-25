@@ -235,3 +235,19 @@ hr
     margin :5px 0;
   }
 
+
+
+  
+.button-modal
+{
+border:none;
+  border-radius:20px;
+  color:#ebeff1;
+  box-shadow:none;
+  text-shadow:none;
+  padding:6px 15px;
+  background: #6C7A86;
+  transition:background-color 0.25s;
+  outline:none;
+}
+

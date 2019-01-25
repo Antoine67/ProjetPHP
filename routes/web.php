@@ -24,6 +24,8 @@ Route::post('achat','AchatController@post');
 Route::get('panel','PanelController@get' );
 Route::post('panel','PanelController@post' );
 
+Route::get('administration-cesi','AdministrationController@get');
+
     //PAGES SPECIFIQUES
 Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );
 Route::post('activites/{id_activite}','ActiviteSpecifiqueController@post' );

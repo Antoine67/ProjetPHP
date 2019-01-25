@@ -15,6 +15,58 @@ use Illuminate\Support\Facades\DB;
 
 ?>
 
+<button class="btn btn-default button-modal " id="ajout-idee" data-toggle="modal" data-target="#ajouter-idee">Ajouter au panier</button>
+
+
+ <!--Ajout un produit -->
+ <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+
+                    <h3 class="modal-title" >Ajouter un article</h3>
+
+                </div>
+
+                <!-- Panel Ajout activités -->
+                <div class="modal-body basket-content">
+                    
+                    <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
+                        @csrf
+
+                        <label><b>Nom du produit :</b></label>
+                        <input type="text" name="nom" required>
+                    
+
+                        <label><b>Description</b></label>
+                        <textarea name="description" required></textarea>
+
+
+                        <label><b>Prix</b></label>
+                        <input type="text" name="prix" required>
+              
+                        <label><b>Quantité disponible</b> </label>
+                        <input type="text" name="quantité" required>
+
+ 
+
+                        <label><b>Image de ce produit :</b></label>
+                        <input type="file" class="btn btn-primary" name="fichier" required>
+
+
+
+                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                    </form>       
+                </div>
+
+             </div>
+         </div>
+    </div>
+
+
+
 <div class="container-fluid container"> 
   <h1> La boîte à idées </h1>
   <hr/>
@@ -33,6 +85,22 @@ use Illuminate\Support\Facades\DB;
 
     $url=$url . '/';
 
+?>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+<?php
     $idees_proposees = Idee::orderby('Date_creation','ASC')->where('Etat',1)->get();
     $idees_acceptees = Idee::orderby('Date_creation','ASC')->where('Etat',2)->get();
     $idees_refusees = Idee::orderby('Date_creation','ASC')->where('Etat',0)->get();
