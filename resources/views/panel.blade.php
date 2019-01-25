@@ -8,11 +8,30 @@
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
 <script src="{{ asset('/js/panel.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
+<hr class="hr-navbar">
+<div class="header">
+    <nav class="navbar navbar-back-office center">
+        <a class="btn btn-default bouton-gestion" href="/panel/activites" role="button">Activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/articles" role="button">Articles</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/avis" role="button">Avis</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/categories" role="button">Categories</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/commandes" role="button">Commandes</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/commentaire_images" role="button">Commentaires des images</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/idees" role="button">Idées</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/image_activites" role="button">Images des activites</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/inscriptions" role="button">Inscriptions aux activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/likes" role="button">Likes des activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/paniers" role="button">Paniers</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/roles" role="button">Roles</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/votes" role="button">Votes des idées</a>
+    </nav>
+</div>
 
 <?php
 
 use App\Idee;
 use App\Role;
+use App\Commande;
 
 use Illuminate\Support\Facades\DB;
 
@@ -26,18 +45,11 @@ use Illuminate\Support\Facades\DB;
 
     $url=$url . '/';
 
-
-    $idees_proposees = Idee::orderby('Date_creation','ASC')->where('Etat',1)->get();
-    $idees_acceptees = Idee::orderby('Date_creation','ASC')->where('Etat',2)->get();
-    $idees_refusees = Idee::orderby('Date_creation','ASC')->where('Etat',0)->get();
-
-
     $roles_deso = Role::orderby('ID','ASC')->get();
     $roles = array();
     foreach($roles_deso as $r) {
         $roles[$r['ID']] = $r;
     }
-
 
 try {
     $bdd = DB::connection('mysql2')->getPdo();
@@ -151,111 +163,9 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
             </table>
         </div>';
     }
-  
-        
-    if(sizeof($idees_acceptees)<=0) {
-        echo '
-            <div class="col-lg-12 col-md-12 col-sm-12 categories">
-                <h2 class = "titre">Idées acceptées</h2>
-                <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                    <div class="center">Aucune idée n\'a été acceptée
-                    </div>
-                </div>
-            </div>
-            ';
-        }
-    else {
-        
-        foreach($idees_acceptees as $idee_acceptee) {
-            echo '
-                <div class="col-lg-12 col-md-12 col-sm-12 categories">
-                <h2 class = "titre">Idées acceptées</h2>
-                <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                    <div class="left"> 
-                        '. $idee_acceptee['Titre'] .' 
-                    </div>
 
-                    <div class="col-lg-10 col-md-10 col-sm-10 div-img">
-                        <img class="img" src=' . $url . $idee_acceptee['Image'] .' alt ="Image idée">
-                    </div>
-
-                    <div class="col-lg-10 col-md-10 col-sm-10 idee">
-                        '.$idee_acceptee['Contenu'].'
-                    </div>
-                </div>
-            </div>
-                
-            ';
-        }
-    }
-
-        if(sizeof($idees_refusees)<=0) {
-            echo '
-            <div class="col-lg-12 col-md-12 col-sm-12 categories">
-                <h2 class = "titre">Idées refusées</h2>
-                <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                    <div class="center">Aucune idée n\'a été refusée
-                    </div>
-                </div>
-            </div>
-        </div>
-            ';
-        }
-        else {
-            foreach($idees_refusees as $idee_refusee) {
-                echo '
-                <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                    <div class="left titre-activite"> 
-                        '. $idee_refusee['Titre'] .' 
-                    </div>
-
-                    <div class="col-lg-10 col-md-10 col-sm-10 div-img">
-                        '. $idee_refusee['Image'] .'
-                    </div>
-
-                    <div class="col-lg-10 col-md-10 col-sm-10 idee">
-                        '.$idee_refusee['Contenu'].'
-                    </div>
-                </div>
-            </div>
-                ';
-            }
-
-            } 
 ?>
-    <!--Ajout activités -->
-    <div class="modal fade" id="modifier-utilisateur" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">    
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
 
-                        <h3 class="modal-title" >Ajouter une idée</h3>
-                    </div>
-
-                    <!-- Panel Ajout activités -->
-                    <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/idees" method="post" enctype="multipart/form-data">
-                            @csrf
-
-                            <label><b>Nom de l'activité :</b></label>
-                            <input type="text" name="nom" required>
-
-                            <label><b>Description :</b></label>
-                            <textarea name="description" required></textarea> 
-
-                            <label><b>Image par défaut de cette activité :</b></label>
-                            <input type="file" class="btn btn-primary" name="fichier" required>
-
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
-                        </form>       
-                    </div>
-
-                </div>
-            </div>
-        </div>
 </div> 
 
 @endsection
