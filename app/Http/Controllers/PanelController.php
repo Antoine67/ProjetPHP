@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class PanelController extends Controller
 {
-    function get($nom_panel) {
+    function get() {
         $sess = Session('role');
         if(isset($sess) && $sess == 2) {
-            return view('panel')->with('nom_panel',$nom_panel);
+            return view('panel');
         }
         return redirect('/');
         

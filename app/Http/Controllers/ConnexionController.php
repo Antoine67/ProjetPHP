@@ -20,7 +20,7 @@ class ConnexionController extends Controller
 
     function post() {
         $sess = Session::get('identifiant');
-        if (isset($sess)) {
+        if (isset($sess)) {//Déjà connecté
             return redirect('/');
         }
 
@@ -44,6 +44,41 @@ class ConnexionController extends Controller
                     exit;
                 }
             }
+
+            $data = array(
+                "identifiant" => $_POST['identifiant'],
+                "mdp" => $_POST['mdp'],
+            );
+
+            
+            $postdata = json_encode($data);
+            //$postdata = http_build_query($arr);
+            
+            $opts = array('http' =>
+                array(
+                    'method'  => 'POST',
+                    'header'  => 'Content-type: application/json',
+                    'content' => $postdata
+                )
+            );
+            
+            $context  = stream_context_create($opts);
+            print_r($postdata);
+            $result = file_get_contents('http://localhost:3000/api/login', false, $context);
+            if ($result === FALSE) { /* Handle error */ }
+
+            var_dump($result);
+            exit;
+
+
+
+
+
+
+
+
+
+
 
             $identifiant = $_POST['identifiant'];
             $mdp = $_POST['mdp'];
