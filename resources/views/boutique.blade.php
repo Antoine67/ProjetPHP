@@ -51,42 +51,6 @@ if(isset($message)) {
     </div>
 
 
-    <!-- Mini-fenêtre (modal) Ajout d'article -->
-    <div class="modal fade" id="ajouter-article" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-
-                        <h3 class="modal-title" id="titre-modal-photo">Ajouter des photos</h3>
-
-                    </div>
-
-                    <!-- Panel pour ajouter des articles -->
-                    <div class="modal-body basket-content">
-                    
-                        <form action="/boutique" method="post" enctype="multipart/form-data">
-                            @csrf
-
-                            <label  for="creation-nom-article">Nom :</label>
-                            <input id="creation-nom-article">
-
-                            
-                            
-                            Selectionnez l'image que vous souhaitez voir associer à cette article :
-                            <input type="file" class="btn btn-primary" name="fichier" >
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
-                        </form>       
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
 
 
 
@@ -122,6 +86,7 @@ if(isset($message)) {
     <div class="container-fluid text-center container"> 
         <div class="col-lg-12 col-md-12 col-sm-12">
             <h2>Naviguer parmis nos différentes catégories : </h2>
+            <br>
         </div>
     </div>
 
@@ -142,7 +107,7 @@ if(isset($message)) {
             foreach($categories_all as $categ) {
                 $categ_nom = strtr( $categ['Nom'], $caract_interdit );
                 $categ_nom = strtolower($categ_nom);
-                echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories bk_grnd_button" > '.$categ['Nom'].' </a></li>';
+                echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories" ><p class="bk_text"> '.$categ['Nom'].' </p></a></li>';
             }
             
             
@@ -161,6 +126,7 @@ if(isset($message)) {
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div>
                 <h2 class="hiddenz" id="best">Nos meilleures ventes: </h2>
+                <br>
             </div>
         </div>
 </div>
@@ -168,7 +134,7 @@ if(isset($message)) {
 <!-- Meilleures ventes -->
 
 <div class="row1">
-    <div class="container-fluid text-center container">
+    <div class="container-fluid text-center container article_container">
     <?php 
 
         $article_data = Article::select('Articles.*','Categories.Nom as Categorie')->orderBy('Vendu','DESC')
@@ -194,7 +160,7 @@ if(isset($message)) {
                             echo '<h2 class="nom-article">'.$article['Nom'].'</h2>';
                             echo'<span hidden class="id-article">'.$article['ID'].'</span>';
                                 echo '<img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >';
-                                echo '<h2><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
+                                echo '<h2 class="taille-prix"><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
                             echo '</div>';
                         echo '</div>';
                    

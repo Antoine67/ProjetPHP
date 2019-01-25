@@ -43,6 +43,8 @@ border-radius: 2px;
 .containerz {
   position: relative;
   height:300px;
+  color:#313141;
+
 }
 
 .overlay {
@@ -62,8 +64,10 @@ border-radius: 2px;
 
 }
 
-.containerz:hover .overlay {
-  opacity: 1;
+.containerz:hover {
+  text-decoration:none;
+  color:#000000;
+
 }
 
 .text {
@@ -171,9 +175,7 @@ border-radius: 2px;
     font : bold 22px Batang, arial, serif;
     list-style-type : none;
     padding-bottom : 32px; /* à modifier suivant la taille de la police ET de la hauteur de l'onglet dans #onglets li */
-    border-bottom : 1px solid #9EA0A1;
-    border-radius : 50px;
-    margin-left : 0;
+  margin-left : 0;
 
 
 }
@@ -254,6 +256,8 @@ border-radius: 2px;
 }
 
 
+
+
 .button_categories{
   color : #7373A0;
   text-decoration:none;
@@ -269,13 +273,32 @@ border-radius: 2px;
   }
   
   .button_categories:hover{
-   color:#313141;
-   border-color:#313141;
-   background-color: #313141;
+  color:#313141;
+  border-color:#313141;
   
   }
-  
-  .button_categories:active{
-   color:#fff;
-   border-color:#fff;
+
+  .row1{
+    background: linear-gradient(95deg, #ff0000, #ffab00, #e3ff00, #50ff00, #00ff85, #00c5ff, #0027ff);
+    background-size: 1400% 1400%;
+    
+    animation: AnimationName 6s ease infinite;
+    padding-top:1%;
   }
+
+  @keyframes AnimationName {
+    0%{background-position:0% 43%}
+    50%{background-position:100% 58%}
+    100%{background-position:0% 43%}
+}
+  
+.imagetexte {
+  background: #fff;
+  padding-top:0.02px;
+  padding-bottom:2%;
+
+}
+
+.taille-prix{
+  font-size: 16px;
+}
