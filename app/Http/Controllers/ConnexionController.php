@@ -45,64 +45,43 @@ class ConnexionController extends Controller
                 }
             }
 
+            
             $data = array(
                 "identifiant" => $_POST['identifiant'],
                 "mdp" => $_POST['mdp'],
             );
+  
+
+            $url="localhost:3000/api/login"; 
            
-            /*
-            
-            $postdata = json_encode($data);
-            //$postdata = http_build_query($arr);
-            
-            $url = 'http://localhost:3000/api/login';
-            
-            $context = stream_context_create(array(
-                'http' => array( 
-                    'method' => 'POST', 
-                    'header' => 'Content-type: application/json',
-                    'content' => http_build_query( $data),
-                    )));
-            
-            $resp = file_get_contents($url, FALSE, $context); 
-            print_r($resp); 
-                    */
-                    /*
-
             $ch = curl_init();
- 
-            //Set the URL that you want to GET by using the CURLOPT_URL option.
-            curl_setopt($ch, CURLOPT_URL, 'http://google.com');
-            
-            //Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
+
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            @curl_setopt($ch, CURLOPT_HEADER  , true);  // we want headers
+
+            curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
+
+            //Reponse
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $server_output = curl_exec($ch);
+            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             
-            //Set CURLOPT_FOLLOWLOCATION to true to follow redirects.
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_close ($ch);
             
-            //Execute the request.
-            $data = curl_exec($ch);
-            
-            //Close the cURL handle.
-            curl_close($ch);
-            
-            //Print the data out onto the page.
-            echo $data;
-            exit;*/
 
+            if ($httpcode != 200) {
+                echo '<div class="err"><strong>Erreur</strong> de connexion : Vérifiez votre e-mail/identifiant et mot de passe </div>';;
+                return view('connexion');
+            } 
 
-
-
-
-
-
-
-
+            $token = $server_output;
 
             $identifiant = $_POST['identifiant'];
             $mdp = $_POST['mdp'];
             $done=false;
-            //On verifie que l'email n'existe pas déjà
+            
             try {
                 while(!$done) {
                     $reponse = $bdd->prepare('SELECT mot_de_passe FROM utilisateurs WHERE email=:identifiant AND Mot_de_passe=:mdp');
@@ -155,6 +134,7 @@ class ConnexionController extends Controller
                     Session::put('localisation', $donnee['Localisation']);
                     Session::put('role', $donnee['Role']);
                     Session::put('mdp', $donnee['Mot_de_passe']);
+                    Session::put('token',$token);
                 }
                    
               

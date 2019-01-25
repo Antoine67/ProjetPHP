@@ -110,31 +110,27 @@ app.post('/api/login', (req,res) =>{
    var identif = req.body.identifiant;
    var mdp = req.body.mdp;
 
-   console.log(identif);
-   console.log(mdp);
-   
-   
-   var queryString = "SELECT * FROM utilisateurs WHERE Identifiant = ? AND Mot_de_passe = ?"
-   connection.query(queryString, [identif,mdp], (err, rows, fields) => {
+   var queryString = "SELECT * FROM utilisateurs WHERE (Identifiant = ? AND Mot_de_passe = ?) OR (Email = ? AND Mot_de_passe = ?) "
+   connection.query(queryString, [identif,mdp,identif,mdp], (err, rows, fields) => {
          console.log(rows);
 
       // Vérification de l'existance de l'utilisateur
 
       if(rows.length == 0){
-        res.status(200).send("L'utilisateur n'existe pas");
+        res.status(404).send("L'utilisateur n'existe pas");
    }else{   
 
       // Création du Token
      
-      jwt.sign({rows}, 'secretkey', {expiresIn: '60*60*24*2'}, (err,token) => {
+      jwt.sign({rows}, 'secretkey', {expiresIn: '2 hours'}, (err,token) => {
       
          // Création d'un cookie contenant le token
-
+	
          res.writeHead(200, {
             'Set-Cookie': 'token_cookie_bde='+ token,
             'Content-Type': 'text/plain',
           });
-         res.end('Cookie créé');
+         res.end(token);
       });
        }
 
