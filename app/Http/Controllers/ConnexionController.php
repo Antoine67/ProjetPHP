@@ -49,27 +49,46 @@ class ConnexionController extends Controller
                 "identifiant" => $_POST['identifiant'],
                 "mdp" => $_POST['mdp'],
             );
-
+           
+            /*
             
             $postdata = json_encode($data);
             //$postdata = http_build_query($arr);
             
-            $opts = array('http' =>
-                array(
-                    'method'  => 'POST',
-                    'header'  => 'Content-type: application/json',
-                    'content' => $postdata
-                )
-            );
+            $url = 'http://localhost:3000/api/login';
             
-            $context  = stream_context_create($opts);
-            print_r($postdata);
-            $result = file_get_contents('http://localhost:3000/api/login', false, $context);
-            if ($result === FALSE) { /* Handle error */ }
+            $context = stream_context_create(array(
+                'http' => array( 
+                    'method' => 'POST', 
+                    'header' => 'Content-type: application/json',
+                    'content' => http_build_query( $data),
+                    )));
+            
+            $resp = file_get_contents($url, FALSE, $context); 
+            print_r($resp); 
+                    */
+                    /*
 
-            var_dump($result);
-            exit;
-
+            $ch = curl_init();
+ 
+            //Set the URL that you want to GET by using the CURLOPT_URL option.
+            curl_setopt($ch, CURLOPT_URL, 'http://google.com');
+            
+            //Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            
+            //Set CURLOPT_FOLLOWLOCATION to true to follow redirects.
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            
+            //Execute the request.
+            $data = curl_exec($ch);
+            
+            //Close the cURL handle.
+            curl_close($ch);
+            
+            //Print the data out onto the page.
+            echo $data;
+            exit;*/
 
 
 
