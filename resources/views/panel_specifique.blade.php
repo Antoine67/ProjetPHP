@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\DB;
 
 
 <div class="container-fluid container"> 
-  <h1> Back office </h1>
+  <h1> Back-office </h1>
   <hr/>
 </div>
 
