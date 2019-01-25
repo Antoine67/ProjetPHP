@@ -112,7 +112,7 @@ function viderPanier() {
             '_token' : currentToken //Utilisé pour la verification csrf
         },
         success: function(response){
-            console.log('sauvegardé :'+articles);
+           console.log('panier vidé !')
     
         }
     });

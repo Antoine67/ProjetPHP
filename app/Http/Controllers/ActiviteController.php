@@ -60,6 +60,8 @@ class ActiviteController extends Controller
                                 'Image' => $chemin . 'image_'. $incr. '.'. $ext,
                                 'Auteur' => Session::get('nom') . ' ' . Session::get('prenom'),
                                 'ID_Activites' => $activite['id'],
+                                'ID_Utilisateurs' => Session::get('id'),
+                                'Valide' => 1,
                             ]);
                         }
                     }

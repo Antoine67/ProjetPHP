@@ -10,6 +10,8 @@ use App\Inscription;
 
 use App\Panier;
 
+use App\CommentaireImage;
+
 use Session;
 
 class GererDonnees extends Controller
@@ -88,6 +90,17 @@ class GererDonnees extends Controller
                     case('vider-panier') : {
                         Panier::where('ID_Utilisateurs', Session::get('id'))->delete();
                         
+                        break;
+                    }
+    
+                    case ('ajouter-commentaire-image') : {
+                        if(isset($_POST['id-image'] ) && isset($_POST['contenu'] )) {
+                            CommentaireImage::create([
+                                'ID_Utilisateurs' => Session::get('id'),
+                                'ID_Image_Activites' => $_POST['id-image'],
+                                'Contenu' => $_POST['contenu'],
+                            ]);
+                        }
                         break;
                     }
 

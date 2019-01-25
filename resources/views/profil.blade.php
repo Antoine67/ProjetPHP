@@ -126,7 +126,7 @@ $LISTE_CESI = array(
 
 				foreach ($inscription_data as $inscription)
 				{
-					if($inscription['ID_Utilisateurs']=Session::get('id'))
+					if($inscription['ID_Utilisateurs']==Session::get('id'))
 					{
 						$actis = Activite::select('Activites.*')
 							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
@@ -134,6 +134,8 @@ $LISTE_CESI = array(
 							->get();
 						foreach ($actis as $acti)
 						{
+						if($inscription['Date_incription']>$acti['Date_realisation'])
+							{
 
 							echo '
 							<div class="info2">
@@ -145,17 +147,55 @@ $LISTE_CESI = array(
 				    				</div>
 			    				</div>;
 		    				</div>';
+		    				}
+		    				
+						}
+						
+					}else{
+			    		echo '
+						<div class="info2">
+							<div class="etage3">
+				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
+										
+				    		</div>;
+			    		</div>';
+			    		break;
+			    	}
+				}
+
+			echo '
+			</div>
+			<div class="infobot">
+				<p class="etage"> Activités que vous avez réalisé : </p>';
+				foreach ($inscription_data as $inscription)
+				{
+					if($inscription['ID_Utilisateurs']=Session::get('id'))
+					{
+						$actis = Activite::select('Activites.*')
+							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
+							->where('Activites.ID',$inscription['ID_Activites'])
+							->get();
+						foreach ($actis as $acti)
+						{
+							if($inscription['Date_incription']<$acti['Date_realisation'])
+							{
+
+							echo '
+							<div class="info2">
+								<div class="etage3">
+			    				<p class="etageB">'.$acti['Titre'].'</p>
+			    				</div>;
+		    				</div>';
+
+							}
+
 						}
 						
 
 					}
 				}
 
-			echo '
-			</div>
-			<div class="infobot">
-				<p class="etage"> Activités que vous avez réalisé : </p>
-				<p class="etage2"> Alexandre </p>
+				echo'
 			</div>
 			</div>';
 	?>
@@ -167,7 +207,7 @@ $LISTE_CESI = array(
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
 
-                        <h3 class="modal-title" >Ajouter une idée</h3>
+                        <h3 class="modal-title" >Confirmation</h3>
                     </div>
 
                     <!-- Panel Ajout activités -->
@@ -176,16 +216,8 @@ $LISTE_CESI = array(
                         <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
                             @csrf
 
-                            <label><b>Nom de l\'activité :</b></label>
-                            <input type="text" name="nom" required>
-
-                            <label><b>Description</b></label>
-                            <textarea name="description" required></textarea> 
-
-                            <label><b>Image par défaut de cette activité :</b></label>
-                            <input type="file" class="btn btn-primary" name="fichier" required>
-
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 etageB right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Oui</button></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 etageC right"><button data-dismiss="modal" class="btn btn-danger"><i class="fas fa-times"></i>Non</button></div>
                         </form>       
                     </div>
 
@@ -206,14 +238,13 @@ $LISTE_CESI = array(
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
                         
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
+
 
                             <label><b>Nouveau prénom :</b></label>
                             <input type="text" name="nom" required>
 
                             <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+                             
                     </div>
 
                 </div>
