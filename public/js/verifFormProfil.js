@@ -23,7 +23,7 @@ function verifMdp(champ) {
 }
 
 function verifConfMdp(champ) {
-   if(champ.value == $("#mdpp").text()) {
+   if(champ.value == $("#mdpp").val()) {
       return creerErreur(champ, false);
    } else {
       return creerErreur(champ, true, 'Les mots de passe ne correspondent pas');
@@ -34,7 +34,7 @@ function verifConfMdp(champ) {
 
 
 function creerErreur(champ, erreur, message) {
-   var sb = $(":button"); //Notre bouton de submit du formulaire
+   var sb = $(".butbut"); //Notre bouton de submit du formulaire
 
    
 
@@ -42,16 +42,15 @@ function creerErreur(champ, erreur, message) {
       champ.style.backgroundColor = "#f23232";
       $(champ).prev().html(message);
       sb.prop('disabled', true);
-      sb.text("Champs erronés ou incomplets 😞");
+      sb.text("Champs erronés");
 
-      verifConfMdp(document.getElementById("mdpconf"));
       return false;
    }
    else {
       $(champ).prev().html('');
       champ.style.backgroundColor = "";
       sb.prop('disabled', false);
-      sb.text("S'inscrire");
+      sb.html('<i class="fas fa-check"></i>Changer');
       return true;
    }
       

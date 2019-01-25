@@ -4,6 +4,9 @@
 
 
 <link rel="stylesheet" href="{{ asset('/css/profil.css') }}">
+<script src="{{ asset('/js/profil.js') }}"></script>
+<script src="{{ asset('/js/verifFormProfil.js') }}"></script>
+
 <?php
 $LISTE_CESI = array(
     "Aix-en-Provence",
@@ -59,47 +62,50 @@ $LISTE_CESI = array(
 
 
     echo'   <div class="col-lg-12 col-md-12 col-sm-12">
+
+    		<span hidden id="idtexte">'.Session::get('id').'<?=$nom_table?></span>
+
             <div>
             	<div class="infotop">
 	                <p class="etage"> Votre prénom : </p>
-	                <p class="etage2"> '. Session::get('prenom') .' </p>
+	                <p id="prenomtexte" class="etage2"> '. Session::get('prenom') .' </p>
 	                <div class="center">
-				        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-prenom">Modifier</a>
+				        <a id="prenom" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-prenom">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre nom : </p>
-	                <p class="etage2"> '. Session::get('nom') .' </p>
+	                <p id="nomtexte" class="etage2"> '. Session::get('nom') .' </p>
 	                <div class="center">
-				        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-nom">Modifier</a>
+				        <a id="nom" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-nom">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre identifiant : </p>
-	                <p class="etage2"> '. Session::get('identifiant') .' </p>
+	                <p id="identifianttexte" class="etage2"> '. Session::get('identifiant') .' </p>
 	                <div class="center">
-				        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-identifiant">Modifier</a>
+				        <a id="identifiant" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-identifiant">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre mot de passe : </p>
-	                <p class="etage2 mdp"> '. $mmm .' </p>
+	                <p id="mdptexte" class="etage2 mdp"> '. $mmm .' </p>
 	                <div class="center">
-				        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mdp">Modifier</a>
+				        <a id="mdp" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mdp">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	            	<p class="etage"> Votre adresse email : </p>
-	            	<p class="etage2"> '. Session::get('email') .' </p>
+	            	<p id="emailtexte" class="etage2"> '. Session::get('email') .' </p>
 	            	<div class="center">
-				        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mail">Modifier</a>
+				        <a id="email" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mail">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="infobot">
 	            	<p class="etage"> Votre localisation : </p>
-	            	<p class="etage2"> '. $loc .' </p>
+	            	<p id="localisationtexte" class="etage2"> '. $loc .' </p>
 	            	<div class="center">
-        				<a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-loc">Modifier</a>
+        				<a id="localisation" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-loc">Modifier</a>
     				</div>
 	            </div>
             </div>
@@ -134,7 +140,7 @@ $LISTE_CESI = array(
 							->get();
 						foreach ($actis as $acti)
 						{
-						if($inscription['Date_incription']>$acti['Date_realisation'])
+							if($inscription['Date_incription']>$acti['Date_realisation'])
 							{
 
 							echo '
@@ -150,26 +156,44 @@ $LISTE_CESI = array(
 		    				}
 		    				
 						}
-						
-					}else{
-			    		echo '
+					
+					if($inscription['Date_incription']<$acti['Date_realisation'])	
+					{
+						echo '
 						<div class="info2">
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
 										
 				    		</div>;
 			    		</div>';
-			    		break;
+			    		break; 		
 			    	}
+			    	
 				}
+			}
+
+			if(!isset($inscription))
+				{
+					
+						echo '
+						<div class="info2">
+							<div class="etage3">
+				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
+										
+				    		</div>;
+			    		</div>';	
+			    	
+				}
+
+
 
 			echo '
 			</div>
-			<div class="infobot">
+			<div class="infobot2">
 				<p class="etage"> Activités que vous avez réalisé : </p>';
 				foreach ($inscription_data as $inscription)
 				{
-					if($inscription['ID_Utilisateurs']=Session::get('id'))
+					if($inscription['ID_Utilisateurs']==Session::get('id'))
 					{
 						$actis = Activite::select('Activites.*')
 							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
@@ -183,16 +207,41 @@ $LISTE_CESI = array(
 							echo '
 							<div class="info2">
 								<div class="etage3">
-			    				<p class="etageB">'.$acti['Titre'].'</p>
+			    				<p class="etageB">'.$acti['Titre'].' le '.$acti['Date_realisation'].'</p>
 			    				</div>;
 		    				</div>';
 
 							}
 
 						}
+
+						if($inscription['Date_incription']>$acti['Date_realisation'])	
+						{
+							echo '
+							<div class="info2">
+								<div class="etage3">
+					    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
+											
+					    		</div>;
+				    		</div>';
+				    		break; 		
+				    	}
 						
 
 					}
+				}
+
+				if(!isset($inscription))
+				{
+					
+						echo '
+						<div class="info2">
+							<div class="etage3">
+				    		<p class="etageB">Vous vous n\'êtes inscrit à aucune activité.</p>
+										
+				    		</div>;
+			    		</div>';	
+			    	
 				}
 
 				echo'
@@ -212,13 +261,9 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
 
                             <div class="col-lg-6 col-md-6 col-sm-6 etageB right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Oui</button></div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageC right"><button data-dismiss="modal" class="btn btn-danger"><i class="fas fa-times"></i>Non</button></div>
-                        </form>       
+                            <div class="col-lg-6 col-md-6 col-sm-6 etageC right"><button data-dismiss="modal" class="btn btn-danger"><i class="fas fa-times"></i>Non</button></div>  
                     </div>
 
                 </div>
@@ -237,13 +282,11 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-
 
                             <label><b>Nouveau prénom :</b></label>
-                            <input type="text" name="nom" required>
+                            <input id="newprenom" type="text" name="nom" required>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
+                            <div class="right"><button id="modifierprenom" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
                              
                     </div>
 
@@ -263,15 +306,11 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
 
                             <label><b>Nouveau nom :</b></label>
                             <input type="text" name="nom" required>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+                            <div class="right"><button id="modifiernom" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -290,15 +329,11 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
 
                             <label><b>Nouveau identifiant :</b></label>
                             <input type="text" name="nom" required>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+                            <div class="right"><button id="modifieridentifiant" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -317,42 +352,33 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageB">
-                            	<div class="etageB"
-	                            	<label><b>Ancien mot de passe :</b></label>
-	                            </div>
-	                            
-                        	</div>
-                        	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
-	                            	<input type="text" name="amdp" required>
-	                        </div>
+
 
                         	<div class="col-lg-6 col-md-6 col-sm-6 etageB">
-                        		<div class="etageB"
+                        		<div class="etageB">
 	                            	<label><b class="">Nouveau mot de passe :</b></label>
 	                            </div>
+	                        </div>
 	                            
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageC">
-	                            	<input type="text" name="nmdp" required>
+                            <div>
+                            	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
+	                            	<input id="mdpp" type="text" name="nmdp" onblur="verifMdp(this)" required>
+	                        	</div>
 	                        </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 etageB">
-                            	<div class="etageB"
+                            	<div class="etageB">
 	                            	<label><b >Confirmation du mot de passe :</b></label>
 	                            </div>
 	                            
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageC">
-	                            	<input type="text" name="nmdp2" required>
-	                        </div>
+                        	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
+                            	<input id="mdpconf" type="text" name="nmdp2" onblur="verifConfMdp(this)" required>
+                        	</div>
 
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+
+                            <div class="right"><button id="modifiermdp" type="button2" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -371,15 +397,11 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                            @csrf
 
                             <label><b>Nouvelle adresse mail :</b></label>
-                            <input type="text" name="nom" required>
+                            <input id="mdpconf" type="text" name="nom" onblur="verifMail(this)" required>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+                            <div class="right"><button id="modifieremail" type="button" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -398,10 +420,6 @@ $LISTE_CESI = array(
 
                     <!-- Panel Ajout activités -->
                     <div class="modal-body basket-content">
-                        
-                        <form class="form-act" action="/profil" method="post" enctype="multipart/form-data">
-                        	
-                            @csrf
                             
                             <label><b class="espace">Nouveau centre CESI :</b></label>
 							<select name="localisation" required>
@@ -415,8 +433,7 @@ $LISTE_CESI = array(
                         		?>
                     		</select>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
-                        </form>       
+                            <div class="right"><button id="modifierlocalisation" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>   
                     </div>
 
                 </div>
