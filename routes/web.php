@@ -28,6 +28,9 @@ Route::post('panel','PanelController@post' );
 Route::get('activites/{id_activite}','ActiviteSpecifiqueController@get' );
 Route::post('activites/{id_activite}','ActiviteSpecifiqueController@post' );
 
+Route::get('panel/{nom_panel}','PanelSpecifiqueController@get' );
+Route::post('panel/{nom_panel}','PanelSpecifiqueController@post' );
+
 Route::get('boutique/{categorie}','BoutiqueController@categorieSpecifique');
 
 Route::get('boutique/article/{id_article}','BoutiqueController@articleSpecifique');
