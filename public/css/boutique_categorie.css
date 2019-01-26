@@ -45,7 +45,7 @@ hr {
 .active-classer{
     background-color:#9c9c9c;
 }
-.image-article{
+.img-article{
     height:250px;
     width:275px;
     object-fit: cover;

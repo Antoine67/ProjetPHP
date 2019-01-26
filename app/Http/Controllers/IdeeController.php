@@ -48,6 +48,7 @@ class IdeeController extends Controller
                         Idee::where('ID',$idee['id'])->update(['Image'=> $chemin .'image_'. $incr .'.'. $ext]);
                     }
                 }
+                return redirect('/idees');
             }
         }
     }

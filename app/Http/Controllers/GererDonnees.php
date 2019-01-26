@@ -12,6 +12,8 @@ use App\Panier;
 
 use App\CommentaireImage;
 
+use App\ImageActivite;
+
 use Session;
 
 class GererDonnees extends Controller
@@ -100,6 +102,25 @@ class GererDonnees extends Controller
                                 'ID_Image_Activites' => $_POST['id-image'],
                                 'Contenu' => $_POST['contenu'],
                             ]);
+                        }
+                        break;
+                    }
+
+                    case('signaler-image-activite') : {
+                        var_dump($_POST); 
+                        if(isset($_POST['id-image'])) {
+
+                            ImageActivite::where('ID',$_POST['id-image'])->update(['Valide' => 0]);;
+                        }
+                        break;
+                    }
+                    case('supprimer-image-activite') : {
+                        if(isset($_POST['id-image'])) {
+
+
+                            CommentaireImage::where('ID_Image_Activites',$_POST['id-image'])->delete();
+                            Like::where('ID_Image_activites',$_POST['id-image'])->delete();
+                            ImageActivite::where('ID',$_POST['id-image'])->delete();
                         }
                         break;
                     }

@@ -55,7 +55,7 @@ use Illuminate\Support\Facades\DB;
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
             <h2 class = "titre">Gestion des '. $nom_panel .'</h2>
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                <div class="center">Aucune '. $nom_panel .' n\'a été trouvée
+                <div class="center">Aucune donnée trouvée pour la table "'. $nom_panel .'"
                 </div>
             </div>
         </div>

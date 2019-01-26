@@ -15,56 +15,6 @@ use Illuminate\Support\Facades\DB;
 
 ?>
 
-<button class="btn btn-default button-modal " id="ajout-idee" data-toggle="modal" data-target="#ajouter-idee">Ajouter au panier</button>
-
-
- <!--Ajout un produit -->
- <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-
-                    <h3 class="modal-title" >Ajouter un article</h3>
-
-                </div>
-
-                <!-- Panel Ajout activités -->
-                <div class="modal-body basket-content">
-                    
-                    <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
-                        @csrf
-
-                        <label><b>Nom du produit :</b></label>
-                        <input type="text" name="nom" required>
-                    
-
-                        <label><b>Description</b></label>
-                        <textarea name="description" required></textarea>
-
-
-                        <label><b>Prix</b></label>
-                        <input type="text" name="prix" required>
-              
-                        <label><b>Quantité disponible</b> </label>
-                        <input type="text" name="quantité" required>
-
- 
-
-                        <label><b>Image de ce produit :</b></label>
-                        <input type="file" class="btn btn-primary" name="fichier" required>
-
-
-
-                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
-                    </form>       
-                </div>
-
-             </div>
-         </div>
-    </div>
-
 
 
 <div class="container-fluid container"> 
@@ -101,6 +51,16 @@ use Illuminate\Support\Facades\DB;
 
 
 <?php
+
+/*
+Idee::select('Idees.*','Votes.Quantité')
+->join('Votes', 'Votes.ID_Idees', '=', 'Idees.ID')
+->where('ID_Utilisateurs',Session::get('id'))
+->get();*/
+
+
+
+
     $idees_proposees = Idee::orderby('Date_creation','ASC')->where('Etat',1)->get();
     $idees_acceptees = Idee::orderby('Date_creation','ASC')->where('Etat',2)->get();
     $idees_refusees = Idee::orderby('Date_creation','ASC')->where('Etat',0)->get();
@@ -116,7 +76,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
             </div>
             <div>
-                <label class="left">Vous pensez avoir une bonne idée ?</label>
+                <label class="left">Vous avez une idée d\'activité à soumettre ? ?</label>
                 <br/>
                 <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
             </div>
@@ -130,6 +90,9 @@ use Illuminate\Support\Facades\DB;
         <h2 class = "titre">Idées proposées</h2>
         ';
         foreach($idees_proposees as $idee_proposee) {
+            $nb_votes= sizeof(Vote::where('ID_Idees',$idee_proposee['ID'])->get());
+
+
             echo '
 
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
@@ -146,7 +109,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
 
                 <div class="col-lg-2 col-md-2 col-sm-2 upvote">
-                    <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> 1000</i></a>
+                    <a class="btn btn-default upvote-button" role="button" data-toggle="modal" data-target="#upvote-idee"><i class="fas fa-angle-up"> '.$nb_votes.'</i></a>
                     <a class="btn btn-default check-button" role="button" data-toggle="modal" data-target="#check-idee"><i class="fas fa-check"></i></a>
                     <a class="btn btn-default ban-button" role="button" data-toggle="modal" data-target="#ban-idee"><i class="fas fa-ban"></i></a>
                 </div>    
@@ -155,7 +118,7 @@ use Illuminate\Support\Facades\DB;
             ';
         } 
         echo '  <div>
-                    <label class="left">Vous pensez avoir une bonne idée ?</label>
+                    <label class="left">Vous avez une idée d\'activité à soumettre ?</label>
                     <br/>
                     <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
                 </div>
@@ -277,14 +240,14 @@ use Illuminate\Support\Facades\DB;
         </div>
     </div>
         <div>
-            <label class="left">Vous pensez avoir une bonne idée ?</label>
+            <label class="left">Vous avez une idée d'activité à soumettre ?</label>
             <br/>
             <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
         </div>
     <div>
 
         
-        <!--Ajout activités -->
+        <!--Ajout une idée -->
         <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">

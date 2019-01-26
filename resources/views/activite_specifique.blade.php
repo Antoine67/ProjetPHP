@@ -193,7 +193,7 @@ if(!isset($activite_data)) {
                 // ------- IMAGES ACTIVITES ------- //
                 //----------------------------------//
 
-                $images_activites = ImageActivite::where('ID_Activites', $id_activite)->get();
+                $images_activites = ImageActivite::where('ID_Activites', $id_activite)->where('Valide',1)->get();
 
                 if(sizeof($images_activites)!=0) {
                     
@@ -213,7 +213,11 @@ if(!isset($activite_data)) {
                         echo '<div style="display:none" class="image-container ">
                                 <div class="img-chat">
                                     <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
-                                    <div class="commentaires-image">';
+                                    <div class="commentaires-image">
+                                    <div class="suppr-sign-boutons">
+                                        <i id="supp-'.$activite["ID"].'" class="fas fa-trash-alt fa-2x icone"></i>
+                                        <i id="sign-'.$activite["ID"].'" class="fas fa-flag fa-2x icone"></i>
+                                    </div>';
                                     foreach ($comms as $comm) {
                                         $nomUtilisateur = "Inconnu";
                                         try {

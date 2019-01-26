@@ -160,6 +160,9 @@ hr
     border-radius:50px;
     background:#a9acb2;
     border : 2px solid gray;
+    padding:5px;
+    margin:5px;
+    text-align:center;
 }
 
 
@@ -182,6 +185,24 @@ hr
     width:100%;
 
   }
+
+.suppr-sign-boutons {
+    position: absolute;
+    top:5px;
+    right:5px;
+}
+
+.icone {
+    color:#ff0000;
+    opacity:0.5;
+    padding:2px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.icone:hover {
+    opacity:1;
+}
   
 
 /* Un commentaire sous une image */
