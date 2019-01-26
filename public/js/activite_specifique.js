@@ -118,45 +118,45 @@ $(function() {
     });
 
     $('.icone').click(function() { 
-    var currentToken = $('#csrf-token').text();
-    var el_cliq = $(this);
-    var id_init = $(this).attr('id');
-    var id = id_init.substring(5);
-    var action = id_init.substring(0,4);
-    console.log('id : ' + id);
-    console.log('action : ' +action);
-    var action_post;    var fctSucces;
-    if(action == 'supp') {//Supprimer l'image
-        action_post ='supprimer-image-activite';
-        fctSucces = function() {
-            el_cliq.parent().parent().parent().parent().remove();
-            console.log("here");
-        }; 
+        var currentToken = $('#csrf-token').text();
+        var el_cliq = $(this);
+        var id_init = $(this).attr('id');
+        var id = id_init.substring(5);
+        var action = id_init.substring(0,4);
+        console.log('id : ' + id);
+        console.log('action : ' +action);
+        var action_post;    var fctSucces;
+        if(action == 'supp') {//Supprimer l'image
+            action_post ='supprimer-image-activite';
+            fctSucces = function() {
+                el_cliq.parent().parent().parent().parent().remove();
+                console.log("here");
+            }; 
 
-    }else if(action == 'sign') {//Signaler l'image
-        action_post ='signaler-image-activite';
-        fctSucces = function() {
-            el_cliq.parent().parent().parent().parent().remove();
-            alert('La photo vient d\'être signalée auprès d\'un membre du BDE');
-        }; 
-    }
-
-    
-
-    
-    $.ajax({
-        url: '/gerer-donnees',
-        type: 'post',
-        data: {
-            'action':action_post,
-            'id-image':id,
-            '_token' : currentToken //Utilisé pour la verification csrf
-        },
-        success: function(response){
-            fctSucces();
-            
+        }else if(action == 'sign') {//Signaler l'image
+            action_post ='signaler-image-activite';
+            fctSucces = function() {
+                el_cliq.parent().parent().parent().parent().remove();
+                alert('La photo vient d\'être signalée auprès d\'un membre du BDE');
+            }; 
         }
-    });
+
+        
+
+        
+        $.ajax({
+            url: '/gerer-donnees',
+            type: 'post',
+            data: {
+                'action':action_post,
+                'id-image':id,
+                '_token' : currentToken //Utilisé pour la verification csrf
+            },
+            success: function(response){
+                fctSucces();
+                
+            }
+        });
 
 
 

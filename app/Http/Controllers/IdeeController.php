@@ -29,7 +29,7 @@ class IdeeController extends Controller
                     'Titre' => $_POST['nom'],
                     'Contenu' => $_POST['description'],
                     'Date_creation' => date("Y-m-d H:i:s"),
-                    'Etat' => 1,
+                    'Etat' => 2,
                     'ID_Utilisateurs' => Session::get('id'),
                     'Image' => '/aucune',
                 ]);

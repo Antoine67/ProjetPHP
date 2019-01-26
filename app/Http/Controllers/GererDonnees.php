@@ -14,6 +14,12 @@ use App\CommentaireImage;
 
 use App\ImageActivite;
 
+use App\Vote;
+
+use App\Idee;
+
+use App\Activite;
+
 use Session;
 
 class GererDonnees extends Controller
@@ -121,6 +127,50 @@ class GererDonnees extends Controller
                             CommentaireImage::where('ID_Image_Activites',$_POST['id-image'])->delete();
                             Like::where('ID_Image_activites',$_POST['id-image'])->delete();
                             ImageActivite::where('ID',$_POST['id-image'])->delete();
+                        }
+                        break;
+                    }
+                    case ('suppr-vote-idee-activite') : {
+                        if(isset($_POST['id-idee'])) {
+                            Vote::where('ID_Utilisateurs',Session::get('id'))->where('ID_Idees',$_POST['id-idee'])->delete();
+                        }
+                        break;
+                    }
+                    case ('voter-idee-activite') : {
+                        if(isset($_POST['id-idee'])) {
+                            Vote::where('ID_Utilisateurs',Session::get('id'))->where('ID_Idees',$_POST['id-idee'])->delete();
+                            Vote::create([
+                                'ID_Utilisateurs' => Session::get('id'),
+                                'ID_Idees' => $_POST['id-idee'],
+                            ]);
+                        }
+                        break;
+                    }
+                    case ('valider-idee') : {
+                        if(isset($_POST['id-idee'])) {
+                            $idee = Idee::where('ID',$_POST['id-idee'])->get();
+                            Idee::where('ID',$_POST['id-idee'])->update(['Etat' => 3]);
+                            
+                             //CREATION DE L'ACTIVIE EN BDD                       
+                                Activite::create([
+                                    'Titre' => $idee[0]['Titre'],
+                                    'Prix' => 0,
+                                    'Date_creation' => date("Y-m-d H:i:s"),
+                                    'Date_realisation' => date("Y-m-d H:i:s"),
+                                    'Description' => $idee[0]['Contenu'],
+                                    'ID_Utilisateurs' =>Session::get('id'),
+                                ]);
+
+
+
+
+
+                        }
+                        break;
+                    }
+                    case ('refuser-idee') : {
+                        if(isset($_POST['id-idee'])) {
+                            Idee::where('ID',$_POST['id-idee'])->update(['Etat' => 1]);
                         }
                         break;
                     }
