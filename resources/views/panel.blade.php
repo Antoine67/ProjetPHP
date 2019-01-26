@@ -8,6 +8,7 @@
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
 <script src="{{ asset('/js/panel.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
+
 <hr class="hr-navbar">
 <div class="header">
     <nav class="navbar navbar-back-office center">
@@ -34,6 +35,8 @@ use App\Role;
 use App\Commande;
 
 use Illuminate\Support\Facades\DB;
+
+
 
     //URL sur laquelle il faut cherche les images
     //Protocle (HTTP/HTTPS)
@@ -91,27 +94,27 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
     else {
         echo'
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
-        <h2 class = "titre">Gestion des utilisateurs</h2>
-        <table id="example" class="display" style="width:100%" >
-        <thead>
-            
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Identifiant</th>
-                <th>Mot de passe</th>
-                <th>Email</th>
-                <th>Localisation</th>
-                <th>Role</th>
-                <th>Droit boutique</th>
-                <th>Droit idées</th>
-                <th>Droit activités</th>
-                <th>Droit header</th>
-                <th>Gestion</th>
-            </tr>
-        </thead>
-        <tbody>
+            <h2 class = "titre">Gestion des utilisateurs</h2>
+            <table id="example" class="display" style="width:100%" >
+                <thead>
+                    
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Identifiant</th>
+                        <th>Mot de passe</th>
+                        <th>Email</th>
+                        <th>Localisation</th>
+                        <th>Role</th>
+                        <th>Droit boutique</th>
+                        <th>Droit idées</th>
+                        <th>Droit activités</th>
+                        <th>Droit header</th>
+                        <th>Gestion</th>
+                    </tr>
+                </thead>
+                <tbody>
         ';
 
         foreach($utilisateurs as $utilisateur) {

@@ -52,7 +52,7 @@ class ConnexionController extends Controller
             );
   
 
-            $url="localhost:8000/api/login"; 
+            $url="localhost:3000/api/login"; 
            
             $ch = curl_init();
 
@@ -148,6 +148,7 @@ class ConnexionController extends Controller
                     Session::put('role', $donnee['Role']);
                     Session::put('mdp', $donnee['Mot_de_passe']);
                     Session::put('token',$token);
+                    \Cookie::make('token_cookie_bde',$token,120); 
                 }
                    
               

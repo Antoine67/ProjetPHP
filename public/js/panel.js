@@ -6,7 +6,7 @@ $(document).ready(function() {
         },
         dom: 'Bfrtip',
         buttons: [
-            'csv', 'excel', 'pdf', { extend: 'print', text: 'Imprimmer' },
+            'csv', 'excel', 'pdf', { extend: 'print', text: 'Imprimer' },
             
         ]
     } );
@@ -59,7 +59,7 @@ function bindConfirmer() {
 
 
           $.ajax({
-            url: '/localhost:3000/api/utilisateurs/'+id_btn,
+            url: 'http://localhost:3000/api/utilisateurs/'+id_btn,
             type: 'put',
             data: {
                 'Nom':cols[0],
@@ -70,10 +70,14 @@ function bindConfirmer() {
                 'Localisation':cols[5],
                 'Role':cols[6]
             },
+            xhrFields: {
+                withCredentials: true
+             },
             success: function(response){
                 console.log(response);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                console.log('http://localhost:3000/api/utilisateurs/'+id_btn+" : ");
                 console.log(errorThrown);
             }    
         });

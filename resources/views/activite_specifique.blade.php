@@ -3,8 +3,12 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('/css/activite_specifique.css') }}">
+<link rel="stylesheet" href="{{ asset('/DataTables/datatables.min.css') }}">
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
 <span hidden id="id-activite"><?=$id_activite?></span>
+<script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
+
+
 
 <?php
 
@@ -65,7 +69,7 @@ if(!isset($activite_data)) {
         ?>
         <div class="text-center">
             <?php 
-            if($date < $dateActuelle) {
+            if($date > $dateActuelle) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
             <?php } ?>
@@ -123,16 +127,25 @@ if(!isset($activite_data)) {
 
                     }
                     if(sizeof($inscrits) > 0) {
-                        echo '<ul>';
+                        echo '
+                        <table id="inscrit" class="display" style="width:100%" >
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
                         foreach ($inscrits as $inscrit) {
                             $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
                             $reponse->bindValue(':id', $inscrit['ID_Utilisateurs'], $bdd::PARAM_STR);
                             $reponse->execute();
                             if($donnee=$reponse->fetch()){
-                            echo '<li>'.$donnee['Nom'] . ' ' .$donnee['Prenom'] .'</li>';
+                            echo '<tr><td>'.$donnee['Nom'] . '</td> <td> ' .$donnee['Prenom'] .'</td></tr>';
                             }
                         }
-                        echo '</ul>';
+                        echo '</tbody>
+                        </table>';
                     }else {
                         echo 'Aucun inscrit';
                     }

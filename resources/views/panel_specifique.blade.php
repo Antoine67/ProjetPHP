@@ -9,6 +9,24 @@
 <script src="{{ asset('/js/panel.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
 
+<hr class="hr-navbar">
+<div class="header">
+    <nav class="navbar navbar-back-office center">
+        <a class="btn btn-default bouton-gestion" href="/panel/activites" role="button">Activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/articles" role="button">Articles</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/avis" role="button">Avis</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/categories" role="button">Categories</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/commandes" role="button">Commandes</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/commentaire_images" role="button">Commentaires des images</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/idees" role="button">Idées</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/image_activites" role="button">Images des activites</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/inscriptions" role="button">Inscriptions aux activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/likes" role="button">Likes des activités</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/paniers" role="button">Paniers</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/roles" role="button">Roles</a>
+        <a class="btn btn-default bouton-gestion" href="/panel/votes" role="button">Votes des idées</a>
+    </nav>
+</div>
 
 <?php
 
@@ -113,10 +131,11 @@ use Illuminate\Support\Facades\DB;
                 </tfoot>
             </table>
         </div>
-    </div>';
+    ';
             }
 
 ?>
- 
+
+</div>
 
 @endsection

@@ -2,39 +2,28 @@ const express  = require('express');
 const mysql    = require('mysql');
 const jwt      = require('jsonwebtoken');
 var bodyParser = require("body-parser");
+var cors = require('cors');
+
+
 
 const app = express();
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
-app.get('/', function(req, res, next) {
-  // Handle the get for this route
-});
+app.use(cors());
 
-app.post('/', function(req, res, next) {
- // Handle the post for this route
-});
+
+
 app.use(bodyParser.urlencoded({extended :true}))
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
-app.options('/api/utilisateurs', function (request, response, next) {
-    response.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-    response.send();
-});
+
+
+
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GET XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 app.get('/', (req,res)=> {
-   res.send('Acceuil');
+   res.send('API Bde Utilisateurs : Veuillez vous authentifier');
 });
 
 
@@ -310,4 +299,4 @@ function lireCookie (request) {
 
 
 
-app.listen(8000, () => console.log('listening on port 8000'));
+app.listen(3000, () => console.log('listening on port 3000'));

@@ -110,8 +110,9 @@ hr
 
 .upvote-button
 {
+    min-width: 92px;
     margin-bottom: 1vh;
-    text-align: right;
+    text-align: center;
     border:0px;
     border-radius:5px;
     color:#ebeff1;
