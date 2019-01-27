@@ -2,6 +2,12 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('/css/boutique_article.css') }}">
+
+
+<span hidden id="id-article"><?=$id_article?></span>
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
+
 <?php 
 
 use App\Article;
@@ -24,11 +30,28 @@ $article = Article::find($id_article);
 if(sizeof($article) <=0) {
     echo 'Article non trouvé :(';
 }else {
+
+    if($article['Stock'] == 0) {
+        $stock = '<span style="color:red;">Rupture momentanée de stock</span> ';
+    }else {
+        $stock = $article['Stock'] . ' disponibles';
+    }
+
+
     echo '
-    <div id="article">
-        <img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >
-    <h1>' . $article['Nom'] . '</h1>
-        <button class="btn" id="ajout-panier" data-toggle="modal" data-target="#ajouter-article-panier">Ajouter au panier</button>
+
+    <div class="text-center">
+        <a id="suppr-article" class="btn btn-default butt" role="button">Supprimer l\'article</a>
+        <div id="article">
+            <h1>' . $article['Nom'] . '</h1>
+            <img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >
+            <div class="description">
+                <p>' . $article['Description'] . '</p>
+                <h5> '. $stock .' </h5>
+                <p><span class="prix">' . $article['Prix'] . '</span> €</p>
+            </div>
+            <button class="btn btn-success" id="ajout-panier" data-toggle="modal" data-target="#ajouter-article-panier">Ajouter au panier</button>
+        </div>
     </div>
     ';
 }

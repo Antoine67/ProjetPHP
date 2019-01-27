@@ -20,6 +20,8 @@ use App\Idee;
 
 use App\Activite;
 
+use App\Article;
+
 use Session;
 
 class GererDonnees extends Controller
@@ -171,6 +173,12 @@ class GererDonnees extends Controller
                     case ('refuser-idee') : {
                         if(isset($_POST['id-idee'])) {
                             Idee::where('ID',$_POST['id-idee'])->update(['Etat' => 1]);
+                        }
+                        break;
+                    }
+                    case ('suppr-article') : {
+                        if(isset($_POST['id-article'])) {
+                            Article::where('ID',$_POST['id-article'])->delete();
                         }
                         break;
                     }

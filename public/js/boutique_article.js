@@ -1,4 +1,4 @@
-$(function() {
+
     /*
       $( ".article" ).click(function() {
         let id_article = $(this).attr("value");
@@ -18,4 +18,29 @@ $(function() {
     
 
       });*/
+
+
+
+      
+$(function() {
+
+  $('#suppr-article').click(function() {
+    var id_article = $('#id-article').text();
+    var currentToken = $('#csrf-token').text();
+
+    $.ajax({
+      url: '/gerer-donnees',
+      type: 'post',
+      data: {
+        'action':'suppr-article',
+        'id-article': id_article,
+        '_token' : currentToken //Utilisé pour la verification csrf
+              },
+      success: function(response){
+        alert('Article supprimé');
+        window.location.replace("/boutique");
+      }
+    });
+
+  });
 });
