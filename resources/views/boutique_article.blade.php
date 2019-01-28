@@ -30,7 +30,6 @@ $article = Article::where('ID',$id_article)->get()[0];
 if(sizeof($article) <=0) {
     echo 'Article non trouvé :(';
 }else {
-
     if($article['Stock'] == 0) {
         $stock = '<span style="color:red;">Rupture momentanée de stock</span> ';
     }else {
@@ -40,9 +39,11 @@ if(sizeof($article) <=0) {
 
     echo '
 
-    <div class="text-center">
-        <a id="suppr-article" class="btn btn-default butt" role="button">Supprimer l\'article</a>
-        <div id="article">
+    <div class="text-center">';
+    if(Session::get('role') == 2) { 
+        echo '<a id="suppr-article" class="btn btn-default butt" role="button">Supprimer l\'article</a><hr>';
+    }
+        echo '<div id="article">
             <h1>' . $article['Nom'] . '</h1>
             <img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >
             <div class="description">
@@ -59,6 +60,8 @@ if(sizeof($article) <=0) {
 ?>
 
 <script src="{{ asset('/js/boutique_article.js') }}"></script>
+
+<?php  if(Session::get('role') == 2) { ?>
 
 <!-- Mini-fenêtre (modal) -->
 <div class="modal fade" id="ajouter-article-panier" tabindex="-1" role="dialog" aria-hidden="true">
@@ -90,7 +93,7 @@ if(sizeof($article) <=0) {
      </div>
  </div>
 
-
+<?php  } ?>
 
 
 

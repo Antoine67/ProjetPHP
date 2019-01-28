@@ -7,6 +7,30 @@
 
 <script src="{{ asset('/js/boutique.js') }}"></script>
 
+<?php 
+use App\Article;
+$article_data = Article::select('Articles.*','Categories.Nom as Categorie')
+->join('Categories', 'Articles.ID_Categories', '=', 'Categories.ID')
+->get();
+
+echo '
+        <script>
+            var liste = [';
+            foreach($article_data as $ar) {
+                echo'"'.$ar['Nom'].'",';
+            }
+            echo'
+                ];
+        </script>'; ?>
+
+
+<link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
+<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/js/recherche.js') }}"></script>
+
+
+
 <div class="container-fluid text-center container">
     <div class="recherche_p">
         <form action="/recherche" id="searchthis" method="get">
@@ -16,8 +40,10 @@
     </div>
 </div>
 
+
+
 <?php 
-use App\Article;
+
 $rechercheTerme = $_GET['article'];
 
 if(!isset($rechercheTerme)){

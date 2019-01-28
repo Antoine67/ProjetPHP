@@ -47,17 +47,28 @@ function getURL() {
     <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('cesi.ico') }}" />
+
+
+
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
+
 
     <title>BDE - <?= $page ?></title>
 
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('/js/header.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/js/recherche.js') }}"></script>
     
   </head>
 
   
 <header>
+
 <span hidden id="csrftoken"><?=csrf_token() ?></span>
   <div>
         <div class="header">
@@ -76,10 +87,10 @@ function getURL() {
                             <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/activites' ? 'active' : '');?>"><a href="/activites">Activités</a></li>
                             
                         </ul>
-                        <form class="navbar-form navbar-left" target="_self">
+                        <form class="navbar-form navbar-left" action="/recherche" method="get">
                             <div class="form-group">
                                 <label class="control-label" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
-                                <input class="form-control search-field" type="search" name="search" id="search-field">
+                                <input class="form-control search-field" type="search" name="article" id="search-field">
                             </div>
                         </form>
 
@@ -200,6 +211,8 @@ function getURL() {
 </header>
 
 
+
+
 @yield('content')
 
     
@@ -231,9 +244,8 @@ function getURL() {
 
     <div>
         <i class="fa fa-phone"></i>
-        <p>+33 6 28 01 48 23</p>
+        <p>06 46 71 74 46</p>
     </div>
-
     <div>
         <i class="fa fa-envelope"></i>
         <p><a href="mailto:bde@cesi.fr">bde@cesi.fr</a></p>
@@ -245,7 +257,7 @@ function getURL() {
 
     <p class="footer-company-about">
         <span>A propos du BDE</span>
-        On vole les A1
+        <b>B</b>ureaux <b>D</b>es <b>E</b>xars de Strasbourg 
     </p>
 
     <div class="footer-icons">
@@ -258,9 +270,10 @@ function getURL() {
 
 </div>
 
+
+
 </footer>
 
-    
     
     
 
