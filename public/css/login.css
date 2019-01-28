@@ -98,11 +98,11 @@ span.psw {
 .err {
   color: red;
   background-color: #FFD2D2;
-  border: 3px solid red;
+  border: 1px solid red;
   border-radius:5px;
   padding:5px;
   text-align:center;
-  font-size:22px;
+  font-size:18px;
 }
 
 @media screen and (max-width: 300px) {
