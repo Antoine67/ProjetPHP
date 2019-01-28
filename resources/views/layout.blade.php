@@ -64,6 +64,7 @@ function getURL() {
   
 <header>
 
+
 <span hidden id="csrftoken"><?=csrf_token() ?></span>
   <div>
         <div class="header">
@@ -205,8 +206,31 @@ function getURL() {
     </div>
 </header>
 
+<?php if (Cookie::get('accepter') !== null){
 
+ ?>
 
+<!--Confirmation de l'utilisation des cookies-->
+<div class="modal fade" id="panel-cookie" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">    
+                <h3 class="modal-title" >Confirmation de l'utilisation des cookies</h3>
+            </div>
+
+            <!-- Panel Confirmation de l'utilisation des cookies -->
+          <div class="modal-body basket-content">
+                <a class="btn btn-default bouton-cookies" href="/mentions_legales" role="button">Voir les mentions légales</a>
+                <div class="right">
+                    <button type="submit" id="accepter-cookie" class="btn btn-success"><i class="fas fa-check"></i>Accepter</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<?php } ?>
 
 @yield('content')
 
@@ -225,6 +249,8 @@ function getURL() {
         <a href="#">Nous Contacter</a>
         ·
         <a href="/mentions_legales">Mentions Legales</a>
+        ·
+        <a href="/conditions_generale_de_ventes">Conditions Générale de Ventes</a>
     </p>
 
     <p class="footer-company-name">BDE &copy; 2019</p>

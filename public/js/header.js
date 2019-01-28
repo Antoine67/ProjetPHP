@@ -48,7 +48,12 @@ $(function() {
         window.location.assign('/achat')
     });
 
-    
+    $('#panel-cookie').modal('show');
+
+    $('#accepter-cookie').click(function() { //Accepte les cookies
+        $.cookie("accepter", "1");
+        $('#panel-cookie').modal('hide');
+    });
 
 });
 

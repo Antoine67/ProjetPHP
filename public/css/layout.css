@@ -385,6 +385,22 @@ button .fas {
     margin-bottom: 5px;
   }
  
+  .bouton-cookies
+  {
+      min-width: 92px;
+      margin-bottom: 1vh;
+      text-align: center;
+      border:0px;
+      border-radius:5px;
+      color:#ebeff1;
+      box-shadow:none;
+      text-shadow:none;
+      padding:6px 15px;
+      background: #6C7A86;
+      transition:background-color 0.25s;
+      outline:none;
+  }
+
   @media (max-width: 880px) {
   
     .footer-distributed{
