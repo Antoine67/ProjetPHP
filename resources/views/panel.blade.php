@@ -95,7 +95,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
         echo'
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
             <h2 class = "titre">Gestion des utilisateurs</h2>
-            <table id="example" class="display" style="width:100%" >
+            <table id="gestion_utilisateurs" class="display" style="width:100%" >
                 <thead>
                     
                     <tr>

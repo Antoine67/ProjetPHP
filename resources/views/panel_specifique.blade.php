@@ -2,31 +2,13 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('/css/panel.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/panel_specifique.css') }}">
 <link rel="stylesheet" href="{{ asset('/DataTables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
-<script src="{{ asset('/js/panel.js') }}"></script>
+<script src="{{ asset('/js/panel_specifique.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
 
-<hr class="hr-navbar">
-<div class="header">
-    <nav class="navbar navbar-back-office center">
-        <a class="btn btn-default bouton-gestion" href="/panel/activites" role="button">Activités</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/articles" role="button">Articles</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/avis" role="button">Avis</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/categories" role="button">Categories</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/commandes" role="button">Commandes</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/commentaire_images" role="button">Commentaires des images</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/idees" role="button">Idées</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/image_activites" role="button">Images des activites</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/inscriptions" role="button">Inscriptions aux activités</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/likes" role="button">Likes des activités</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/paniers" role="button">Paniers</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/roles" role="button">Roles</a>
-        <a class="btn btn-default bouton-gestion" href="/panel/votes" role="button">Votes des idées</a>
-    </nav>
-</div>
 
 <?php
 
@@ -58,6 +40,24 @@ use Illuminate\Support\Facades\DB;
    
 ?>
 
+<hr class="hr-navbar">
+<div class="header">
+    <nav class="navbar navbar-back-office center">
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/activites' ? 'active' : '');?>" href="/panel/activites" role="button">Activités</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/articles' ? 'active' : '');?>" href="/panel/articles" role="button">Articles</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/avis' ? 'active' : '');?>" href="/panel/avis" role="button">Avis</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/categories' ? 'active' : '');?>" href="/panel/categories" role="button">Categories</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/commandes' ? 'active' : '');?>" href="/panel/commandes" role="button">Commandes</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/commentaire_images' ? 'active' : '');?>" href="/panel/commentaire_images" role="button">Commentaires des images</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/idees' ? 'active' : '');?>" href="/panel/idees" role="button">Idées</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/image_activites' ? 'active' : '');?>" href="/panel/image_activites" role="button">Images des activites</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/inscriptions' ? 'active' : '');?>" href="/panel/inscriptions" role="button">Inscriptions aux activités</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/likes' ? 'active' : '');?>" href="/panel/likes" role="button">Likes des activités</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/paniers' ? 'active' : '');?>" href="/panel/paniers" role="button">Paniers</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/roles' ? 'active' : '');?>" href="/panel/roles" role="button">Roles</a>
+        <a class="bouton-gestion <?php echo ($_SERVER['REQUEST_URI'] == '/panel/votes' ? 'active' : '');?>" href="/panel/votes" role="button">Votes des idées</a>
+    </nav>
+</div>
 
 <div class="container-fluid container"> 
   <h1> Back-office </h1>
@@ -84,7 +84,7 @@ use Illuminate\Support\Facades\DB;
         echo'
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
         <h2 class = "titre">Gestion des '. $nom_panel .'</h2>
-        <table id="example" class="display" style="width:100%" >
+        <table id="gestion_tables" class="display" style="width:100%" >
         <thead>
             
             <tr>

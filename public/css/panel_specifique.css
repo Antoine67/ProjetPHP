@@ -17,6 +17,11 @@
     padding: 1px !important;
 }
 
+a:link
+{
+    text-decoration: none;
+}
+
 .bouton-gestion
 {
     text-align: center;
@@ -43,6 +48,12 @@
     background: none !important;
     color:rgba(255,255,255,0.3);
     box-shadow: none !important;
+}
+
+.active
+{
+    pointer-events: none;
+    color:rgba(255,255,255,0.3) !important;
 }
 
 th
