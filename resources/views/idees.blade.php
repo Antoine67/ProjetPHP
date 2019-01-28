@@ -38,18 +38,6 @@ use Illuminate\Support\Facades\DB;
 ?>
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
 <?php
 
 /*

@@ -1,7 +1,8 @@
-
 @extends('layout')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ asset('/css/administration.css') }}">
 
 
 <?php
@@ -77,7 +78,16 @@ $link
 . "Téléchargez ici les photos du site (Taille : $ko Ko)"
 . '</a>'
 ;
- echo $link;
+ echo '
+ <div class="container-fluid container">
+    <div class="col-lg-12 col-md-12 col-sm-12 categories">
+        <h2 class = "titre">Lien de téléchargement</h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 lien">
+            <div><p>Voici le lien pour télécharger toutes les photos du site : </p>'.$link.'
+            </div>
+        </div>
+    </div>
+</div>';
 
 
 ?> @endsection
