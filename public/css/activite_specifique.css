@@ -231,7 +231,9 @@ hr
 }
 
 .del-comm {
-    float:right;
+
+    position: relative;
+    float: right;
 
 }
 
@@ -239,3 +241,4 @@ hr
     cursor:pointer;
     color:red;
 }
+

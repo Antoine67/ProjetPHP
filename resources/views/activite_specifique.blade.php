@@ -72,10 +72,14 @@ if(!isset($activite_data)) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
             <?php } ?>
-
+        <?php if(Session::get('role') == 2) { ?>
             <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Liste des inscrits</a>
+        <?php } if(Session::get('role') == 2 || sizeof($inscritThisOne) != 0) { //Si l'utilisateur est membre du BDE ou inscrit?> 
             <a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#ajouter-photo">Ajouter des photos</a>
+        <?php } ?>
         </div>
+
+        <?php if(Session::get('role') == 2 || sizeof($inscritThisOne) != 0) { ?>
         <!-- Mini-fenêtre (modal) -->
         <div class="modal fade" id="ajouter-photo" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -101,7 +105,9 @@ if(!isset($activite_data)) {
                 </div>
             </div>
         </div>
+        <?php  } if(Session::get('role') == 2) { ?>
 
+        
          <!-- Mini-fenêtre (modal) -->
          <div class="modal fade" id="liste-inscrits" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -156,6 +162,8 @@ if(!isset($activite_data)) {
                 </div>
             </div>
         </div>
+
+        <?php } ?>
 
 
 
@@ -233,9 +241,13 @@ if(!isset($activite_data)) {
                                 <div class="img-chat">
                                     <img class="image-activite" src="'. $url . $activite["Image"] .'" alt="Image de l\'activité" > 
                                     <div class="commentaires-image">
-                                    <div class="suppr-sign-boutons">
-                                        <i id="supp-'.$activite["ID"].'" class="fas fa-trash-alt fa-2x icone"></i>
-                                        <i id="sign-'.$activite["ID"].'" class="fas fa-flag fa-2x icone"></i>
+                                    <div class="suppr-sign-boutons">';
+                                    if(Session::get('role') == 2) {
+                                        echo '<i id="supp-'.$activite["ID"].'" class="fas fa-trash-alt fa-2x icone"></i>';
+                                    }if(Session::get('role') == 3 || Session::get('role') == 2) {
+                                        echo '<i id="sign-'.$activite["ID"].'" class="fas fa-flag fa-2x icone"></i>';
+                                    }
+                                    echo '
                                     </div>';
                                     foreach ($comms as $comm) {
                                         $nomUtilisateur = "Inconnu";
@@ -253,8 +265,11 @@ if(!isset($activite_data)) {
 
                                         echo '
                                         <p class="commentaire-image">
-                                            ['.$nomUtilisateur.']:<br/>'.$comm['Contenu'] .' <i id="supp-comm-'.$comm["ID"].'" class="fas fa-trash-alt del-comm"></i>'
-                                            .'</p>';
+                                            ['.$nomUtilisateur.']:<br/>'.$comm["Contenu"].'<br/>';
+                                        if(Session::get('role') == 2) {
+                                            echo '<i id="supp-comm-'.$comm["ID"].'" class="fas fa-trash-alt del-comm"></i>';
+                                        }
+                                        echo '</p>';
                                     }
 
                         echo'       </div>

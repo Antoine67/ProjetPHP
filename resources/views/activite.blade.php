@@ -9,6 +9,7 @@ use App\ImageActivite;
 
 ?>
 <link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
+<?php if(Session::get('role') == 2) { ?>
 
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-activite">Ajouter une activité</a>
@@ -99,7 +100,7 @@ use App\ImageActivite;
              </div>
          </div>
     </div>
-
+<?php } ?>
 
 <?php 
 
@@ -132,7 +133,7 @@ if(sizeof($activites) == 0) {
     
     foreach ($activites as $activite) {//Chaque activité trouvée
 
-        $img = ImageActivite::where('ID_Activites', $activite['ID'])->take(1)->get();
+        $img = ImageActivite::where('ID_Activites', $activite['ID'])->where('Valide',1)->take(1)->get();
         if(sizeof($img)!=0) {
             $activite['Image'] = '<img class="image-activite" src="'.$img[0]['Image'].'"  alt="Image">' ;
         }else {
