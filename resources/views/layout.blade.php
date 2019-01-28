@@ -51,9 +51,6 @@ function getURL() {
 
 
 
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
-
 
     <title>BDE - <?= $page ?></title>
 
@@ -61,8 +58,6 @@ function getURL() {
     <script src="{{ asset('/js/header.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
-    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('/js/recherche.js') }}"></script>
     
   </head>
 

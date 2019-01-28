@@ -61,7 +61,7 @@ if(sizeof($article) <=0) {
 
 <script src="{{ asset('/js/boutique_article.js') }}"></script>
 
-<?php  if(Session::get('role') == 2) { ?>
+
 
 <!-- Mini-fenêtre (modal) -->
 <div class="modal fade" id="ajouter-article-panier" tabindex="-1" role="dialog" aria-hidden="true">
@@ -93,7 +93,7 @@ if(sizeof($article) <=0) {
      </div>
  </div>
 
-<?php  } ?>
+
 
 
 

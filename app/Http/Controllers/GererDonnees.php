@@ -24,6 +24,10 @@ use App\Article;
 
 use Session;
 
+use PHPMailer\PHPMailer\PHPMailer;
+
+use PHPMailer\PHPMailer\Exception;
+
 class GererDonnees extends Controller
 {
     function post() {
@@ -163,9 +167,34 @@ class GererDonnees extends Controller
                                     'ID_Utilisateurs' =>Session::get('id'),
                                 ]);
 
-
-
-
+                            //ENVOI DU MAIL 
+                                $mail = new PHPMailer(true);                              
+                                try {
+                                    //Server settings
+                                    $mail->isSMTP();                                     
+                                    $mail->Host = 'smtp.gmail.com';  
+                                    $mail->SMTPAuth = true;                               
+                                    $mail->Username = 'bde.cesi.exia@gmail.com';                
+                                    $mail->Password = 'SuperBDE67000?';                           
+                                    $mail->SMTPSecure = 'ssl';                            
+                                    $mail->Port = 465;                                  
+                    
+                                    //Recipients
+                                    $mail->setFrom('bde.site@cesi.fr', 'Mailer');
+                                    $mail->addAddress(Session::get('email'));     
+                    
+                    
+                                    //Content
+                                    $mail->isHTML(true);                                  
+                                    $mail->Subject = 'BDE Strasbourg : Une de vos idées a été validé ! ';
+                                    $mail->Body    = '<h1>Votre idée "'.$idee[0]['Titre'].'" vient d\'être validée !</h1>';
+                                    $mail->AltBody = 'Une de vos idées vient tout juste d\'être validée';
+                    
+                                    $mail->send();
+                                    echo 'La commande vient d\'être envoyé à un membre du bde ! .('.Session::get('email').')';
+                                } catch (Exception $e) {
+                                    echo 'Erreur lors de l\'envoi de la commande: ', $mail->ErrorInfo;
+                                }
 
                         }
                         break;

@@ -85,7 +85,7 @@ class AchatController extends Controller
     
                     //Recipients
                     $mail->setFrom('bde.site@cesi.fr', 'Mailer');
-                    $mail->addAddress($emailBDE);     
+                    $mail->addAddress(env("ADRESSE_EMAIL"));     
     
     
                     //Content
@@ -95,7 +95,7 @@ class AchatController extends Controller
                     $mail->AltBody = 'Commande numero '.$id_commande.'a été passée';
     
                     $mail->send();
-                    echo 'La commande vient d\'être envoyé à un membre du bde ! .('.$emailBDE.')';
+                    echo 'La commande vient d\'être envoyé à un membre du bde ! ('.env("ADRESSE_EMAIL").')';
                 
                 } catch (Exception $e) {
                     echo 'Erreur lors de l\'envoi de la commande: ', $mail->ErrorInfo;

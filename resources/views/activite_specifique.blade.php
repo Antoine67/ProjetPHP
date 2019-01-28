@@ -48,7 +48,11 @@ if(!isset($activite_data)) {
         <div>
         <?php 
         
+        try {
+            $bdd = DB::connection('mysql2')->getPdo();
+        } catch(Exception $e) {
 
+        }
 
         $inscritThisOne = Inscription::where('ID_Utilisateurs', Session::get('id'))->where('ID_Activites', $id_activite)->get(); 
         if(sizeof($inscritThisOne) != 0) { // On determine si l'utilisateur est déjà inscrit ou non
@@ -126,11 +130,7 @@ if(!isset($activite_data)) {
                     
                     $inscrits = Inscription::where('ID_Activites',$id_activite)->get();
 
-                    try {
-                        $bdd = DB::connection('mysql2')->getPdo();
-                    } catch(Exception $e) {
-
-                    }
+                    
                     if(sizeof($inscrits) > 0) {
                         echo '
                         <table id="inscrit" class="display" style="width:100%" >
@@ -260,7 +260,7 @@ if(!isset($activite_data)) {
                                                 $nomUtilisateur = strtoupper($donnee['Nom']) . ' ' . ucfirst($donnee['Prenom']);
                                             }
                                         } catch(Exception $e) {
-                                            
+                                            echo $e;
                                         }
 
                                         echo '
