@@ -2,7 +2,7 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('/css/mentions_legales.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/cgv.css') }}">
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
 
 <div class="container-fluid container"> 
