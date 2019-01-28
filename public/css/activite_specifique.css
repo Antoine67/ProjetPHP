@@ -230,3 +230,12 @@ hr
     resize: none;
 }
 
+.del-comm {
+    float:right;
+
+}
+
+.del-comm:hover {
+    cursor:pointer;
+    color:red;
+}

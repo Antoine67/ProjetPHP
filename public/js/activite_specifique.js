@@ -174,6 +174,43 @@ $(function() {
     });
 
 
+    $('.del-comm').click(function()  { 
+        var currentToken = $('#csrf-token').text();
+        var el_cliq = $(this);
+        var id_init = $(this).attr('id');
+        var id = id_init.substring(10);
+
+        
+        console.log('id : ' + id);
+
+        var action_post;    var fctSucces;
+
+        action_post ='supprimer-commentaire-image-activite';
+        fctSucces = function() {
+            el_cliq.parent().remove();
+        }
+
+
+        
+        $.ajax({
+            url: '/gerer-donnees',
+            type: 'post',
+            data: {
+                'action':action_post,
+                'id-comm':id,
+                '_token' : currentToken //Utilisé pour la verification csrf
+            },
+            success: function(response){
+                fctSucces();
+                
+            }
+        });
+
+
+
+    });
+
+
 
 
 });

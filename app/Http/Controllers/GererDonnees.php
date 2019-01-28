@@ -183,6 +183,13 @@ class GererDonnees extends Controller
                         break;
                     }
 
+                    case('supprimer-commentaire-image-activite') : {
+                        if(isset($_POST['id-comm'])) {
+                            CommentaireImage::where('ID',$_POST['id-comm'])->delete();
+                        }
+                        break;
+                    }
+
                 }
             }
         }

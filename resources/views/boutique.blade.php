@@ -48,6 +48,7 @@ if(isset($message)) {
 <div class="container-fluid text-center container">
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-article">Ajouter un produit</a>
+        <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-categorie">Ajouter une catégorie</a>
     </div>
 
 
@@ -114,10 +115,39 @@ if(isset($message)) {
                     </form>       
                 </div>
 
-             </div>
-         </div>
+            </div>
+        </div>
     </div>
 
+
+<!--Ajout une catégorie -->
+<div class="modal fade" id="ajouter-categorie" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">    
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+
+                <h3 class="modal-title" >Ajouter une catégorie</h3>
+
+            </div>
+
+            <!-- Panel Ajout catégorie -->
+            <div class="modal-body basket-content">
+                    
+                <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                    <label><b>Nom de la catégorie :</b></label>
+                    <input type="text" name="creation_categorie" required>
+
+                    <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button>
+                    </div>
+                </form>       
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <hr>

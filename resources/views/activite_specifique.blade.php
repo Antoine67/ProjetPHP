@@ -38,8 +38,6 @@ if(!isset($activite_data)) {
 
     $url=$url . '/';
     
-    
-   
 ?>
 
 
@@ -245,7 +243,10 @@ if(!isset($activite_data)) {
                                             
                                         }
 
-                                        echo '<p class="commentaire-image">['.$nomUtilisateur.']:<br/>'.$comm['Contenu'].'</p>';
+                                        echo '
+                                        <p class="commentaire-image">
+                                            ['.$nomUtilisateur.']:<br/>'.$comm['Contenu'] .' <i id="supp-comm-'.$comm["ID"].'" class="fas fa-trash-alt del-comm"></i>'
+                                            .'</p>';
                                     }
 
                         echo'       </div>
