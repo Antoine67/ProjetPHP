@@ -182,7 +182,6 @@ Idee::select('Idees.*','Votes.Quantité')
                     </div>
                 </div>
             </div>
-        </div>
             ';
         }
         else {

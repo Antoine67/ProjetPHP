@@ -59,19 +59,19 @@ $LISTE_CESI = array(
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
-                    <label for="nom"><b>Nom</b></label>
+                    <label><b>Nom</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre nom" name="nom" required>
 
-                    <label for="prenom"><b>Prénom</b></label>
+                    <label><b>Prénom</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre prénom " name="prenom" required>
 
-                    <label for="email"><b>E-mail</b></label>
+                    <label><b>E-mail</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre adresse e-mail " name="email" onblur="verifMail(this)" required >
 
-                    <label for="localisation"><b>Localisation</b></label>
+                    <label><b>Localisation</b></label>
                     <select name="localisation" required>
                     <option value="" selected disabled>Votre centre cesi </option>
                         <?php 
@@ -84,7 +84,7 @@ $LISTE_CESI = array(
                     </select>
 
 
-                    <label for="identifiant"><b>Nom d'utilisateur</b></label>
+                    <label><b>Nom d'utilisateur</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre identifiant de connexion" name="identifiant" required>
 
