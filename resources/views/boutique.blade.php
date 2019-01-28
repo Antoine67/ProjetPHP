@@ -45,11 +45,15 @@ if(isset($message)) {
     echo '<div class="alert alert-success message-succes">'.$message.'<span id="close-message"><i class="fas fa-times-circle"></i></span></div>';
 }?>
 
-<div class="container-fluid text-center container">
+
+
+<?php  if(Session::get('role') == 2) { ?>
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-article">Ajouter un produit</a>
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-categorie">Ajouter une catégorie</a>
     </div>
+    <hr>
+ <?php } ?>
 
 
 
@@ -149,8 +153,8 @@ if(isset($message)) {
         </div>
     </div>
 
-
-    <hr>
+    
+<div class="container-fluid text-center container">
     <h1>Notre boutique</h1>
 
     <div class="recherche_p">

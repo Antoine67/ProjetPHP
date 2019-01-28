@@ -108,7 +108,7 @@ $(function() {
 
         console.log(el_cliq.parent().parent().find('.commentaires-image').
         append('<p class="commentaire-image">'+ comment +'</p>'));
-        id_image = el_cliq.parent().find('.id-activite').attr('value');
+        id_image = el_cliq.parent().find('.id-activite').text();
 
         $(this).parent().find('textarea').val('');
         currentToken = $('#csrf-token').text();
