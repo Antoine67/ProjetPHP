@@ -17,6 +17,7 @@
    height: 333px;
    border-style:solid;
    z-index:1;
+   object-fit: cover;
 }
 
  .text {
@@ -27,20 +28,27 @@
    width: 100%;
    left: 50%;
    top: 50%;
+   font-weight:bold;
+   color:black;
+   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+   
+
   }
 
   .bandefond{
-   background: #ffe0f9; /* Old browsers */
-   background: -moz-linear-gradient(left, #ffe0f9 0%, #7373a0 50%, #ffe0f9 100%); /* FF3.6-15 */
-   background: -webkit-linear-gradient(left, #ffe0f9 0%,#7373a0 50%,#ffe0f9 100%); /* Chrome10-25,Safari5.1-6 */
-   background: linear-gradient(to right, #ffe0f9 0%,#7373a0 50%,#ffe0f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe0f9', endColorstr='#ffe0f9',GradientType=1 );
-   margin: 10px;
+   background:#fffaea;
 }
 
 @media (max-width:1550px) {
    .imagetexte{
       margin : 0px -2px;
+   }
+}
+
+@media (max-width:1000px){
+   .containerCaroussel{
+      display:none;
    }
 }
 
@@ -63,17 +71,38 @@
 .item{
    
    padding-bottom:100px;
+   text-align:center;
+  
+   
 }
 
 .carousel-inner{
 
    height: 333px;
    
+   
 }
-
+.carousselhover{
+   height: 333px;
+   position:absolute;
+   width:100%;
+   object-fit:cover;
+}
 .textecaroussel{
-   font-size: 3vw;
-   margin-bottom: 45%;
+   font-size: 70px;
+   text-align: center;
+   position: absolute;
+   transform: translate(-50%, -50%);
+   width: 100%;
+   left: 50%;
+   top: 100px;
+   color:black;
+   z-index:100;
+   font-family:Courier, monospace;
+   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+   
+
+   
 } 
 
 @media (max-width:1200px) {
