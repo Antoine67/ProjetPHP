@@ -1,6 +1,6 @@
 $(function() {
 
-    var urlloc = 'http://localhost:8000/api/utilisateurs/';
+    var urlloc = 'http://localhost:3000/api/utilisateurs/';
     var id = $("#idtexte").text();
     var token = $("#tokentexte").text();
     console.log(id);
@@ -14,9 +14,9 @@ $(function() {
 
 
 
-        xhrFields: {
-         withCredentials: true
-        },
+        
+         credentials: 'same-origin',
+        
         data: {
             'Prenom':prenom,
             'Nom':nom,
@@ -28,28 +28,16 @@ $(function() {
         },
         beforeSend : function(xhr) {
             xhr.setRequestHeader('Cookie', cookie_name=token);
+            xhr.setRequestHeader("Authority", authorizationToken);
           },
-/*
-        const axiosConfig = {
-            headers: {
-                'content-Type': 'application/json',
-                "Accept": "/",
-                "Cache-Control": "no-cache",
-                "Cookie": document.cookie
-                },
 
-            credentials: "same-origin"
-            };
-        axios.defaults.withCredentials = true;
-        axios.get('/url',
-        axiosConfig)
-        .then((res) => {
-        // Some result here
-        })
-        .catch((err) => {
-        console.log(':(');
-        }); */
-
+          headers: {
+            'content-Type': 'application/json',
+            "Accept": "/",
+            "Cache-Control": "no-cache",
+            "Cookie": document.cookie
+            },
+            credentials: "same-origin",
 
         processData: false,
         success: function(response){

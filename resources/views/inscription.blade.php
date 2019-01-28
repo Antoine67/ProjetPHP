@@ -26,13 +26,16 @@ $LISTE_CESI = array(
     "Toulouse",);
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+
     <head>
 
         <title>S'inscrire</title>
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/login.css') }}">
     </head>
 
    
@@ -70,7 +73,7 @@ $LISTE_CESI = array(
 
                     <label for="localisation"><b>Localisation</b></label>
                     <select name="localisation" required>
-                    <option value="0" selected disabled>Votre centre cesi </option>
+                    <option value="" selected disabled>Votre centre cesi </option>
                         <?php 
                         foreach ($LISTE_CESI as $value) {
                             $min = strtolower($value);
@@ -103,3 +106,4 @@ $LISTE_CESI = array(
         <script src="{{ asset('/js/verifForm.js') }}"></script>
     </body>
 
+</html>

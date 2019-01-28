@@ -62,8 +62,8 @@ $LISTE_CESI = array(
 
     echo'   <div class="col-lg-12 col-md-12 col-sm-12">
 
-    		<span hidden id="tokentexte">'.Session::get('token').'<?=$nom_table?></span>
-    		<span hidden id="idtexte">'.Session::get('id').'<?=$nom_table?></span>
+    		<span hidden id="tokentexte">'.Session::get('token').'</span>
+    		<span hidden id="idtexte">'.Session::get('id').'</span>
 
             <div>
             	<div class="infotop">
@@ -376,12 +376,12 @@ $LISTE_CESI = array(
 	                            
                             </div>
                         	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
-                            	<input id="mdpconf" type="text" name="nmdp2" onblur="verifConfMdp(this)" required>
+                            	<input type="text" name="nmdp2" onblur="verifConfMdp(this)" required>
                         	</div>
 
 
 
-                            <div class="right"><button id="modifiermdp" type="button2" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
+                            <div class="right"><button id="modifiermdp" type="button" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -402,7 +402,7 @@ $LISTE_CESI = array(
                     <div class="modal-body basket-content">
 
                             <label><b>Nouvelle adresse mail :</b></label>
-                            <input id="mdpconf" type="text" name="nom" onblur="verifMail(this)" required>
+                            <input type="text" name="nom" onblur="verifMail(this)" required>
 
                             <div class="right"><button id="modifieremail" type="button" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
@@ -426,7 +426,7 @@ $LISTE_CESI = array(
                             
                             <label><b class="espace">Nouveau centre CESI :</b></label>
 							<select name="localisation" required>
-		                    <option value="0" selected disabled>Votre centre cesi </option>
+		                    <option value ="" selected disabled>Votre centre cesi </option>
 		                        <?php 
 		                        foreach ($LISTE_CESI as $value) {
 		                            $min = strtolower($value);

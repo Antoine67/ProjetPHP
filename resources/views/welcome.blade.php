@@ -2,7 +2,6 @@
 
 @section('content')
 <!-- Metadata CSS/JS-->
-<title>Accueil - BDE</title>
 <link rel="stylesheet" href="{{ asset('/css/accueil.css') }}">
 <script src="{{ asset('/js/accueil.js') }}"></script>
 
