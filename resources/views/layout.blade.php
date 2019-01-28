@@ -89,8 +89,12 @@ function getURL() {
                             <li class="dropdown"><a class="dropdown-toggle username" data-toggle="dropdown" aria-expanded="false" href="#"><?=$username?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li role="presentation"><a href="/profil">Mon profil</a></li>
+                                <?php if(Session::get('role')==2) {?>
                                     <li role="presentation"><a href="/panel">Back-office</a></li>
+                                <?php }
+                                if(Session::get('role')==3) { ?>
                                     <li role="presentation"><a href="/administration-cesi">Administration</a></li>
+                                <?php } ?>
                                     <li role="separator" class="divider"></li>
                                     <li role="presentation"><a href="/deconnexion">Deconnexion</a></li>
                                 </ul>
@@ -102,7 +106,7 @@ function getURL() {
 
                             <!-- Panier de l'utilisateur -->
                             <li>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#panier-utilisateur">
+                                <button type="button" class="btn" id="panier-icone" data-toggle="modal" data-target="#panier-utilisateur">
                                     <i class="fas fa-shopping-basket fa-2x"></i>
                                 </button>
                             </li>

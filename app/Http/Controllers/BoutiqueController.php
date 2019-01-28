@@ -107,6 +107,7 @@ class BoutiqueController extends Controller
                 Categorie::create([
                     'Nom' => $_POST['creation_categorie'],
                 ]);
+                return redirect('/boutique');
             }
         }
     }

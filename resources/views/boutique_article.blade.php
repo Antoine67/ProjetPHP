@@ -24,7 +24,7 @@ $url=$url . '/';
 
 
 
-$article = Article::find($id_article);
+$article = Article::where('ID',$id_article)->get()[0];
 
 
 if(sizeof($article) <=0) {
