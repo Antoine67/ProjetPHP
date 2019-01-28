@@ -30,9 +30,7 @@ $LISTE_CESI = array(
 <html lang="fr">
 
     <head>
-
         <title>S'inscrire</title>
-
         <meta charset="utf-8" />
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/login.css') }}">
@@ -93,6 +91,12 @@ $LISTE_CESI = array(
                     <label for="mdpconf"><b>Confirmer votre mot de passe</b></label>
                     <input type="password" id="mdpconf" placeholder="Confirmer votre mot de passe" name="mdpconf" required>
 
+                    
+                    <div style="display:inline-block;">
+                        <input type="checkbox" id="mentions-legales" checked required>
+                        <label for="mentions-legales">J'accepte les <a href="/mentions_legales">mentions légales</a></label>
+                    </div>
+ 
                     <div id="errGnle" class="err"></div>
                     <button id="submit-button" type="submit" class="conf">S'inscrire</button>
                     <button type="button" class="cancelbtn" onclick="location.href='/';">Annuler</button>

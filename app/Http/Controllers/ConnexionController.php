@@ -48,9 +48,9 @@ class ConnexionController extends Controller
             
             $data = array(
                 "identifiant" => $_POST['identifiant'],
-                "mdp" => $_POST['mdp'],
+                "mdp" => sha1($_POST['mdp']),
             );
-  
+
 
             $url="localhost:3000/api/login"; 
            
@@ -58,10 +58,10 @@ class ConnexionController extends Controller
 
             curl_setopt($ch, CURLOPT_URL,$url);
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_HEADER  , true);  // we want headers
+            curl_setopt($ch, CURLOPT_HEADER  , true);  
 
             curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
-            curl_setopt($ch, CURLOPT_TIMEOUT, 20); //timeout in seconds
+            curl_setopt($ch, CURLOPT_TIMEOUT, 20); 
             //Reponse
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -77,7 +77,7 @@ class ConnexionController extends Controller
             } 
 
 
-
+            //Récuperer uniquement le body
             $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
             $header = substr($server_output, 0, $header_size);
             $body = substr($server_output, $header_size);
@@ -88,11 +88,10 @@ class ConnexionController extends Controller
 
 
 
-
-
-
             $identifiant = $_POST['identifiant'];
-            $mdp = $_POST['mdp'];
+            $mdp = sha1($_POST['mdp']);
+            
+           
             $done=false;
             
             try {
