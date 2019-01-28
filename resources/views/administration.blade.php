@@ -79,7 +79,11 @@ $link
 . '</a>'
 ;
  echo '
- <div class="container-fluid container">
+ <div class="container-fluid container"> 
+    <h1> Administration </h1>
+    <hr/>
+</div>
+<div class="container-fluid container">
     <div class="col-lg-12 col-md-12 col-sm-12 categories">
         <h2 class = "titre">Lien de téléchargement</h2>
         <div class="col-lg-12 col-md-12 col-sm-12 lien">
