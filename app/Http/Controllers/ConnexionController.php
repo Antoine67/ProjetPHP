@@ -48,8 +48,9 @@ class ConnexionController extends Controller
             
             $data = array(
                 "identifiant" => $_POST['identifiant'],
-                "mdp" => $_POST['mdp'],
+                "mdp" => sha1($_POST['mdp']),
             );
+
   
 
             $url="localhost:3000/api/login"; 
@@ -92,7 +93,9 @@ class ConnexionController extends Controller
 
 
             $identifiant = $_POST['identifiant'];
-            $mdp = $_POST['mdp'];
+            $mdp = sha1($_POST['mdp']);
+            
+           
             $done=false;
             
             try {

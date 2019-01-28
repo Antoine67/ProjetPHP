@@ -26,8 +26,7 @@ $url=$url . '/';
 
 $article = Article::where('ID',$id_article)->get()[0];
 
-
-if(sizeof($article) <=0) {
+if($article || sizeof($article) <=0) {
     echo 'Article non trouvé :(';
 }else {
     if($article['Stock'] == 0) {

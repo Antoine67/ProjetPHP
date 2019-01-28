@@ -76,11 +76,15 @@ class InscriptionController extends Controller
             
             $sqlRequest = $bdd->prepare("INSERT INTO utilisateurs(nom, prenom , mot_de_passe, email, localisation,identifiant) VALUES(:nom,:prenom,:mdp,:email,:localisation,:identifiant)");
 
+            //Cryptage des mots de passe
+            $mdp_crypt = sha1($mdp);
+
+           
 
             //Empêcher injection sql
             $sqlRequest->bindValue(':nom', $nom, $bdd::PARAM_STR);
             $sqlRequest->bindValue(':prenom', $prenom, $bdd::PARAM_STR);
-            $sqlRequest->bindValue(':mdp', $mdp, $bdd::PARAM_STR);
+            $sqlRequest->bindValue(':mdp', $mdp_crypt, $bdd::PARAM_STR);
             $sqlRequest->bindValue(':email', $email, $bdd::PARAM_STR);
             $sqlRequest->bindValue(':localisation', $localisation, $bdd::PARAM_STR);
             $sqlRequest->bindValue(':identifiant', $identifiant, $bdd::PARAM_STR);
