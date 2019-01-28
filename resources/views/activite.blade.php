@@ -86,8 +86,8 @@ use App\ImageActivite;
                         echo '<div class="suppression">';
                         echo '<form method="post" action="/activites"><button type="submit" class="btn btn-danger">Supprimer</button>';
                         ?>@csrf<?php //Token csrf
-                        echo '<p class="titre-suppression" name="titre-activite" readonly>'. $activite['Titre'] .'</p>' ;
-                        echo '<input type="hidden" name="id-activite" readonly value="'.$activite['ID']. '"></input>';
+                        echo '<p class="titre-suppression" >'. $activite['Titre'] .'</p>' ;
+                        echo '<input type="hidden" name="id-activite" value="'.$activite['ID']. '">';
                         
                         echo '</form></div>';
                     }

@@ -267,7 +267,7 @@ if(!isset($activite_data)) {
                                         Un commentaire ? Un avis ?
                                     </p>
                                     <textarea placeholder="Votre commentaire"></textarea>
-                                    <span hidden class="id-activite" value="'.$activite['ID'].'"></span>
+                                    <span hidden class="id-activite">'.$activite['ID'].'</span>
                                     <button class="btn btn-success envoyer-commentaire-image">Envoyer</button>  
                                 </div>
                                 
