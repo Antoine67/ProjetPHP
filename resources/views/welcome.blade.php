@@ -11,9 +11,6 @@
 
 
 
-
-
-
 <!-- Carousel boostrap -->
 
 <div class="container containerCaroussel">
