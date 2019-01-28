@@ -147,3 +147,10 @@ input
     margin :5px 0;
   }
 
+  th,td {
+    word-wrap: break-word;
+}
+
+table {
+    table-layout: fixed;
+}

@@ -9,6 +9,8 @@
 <script src="{{ asset('/js/panel.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
 
+
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
 <hr class="hr-navbar">
 <div class="header">
     <nav class="navbar navbar-back-office center">
@@ -84,7 +86,7 @@ $reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
             <h2 class = "titre">Gestion des utilisateurs</h2>
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
-                <div class="center">Aucun utilisateur a été trouvé
+                <div class="center">Aucun utilisateur n\'a été trouvé
                 </div>
             </div>
         </div>

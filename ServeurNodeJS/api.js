@@ -162,6 +162,13 @@ app.put('/api/utilisateurs/:ID', (req,res,next)=>{
    });
 
    var cookie = lireCookie(req);
+   if(cookie == null) {
+	   cookie = req.body.Token;
+	}
+	   
+   
+   console.log('Cookie : '+cookie);
+   
 
    error = 0;
 
@@ -174,6 +181,7 @@ app.put('/api/utilisateurs/:ID', (req,res,next)=>{
          error=1;
       } 
    });
+   
    
    if(error) return;
 

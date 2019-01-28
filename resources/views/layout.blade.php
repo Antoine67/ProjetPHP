@@ -217,7 +217,8 @@ function getURL() {
 
             <!-- Panel Confirmation de l'utilisation des cookies -->
           <div class="modal-body basket-content">
-                <a class="btn btn-default bouton-cookies" href="/mentions_legales" role="button">Voir les mentions légales</a>
+          En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies afin de vous proposer une gestion automatisée de tous les contenus présent sur ce site.
+          Pour en savoir plus<a href="/mentions_legales"> cliquez ici</a>
                 <div class="right">
                     <button type="submit" id="accepter-cookie" class="btn btn-success"><i class="fas fa-check"></i>Accepter</button>
                 </div>

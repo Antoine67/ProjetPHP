@@ -7,7 +7,13 @@
 
 <?php if(isset($_GET['inscription'])){
   echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur créé avec succés! Vous pouvez à présent vous connecter 😃</div>' ;
-} ?>
+}
+$token_cookie_bde = Session::get('token');
+if (isset($token_cookie_bde)) {
+  echo '<script> $.cookie("token_cookie_bde", "'.$token_cookie_bde.'");</script>';
+}
+
+?>
 
 
 
