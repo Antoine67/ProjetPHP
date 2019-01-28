@@ -275,7 +275,21 @@ class GererDonnees extends Controller
                         }
                         break;
                     }
+                    //Modification d'un enregistrement d'une table par le back-office
+                    case('modif-table') : {
+                        if(isset($_POST['table']) && isset($_POST['donnee'])) {
 
+                            $donnee = json_decode($_POST['donnee'], true);
+                            $id = $donnee['ID'];
+                            unset($donnee['ID']);
+
+
+                            $table = new Article;
+                            $table->setTable(ucfirst($_POST['table']));
+                            $table->where('ID',$id)->update($donnee);
+
+                        }
+                    }
                 }
             }
         }
