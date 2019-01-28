@@ -55,6 +55,7 @@ function getURL() {
     <title>BDE - <?= $page ?></title>
 
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="{{ asset('/js/header.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
@@ -206,8 +207,6 @@ function getURL() {
     </div>
 </header>
 
-<?php if (Cookie::get('accepter') !== 1 && $_SERVER['REQUEST_URI'] != '/mentions_legales'){ ?>
-
 <!--Confirmation de l'utilisation des cookies-->
 <div class="modal fade" id="panel-cookie" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -228,7 +227,6 @@ function getURL() {
     </div>
 </div>
 
-<?php } ?>
 
 @yield('content')
 
