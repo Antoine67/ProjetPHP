@@ -112,10 +112,13 @@ Idee::select('Idees.*','Votes.Quantité')
                 <div class="col-lg-2 col-md-2 col-sm-2 upvote">
                     <a class="btn btn-default upvote-button icone '. $classe_bouton_like .'" role="button" id="vote-'.$idee_proposee['ID'].'">
                         <i class="fas fa-angle-up"> '.$nb_votes.'</i>
-                    </a>
-                    <a class="btn btn-default check-button icone" role="button" id="vali-'.$idee_proposee['ID'].'"><i class="fas fa-check"></i></a>
-                    <a class="btn btn-default ban-button icone" role="button"  id="refu-'.$idee_proposee['ID'].'"><i class="fas fa-ban"></i></a>
-                </div>    
+                    </a>';
+                    if(Session::get('role') == 2) {
+                        echo '
+                        <a class="btn btn-default check-button icone" role="button" id="vali-'.$idee_proposee['ID'].'"><i class="fas fa-check"></i></a>
+                        <a class="btn btn-default ban-button icone" role="button"  id="refu-'.$idee_proposee['ID'].'"><i class="fas fa-ban"></i></a>';
+                    }  
+            echo'</div>    
             </div>
         
             ';
@@ -182,7 +185,6 @@ Idee::select('Idees.*','Votes.Quantité')
                     </div>
                 </div>
             </div>
-        </div>
             ';
         }
         else {

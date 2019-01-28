@@ -63,6 +63,7 @@ if(!isset($activite_data)) {
 
         $dateActuelle = new DateTime();
         $date = new DateTime($activite_data['Date']);
+        $intervalle = $dateActuelle->diff($date);
 
         ?>
         <div class="text-center">
@@ -170,6 +171,7 @@ if(!isset($activite_data)) {
         $date = date("d-m-Y", strtotime($activite_data['Date_realisation']));
         $date = str_replace('-',' / ',$date);
 
+        $ponc = $activite_data['Ponctualite'];
 
         ?>
 
@@ -191,6 +193,12 @@ if(!isset($activite_data)) {
                     <div class="col-lg-10 col-md-10 col-sm-10 idee">
                         <h3>Prix : <strong><?=$prix?></strong></h3>
                         <h3>Date : <strong><?=$date?></strong></h3>
+                        <?php 
+                        if(!empty($ponc)) {
+                            echo"<h3>Ponctualité : <strong>$ponc</strong></h3>";
+                        }
+                        
+                        ?>
                     </div>
                 </div>
             </div>

@@ -26,13 +26,16 @@ $LISTE_CESI = array(
     "Toulouse",);
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+
     <head>
 
         <title>S'inscrire</title>
 
         <meta charset="utf-8" />
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/login.css') }}">
     </head>
 
    
@@ -56,21 +59,21 @@ $LISTE_CESI = array(
                     <img src="{{ asset('/img/avatar.jpg') }}" alt="Avatar" class="avatar">
 				</div>
 				<div>
-                    <label for="nom"><b>Nom</b></label>
+                    <label><b>Nom</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre nom" name="nom" required>
 
-                    <label for="prenom"><b>Prénom</b></label>
+                    <label><b>Prénom</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre prénom " name="prenom" required>
 
-                    <label for="email"><b>E-mail</b></label>
+                    <label><b>E-mail</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre adresse e-mail " name="email" onblur="verifMail(this)" required >
 
-                    <label for="localisation"><b>Localisation</b></label>
+                    <label><b>Localisation</b></label>
                     <select name="localisation" required>
-                    <option value="0" selected disabled>Votre centre cesi </option>
+                    <option value="" selected disabled>Votre centre cesi </option>
                         <?php 
                         foreach ($LISTE_CESI as $value) {
                             $min = strtolower($value);
@@ -81,7 +84,7 @@ $LISTE_CESI = array(
                     </select>
 
 
-                    <label for="identifiant"><b>Nom d'utilisateur</b></label>
+                    <label><b>Nom d'utilisateur</b></label>
                     <div class="errorMsg"></div>
                     <input type="text" placeholder="Votre identifiant de connexion" name="identifiant" required>
 
@@ -103,3 +106,4 @@ $LISTE_CESI = array(
         <script src="{{ asset('/js/verifForm.js') }}"></script>
     </body>
 
+</html>

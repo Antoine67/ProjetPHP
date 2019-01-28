@@ -23,7 +23,7 @@ class ActiviteController extends Controller
             $role_util=Session::get('role');
             if(isset($role_util)) {
                 //Ajout d'une activité
-                if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['date'])) {
+                if(isset($_POST['nom']) && isset($_POST['description']) && isset($_POST['prix']) && isset($_POST['date']) && isset($_POST['ponctualite'])) {
                     
                     
                     //CREATION DE L'ACTIVIE EN BDD
@@ -37,6 +37,7 @@ class ActiviteController extends Controller
                         'Date_realisation' => $date,
                         'Description' => $_POST['description'],
                         'ID_Utilisateurs' =>Session::get('id'),
+                        'Ponctualite' => $_POST['ponctualite'],
                     ]);
 
                     //CREATION DE L'IMAGE EN BDD

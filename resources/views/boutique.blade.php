@@ -45,11 +45,15 @@ if(isset($message)) {
     echo '<div class="alert alert-success message-succes">'.$message.'<span id="close-message"><i class="fas fa-times-circle"></i></span></div>';
 }?>
 
-<div class="container-fluid text-center container">
+
+
+<?php  if(Session::get('role') == 2) { ?>
     <div class="center">
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-article">Ajouter un produit</a>
         <a class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-categorie">Ajouter une catégorie</a>
     </div>
+    <hr>
+ <?php } ?>
 
 
 
@@ -95,7 +99,7 @@ if(isset($message)) {
 
                         <label><b>Catégorie</b> </label>
                         <select name="categorie" required>
-                        <option value="0" selected disabled>Catégorie </option>
+                        <option value="" selected disabled>Catégorie </option>
                             <?php 
                             foreach ($cats_all as $cat) {
                                 $min = strtolower($cat['Nom']);
@@ -120,54 +124,54 @@ if(isset($message)) {
     </div>
 
 
-<!--Ajout une catégorie -->
-<div class="modal fade" id="ajouter-categorie" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">    
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
+    <!--Ajout une catégorie -->
+    <div class="modal fade" id="ajouter-categorie" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
 
-                <h3 class="modal-title" >Ajouter une catégorie</h3>
+                    <h3 class="modal-title" >Ajouter une catégorie</h3>
 
-            </div>
+                </div>
 
-            <!-- Panel Ajout catégorie -->
-            <div class="modal-body basket-content">
-                    
-                <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
-                    @csrf
+                <!-- Panel Ajout catégorie -->
+                <div class="modal-body basket-content">
+                        
+                    <form class="form-act" action="/boutique" method="post" enctype="multipart/form-data">
+                        @csrf
 
-                    <label><b>Nom de la catégorie :</b></label>
-                    <input type="text" name="creation_categorie" required>
+                        <label><b>Nom de la catégorie :</b></label>
+                        <input type="text" name="creation_categorie" required>
 
-                    <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button>
-                    </div>
-                </form>       
+                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button>
+                        </div>
+                    </form>       
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-    <hr>
+    
+<div class="container-fluid text-center container">
     <h1>Notre boutique</h1>
 
     <div class="recherche_p">
 
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
-    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-    <?php echo'
-    <script>
-        var liste = [';
-        foreach($article_data as $ar) {
-            echo'"'.$ar['Nom'].'",';
-        }
-        echo'
-            ];
-    </script>';
-    ?>
+        <link rel="stylesheet" href="{{ asset('/css/jquery-ui.structure.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/jquery-ui.theme.min.css') }}">
+        <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+        <?php echo'
+        <script>
+            var liste = [';
+            foreach($article_data as $ar) {
+                echo'"'.$ar['Nom'].'",';
+            }
+            echo'
+                ];
+        </script>';
+        ?>
  
 
         <form action="/recherche" id="searchthis" method="get">
@@ -203,6 +207,7 @@ if(isset($message)) {
             foreach($categories_all as $categ) {
                 $categ_nom = strtr( $categ['Nom'], $caract_interdit );
                 $categ_nom = strtolower($categ_nom);
+                $categ_nom = str_replace(" ", "%20", $categ_nom);
                 echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories" ><p class="bk_text"> '.$categ['Nom'].' </p></a></li>';
             }
             
@@ -219,12 +224,12 @@ if(isset($message)) {
 
 
     <hr>
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div>
-                <h2 class="hiddenz" id="best">Nos meilleures ventes: </h2>
-                <br>
-            </div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div>
+            <h2 class="hiddenz" id="best">Nos meilleures ventes: </h2>
+            <br>
         </div>
+    </div>
 </div>
 
 <!-- Meilleures ventes -->
@@ -252,15 +257,16 @@ if(isset($message)) {
                 }
                    
                     echo '<a class = "containerz" href="/boutique/article/'.$article['ID'].'">';
-                        echo '<div class="imagetexte" value="'.$article['ID'].'">';
+                        echo '<div class="imagetexte" >';
                             echo '<h2 class="nom-article">'.$article['Nom'].'</h2>';
                             echo'<span hidden class="id-article">'.$article['ID'].'</span>';
-                                echo '<img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >';
-                                echo '<h2 class="taille-prix"><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
-                            echo '</div>';
+                            echo '<img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >';
+                            echo '<h2 class="taille-prix"><span class="prix-article">'.$article['Prix'].'</span>€</h2>';
                         echo '</div>';
                    
                      echo '</a>';
+
+                echo '</div>';
 
                 $nb_articles++;
                 if($nb_articles>=$nb_max_articles) break; //On affiche uniquement le nombre souhaité d'articles dans les meilleures ventes
@@ -276,12 +282,6 @@ if(isset($message)) {
     </div>
 </div>
 
-
-<br/><br/><br/><br/><br/><br/>
-   
-
-    </div>
-</div>
 
 <?php }//Fin du else  ?>
 
