@@ -39,6 +39,8 @@ Route::get('boutique/article/{id_article}','BoutiqueController@articleSpecifique
 
 Route::get('/recherche','BoutiqueController@rechercheArticle');
 
+    //MENTIONS LEGALES
+Route::get('mentions_legales','MentionsLegalesController@get');
 
 
 

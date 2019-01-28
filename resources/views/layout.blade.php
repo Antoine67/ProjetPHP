@@ -224,7 +224,7 @@ function getURL() {
         ·
         <a href="#">Nous Contacter</a>
         ·
-        <a href="#">Mentions Legales</a>
+        <a href="/mentions_legales">Mentions Legales</a>
     </p>
 
     <p class="footer-company-name">BDE &copy; 2019</p>
