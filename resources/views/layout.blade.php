@@ -206,9 +206,7 @@ function getURL() {
     </div>
 </header>
 
-<?php if (Cookie::get('accepter') !== null){
-
- ?>
+<?php if (Cookie::get('accepter') !== 1 && $_SERVER['REQUEST_URI'] != '/mentions_legales'){ ?>
 
 <!--Confirmation de l'utilisation des cookies-->
 <div class="modal fade" id="panel-cookie" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
