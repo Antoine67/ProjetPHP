@@ -21,6 +21,7 @@ class CreateActivitesTable extends Migration
             $table->string('Description', 1024);
             $table->date('Date_realisation');
             $table->date('Date_creation');
+            $table->string('Ponctualite',512)->default('');
 
             $table->unsignedInteger('ID_Utilisateurs');
 
