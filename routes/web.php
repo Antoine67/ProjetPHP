@@ -41,7 +41,7 @@ Route::get('/recherche','BoutiqueController@rechercheArticle');
 
     //MENTIONS LEGALES
 Route::get('mentions_legales','MentionsLegalesController@get');
-
+Route::get('conditions_generale_de_ventes','CGVController@get');
 
 
     //CONNEXION / DECONNEXION / INSCRIPTION
