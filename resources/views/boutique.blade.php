@@ -95,7 +95,7 @@ if(isset($message)) {
 
                         <label><b>Catégorie</b> </label>
                         <select name="categorie" required>
-                        <option value="0" selected disabled>Catégorie </option>
+                        <option value="" selected disabled>Catégorie </option>
                             <?php 
                             foreach ($cats_all as $cat) {
                                 $min = strtolower($cat['Nom']);
