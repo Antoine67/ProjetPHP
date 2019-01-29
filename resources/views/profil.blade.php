@@ -4,8 +4,9 @@
 
 
 <link rel="stylesheet" href="{{ asset('/css/profil.css') }}">
-<script src="{{ asset('/js/profil.js') }}"></script>
 <script src="{{ asset('/js/verifFormProfil.js') }}"></script>
+<script src="{{ asset('/js/profil.js') }}"></script>
+
 
 <?php
 $LISTE_CESI = array(
@@ -50,60 +51,80 @@ $LISTE_CESI = array(
 
 	$mmm = '';
 	$i=0;
-	$loc = ucfirst(strtolower(Session::get('localisation')));
-	$mdp = Session::get('mdp');
+	
+	$id = Session::get('id');
+
+
+
+	$url= 'http://localhost:3000/api/utilisateurs/'.$id;
+
+
+	$ch = curl_init();
+
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	curl_setopt($ch, CURLOPT_URL,$url);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cookie: token_cookie_bde=".Session::get('token')));
+
+	$result=curl_exec($ch);
+
+	curl_close($ch);
+
+	$utilisateur=json_decode($result, true)[0];
+	$loc = $utilisateur["Localisation"];
+	$mdp = $utilisateur["Mot_de_passe"];
+
 	while (isset($mdp[$i]))
 	{
 		$mmm = $mmm.substr_replace($mdp[$i], '*', 0);
 		$i++;
 	}
-	
-	//Session::put('prenom','oui');
 
     echo'   <div class="col-lg-12 col-md-12 col-sm-12">
 
     		<span hidden id="tokentexte">'.Session::get('token').'</span>
     		<span hidden id="idtexte">'.Session::get('id').'</span>
+    		<span hidden id="roletexte">'.Session::get('role').'</span>
 
             <div>
             	<div class="infotop">
 	                <p class="etage"> Votre prénom : </p>
-	                <p id="prenomtexte" class="etage2"> '. Session::get('prenom') .' </p>
+	                <p id="prenomtexte" class="etage2">'. $utilisateur["Prenom"] .'</p>
 	                <div class="center">
 				        <a id="prenom" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-prenom">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre nom : </p>
-	                <p id="nomtexte" class="etage2"> '. Session::get('nom') .' </p>
+	                <p id="nomtexte" class="etage2">'. $utilisateur["Nom"] .'</p>
 	                <div class="center">
 				        <a id="nom" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-nom">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre identifiant : </p>
-	                <p id="identifianttexte" class="etage2"> '. Session::get('identifiant') .' </p>
+	                <p id="identifianttexte" class="etage2">'.$utilisateur["Identifiant"].'</p>
 	                <div class="center">
 				        <a id="identifiant" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-identifiant">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	                <p class="etage"> Votre mot de passe : </p>
-	                <p id="mdptexte" class="etage2 mdp"> '. $mmm .' </p>
+	                <p id="mdptexte" class="etage2 mdp">'. $mmm .'</p>
 	                <div class="center">
 				        <a id="mdp" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mdp">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="info">
 	            	<p class="etage"> Votre adresse email : </p>
-	            	<p id="emailtexte" class="etage2"> '. Session::get('email') .' </p>
+	            	<p id="emailtexte" class="etage2">'. $utilisateur["Email"] .'</p>
 	            	<div class="center">
 				        <a id="email" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-mail">Modifier</a>
 				    </div>
 	            </div>
 	            <div class="infobot">
 	            	<p class="etage"> Votre localisation : </p>
-	            	<p id="localisationtexte" class="etage2"> '. $loc .' </p>
+	            	<p id="localisationtexte" class="etage2">'. $loc .'</p>
 	            	<div class="center">
         				<a id="localisation" class="btn btn-default button-activite" role="button" data-toggle="modal" data-target="#ajouter-loc">Modifier</a>
     				</div>
@@ -308,7 +329,7 @@ $LISTE_CESI = array(
                     <div class="modal-body basket-content">
 
                             <label><b>Nouveau nom :</b></label>
-                            <input type="text" name="nom" required>
+                            <input id="newnom" type="text" name="nom" required>
 
                             <div class="right"><button id="modifiernom" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
@@ -331,7 +352,7 @@ $LISTE_CESI = array(
                     <div class="modal-body basket-content">
 
                             <label><b>Nouveau identifiant :</b></label>
-                            <input type="text" name="nom" required>
+                            <input id="newidentifiant" type="text" name="nom" required>
 
                             <div class="right"><button id="modifieridentifiant" type="button" data-dismiss="modal" class="btn btn-success"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
@@ -362,7 +383,7 @@ $LISTE_CESI = array(
 	                            
                             <div>
                             	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
-	                            	<input id="mdpp" type="text" name="nmdp" onblur="verifMdp(this)" required>
+	                            	<input id="mdpp" type="password" name="nmdp" required>
 	                        	</div>
 	                        </div>
 
@@ -373,7 +394,7 @@ $LISTE_CESI = array(
 	                            
                             </div>
                         	<div class="col-lg-6 col-md-6 col-sm-6 etageC">
-                            	<input type="text" name="nmdp2" onblur="verifConfMdp(this)" required>
+                            	<input id="newmdp" type="password" name="nmdp2" required>
                         	</div>
 
 
@@ -399,9 +420,9 @@ $LISTE_CESI = array(
                     <div class="modal-body basket-content">
 
                             <label><b>Nouvelle adresse mail :</b></label>
-                            <input type="text" name="nom" onblur="verifMail(this)" required>
+                            <input id="newemail" type="text" name="nom" required>
 
-                            <div class="right"><button id="modifieremail" type="button" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
+                            <div class="right"><button id="modifieremail" type="submit" data-dismiss="modal" class="btn btn-success butbut"><i class="fas fa-check"></i>Changer</button></div>
                     </div>
 
                 </div>
@@ -422,7 +443,7 @@ $LISTE_CESI = array(
                     <div class="modal-body basket-content">
                             
                             <label><b class="espace">Nouveau centre CESI :</b></label>
-							<select name="localisation" required>
+							<select id="newlocalisation" name="localisation" required>
 		                    <option value ="" selected disabled>Votre centre cesi </option>
 		                        <?php 
 		                        foreach ($LISTE_CESI as $value) {
