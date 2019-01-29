@@ -36,7 +36,7 @@ if(!isset($activite_data)) {
     //Si il y a port specifique (ex:localhost:8000)
     if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
 
-    $url=$url . '/';
+    $url=$url . '/';//On récupère l'url du serveur
 
     $util = Session::get('role');//Utilisateur connecté .. ou non
     
@@ -50,6 +50,7 @@ if(!isset($activite_data)) {
         <div>
         <?php 
         
+        //Connection à la BDD Utilisateurs
         try {
             $bdd = DB::connection('mysql2')->getPdo();
         } catch(Exception $e) {
@@ -74,6 +75,7 @@ if(!isset($activite_data)) {
         ?>
         <div class="text-center">
             <?php 
+            //On attribue les actions en fonctions des perms
             if($date > $dateActuelle && isset($util)) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
@@ -165,15 +167,7 @@ if(!isset($activite_data)) {
             </div>
         </div>
 
-        <?php } ?>
-
-
-
-
-
-
-
-        <?php 
+        <?php } //Fin if role == 2
 
         $prix = $activite_data['Prix'] ;
         if($prix<=0)  $prix = 'Gratuit'; else $prix = $prix . '€';
@@ -186,7 +180,7 @@ if(!isset($activite_data)) {
         ?>
 
 
-
+        <!-- Description de l'activité -->
         <div class="container-fluid container">
             <div class="col-lg-12 col-md-12 col-sm-12 categories">
                 <h2 class = "titre">Description de l'activité :</h2>
@@ -366,7 +360,7 @@ if(!isset($activite_data)) {
                 echo '</div>' // Fin div "commentaires
                 
                 ?>  
-
+    
 
                 <hr/>
                 <form method="post" action="/activites/<?=$id_activite?>">

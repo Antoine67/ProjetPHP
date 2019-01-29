@@ -42,7 +42,7 @@ use App\ImageActivite;
 
 
                         <label><b>Prix</b></label>
-                        <input type="number" name="prix" required>
+                        <input type="number" name="prix" required step="0.01">
               
                         <label><b>Date</b> <i> (En cas d'evenement récurrent date de la première réalisation)</i> </label>
                         <input type="date" id="datepicker" name="date" required>
@@ -160,7 +160,7 @@ if(sizeof($activites) == 0) {
 
     echo '<div class="container text-center">';
 
-    if(isset($activiteSuivante)) {
+    if(isset($activiteSuivante)) {//Si il y a bel et bien une activite suivante
         $img = ImageActivite::where('ID_Activites', $activiteSuivante['ID'])->take(1)->get();
         if(sizeof($img)!=0) {
             $imgProchaineActivite = '<img class="vitrine" src="'. $url . $img[0]['Image'].'" alt="Image" >';
@@ -199,13 +199,13 @@ if(sizeof($activites) == 0) {
 
 
     <?php 
-
+    //Les différentes catégories
     $activitees_categories = array(
         "ajd"  => array('Titre' => 'Activités du jour','Tableau' => $activitees_aujourd),
         "venir" => array('Titre' => 'Activités à venir','Tableau' => $activitees_futures),
-        "pasees"   => array('Titre' => 'Activités passées','Tableau' => $activitees_passees),
+        "passees"   => array('Titre' => 'Activités passées','Tableau' => $activitees_passees),
     );
-
+    //On créé les différentes activités
     foreach ($activitees_categories as $categorie) {
         $acts = $categorie['Tableau'];
         echo '
@@ -243,7 +243,7 @@ if(sizeof($activites) == 0) {
 <?php } ?>
 
 
-
+<!-- Selectionneur de dates -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
