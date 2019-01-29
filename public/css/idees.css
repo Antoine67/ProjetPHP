@@ -238,3 +238,7 @@ border:none;
   outline:none;
 }
 
+.suppresion-idee {
+    cursor:pointer;
+    color:red;
+}

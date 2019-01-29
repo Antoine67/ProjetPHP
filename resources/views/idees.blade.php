@@ -48,7 +48,7 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span></button>
 
-                       <h3 class="modal-title" id="titre-modal-inscrits">Listes des inscrits</h3>
+                       <h3 class="modal-title" id="titre-modal-inscrits">Listes des idées</h3>
 
                    </div>
 
