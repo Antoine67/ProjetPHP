@@ -2,7 +2,7 @@
 {
 	padding: 1vh 0vw 8vh 0vw;
 	margin: 0vh 13vw 0vh 13vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 	border-style: solid;   /* Style de la bordure  */
   	border-width: 1px;
   	border-bottom: none;
@@ -12,7 +12,7 @@
 {
 	padding: 1vh 0vw 8vh 0vw;
 	margin: 0vh 13vw 0vh 13vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 	border-style: solid;   /* Style de la bordure  */
   	border-width: 1px;
   	border-top-left-radius : 4px;
@@ -24,7 +24,7 @@
 {
 	padding: 1vh 0vw 8vh 0vw;
 	margin: 0vh 13vw 0vh 13vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 	border-style: solid;   /* Style de la bordure  */
   	border-width: 1px;
 
@@ -35,7 +35,7 @@
 .infobot2
 {
 	margin: 0vh 13vw 0vh 13vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 	border-style: solid;   /* Style de la bordure  */
   	border-width: 1px;
 
@@ -47,7 +47,7 @@
 {
 	padding: 1vh 0vw 0vh 0vw;
 	margin: 0vh 13vw 0vh 13vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 	border-style: solid;   /* Style de la bordure  */
   	border-width: 1px;
   	border-top-left-radius : 4px;
@@ -58,7 +58,7 @@
 .info2
 {
 	padding: 0vh 1vw 0vh 0vw;
-	background-color: #8a9aac;
+	background-color: #ffffff;
 }
 
 .etage
@@ -112,12 +112,12 @@
 {
   border:1px solid rgba(0,0,0,0.2);
   border-radius:20px;
-  color:#ebeff1;
+  color:#ffffff;
   box-shadow:none;
   text-shadow:none;
   padding:6px 15px;
   margin:0px 20px;
-  background: #6C7A86;
+  background: black;
   transition:background-color 0.25s;
   outline:none;
   float :right;
@@ -159,7 +159,7 @@
 
 .envoyer:hover
 {
-    background: #778596;
+    background: #ffc252;
 }
 
 .titre {
