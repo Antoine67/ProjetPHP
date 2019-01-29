@@ -1,8 +1,17 @@
 
 
-var file = this.files[0];
-var fileType = file["type"];
-var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
-if ($.inArray(fileType, validImageTypes) < 0) {
-     alert('Image choisie non valide');
-}
+$(".fichier").change(function() {
+
+     var val = $(this).val();
+ 
+     switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+         case 'gif': case 'jpg': case 'png':
+             alert("an image");
+             break;
+         default:
+             $(this).val('');
+             // error message here
+             alert("not an image");
+             break;
+     }
+ });

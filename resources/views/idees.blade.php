@@ -19,10 +19,7 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
 
 
 
-<div class="container-fluid container"> 
-  <h1> La boîte à idées </h1>
-  <hr/>
-</div>
+
 
 <div class="container-fluid container"> 
 
@@ -39,19 +36,63 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
 
     $util = Session::get('role');
 
-?>
+    if(isset($util) && $util==2) { ?>
+ 
+        <div class="text-center"><a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Supprimer une idée</a></div>
+        
+        <!-- Mini-fenêtre (modal) -->
+        <div class="modal fade" id="liste-inscrits" tabindex="-1" role="dialog" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span></button>
 
+                       <h3 class="modal-title" id="titre-modal-inscrits">Listes des inscrits</h3>
 
+                   </div>
+
+                   <!-- Liste des inscrits -->
+                   <div class="modal-body basket-content">
+                   <?php 
+                   
+                   $idees_all = Idee::all();
+
+                   
+                   if(sizeof($idees_all) > 0) {
+                       echo '
+                       <table id="inscrit" class="display" style="width:100%" >
+                           <thead>
+                               <tr>
+                                   <th>Nom</th>
+                                   <th>Action</th>
+                               </tr>
+                           </thead>
+                           <tbody>';
+                           
+                       foreach ($idees_all as $idee) {
+                           echo '<tr><td>'.$idee['Titre'] . '</td></tr>';
+                       }
+                       echo '</tbody>
+                       </table>';
+                   }
+                   
+                   ?>
+                       
+                   </div>
+
+               </div>
+           </div>
+       </div>
+        
+        
+
+<?php } ?>
+<div class="container-fluid container"> 
+  <h1> La boîte à idées </h1>
+  <hr/>
+</div>
 <?php
-
-/*
-Idee::select('Idees.*','Votes.Quantité')
-->join('Votes', 'Votes.ID_Idees', '=', 'Idees.ID')
-->where('ID_Utilisateurs',Session::get('id'))
-->get();*/
-
-
-
 
     $idees_proposees = Idee::orderby('Date_creation','ASC')->where('Etat',2)->get();
     $idees_acceptees = Idee::orderby('Date_creation','ASC')->where('Etat',3)->get();

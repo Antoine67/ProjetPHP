@@ -21,7 +21,7 @@ function verifMail(el) {
 
 
 function verifMdp(el) {
-   if(el.val().length <=8) {
+   if(el.val().length <8) {
       erreur_gnl = 'Le mot de passe doit faire plus de 8 caractères';
       return false;
    } else if (!(/[A-Z]/.test(el.val()))){
