@@ -107,8 +107,8 @@ if(!isset($activite_data)) {
                         <form action="/activites/<?=$id_activite?>" method="post" enctype="multipart/form-data">
                             @csrf
                             Selectionnez l'image que vous souhaitez ajouter à cette activité :
-                            <input type="file" class="btn btn-primary" name="fichier" >
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                            <input type="file" onchange="findsize()" id="monFichier" class="btn btn-primary" name="fichier" >
+                            <div class="right"><button id="bouton-ajouter-image-activite" type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                         </form>       
                     </div>
                 </div>

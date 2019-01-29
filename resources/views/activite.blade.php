@@ -9,6 +9,9 @@ use App\ImageActivite;
 
 ?>
 <link rel="stylesheet" href="{{ asset('/css/activite.css') }}">
+<script src="{{ asset('/js/activite.js') }}"></script>
+
+
 <?php if(Session::get('role') == 2) { ?>
 
     <div class="center">
@@ -52,11 +55,8 @@ use App\ImageActivite;
  
 
                         <label><b>Image par défaut de cette activité :</b></label>
-                        <input type="file" class="btn btn-primary" name="fichier" required>
-
-
-
-                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                        <input type="file" onchange="findsize()" id="monFichier" class="btn btn-primary" name="fichier" >
+                            <div class="right"><button id="bouton-ajouter-image-activite" type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                     </form>       
                 </div>
 

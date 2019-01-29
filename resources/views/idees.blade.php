@@ -281,9 +281,9 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
                             <textarea name="description" required></textarea> 
 
                             <label><b>Image par défaut de cette activité :</b></label>
-                            <input type="file" class="btn btn-primary" name="fichier" required>
+                            <input type="file"onchange="findsize()" id="monFichier" class="btn btn-primary" name="fichier" required>
 
-                            <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                            <div class="right"><button id="bouton-ajouter-image-idee" type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                         </form>       
                     </div>
 
