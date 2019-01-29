@@ -196,10 +196,21 @@ class GererDonnees extends Controller
                             $idee = Idee::where('ID',$_POST['id-idee'])->get();
                             Idee::where('ID',$_POST['id-idee'])->update(['Etat' => 3]);
 
-
+                            try {
+                                $bdd = DB::connection('mysql2')->getPdo();
+                            } catch(Exception $e) {
+                        
+                            }
+                            $reponse = $bdd->prepare('SELECT Email,Nom,Prenom FROM utilisateurs WHERE id=:id');
+                            $reponse->bindValue(':id', $idee[0]['ID_Utilisateurs'], $bdd::PARAM_STR);
+                            $reponse->execute();
+                            if($donnee=$reponse->fetch()){
+                                $emailUtilisateur = $donnee['Email'];
+                                $nomUtilisateur = $donnee['Nom'] . ' ' . $donnee['Prenom'];
+                            }
                             
                              //CREATION DE L'ACTIVIE EN BDD                       
-                                Activite::create([
+                                $act= Activite::insertGetId([
                                     'Titre' => $idee[0]['Titre'],
                                     'Prix' => 0,
                                     'Date_creation' => date("Y-m-d H:i:s"),
@@ -209,18 +220,18 @@ class GererDonnees extends Controller
                                 ]);
 
 
+                                ImageActivite::create([
+                                    'Image' => $idee[0]['Image'],
+                                    'Auteur' => $nomUtilisateur,
+                                    'Valide'=> 1,
+                                    'ID_Activites' => $act,
+                                    'ID_Utilisateurs' => $idee[0]['ID_Utilisateurs'],
 
-                            try {
-                                $bdd = DB::connection('mysql2')->getPdo();
-                            } catch(Exception $e) {
-                        
-                            }
-                            $reponse = $bdd->prepare('SELECT Email FROM utilisateurs WHERE id=:id');
-                            $reponse->bindValue(':id', $idee[0]['ID_Utilisateurs'], $bdd::PARAM_STR);
-                            $reponse->execute();
-                            if($donnee=$reponse->fetch()){
-                                $emailUtilisateur = $donnee['Email'];
-                            }
+                                ]);
+
+
+
+                           
 
 
 
