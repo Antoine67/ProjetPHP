@@ -92,7 +92,7 @@ if(isset($message)) {
 
 
                         <label><b>Prix</b></label>
-                        <input type="number" name="prix" required>
+                        <input type="number" name="prix" step="0.01" required>
               
                         <label><b>Quantité disponible</b> </label>
                         <input type="number" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="quantité" required>
