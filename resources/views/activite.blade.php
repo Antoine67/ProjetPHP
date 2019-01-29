@@ -243,38 +243,5 @@ if(sizeof($activites) == 0) {
 <?php } ?>
 
 
-<!-- Selectionneur de dates -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
-    $( "#anim" ).on( "change", function() {
-      $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
-    });
-
-    $( ".suppression button" ).click(
-        function () {
-            if (confirm('Êtes vous sûr de vouloir supprimer cette activité ?')) {
-                // Si oui
-                return true;
-            } else {
-                // Si non
-                return false;
-            }
-               
-            });
-
-
-
-  } );
-
-
-
-
-  
-  </script>
 
 @endsection
