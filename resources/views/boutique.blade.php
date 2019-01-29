@@ -92,10 +92,10 @@ if(isset($message)) {
 
 
                         <label><b>Prix</b></label>
-                        <input type="text" name="prix" required>
+                        <input type="number" name="prix" required>
               
                         <label><b>Quantité disponible</b> </label>
-                        <input type="text" name="quantité" required>
+                        <input type="number" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="quantité" required>
 
                         <label><b>Catégorie</b> </label>
                         <select name="categorie" required>
