@@ -68,7 +68,7 @@ Idee::select('Idees.*','Votes.Quantité')
                 </div>
             </div>
             <div>
-                <label class="left">Vous avez une idée d\'activité à soumettre ? ?</label>
+                <label class="left">Vous avez une idée d\'activité à soumettre ?</label>
                 <br/>
                 <a class="btn btn-default button-activite envoyer" role="button" data-toggle="modal" data-target="#ajouter-idee">Partagez la !</a>
             </div>
