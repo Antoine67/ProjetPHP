@@ -72,13 +72,11 @@ if(!isset($activite_data)) {
         $date = new DateTime($activite_data['Date']);
         $intervalle = $dateActuelle->diff($date);
 
-        $intervalle = $datetime1->diff($datetime2);
-
         ?>
         <div class="text-center">
             <?php 
             //On attribue les actions en fonctions des perms
-            if(($intervalle->format('%R%a')>1 && isset($util)) {
+            if($intervalle->format('%R%a')>1 && isset($util)) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
             <?php } ?>
