@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 $util = Session::get('role');//Utilisateur connecté .. ou non
 
 ?>
-
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
 
 
 
@@ -71,7 +71,7 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
                            <tbody>';
                            
                        foreach ($idees_all as $idee) {
-                           echo '<tr><td>'.$idee['Titre'] . '</td></tr>';
+                           echo '<tr><td>'.$idee['Titre'] . '</td><td class="suppresion-idee" id="suppr-idee-'.$idee['ID'].'">Supprimer</td></tr>';
                        }
                        echo '</tbody>
                        </table>';

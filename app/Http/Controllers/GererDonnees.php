@@ -286,6 +286,18 @@ class GererDonnees extends Controller
                         }
                         break;
                     }
+
+                    case('suppr-idee'): {
+                        if(isset($_POST['id-idee'])) {
+                            
+                                Vote::where('ID_Idees',$_POST['id-idee'])->delete();
+                                Idee::where('ID',$_POST['id-idee'])->delete();
+                            
+                           
+                        }
+                        break;
+                    }
+
                     //Modification d'un enregistrement d'une table par le back-office
                     case('modif-table') : {
                         if(isset($_POST['table']) && isset($_POST['donnee'])) {

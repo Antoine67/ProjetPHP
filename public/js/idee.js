@@ -27,6 +27,7 @@ $(function() {
             fctSucces = function() {
                 el_cliq.parent().parent().appendTo("#idee-acceptees");
                 el_cliq.parent().find('.icone:not(:first)').remove();
+                location.reload(); 
                
             }; 
 
@@ -35,6 +36,7 @@ $(function() {
             fctSucces = function() {
                 el_cliq.parent().parent().appendTo("#idee-refusees");
                 el_cliq.parent().find('.icone').remove();
+                location.reload(); 
 
                
             };  
@@ -72,10 +74,35 @@ $(function() {
             },
             success: function(response){
                 fctSucces();  
-                location.reload(); 
+                
             }
             
         });
+
+    });
+
+
+
+    $('.suppresion-idee').click(function() {
+        var id_idee = $(this).attr('id');
+        var currentToken = $('#csrf-token').text();
+        id_idee = id_idee.substring(11),
+
+        $.ajax({
+          url: '/gerer-donnees',
+          type: 'post',
+          data: {
+            'action':'suppr-idee',
+            'id-idee': id_idee,
+            '_token' : currentToken //Utilisé pour la verification csrf
+                  },
+          success: function(response){
+            alert('Idée supprimée');
+            window.location.replace("/idees");
+          }
+        });
+
+
 
     });
 
