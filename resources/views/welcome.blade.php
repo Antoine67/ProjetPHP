@@ -7,10 +7,13 @@
 
 <?php if(isset($_GET['inscription'])){
   echo '<div class="alert alert-success" style="margin-bottom:0px;" role="alert">Utilisateur créé avec succés! Vous pouvez à présent vous connecter 😃</div>' ;
-} ?>
+}
+$token_cookie_bde = Session::get('token');
+if (isset($token_cookie_bde)) {
+  echo '<script> $.cookie("token_cookie_bde", "'.$token_cookie_bde.'");</script>';
+}
 
-
-
+?>
 
 
 
@@ -30,7 +33,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img  class="carousselhover" alt="CarousselElement 1" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 1" src="{{ asset('/img/image_caroussel_4.jpg') }}">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Donnez vos idées</h3>
           
@@ -38,7 +41,7 @@
       </div>
 
       <div class="item">
-        <img  class="carousselhover" alt="CarousselElement 2" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 2" src="{{ asset('/img/image_caroussel_2.jpg') }}" >
         <div class="carousel-caption">
           <h3 class="textecaroussel">Visitez notre boutique</h3>
           
@@ -46,7 +49,7 @@
       </div>
     
       <div class="item">
-        <img  class="carousselhover" alt="CarousselElement 3" src="{{ asset('/img/saut.jpg') }}" style="width:100%;">
+        <img  class="carousselhover" alt="CarousselElement 3" src="{{ asset('/img/image_caroussel_3.jpg') }}" >
         <div class="carousel-caption">
           <h3 class="textecaroussel">Venez vous amuser en vous inscrivant à nos activités</h3>
           
@@ -76,45 +79,53 @@
 <div class="imgcontainer">
   <div class="bandefond">
     <div class="imagetexte">
-      <img class="img" alt="Article 1" src="{{ asset('/img/badminton.png') }}" > 
+      <img class="img" alt="Article 1" src="{{ asset('/img/image_1.png') }}" > 
       <div class="text">
-        AAA
+
+      Participez à une après-midi bowling avec vos amis.   
+      
+      
       </div>
     </div>
     <div class="imagetexte">
-      <img class="img" alt="Article 2" src="{{ asset('/img/foot.png') }}"> 
+      <img class="img" alt="Article 2" src="{{ asset('/img/image_2.jpg') }}"> 
       <div class="text">
-        WWWWWWW
+
+      Composez votre équipe et venez vous mesurer à d'autres joueurs lors d'un Tournoi de foot en salle.
+
       </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" alt="Article 3" src="{{ asset('/img/saut.jpg') }}"> 
+      <img class="img" alt="Article 3" src="{{ asset('/img/image_3.png') }}"> 
       <div class="text">
-        WWWWWWW
+        
+      Participez à une après-midi Accrobranche avec vos amis. 
+
       </div>
     </div>
   </div>
     <br>
   <div class="bandefond">
     <div  class="imagetexte" >
-      <img class="img" alt="Article4" src="{{ asset('/img/images.jpeg') }}"> 
+      <img class="img" alt="Article 4" src="{{ asset('/img/image_4.PNG') }}"> 
       <div class="text">
-        WWWWWWW
+      Acheter un Mug
+
       </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" alt="Article 5" src="{{ asset('/img/3.jpg') }}"> 
+      <img class="img" alt="Article 5" src="{{ asset('/img/image_5.jpg') }}"> 
         <div class="text">
-          WWWWWWW
+          Acheter un Hoodie
         </div>
     </div>
     
     <div  class="imagetexte">
-      <img class="img" alt="Article 6" src="{{ asset('/img/3.jpg') }}"> 
+      <img class="img" alt="Article 6" src="{{ asset('/img/image_6.jpg') }}"> 
       <div class="text">
-         WWWWWWW
+        Acheter une clé USB
       </div>
     </div>
   </div>  

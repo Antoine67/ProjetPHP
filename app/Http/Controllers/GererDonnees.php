@@ -28,6 +28,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 use PHPMailer\PHPMailer\Exception;
 
+use Illuminate\Support\Facades\DB;
+
+
 class GererDonnees extends Controller
 {
     function post() {
@@ -121,8 +124,44 @@ class GererDonnees extends Controller
                     case('signaler-image-activite') : {
                         var_dump($_POST); 
                         if(isset($_POST['id-image'])) {
+                            $img_sign = ImageActivite::where('ID',$_POST['id-image'])->get();
+                            ImageActivite::where('ID',$_POST['id-image'])->update(['Valide' => 0]);
 
-                            ImageActivite::where('ID',$_POST['id-image'])->update(['Valide' => 0]);;
+                            $emails_bde_membres  = explode(',', env('EMAIL_BDE'));
+                            foreach($emails_bde_membres as $membre_email) {
+                                //ENVOI DU MAIL 
+                                $mail = new PHPMailer(true);                              
+                                try {
+                                    //Server settings
+                                    $mail->isSMTP();                                     
+                                    $mail->Host = 'smtp.gmail.com';  
+                                    $mail->SMTPAuth = true;                               
+                                    $mail->Username = 'bde.cesi.exia@gmail.com';                
+                                    $mail->Password = 'SuperBDE67000?';                           
+                                    $mail->SMTPSecure = 'ssl';                            
+                                    $mail->Port = 465;                                  
+                    
+                                    //Recipients
+                                    $mail->setFrom('bde.site@cesi.fr', 'Site du BDE');
+                                    $mail->addAddress($membre_email);     
+                    
+                    
+                                    //Content
+                                    $mail->isHTML(true);                                  
+                                    $mail->Subject = 'BDE Strasbourg : Une image vient d\'etre signalee ';
+                                    $mail->Body    = '<h1>Suppresion</h1><h3>Message automatique</h3>L\'image "'.$img_sign[0]['Image'].'" vient d\'&ecirc;tre signalee !';
+                                    $mail->AltBody = 'Une de vos idées vient tout juste d\'être validée';
+                    
+                                    $mail->send();
+                                    echo 'L\'utilisateur vient d\'être informé !  .('.$membre_email.')';
+                                } catch (Exception $e) {
+                                    echo 'Erreur lors de l\'envoi de la commande: ', $mail->ErrorInfo;
+                                }
+                            }
+
+
+
+
                         }
                         break;
                     }
@@ -156,6 +195,8 @@ class GererDonnees extends Controller
                         if(isset($_POST['id-idee'])) {
                             $idee = Idee::where('ID',$_POST['id-idee'])->get();
                             Idee::where('ID',$_POST['id-idee'])->update(['Etat' => 3]);
+
+
                             
                              //CREATION DE L'ACTIVIE EN BDD                       
                                 Activite::create([
@@ -166,6 +207,22 @@ class GererDonnees extends Controller
                                     'Description' => $idee[0]['Contenu'],
                                     'ID_Utilisateurs' =>Session::get('id'),
                                 ]);
+
+
+
+                            try {
+                                $bdd = DB::connection('mysql2')->getPdo();
+                            } catch(Exception $e) {
+                        
+                            }
+                            $reponse = $bdd->prepare('SELECT Email FROM utilisateurs WHERE id=:id');
+                            $reponse->bindValue(':id', $idee[0]['ID_Utilisateurs'], $bdd::PARAM_STR);
+                            $reponse->execute();
+                            if($donnee=$reponse->fetch()){
+                                $emailUtilisateur = $donnee['Email'];
+                            }
+
+
 
                             //ENVOI DU MAIL 
                                 $mail = new PHPMailer(true);                              
@@ -180,18 +237,18 @@ class GererDonnees extends Controller
                                     $mail->Port = 465;                                  
                     
                                     //Recipients
-                                    $mail->setFrom('bde.site@cesi.fr', 'Mailer');
-                                    $mail->addAddress(Session::get('email'));     
+                                    $mail->setFrom('bde.site@cesi.fr', 'Site du BDE');
+                                    $mail->addAddress($emailUtilisateur);     
                     
                     
                                     //Content
                                     $mail->isHTML(true);                                  
-                                    $mail->Subject = 'BDE Strasbourg : Une de vos idées a été validé ! ';
-                                    $mail->Body    = '<h1>Votre idée "'.$idee[0]['Titre'].'" vient d\'être validée !</h1>';
+                                    $mail->Subject = 'BDE Strasbourg : Une de vos proposition vient d\'etre retenue ! ';
+                                    $mail->Body    = '<h1>Votre id&eacute;e "'.$idee[0]['Titre'].'" vient d\'&ecirc; tre valid&eacute;e !</h1>';
                                     $mail->AltBody = 'Une de vos idées vient tout juste d\'être validée';
                     
                                     $mail->send();
-                                    echo 'La commande vient d\'être envoyé à un membre du bde ! .('.Session::get('email').')';
+                                    echo 'L\'utilisateur vient d\'être informé !  .('.$emailUtilisateur.')';
                                 } catch (Exception $e) {
                                     echo 'Erreur lors de l\'envoi de la commande: ', $mail->ErrorInfo;
                                 }
@@ -218,7 +275,21 @@ class GererDonnees extends Controller
                         }
                         break;
                     }
+                    //Modification d'un enregistrement d'une table par le back-office
+                    case('modif-table') : {
+                        if(isset($_POST['table']) && isset($_POST['donnee'])) {
 
+                            $donnee = json_decode($_POST['donnee'], true);
+                            $id = $donnee['ID'];
+                            unset($donnee['ID']);
+
+
+                            $table = new Article;
+                            $table->setTable(ucfirst($_POST['table']));
+                            $table->where('ID',$id)->update($donnee);
+
+                        }
+                    }
                 }
             }
         }

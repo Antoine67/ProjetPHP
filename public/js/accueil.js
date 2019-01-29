@@ -3,7 +3,7 @@ $(function() {
     //Au dessus d'une div contenant une image + un texte
     $( ".imagetexte" ).hover(function() {
           $(this).animate({
-            opacity: '0.5',
+            opacity: '0.8',
           });
         
         $(this).children('.text').each(function () {

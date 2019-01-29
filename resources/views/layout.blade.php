@@ -55,6 +55,7 @@ function getURL() {
     <title>BDE - <?= $page ?></title>
 
     <script src="{{ asset('/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="{{ asset('/js/header.js') }}"></script>
     <script src="{{ asset('/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
@@ -63,6 +64,7 @@ function getURL() {
 
   
 <header>
+
 
 <span hidden id="csrftoken"><?=csrf_token() ?></span>
   <div>
@@ -205,7 +207,26 @@ function getURL() {
     </div>
 </header>
 
+<!--Confirmation de l'utilisation des cookies-->
+<div class="modal fade" id="panel-cookie" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">    
+                <h3 class="modal-title" >Confirmation de l'utilisation des cookies</h3>
+            </div>
 
+            <!-- Panel Confirmation de l'utilisation des cookies -->
+          <div class="modal-body basket-content">
+          En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies afin de vous proposer une gestion automatisée de tous les contenus présent sur ce site.
+          Pour en savoir plus<a href="/mentions_legales"> cliquez ici</a>
+                <div class="right">
+                    <button type="submit" id="accepter-cookie" class="btn btn-success"><i class="fas fa-check"></i>Accepter</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 @yield('content')
@@ -225,6 +246,8 @@ function getURL() {
         <a href="#">Nous Contacter</a>
         ·
         <a href="/mentions_legales">Mentions Legales</a>
+        ·
+        <a href="/conditions_generale_de_ventes">Conditions Générale de Ventes</a>
     </p>
 
     <p class="footer-company-name">BDE &copy; 2019</p>

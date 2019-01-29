@@ -5,10 +5,12 @@
 <link rel="stylesheet" href="{{ asset('/css/panel_specifique.css') }}">
 <link rel="stylesheet" href="{{ asset('/DataTables/datatables.min.css') }}">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<span hidden id="csrf-token"><?=csrf_token() ?></span>
+
 <script src="{{ asset('/js/panel_specifique.js') }}"></script>
 <script src="{{ asset('/DataTables/datatables.min.js') }}"></script>
 
+<span hidden id="csrf-token"><?=csrf_token() ?></span>
+<span hidden id="table-actuelle"><?=$nom_panel ?></span>
 
 <?php
 
@@ -71,7 +73,7 @@ use Illuminate\Support\Facades\DB;
     if(sizeof($table)<=0) {
         echo '
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
-            <h2 class = "titre">Gestion des '. $nom_panel .'</h2>
+            <h2 class = "titre">Gestion des '. ucfirst($nom_panel) .'</h2>
             <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
                 <div class="center">Aucune donnée trouvée pour la table "'. $nom_panel .'"
                 </div>
@@ -81,9 +83,25 @@ use Illuminate\Support\Facades\DB;
         ';
     }
     else {
+
+         //URL sur laquelle il faut cherche les images
+        //Protocle (HTTP/HTTPS)
+        $protocol =(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://");
+        $url = $protocol . $_SERVER['SERVER_NAME'];
+
+        //Si il y a port specifique (ex:localhost:8000)
+        if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
+
+        $url=$url . '/';
+
+
+
+
+
+
         echo'
         <div class="col-lg-12 col-md-12 col-sm-12 categories">
-        <h2 class = "titre">Gestion des '. $nom_panel .'</h2>
+        <h2 class = "titre">Gestion des '. ucfirst($nom_panel) .'</h2>
         <table id="gestion_tables" class="display" style="width:100%" >
         <thead>
             
@@ -91,7 +109,7 @@ use Illuminate\Support\Facades\DB;
             ';
             
             foreach($nom_colonne as $colonne) {
-                 echo '<th>'. $colonne .'</th>';
+                 echo '<th class="colonnes-tableau">'. $colonne .'</th>';
             }
             echo'<th>Gestion</th>
             </tr>
@@ -102,13 +120,19 @@ use Illuminate\Support\Facades\DB;
             
         foreach($table as $enregistrement) {
 
-            echo '
-            <tr>
-            ';
+            echo ' <tr>';
             $i=0;
             foreach($enregistrement as $el_enregistrement) {
-                if($i %2 == 0) 
-                echo '<td><span class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</span></td>';
+                if($i %2 == 0) {
+                    if (preg_match('/\.(png|jpg|gif)/i', $el_enregistrement)) {
+                        echo '<td><span class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</span><a href="'.$url.$el_enregistrement.'"> Aperçu</a></td>';  
+                    }else {
+                         echo '<td><span class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</span></td>';
+                    }
+                    
+                   
+                }
+                
                 $i++;
             }
             echo '

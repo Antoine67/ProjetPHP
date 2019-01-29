@@ -146,9 +146,9 @@ $(function() {
 
         }else if(action == 'sign') {//Signaler l'image
             action_post ='signaler-image-activite';
+            alert('La photo vient d\'être signalée auprès d\'un membre du BDE');
             fctSucces = function() {
                 el_cliq.parent().parent().parent().parent().remove();
-                alert('La photo vient d\'être signalée auprès d\'un membre du BDE');
             }; 
         }
 
