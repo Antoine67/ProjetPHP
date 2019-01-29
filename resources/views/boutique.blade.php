@@ -204,11 +204,21 @@ if(isset($message)) {
 
             //Chaque catégorie
             $categories_all = Categorie::all();
+            $compte = 0;
             foreach($categories_all as $categ) {
                 $categ_nom = strtr( $categ['Nom'], $caract_interdit );
                 $categ_nom = strtolower($categ_nom);
                 $categ_nom = str_replace(" ", "%20", $categ_nom);
-                echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories" ><p class="bk_text"> '.$categ['Nom'].' </p></a></li>';
+
+                if($compte==0)
+                {
+                    echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories2" ><p class="bk_text"> '.$categ['Nom'].' </p></a></li>';
+                    $compte=1;
+                }
+                else{
+                    echo'<li><a href="/boutique/'.$categ_nom.'" class="btn button_categories" ><p class="bk_text"> '.$categ['Nom'].' </p></a></li>';
+                }
+                
             }
             
             

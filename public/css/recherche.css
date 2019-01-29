@@ -19,7 +19,7 @@
   /* Bouton valider */
  #search-btn {
     border-radius:  0 50px 50px 0;
-    background-color: #7373A0;  
+    background-color: #000000;  
     border-style: solid;   
     border-width: 1px;  
     border-color: #E8B960;   
@@ -36,7 +36,7 @@
   
 
  #search-btn:hover {
-    background-color: #8093AC;   /* Couleur de fond */
+    background-color: #000000;   /* Couleur de fond */
     color: #E8B960;   /* Couleur du texte */
     cursor: pointer;   /* Apparence du curseur comme pour un lien */
   }
