@@ -4,6 +4,7 @@
 {
     background-color: #8a9aac;
     margin: 5vh 0vh 0vh 0vh;
+    word-wrap: break-word;
 }
 
 .diffidee
@@ -12,10 +13,12 @@
     margin-bottom: 2vh;
     padding-top: 1%;
     width: 100%;
+    word-wrap: break-word;
 }
 
 .div-img
 {
+    word-wrap: break-word;
     width: 10%;
 }
 
@@ -27,6 +30,7 @@
 
 .idee
 {
+    word-wrap: break-word;
     width: 78%;
 }
 

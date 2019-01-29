@@ -73,7 +73,31 @@ th
     text-align: center;
   }
 
+th,td {
+    word-wrap: break-word;
+    
+}
+textarea
+{
+    height: 15vh;
+    max-width: 6vw;
+    resize: none;
+    border: none;
+    background: none;
+}
+textarea:hover
+{
+    cursor: default;
+}
 
+textarea:focus
+{
+    outline: none;
+}
+
+table {
+    table-layout: fixed;
+}
 
 hr
 {

@@ -65,7 +65,7 @@ function bindConfirmer(element) {
         $('.inp-'+id_btn).each(function() {
             let el_text = $(this).val();
            
-            $( this ).replaceWith('<span class="el-'+id_btn+'">'+el_text+'</span>');
+            $( this ).replaceWith('<textarea readonly class="el-'+id_btn+'">'+el_text+'</textarea>');
 
             donnee[colonnes_tableaux[incr]] = $( this ).val() ;
 
