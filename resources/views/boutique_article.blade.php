@@ -4,6 +4,8 @@
 
 <link rel="stylesheet" href="{{ asset('/css/boutique_article.css') }}">
 
+<!-- Fonctions de tris -->
+<script src="{{ asset('/js/boutique_categorie.js') }}"></script>
 
 <span hidden id="id-article"><?=$id_article?></span>
 <span hidden id="csrf-token"><?=csrf_token() ?></span>
@@ -21,6 +23,8 @@ $url = $protocol . $_SERVER['SERVER_NAME'];
 if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
 
 $url=$url . '/';
+
+
 
 
 
@@ -124,7 +128,10 @@ if(sizeof($articles) >0 && $article['Stock'] >0) {
  </div>
 
 
-<?php } ?>
+<?php } 
+
+echo '</div>';?>
+
 
 
 

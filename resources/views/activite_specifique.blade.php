@@ -37,6 +37,8 @@ if(!isset($activite_data)) {
     if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
 
     $url=$url . '/';
+
+    $util = Session::get('role');//Utilisateur connecté .. ou non
     
 ?>
 
@@ -72,7 +74,7 @@ if(!isset($activite_data)) {
         ?>
         <div class="text-center">
             <?php 
-            if($date > $dateActuelle) {
+            if($date > $dateActuelle && isset($util)) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
             <?php } ?>
@@ -250,13 +252,14 @@ if(!isset($activite_data)) {
                                     echo '
                                     </div>';
                                     foreach ($comms as $comm) {
-                                        $nomUtilisateur = "Inconnu";
+                                        $nomUtilisateur = "Utilisateur supprimé";
+
                                         try {
                                             $reponse = $bdd->prepare('SELECT Nom, Prenom FROM utilisateurs WHERE id=:id');
                                             $reponse->bindValue(':id', $comm['ID_Utilisateurs'], $bdd::PARAM_STR);
                                             $reponse->execute();
-                                            
                                             if($donnee = $reponse->fetch()) {
+                                               
                                                 $nomUtilisateur = strtoupper($donnee['Nom']) . ' ' . ucfirst($donnee['Prenom']);
                                             }
                                         } catch(Exception $e) {
@@ -274,17 +277,29 @@ if(!isset($activite_data)) {
 
                         echo'       </div>
                                 </div>
-                                <div class="like">
-                                            <p class="like-texte" data-id='.$activite['ID'].'>'. $nb_likes .'</p> <i class="fas fa-thumbs-up upvote '. $class .'" role="button"></i>
-                                        </div> 
+                                <div class="like">';
+                                    if(isset($util)) {
+                                        echo ' <p class="like-texte" data-id='.$activite['ID'].'>'. $nb_likes .'</p> <i class="fas fa-thumbs-up upvote '. $class .'" role="button"></i>';
+                                    }else {
+                                        echo ' <p class="like-texte" >'. $nb_likes .'</p> <i class="fas fa-thumbs-up" style="font-size:30px;" ></i>';
+                                    }
+                                           
+                                    echo'</div> 
                                 <div class="ecrire-commentaire-image" style="visibility:hidden">
                                     <p style="float:right;padding-top:5px;font-size:20px;">
                                         Un commentaire ? Un avis ?
-                                    </p>
-                                    <textarea placeholder="Votre commentaire"></textarea>
-                                    <span hidden class="id-activite">'.$activite['ID'].'</span>
-                                    <button class="btn btn-success envoyer-commentaire-image">Envoyer</button>  
-                                </div>
+                                    </p>';
+                                    
+                                    if(isset($util)) {
+                                        echo '
+                                        <textarea placeholder="Votre commentaire"></textarea>
+                                        <span hidden class="id-activite">'.$activite['ID'].'</span>
+                                        <button class="btn btn-success envoyer-commentaire-image">Envoyer</button>  ';
+                                    }else {
+                                        echo'<a href="/connexion" class="btn btn-success">Se connecter pour poster un commentaire</a>';
+                                    }
+                                    
+                                echo'</div>
                                 
                             </div>'; 
                         
@@ -360,7 +375,12 @@ if(!isset($activite_data)) {
                         <label for="votre-commentaire">Partagez votre avis sur cette activité :</label>
                         <textarea name="commentaire" class="form-control" style="resize: none;" rows="5" placeholder="Ecrire un commentaire..." id="votre-commentaire"></textarea>
                     </div>
-                    <div class="right"><button type="submit" class="btn btn-success submit-commentaire">Envoyer</button></div>
+                    <?php if(isset($util)) {
+                        echo'<div class="right"><button type="submit" class="btn btn-success submit-commentaire">Envoyer</button></div>';
+                    }else {
+                        echo'<div class="right"><a href="/connexion">Se connecter pour poster un commentaire</a></div>';
+                    } ?>
+                    
                 </form>
         </div>
     </div>

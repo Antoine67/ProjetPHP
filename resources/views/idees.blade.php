@@ -13,6 +13,8 @@ use App\Vote;
 
 use Illuminate\Support\Facades\DB;
 
+$util = Session::get('role');//Utilisateur connecté .. ou non
+
 ?>
 
 
@@ -34,6 +36,8 @@ use Illuminate\Support\Facades\DB;
     if(isset($_SERVER['SERVER_PORT']))  {  $url= $url . ':' . $_SERVER['SERVER_PORT'];  }
 
     $url=$url . '/';
+
+    $util = Session::get('role');
 
 ?>
 
@@ -97,9 +101,14 @@ Idee::select('Idees.*','Votes.Quantité')
                     '.$idee_proposee['Contenu'].'
                 </div>
 
-                <div class="col-lg-2 col-md-2 col-sm-2 upvote">
-                    <a class="btn btn-default upvote-button icone '. $classe_bouton_like .'" role="button" id="vote-'.$idee_proposee['ID'].'">
-                        <i class="fas fa-angle-up"> '.$nb_votes.'</i>
+                <div class="col-lg-2 col-md-2 col-sm-2 upvote">';
+                if(isset($util)) {
+                    echo'<a class="btn btn-default upvote-button icone '. $classe_bouton_like .'" role="button" id="vote-'.$idee_proposee['ID'].'">';
+                
+                }else{
+                    echo '<a href="/connexion">Se connecter pour voter<br/>';
+                }
+                    echo'<i class="fas fa-angle-up"> '.$nb_votes.'</i>
                     </a>';
                     if(Session::get('role') == 2) {
                         echo '
@@ -155,9 +164,16 @@ Idee::select('Idees.*','Votes.Quantité')
                     '.$idee_acceptee['Contenu'].'
                 </div>
 
-                <div class="col-lg-2 col-md-2 col-sm-2 upvote">
+                <div class="col-lg-2 col-md-2 col-sm-2 upvote">';
+                if(isset($util)) {
+                    echo'
                     <a class="btn btn-default upvote-button icone '. $classe_bouton_like .'" role="button" id="vote-'.$idee_acceptee['ID'].'">
-                        <i class="fas fa-angle-up"> '.$nb_votes.'</i>
+                    ';
+                }else {
+                    echo '<a href="/connexion">Se connecter pour voter<br/>';
+                }
+                    
+                    echo'   <i class="fas fa-angle-up"> '.$nb_votes.'</i>
                     </a>
                 </div>    
             </div>';

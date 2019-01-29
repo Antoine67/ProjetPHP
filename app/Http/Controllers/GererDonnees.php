@@ -244,7 +244,7 @@ class GererDonnees extends Controller
                                     //Content
                                     $mail->isHTML(true);                                  
                                     $mail->Subject = 'BDE Strasbourg : Une de vos proposition vient d\'etre retenue ! ';
-                                    $mail->Body    = '<h1>Votre id&eacute;e "'.$idee[0]['Titre'].'" vient d\'&ecirc; tre valid&eacute;e !</h1>';
+                                    $mail->Body    = '<h3>Votre id&eacute;e "'.$idee[0]['Titre'].'" vient d\'&ecirc;tre valid&eacute;e !</h3>';
                                     $mail->AltBody = 'Une de vos idées vient tout juste d\'être validée';
                     
                                     $mail->send();
