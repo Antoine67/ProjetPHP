@@ -117,7 +117,7 @@ if(sizeof($articles) >0 && $article['Stock'] >0) {
                     <h2 id="article-nom-modal"><?=$article["Nom"]?></h2>
                     <h3>Prix unitaire : <span id="article-prix-modal"><?=$article["Prix"]?></span>€</h3>
                     <label  for="qte-cmd">Quantité :</label>
-                    <input id="qte-cmd" name="quantite" placeholder="Quantité" value="1">
+                    <input type="number" id="qte-cmd" name="quantite" placeholder="Quantité" value="1">
                     <hr class="delimiteur">
                     <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i>Ajouter au panier</button></div>
                   </form>       

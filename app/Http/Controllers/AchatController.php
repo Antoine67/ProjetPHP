@@ -18,7 +18,10 @@ class AchatController extends Controller
 {
     function get() {
 
-
+        $sess = Session::get('identifiant');
+        if(!isset($sess)) {
+            return redirect('/connexion');
+        }
         return view('achat');
     }
 
