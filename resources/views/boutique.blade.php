@@ -8,7 +8,7 @@
 
 
 
-
+<script src="{{ asset('/js/boutique.js') }}"></script>
 <script src="{{ asset('/js/recherche.js') }}"></script>
 
 <?php
@@ -111,11 +111,11 @@ if(isset($message)) {
  
 
                         <label><b>Image de ce produit :</b></label>
-                        <input type="file" class="btn btn-primary" name="fichier" required>
+                        <input accept="image/png, image/jpeg" onchange="findsize()" id="monFichier" type="file" class="btn btn-primary" name="fichier" required>
 
 
 
-                        <div class="right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
+                        <div class="right"><button id="bouton-ajouter-article" type="submit" class="btn btn-success"><i class="fas fa-check"></i>Ajouter</button></div>
                     </form>       
                 </div>
 
