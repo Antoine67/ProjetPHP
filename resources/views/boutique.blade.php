@@ -111,7 +111,7 @@ if(isset($message)) {
  
 
                         <label><b>Image de ce produit :</b></label>
-                        <input type="file" class="btn btn-primary" name="fichier" accept="image/x-png,image/gif,image/jpeg" required>
+                        <input type="file" class="btn btn-primary" name="fichier" required>
 
 
 
