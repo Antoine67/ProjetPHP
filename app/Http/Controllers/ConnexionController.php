@@ -72,9 +72,15 @@ class ConnexionController extends Controller
             
 
             if ($httpcode != 200) {
-                echo '<div class="err"><strong>Erreur</strong> de connexion : Vérifiez votre e-mail/identifiant et mot de passe </div>';;
+                if($httpcode == 0) {
+                    echo '<div class="err"><strong>Erreur</strong> de connexion à l\'API d\'authentification :<br/> Vérifiez l\'etat des serveurs ou réessayer ultérieurement</div>';;
+                    return view('connexion');
+                }  
+                echo '<div class="err"><strong>Erreur d\'authentification</strong> :<br/> Vérifiez votre e-mail/identifiant et mot de passe </div>';;
                 return view('connexion');
             } 
+
+
 
 
             //Récuperer uniquement le body

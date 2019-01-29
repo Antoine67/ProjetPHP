@@ -54,7 +54,7 @@ class AchatController extends Controller
                         'Prix_total' => $article['Quantité'] * $article['Prix'],
                     ]);
     
-                    $body_commande = $body_commande . '<li>['.$article['ID'].'] -> '.$article['Nom'].'en quantit&#233; de '.$article['Quantité'].' pour un prix de '.$article['Prix'].' euros</li>';
+                    $body_commande = $body_commande . '<li>['.$article['ID'].'] -> '.$article['Nom'].' en quantit&#233; de '.$article['Quantité'].' pour un prix de '.$article['Prix'].' euros</li>';
 
                     //On ++ le compteur de vente des articles
                     Article::where('ID', $article['ID'])
@@ -66,7 +66,7 @@ class AchatController extends Controller
                     
                 }
                 $body_commande =$body_commande . '</ul>';
-                $body_commande = $body_commande . '<h2>command&#233 par l\'utilisateur '. Session::get('id');
+                $body_commande = $body_commande . '<h2> command&#233 par l\'utilisateur '. Session::get('id');
     
                 
     
@@ -84,7 +84,7 @@ class AchatController extends Controller
                     $mail->Port = 465;                                  
     
                     //Recipients
-                    $mail->setFrom('bde.site@cesi.fr', 'Mailer');
+                    $mail->setFrom('bde.site@cesi.fr', 'Bureau des Exars');
                     $mail->addAddress(env("ADRESSE_EMAIL"));     
     
     
@@ -92,10 +92,11 @@ class AchatController extends Controller
                     $mail->isHTML(true);                                  
                     $mail->Subject = 'Commande numero '.$id_commande;
                     $mail->Body    = '<h1>Commande n&#176;'. $id_commande .'</h1>' .$body_commande ;
-                    $mail->AltBody = 'Commande numero '.$id_commande.'a été passée';
+                    $mail->AltBody = 'Commande numero '.$id_commande.' a été passée';
     
                     $mail->send();
-                    echo 'La commande vient d\'être envoyé à un membre du bde ! ('.env("ADRESSE_EMAIL").')';
+                    echo 'La commande vient d\'être envoyé à un membre du bde ! ('.env("ADRESSE_EMAIL").') 
+                    cliquer <a href="/">ici</a> pour revenir à l\'accueil';
                 
                 } catch (Exception $e) {
                     echo 'Erreur lors de l\'envoi de la commande: ', $mail->ErrorInfo;

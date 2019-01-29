@@ -11,6 +11,23 @@
       transform:translate(-50%, -50%);
     }
 
+    table td, table th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    table tr:nth-child(even){background-color: #f2f2f2;}
+
+    table tr:hover {background-color: #ddd;}
+
+    table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+
   </style>
   <title>Payez ici!</title>
 </head>
@@ -33,18 +50,24 @@
       echo '
       
       <div class="achat">
+        <a href="/boutique">Poursuivre mes achats</a>
         <h3>Votre commande :</h3>
         <form method="POST">
         '; ?> @csrf <?php 
-        echo '<ul>';
+        echo '<table>';
+        $prix_total=0.0;
         foreach($articles_panier as $article_p) {
-            echo '<li>'.$article_p['Nom'].'</li>
+          $prix_total = $prix_total + floatval($article_p['Prix'])*floatval($article_p['Quantité']);
+
+            echo '<tr><td>'.$article_p['Nom'].'</td><td>Quantité : '.$article_p['Quantité'].'</td><td>Prix unitaire : '.$article_p['Prix'].'€</td></tr>
             
             
             ';
-        }echo '</ul>
-        
-          <div id="paypal-button-container"></div>
+        }echo '</table>
+          <hr/>
+          <h3>Prix à payer : '.$prix_total.'€</h3>
+          <br/>
+          <div style="text-align:center;" id="paypal-button-container"></div>
           <button type="submit">Valider</button>  
         </form>
       </div>

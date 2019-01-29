@@ -44,8 +44,10 @@ $(function() {
 
     $('#panier-payer').click(function() { //Passer au paiement
        
-        sauvegarder();
-        window.location.assign('/achat')
+        sauvegarder(function(){
+            window.location.assign('/achat');
+        });
+        
     });
 
     //Affiche le form si on a pas encore accepter les cookies et qu'on est sur une page différente que les mentions legales
@@ -76,7 +78,7 @@ function majPrixQuantite() {
 };
 
 
-function sauvegarder () {
+function sauvegarder (callback) {
     var currentToken = $('#csrftoken').text();
 
     var articles = Array();
@@ -100,7 +102,7 @@ function sauvegarder () {
         },
         success: function(response){
             console.log('sauvegardé :'+articles);
-    
+            callback();
         }
     });
 }
