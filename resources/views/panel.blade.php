@@ -56,18 +56,23 @@ use Illuminate\Support\Facades\DB;
         $roles[$r['ID']] = $r;
     }
 
-try {
-    $bdd = DB::connection('mysql2')->getPdo();
-} catch(Exception $e) {
+$url= 'http://localhost:3000/api/utilisateurs';
 
-}
 
-$utilisateurs=array();
-$reponse = $bdd->prepare('SELECT * FROM utilisateurs ORDER BY ID ASC');
-                            $reponse->execute();
-                            while($donnee=$reponse->fetch()){
-                                array_push($utilisateurs,$donnee);
-                            }
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+curl_setopt($ch, CURLOPT_URL,$url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cookie: token_cookie_bde=".Session::get('token')));
+
+$result=curl_exec($ch);
+
+curl_close($ch);
+
+$utilisateurs = json_decode($result, true);
+
+
 ?>
 
 <div class="container-fluid container"> 

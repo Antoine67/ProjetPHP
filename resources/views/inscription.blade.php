@@ -1,7 +1,7 @@
 <?php
 $LISTE_CESI = array(
     "Aix-en-Provence",
-    "Angoulême",
+    "Angouleme",
     "Arras",
     "Bordeaux",
     "Brest",
@@ -16,7 +16,7 @@ $LISTE_CESI = array(
     "Nancy",
     "Nantes",
     "Nice",
-    "Orléans",
+    "Orleans",
     "Paris Nanterre",
     "Pau",
     "Reims",
@@ -24,6 +24,9 @@ $LISTE_CESI = array(
     "Saint-Nazaire",
     "Strasbourg",
     "Toulouse",);
+
+
+    
 ?>
 
 <!DOCTYPE html>
