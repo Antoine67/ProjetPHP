@@ -35,6 +35,7 @@ $(function() {
             fctSucces = function() {
                 el_cliq.parent().parent().appendTo("#idee-refusees");
                 el_cliq.parent().find('.icone').remove();
+
                
             };  
         }else if(action == 'vote') {//Voter pour l'idée
@@ -71,7 +72,9 @@ $(function() {
             },
             success: function(response){
                 fctSucces();  
+                location.reload(); 
             }
+            
         });
 
     });
