@@ -144,43 +144,43 @@ $LISTE_CESI = array(
 
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="infotop2">
-					<p class="etage"> Activités auxquelles vous vous êtes inscrit : </p>;
+					<p class="etage"> Activités auxquelles vous vous êtes inscrit : </p>
 				
 					<?php
+					$compt = 0;
 				foreach ($inscription_data as $inscription)
 					{
 						$actis = Activite::select('Activites.*')
-							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
 							->where('Activites.ID',$inscription['ID_Activites'])
-							->where('Activites.ID_Utilisateurs',Session::get('id'))
 							->get();
 						foreach ($actis as $acti)
 						{
-							if($inscription['Date_incription']<=$acti['Date_realisation'])
+							if($inscription['Date_inscription']<=$acti['Date_realisation'])
 							{
+								if($inscription['ID_Utilisateurs']==$id)
+							{
+								$compt = 1;
 
 							echo '
 							<div class="info2">
 								<div class="etage3">
 			    				<p class="etageB">'.$acti['Titre'].'</p>
-									<div class="center">
-				        				<a class="btn btn-default button-activite2 etage4" role="button" data-toggle="modal" data-target="#ajouter-idee">Se désinscrire</a>
-
-				    				</div>
-			    				</div>;
+			    				</div> 
 		    				</div>';
 		    				}
+		    			}
 		    				
 						
 					
-					if($inscription['Date_incription']>$acti['Date_realisation'])	
+					if(($inscription['Date_inscription']>$acti['Date_realisation'])&&($compt!=1))	
 					{
+						$compt = 1;
 						echo '
 						<div class="info2">
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
 										
-				    		</div>.
+				    		</div> 
 			    		</div>';
 			    		break; 		
 			    	}
@@ -189,7 +189,7 @@ $LISTE_CESI = array(
 				
 			
 
-			if(empty($actis))
+			if($compt == 0)
 				{
 					
 						echo '
@@ -197,8 +197,8 @@ $LISTE_CESI = array(
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
 										
-				    		</div>
-			    		</div>';	
+				    		</div> 
+			    		</div>';
 			    	
 				}
 				?>
@@ -206,29 +206,30 @@ $LISTE_CESI = array(
 
 			</div>
 			<div class="infobot2">
-				<p class="etage"> Activités que vous avez réalisé : </p>;
+				<p class="etage"> Activités que vous avez réalisé : </p>
 
 				<?php
+				$compt = 0;
 				foreach ($inscription_data as $inscription)
 				{
 					if($inscription['ID_Utilisateurs']==Session::get('id'))
 					{
 						$actis = Activite::select('Activites.*')
-							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
 							->where('Activites.ID',$inscription['ID_Activites'])
 							->get();
 						foreach ($actis as $acti)
 						{
 							if($inscription['ID_Utilisateurs']==Session::get('id'))
 							{
-								if($inscription['Date_incription']>$acti['Date_realisation'])
+								if(strtotime($inscription['Date_inscription'])>strtotime($acti['Date_realisation']))
 								{
+									$compt = 1;
 
 								echo '
 								<div class="info2">
 									<div class="etage3">
 				    				<p class="etageB">'.$acti['Titre'].' le '.$acti['Date_realisation'].'</p>
-				    				</div>.
+				    				</div> 
 			    				</div>';
 
 								}
@@ -236,14 +237,15 @@ $LISTE_CESI = array(
 
 						}
 
-						if($inscription['Date_incription']<$acti['Date_realisation'])	
+						if(($inscription['Date_inscription']<$acti['Date_realisation'])&&($compt!=1))	
 						{
+							$compt = 1;
 							echo '
 							<div class="info2">
 								<div class="etage3">
 					    		<p class="etageB">Vous n\'avez participé à aucune activité.</p>
 											
-					    		</div>;
+					    		</div> 
 				    		</div>';
 				    		break; 		
 				    	}
@@ -252,7 +254,7 @@ $LISTE_CESI = array(
 					}
 				}
 
-				if(empty($actis))
+				if($compt == 0)
 				{
 					
 						echo '
@@ -260,36 +262,16 @@ $LISTE_CESI = array(
 							<div class="etage3">
 				    		<p class="etageB">Vous n\'avez participé à aucune activité.</p>
 										
-				    		</div>;
+				    		</div> 
 			    		</div>';	
 			    	
 				}
 
 				?>
 			</div>
-		</div>;
+		</div>
 	
 
-	    <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">    
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-
-                        <h3 class="modal-title" >Confirmation</h3>
-                    </div>
-
-                    <!-- Panel Ajout activités -->
-                    <div class="modal-body basket-content">
-
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageB right"><button type="submit" class="btn btn-success"><i class="fas fa-check"></i>Oui</button></div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 etageC right"><button data-dismiss="modal" class="btn btn-danger"><i class="fas fa-times"></i>Non</button></div>  
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
         <div class="modal fade" id="ajouter-prenom" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
