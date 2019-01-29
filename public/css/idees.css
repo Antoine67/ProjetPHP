@@ -57,7 +57,7 @@
 hr
 {
     padding: 2px;
-    background:rgb(115, 115, 160);
+    background:black;
     border:0;
     border-top-right-radius: 100%;
     margin: 1vh 0vh -5vh 0vh;
@@ -81,13 +81,13 @@ hr
 
 .categories
 {
-    background-color: #8a9aac;
+    background-color: #ffc252;
     margin: 10vh 0vh 2vh 0vh;
 }
 
 .diffidee
 {
-    background: #c7ced3;
+    background: #ffffff;
     margin-bottom: 2vh;
     padding-top: 1%;
     width: 100%;
@@ -104,14 +104,15 @@ hr
     box-shadow:none;
     text-shadow:none;
     padding:6px 15px;
-    background: #6C7A86;
+    background: #ffc252;
     transition:background-color 0.25s;
     outline:none;
 }
 
 .upvote-button:hover
 {
-    background: #8a9aac;
+    background: #ffffff;
+    border:1px solid #000000;
 }
 
 .check-button
@@ -170,14 +171,14 @@ hr
     box-shadow:none;
     text-shadow:none;
     padding:6px 15px;
-    background: #6C7A86;
+    background: #000000;
     transition:background-color 0.25s;
     outline:none;
 }
 
 .envoyer:hover
 {
-    background: #778596;
+    background: #ffffff;
 }
 
 .div-img

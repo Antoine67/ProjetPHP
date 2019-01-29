@@ -5,8 +5,8 @@
 
 .navbar-back-office
 {   
-    background:linear-gradient(135deg, #3c4753, #96adca) !important;
-    background-color:#96adca !important;
+    background:black !important;
+    background-color:black !important;
 }
 
 .hr-navbar
@@ -63,11 +63,23 @@ th
   }
 
 
+body
+{
+
+    color:white;
+}
+
+
+tbody
+{
+
+    color:black;
+}
 
 hr
 {
     padding: 2px;
-    background:rgb(115, 115, 160);
+    background:black;
     border:0;
     border-top-right-radius: 100%;
     margin: 1vh 0vh -5vh 0vh;
@@ -95,7 +107,7 @@ input
 
 .categories
 {
-    background-color: #8a9aac;
+    background-color: black;
     margin: 10vh 0vh 2vh 0vh;
 }
 
