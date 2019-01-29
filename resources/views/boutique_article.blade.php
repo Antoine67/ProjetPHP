@@ -44,18 +44,45 @@ else {
     if(Session::get('role') == 2) { 
         echo '<a id="suppr-article" class="btn btn-default butt" role="button">Supprimer l\'article</a><hr>';
     }
-        echo '<div id="article">
-            <h1>' . $article['Nom'] . '</h1>
-            <img class="image2 img-article" src="'. $url . $article["Image"] .'" alt="Objet1" >
-            <div class="description">
-                <p>' . $article['Description'] . '</p>
+        echo '
+<div class="container-fluid container">
+    <div class="col-lg-12 col-md-12 col-sm-12 categories">
+        <h2 class = "titre"> '. $article['Nom'] .' </h2>
+        <div class="col-lg-12 col-md-12 col-sm-12 diffidee">
+
+                <div class="col-lg-10 col-md-10 col-sm-10 div-img">
+                    <img class="img" src="'. $url . $article["Image"] .'" alt="Objet1" >
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-10 description">
+                    <p class="texte-description">' . $article['Description'] . '</p>
+                    
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 ajout-panier">
+                
+                <p class="prix"><span >' . $article['Prix'] . '</span> €</p>
                 <h5> '. $stock .' </h5>
-                <p><span class="prix">' . $article['Prix'] . '</span> €</p>
-            </div>
-            <button class="btn btn-success" id="ajout-panier" data-toggle="modal" data-target="#ajouter-article-panier">Ajouter au panier</button>
+                    
+                ';
+            if($article['Stock'] != 0) {
+                $user = Session::get('role');
+                if(!isset($user)){
+                    echo'<a href="/connexion" >Connectez-vous pour procéder à l\'ajout au panier</a>
+                    ';
+                }
+                else{
+                    echo'
+                        <button class="btn btn-success" id="ajout-panier" data-toggle="modal" data-target="#ajouter-article-panier">Ajouter au panier</button>
+                        ';
+                }
+                
+            } 
+        echo'
+                </div>
         </div>
     </div>
-    ';
+    </div>';
 }
 
 ?>
@@ -64,7 +91,7 @@ else {
 
 <?php
 //Si l'article existe bien
-if(sizeof($articles) >0) {
+if(sizeof($articles) >0 && $article['Stock'] >0) {
     ?>
 <!-- Mini-fenêtre (modal) -->
 <div class="modal fade" id="ajouter-article-panier" tabindex="-1" role="dialog" aria-hidden="true">

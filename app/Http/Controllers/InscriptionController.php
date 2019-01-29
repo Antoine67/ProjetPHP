@@ -76,6 +76,7 @@ class InscriptionController extends Controller
             
             $sqlRequest = $bdd->prepare("INSERT INTO utilisateurs(nom, prenom , mot_de_passe, email, localisation,identifiant) VALUES(:nom,:prenom,:mdp,:email,:localisation,:identifiant)");
 
+
             //Cryptage des mots de passe
             $mdp_crypt = sha1($mdp);
 
