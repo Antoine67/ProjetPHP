@@ -120,27 +120,22 @@ $LISTE_CESI = array(
 </div>
 
 <div class="container-fluid text-center container">
-	<?php
 
-
-
-
-		echo '
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="infotop2">
-				<p class="etage"> Activités auxquelles vous vous êtes inscrit : </p>';
-
+					<p class="etage"> Activités auxquelles vous vous êtes inscrit : </p>;
+				
+					<?php
 				foreach ($inscription_data as $inscription)
-				{
-					if($inscription['ID_Utilisateurs']==Session::get('id'))
 					{
 						$actis = Activite::select('Activites.*')
 							->join('Inscriptions', 'Activites.ID', '=', 'Inscriptions.ID_Activites')
 							->where('Activites.ID',$inscription['ID_Activites'])
+							->where('Activites.ID_Utilisateurs',Session::get('id'))
 							->get();
 						foreach ($actis as $acti)
 						{
-							if($inscription['Date_incription']>$acti['Date_realisation'])
+							if($inscription['Date_incription']<=$acti['Date_realisation'])
 							{
 
 							echo '
@@ -155,9 +150,9 @@ $LISTE_CESI = array(
 		    				</div>';
 		    				}
 		    				
-						}
+						
 					
-					if($inscription['Date_incription']<$acti['Date_realisation'])	
+					if($inscription['Date_incription']>$acti['Date_realisation'])	
 					{
 						echo '
 						<div class="info2">
@@ -168,11 +163,12 @@ $LISTE_CESI = array(
 			    		</div>';
 			    		break; 		
 			    	}
-			    	
-				}
-			}
+			    	}
+			    	}
+				
+			
 
-			if(!isset($inscription))
+			if(empty($actis))
 				{
 					
 						echo '
@@ -184,13 +180,14 @@ $LISTE_CESI = array(
 			    		</div>';	
 			    	
 				}
+				?>
 
 
-
-			echo '
 			</div>
 			<div class="infobot2">
-				<p class="etage"> Activités que vous avez réalisé : </p>';
+				<p class="etage"> Activités que vous avez réalisé : </p>;
+
+				<?php
 				foreach ($inscription_data as $inscription)
 				{
 					if($inscription['ID_Utilisateurs']==Session::get('id'))
@@ -203,7 +200,7 @@ $LISTE_CESI = array(
 						{
 							if($inscription['ID_Utilisateurs']==Session::get('id'))
 							{
-								if($inscription['Date_incription']<$acti['Date_realisation'])
+								if($inscription['Date_incription']>$acti['Date_realisation'])
 								{
 
 								echo '
@@ -218,12 +215,12 @@ $LISTE_CESI = array(
 
 						}
 
-						if($inscription['Date_incription']>$acti['Date_realisation'])	
+						if($inscription['Date_incription']<$acti['Date_realisation'])	
 						{
 							echo '
 							<div class="info2">
 								<div class="etage3">
-					    		<p class="etageB">Vous n\'êtes inscrit à aucune activité.</p>
+					    		<p class="etageB">Vous n\'avez participé à aucune activité.</p>
 											
 					    		</div>;
 				    		</div>';
@@ -234,23 +231,23 @@ $LISTE_CESI = array(
 					}
 				}
 
-				if(!isset($inscription))
+				if(empty($actis))
 				{
 					
 						echo '
 						<div class="info2">
 							<div class="etage3">
-				    		<p class="etageB">Vous vous n\'êtes inscrit à aucune activité.</p>
+				    		<p class="etageB">Vous n\'avez participé à aucune activité.</p>
 										
 				    		</div>;
 			    		</div>';	
 			    	
 				}
 
-				echo'
+				?>
 			</div>
-			</div>';
-	?>
+		</div>;
+	
 
 	    <div class="modal fade" id="ajouter-idee" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

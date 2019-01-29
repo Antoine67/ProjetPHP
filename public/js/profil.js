@@ -3,6 +3,7 @@ $(function() {
     var urlloc = 'http://localhost:3000/api/utilisateurs/';
     var id = $("#idtexte").text();
     var token = $("#tokentexte").text();
+    var xhr = new XMLHttpRequest();
     console.log(id);
     console.log(token);
     document.cookie = "token_cookie_bde="+token;
@@ -11,11 +12,12 @@ $(function() {
 
         url: urlloc+id,
         type: 'get',
-
-
-
-        
-         credentials: 'same-origin',
+        crossDomain: true,
+        dataType: 'json',
+        contentType: 'json',
+         xhrFields: {
+                withCredentials: true
+             },
         
         data: {
             'Prenom':prenom,
@@ -26,18 +28,15 @@ $(function() {
             'Localisation':localisation,
 
         },
-        beforeSend : function(xhr) {
-            xhr.setRequestHeader('Cookie', cookie_name=token);
-            xhr.setRequestHeader("Authority", authorizationToken);
-          },
 
           headers: {
             'content-Type': 'application/json',
             "Accept": "/",
             "Cache-Control": "no-cache",
-            "Cookie": document.cookie
+            "Access-Control-Allow-Origin": "*",
+
             },
-            credentials: "same-origin",
+
 
         processData: false,
         success: function(response){
