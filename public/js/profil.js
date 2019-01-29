@@ -151,9 +151,11 @@ $(function() {
     var urlloc = 'http://localhost:3000/api/utilisateurs/';
     var id = $("#idtexte").text();
     var token = $("#tokentexte").text();
+    var mdpv = $("#mdpv").text();
     var xhr = new XMLHttpRequest();
     console.log(id);
     console.log(token);
+    console.log(mdpv);
 
 
     $( "#modifierprenom" ).click(function() {
@@ -166,10 +168,11 @@ $(function() {
         var localisation = $("#localisationtexte").text();
         var role = $("#roletexte").text();
 
+
         console.log(prenom);
         console.log(nom);
         console.log(identifiant);
-        console.log(mdp);
+        console.log(mdpv);
         console.log(email);
         console.log(localisation);
 
@@ -183,7 +186,7 @@ $(function() {
                     'Nom':nom,
                     'Prenom':prenom,
                     'Identifiant':identifiant,
-                    'Mdp':mdp,
+                    'Mdp':mdpv,
                     'Email':email,
                     'Localisation':localisation,
                     'Role':role,
@@ -226,7 +229,7 @@ $(function() {
                     'Nom':nom,
                     'Prenom':prenom,
                     'Identifiant':identifiant,
-                    'Mdp':mdp,
+                    'Mdp':mdpv,
                     'Email':email,
                     'Localisation':localisation,
                     'Role':role,
@@ -268,7 +271,7 @@ $(function() {
                     'Nom':nom,
                     'Prenom':prenom,
                     'Identifiant':identifiant,
-                    'Mdp':mdp,
+                    'Mdp':mdpv,
                     'Email':email,
                     'Localisation':localisation,
                     'Role':role,
@@ -285,8 +288,6 @@ $(function() {
 
     $( "#modifiermdp" ).click(function() {
 
-
-
         var prenom = $("#prenomtexte").text();
         var nom = $("#nomtexte").text();
         var identifiant = $("#identifianttexte").text();
@@ -295,6 +296,7 @@ $(function() {
         var email = $("#emailtexte").text();
         var localisation = $("#localisationtexte").text();
         var role = $("#roletexte").text();
+        console.log(mdp);
 
         if(!verifMdp( $("#mdpp"))){
             alert("Mot de passe incorect");
@@ -305,7 +307,7 @@ $(function() {
             alert("Mot de passe pas correspondant");
             return;
         }
-
+        var mdp = $("#mdpp").val();
         mdp = sha1(mdp);
 
         console.log(prenom);
@@ -374,7 +376,7 @@ $(function() {
                     'Nom':nom,
                     'Prenom':prenom,
                     'Identifiant':identifiant,
-                    'Mdp':mdp,
+                    'Mdp':mdpv,
                     'Email':email,
                     'Localisation':localisation,
                     'Role':role,
@@ -416,7 +418,7 @@ $(function() {
                     'Nom':nom,
                     'Prenom':prenom,
                     'Identifiant':identifiant,
-                    'Mdp':mdp,
+                    'Mdp':mdpv,
                     'Email':email,
                     'Localisation':localisation,
                     'Role':role,

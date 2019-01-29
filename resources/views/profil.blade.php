@@ -71,6 +71,7 @@ $LISTE_CESI = array(
 	curl_close($ch);
 
 	$utilisateur=json_decode($result, true)[0];
+
 	$loc = $utilisateur["Localisation"];
 	$mdp = $utilisateur["Mot_de_passe"];
 
@@ -85,6 +86,7 @@ $LISTE_CESI = array(
     		<span hidden id="tokentexte">'.Session::get('token').'</span>
     		<span hidden id="idtexte">'.Session::get('id').'</span>
     		<span hidden id="roletexte">'.Session::get('role').'</span>
+    		<span hidden id="mdpv">'.Session::get('mdp').'</span>
 
             <div>
             	<div class="infotop">
