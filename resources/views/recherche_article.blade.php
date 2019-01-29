@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('/css/boutique_categorie.css') }}">
 
 <script src="{{ asset('/js/boutique.js') }}"></script>
+<script src="{{ asset('/js/boutique_categorie.js') }}"></script>
 
 <?php 
 use App\Article;

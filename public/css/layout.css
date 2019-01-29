@@ -18,6 +18,12 @@
     border:none;
   }
 
+  h1
+  {
+
+    color:black;
+  }
+
 .header .navbar .navbar-brand{
     font-weight:bold;
     color:inherit;
@@ -31,7 +37,7 @@
     height:100%;
     display:inline-block;
     margin-right:10px;
-    width:auto;
+    margin-top:-15px;
   }
   
 .header .navbar .navbar-collapse p{
@@ -47,6 +53,10 @@
     
     
   }
+.resize img{
+    width:60px; /* you can use % */
+    height: auto;
+}
 
   
 .login:hover{

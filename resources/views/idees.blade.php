@@ -38,7 +38,7 @@ $util = Session::get('role');//Utilisateur connecté .. ou non
 
     if(isset($util) && $util==2) { ?>
  
-        <div class="text-center"><a class="btn btn-default butt" role="button" data-toggle="modal" data-target="#liste-inscrits">Supprimer une idée</a></div>
+        <div class="text-center "><a class="btn btn-default butt upvote-button" role="button" data-toggle="modal" data-target="#liste-inscrits">Supprimer une idée</a></div>
         
         <!-- Mini-fenêtre (modal) -->
         <div class="modal fade" id="liste-inscrits" tabindex="-1" role="dialog" aria-hidden="true">

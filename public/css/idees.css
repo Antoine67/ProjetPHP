@@ -100,7 +100,7 @@ hr
     text-align: center;
     border:0px;
     border-radius:5px;
-    color:#ebeff1;
+    color:#ffffff;
     box-shadow:none;
     text-shadow:none;
     padding:6px 15px;
@@ -121,11 +121,11 @@ hr
     text-align: right;
     border:0px;
     border-radius:5px;
-    color:#ebeff1;
+    color:#ffffff;
     box-shadow:none;
     text-shadow:none;
     padding:6px 15px;
-    background: #6C7A86;
+    background: #ffc252;
     transition:background-color 0.25s;
     outline:none;
 }
@@ -136,11 +136,11 @@ hr
     text-align: right;
     border:0px;
     border-radius:5px;
-    color:#ebeff1;
+    color:#ffffff;
     box-shadow:none;
     text-shadow:none;
     padding:6px 15px;
-    background: #6C7A86;
+    background: #ffc252;
     transition:background-color 0.25s;
     outline:none;
 }
@@ -150,7 +150,8 @@ hr
     color: rgb(145, 255, 0);
     animation: Check-color 2s infinite;
     -webkit-animation: Check-color 2s infinite;
-    background: #8a9aac;
+    background:white;
+    border:1px solid #000000;
 }
 
 .ban-button:hover
@@ -158,7 +159,8 @@ hr
     color: hsl(324, 70%, 45%);
     -webkit-animation: Ban-color 2s infinite;
     animation: Ban-color 2s infinite;
-    background: #8a9aac;
+    background:white;
+    border:1px solid #000000;
 }
 
 .envoyer
