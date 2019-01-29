@@ -236,57 +236,42 @@ function getURL() {
  
 <footer class="footer-distributed">
 
-<div class="footer-left">
-
-    <h3>BDE</h3>
-
-    <p class="footer-links">
-        <a href="#">Accueil</a>
-        ·
-        <a href="#">Nous Contacter</a>
-        ·
-        <a href="/mentions_legales">Mentions Legales</a>
-        ·
-        <a href="/conditions_generale_de_ventes">Conditions Générale de Ventes</a>
-    </p>
-
-    <p class="footer-company-name">BDE &copy; 2019</p>
-</div>
-
-<div class="footer-center">
-
-    <div>
-        <i class="fa fa-map-marker"></i>
-        <p><span>2 Allée des Foulons, 67380</span> Strasbourg Lingolsheim, France</p>
+    <div class="footer-left">
+        <h3>BDE</h3>
+        <p class="footer-links">
+            <a href="/mentions_legales">Mentions Legales</a>
+            ·
+            <a href="/conditions_generale_de_ventes">Conditions Générale de Ventes</a>
+        </p>
+        <p class="footer-company-name">BDE &copy; 2019</p>
     </div>
 
-    <div>
-        <i class="fa fa-phone"></i>
-        <p>06 46 71 74 46</p>
-    </div>
-    <div>
-        <i class="fa fa-envelope"></i>
-        <p><a href="mailto:bde@cesi.fr">bde@cesi.fr</a></p>
-    </div>
-
-</div>
-
-<div class="footer-right">
-
-    <p class="footer-company-about">
-        <span>A propos du BDE</span>
-        <b>B</b>ureaux <b>D</b>es <b>E</b>xars de Strasbourg 
-    </p>
-
-    <div class="footer-icons">
-
-        <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/bdeexiastrg?lang=fr"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-linkedin-in"></i></a>
-
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>2 Allée des Foulons, 67380</span> Strasbourg Lingolsheim, France</p>
+        </div>
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>06 46 71 74 46</p>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:bde@cesi.fr">bde@cesi.fr</a></p>
+        </div>
     </div>
 
-</div>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>A propos du BDE</span>
+            <b>B</b>ureaux <b>D</b>es <b>E</b>xars de Strasbourg 
+        </p>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/bdeexiastrg?lang=fr"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/BdeExiaStrasbourg/"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
 
 
 
