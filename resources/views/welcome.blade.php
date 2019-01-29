@@ -32,27 +32,27 @@ if (isset($token_cookie_bde)) {
     <!-- Conteneur des slides -->
     <div class="carousel-inner">
 
-      <div class="item active">
+      <div class="item active"><a href="/idees">
         <img  class="carousselhover" alt="CarousselElement 1" src="{{ asset('/img/image_caroussel_4.jpg') }}">
         <div class="carousel-caption">
           <h3 class="textecaroussel">Donnez vos idées</h3>
-          
+          </a>
         </div>
       </div>
 
-      <div class="item">
+      <div class="item"><a href="/boutique">
         <img  class="carousselhover" alt="CarousselElement 2" src="{{ asset('/img/image_caroussel_2.jpg') }}" >
         <div class="carousel-caption">
           <h3 class="textecaroussel">Visitez notre boutique</h3>
-          
+          </a>
         </div>
       </div>
     
-      <div class="item">
+      <div class="item"><a href="/activites">
         <img  class="carousselhover" alt="CarousselElement 3" src="{{ asset('/img/image_caroussel_3.jpg') }}" >
         <div class="carousel-caption">
           <h3 class="textecaroussel">Venez vous amuser en vous inscrivant à nos activités</h3>
-          
+          </a>
         </div>
       </div>
   
@@ -78,54 +78,61 @@ if (isset($token_cookie_bde)) {
 <!-- Photos accueil du site -->
 <div class="imgcontainer">
   <div class="bandefond">
-    <div class="imagetexte">
+    <div class="imagetexte"><a href = "/activites">
       <img class="img" alt="Article 1" src="{{ asset('/img/image_1.png') }}" > 
+
       <div class="text">
 
       Participez à une après-midi bowling avec vos amis.   
-      
-      
+      </a>
+
       </div>
     </div>
-    <div class="imagetexte">
+    <div class="imagetexte"> <a href = "/activites">
       <img class="img" alt="Article 2" src="{{ asset('/img/image_2.jpg') }}"> 
+
       <div class="text">
 
       Composez votre équipe et venez vous mesurer à d'autres joueurs lors d'un Tournoi de foot en salle.
+      </a>
 
       </div>
     </div>
     
-    <div  class="imagetexte">
+    <div  class="imagetexte"><a href = "/activites">
       <img class="img" alt="Article 3" src="{{ asset('/img/image_3.png') }}"> 
+
       <div class="text">
         
       Participez à une après-midi Accrobranche avec vos amis. 
+      </a>
 
       </div>
     </div>
   </div>
     <br>
   <div class="bandefond">
-    <div  class="imagetexte" >
+    <div  class="imagetexte" ><a href = "/boutique">
       <img class="img" alt="Article 4" src="{{ asset('/img/image_4.PNG') }}"> 
       <div class="text">
       Acheter un Mug
-
+      </a>
       </div>
     </div>
     
-    <div  class="imagetexte">
+    <div  class="imagetexte"> <a href = "/boutique">
       <img class="img" alt="Article 5" src="{{ asset('/img/image_5.jpg') }}"> 
         <div class="text">
           Acheter un Hoodie
+          </a>
         </div>
     </div>
     
-    <div  class="imagetexte">
+    <div  class="imagetexte"> <a href = "/boutique">
       <img class="img" alt="Article 6" src="{{ asset('/img/image_6.jpg') }}"> 
       <div class="text">
         Acheter une clé USB
+        </a>
       </div>
     </div>
   </div>  

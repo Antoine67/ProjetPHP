@@ -8,6 +8,7 @@
    position : relative;
    margin : 10px -2px; 
    cursor:pointer;
+   
 }
 
 
@@ -32,9 +33,16 @@
    color:black;
    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
    font-size : 20px;
+   
 
    
 
+  }
+
+  .imagetexte a{
+   text-decoration: none;
+   color:black;
+   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   }
 
   .bandefond{
