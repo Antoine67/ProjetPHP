@@ -4,7 +4,7 @@ Projet PHP réalisé dans le cadre d'un projet au sein du Cesi Exia, réalisé p
 
 Ce projet va de pair avec une API NodeJS que vous pouvez retrouver <a href="https://github.com/Antoine67/ApiNodeJS/">ici</a>
 
-<h2Architecture du projet</h2>
+<h2>Architecture du projet</h2>
 <img src="https://raw.githubusercontent.com/Antoine67/ProjetPHP/master/schema.png?token=Akkaxu4CxzE_8GDZlCGy9ygwwGb1wYxqks5cWdAlwA%3D%3D" alt="Image architecture>
 
 <h2>Estimations des coûts annuels</h2>
