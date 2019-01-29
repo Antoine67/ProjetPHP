@@ -42,10 +42,10 @@ use App\ImageActivite;
 
 
                         <label><b>Prix</b></label>
-                        <input type="text" name="prix" required>
+                        <input type="number" name="prix" required>
               
                         <label><b>Date</b> <i> (En cas d'evenement récurrent date de la première réalisation)</i> </label>
-                        <input type="text" id="datepicker" name="date" required>
+                        <input type="date" id="datepicker" name="date" required>
 
                         <label><b>Ponctualité</b><i> ("Tous les 7 jours" par exemple)</i></label>
                         <input type="text" name="ponctualite">

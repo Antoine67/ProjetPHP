@@ -24,11 +24,13 @@ $url=$url . '/';
 
 
 
-$article = Article::where('ID',$id_article)->get()[0];
-
-if(!$article || sizeof($article) <=0) {
+$articles = Article::where('ID',$id_article)->get();
+if(sizeof($articles) <=0) {
+    
     echo 'Article non trouvé :(';
-}else {
+}
+else {
+    $article = $articles[0]; // On ne garde que le 1er element (l'id est unique !);
     if($article['Stock'] == 0) {
         $stock = '<span style="color:red;">Rupture momentanée de stock</span> ';
     }else {
@@ -60,8 +62,10 @@ if(!$article || sizeof($article) <=0) {
 
 <script src="{{ asset('/js/boutique_article.js') }}"></script>
 
-
-
+<?php
+//Si l'article existe bien
+if(sizeof($articles) >0) {
+    ?>
 <!-- Mini-fenêtre (modal) -->
 <div class="modal fade" id="ajouter-article-panier" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -93,7 +97,7 @@ if(!$article || sizeof($article) <=0) {
  </div>
 
 
-
+<?php } ?>
 
 
 

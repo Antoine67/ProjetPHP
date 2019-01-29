@@ -48,7 +48,8 @@ $(function() {
         window.location.assign('/achat')
     });
 
-    if($.cookie("accepter") != 1) {
+    //Affiche le form si on a pas encore accepter les cookies et qu'on est sur une page différente que les mentions legales
+    if($.cookie("accepter") != 1 && window.location.href.indexOf("mentions_legales") <= -1 ) { 
         $('#panel-cookie').modal('show');
     }
 
