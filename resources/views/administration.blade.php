@@ -39,7 +39,7 @@ date_default_timezone_set('Europe/Paris');
 
 $dir = '';
 
-// A GOOD PATH ON MY SERVER
+
 $path
 = getcwd()
 . DIRECTORY_SEPARATOR
@@ -47,7 +47,7 @@ $path
 ;
 if (!is_dir($path)) die("FAIL: PATH invalide -> $path");
 
-// INSTANTIATE THE OBJECT
+
 $zip = new ZipArchive();
 
 

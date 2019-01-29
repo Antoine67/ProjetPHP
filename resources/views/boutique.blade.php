@@ -202,7 +202,7 @@ if(isset($message)) {
                             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
             
 
-
+            //Chaque catégorie
             $categories_all = Categorie::all();
             foreach($categories_all as $categ) {
                 $categ_nom = strtr( $categ['Nom'], $caract_interdit );
