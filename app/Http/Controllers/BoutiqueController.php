@@ -82,8 +82,14 @@ class BoutiqueController extends Controller
                  $path = $_FILES['fichier']['name'];
                  $ext = pathinfo($path, PATHINFO_EXTENSION);
 
+
+                $nom =  $_POST['nom'];
+                $nom = $string = str_replace(' ', '-', $nom);
+                $nom = preg_replace('/[^A-Za-z0-9\-]/', '', $nom);
+
+
                  $cheminTrouvé = false;  $incr = 0;
-                 $chemin = 'image_site/articles/'. $_POST['nom'] . '/';
+                 $chemin = 'image_site/articles/'. $nom . '/';
                  while(!$cheminTrouvé || $incr>100){
                      $incr++;
                      if (!file_exists($chemin . 'image_'. $incr. '.'. $ext)) {

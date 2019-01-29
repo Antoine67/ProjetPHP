@@ -125,9 +125,9 @@ use Illuminate\Support\Facades\DB;
             foreach($enregistrement as $el_enregistrement) {
                 if($i %2 == 0) {
                     if (preg_match('/\.(png|jpg|gif)/i', $el_enregistrement)) {
-                        echo '<td><span class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</span><a href="'.$url.$el_enregistrement.'"> Aperçu</a></td>';  
+                        echo '<td><textarea readonly class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</textarea><a href="'.$url.$el_enregistrement.'"> Aperçu</a></td>';  
                     }else {
-                         echo '<td><span class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</span></td>';
+                         echo '<td><textarea readonly class="el-'. $enregistrement["ID"] .'">' .$el_enregistrement. '</textarea></td>';
                     }
                     
                    

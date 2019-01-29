@@ -76,7 +76,7 @@ if(!isset($activite_data)) {
         <div class="text-center">
             <?php 
             //On attribue les actions en fonctions des perms
-            if($date > $dateActuelle && isset($util)) {
+            if($intervalle->format('%R%a')>1 && isset($util)) {
                 ?>
             <a class="<?=$inscriptionClass?>" role="button" id="inscription-activite"><?=$inscrit?></a>
             <?php } ?>
@@ -360,7 +360,7 @@ if(!isset($activite_data)) {
                 echo '</div>' // Fin div "commentaires
                 
                 ?>  
-    
+
 
                 <hr/>
                 <form method="post" action="/activites/<?=$id_activite?>">
