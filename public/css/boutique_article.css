@@ -20,6 +20,7 @@
 
 .titre {
   padding: 0px 0px 20px 50px;
+  color:black;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -35,13 +36,13 @@
 
 .categories
 {
-  background-color: #8a9aac;
+  background-color: #ffc252;
   margin: 10vh 0vh 2vh 0vh;
 }
 
 .diffidee
 {
-  background: #c7ced3;
+  background: #ffffff;
   margin-bottom: 2vh;
   padding-top: 1%;
   width: 100%;
@@ -72,3 +73,15 @@
 {
   font-weight: bold;
 }
+
+.taille_couleur_article{
+    color :#000000;
+    font-size:20px;
+
+
+}
+.taille_couleur_article:hover{
+    text-decoration:none;
+    color:#000000;
+    border-color:#000000;
+    }
